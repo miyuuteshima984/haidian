@@ -10,16 +10,30 @@ permissions:
   pull-requests: write
   issues: write
 
+concurrency:
+  group: temporary-jingzhang-finalize
+  cancel-in-progress: true
+
 jobs:
   finalize-and-check:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout formal submission branch
+      - name: Checkout formal submission branch sparsely
         uses: actions/checkout@v4
         with:
           ref: submission/miyuuteshima984/jingzhang-ai-civic-infrastructure
           fetch-depth: 0
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/
+            requirements-review.txt
+            tracks.json
+            scenarios/
+            brief/site-package/
+            data/source_registry.json
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/
           persist-credentials: true
 
       - name: Install current review dependencies
