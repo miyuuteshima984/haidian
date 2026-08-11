@@ -1,1 +1,1 @@
-trigger canonical submission finalization runner
+rerun canonical submission finalization after removing illegal handoff path
