@@ -1,0 +1,104 @@
+name: temporary-submission-finalize
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  finalize-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout formal submission branch
+        uses: actions/checkout@v4
+        with:
+          ref: submission/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Install current review dependencies
+        run: |
+          python3 -m pip install --disable-pip-version-check -r requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Run canonical finalizer
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/finalize_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure > /tmp/finalize.log 2>&1
+          rc=$?
+          cat /tmp/finalize.log
+          echo "FINALIZE_RC=$rc" >> "$GITHUB_ENV"
+          exit $rc
+
+      - name: Run canonical persisted four-gate self-check
+        if: env.FINALIZE_RC == '0'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/self_check_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --mark-self-checked --json > /tmp/selfcheck.json 2> /tmp/selfcheck.stderr
+          rc=$?
+          cat /tmp/selfcheck.json
+          cat /tmp/selfcheck.stderr >&2
+          echo "SELFCHECK_RC=$rc" >> "$GITHUB_ENV"
+          exit $rc
+
+      - name: Run participant preflight
+        if: env.FINALIZE_RC == '0' && env.SELFCHECK_RC == '0'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/participant_preflight.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --check-push --json > /tmp/preflight.json 2> /tmp/preflight.stderr
+          rc=$?
+          cat /tmp/preflight.json
+          cat /tmp/preflight.stderr >&2
+          echo "PREFLIGHT_RC=$rc" >> "$GITHUB_ENV"
+          exit $rc
+
+      - name: Publish machine diagnostics to diagnostic PR
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          def read(path, limit=45000):
+              p=Path(path)
+              if not p.exists(): return '(not run)'
+              text=p.read_text(encoding='utf-8', errors='replace')
+              return text if len(text) <= limit else text[:limit] + '\n... [truncated]'
+          body=[]
+          body.append('## Temporary canonical finalization run')
+          body.append('')
+          body.append(f"- finalize rc: `{os.environ.get('FINALIZE_RC','not-run')}`")
+          body.append(f"- self-check rc: `{os.environ.get('SELFCHECK_RC','not-run')}`")
+          body.append(f"- preflight rc: `{os.environ.get('PREFLIGHT_RC','not-run')}`")
+          body.append('')
+          body.append('<details><summary>finalize</summary>\n\n```text\n'+read('/tmp/finalize.log',12000)+'\n```\n</details>')
+          body.append('<details><summary>self-check</summary>\n\n```json\n'+read('/tmp/selfcheck.json',30000)+'\n```\n```text\n'+read('/tmp/selfcheck.stderr',5000)+'\n```\n</details>')
+          body.append('<details><summary>preflight</summary>\n\n```json\n'+read('/tmp/preflight.json',12000)+'\n```\n```text\n'+read('/tmp/preflight.stderr',5000)+'\n```\n</details>')
+          Path('/tmp/pr-comment.md').write_text('\n'.join(body),encoding='utf-8')
+          PY
+          gh pr comment 3 --repo miyuuteshima984/haidian --body-file /tmp/pr-comment.md
+
+      - name: Commit canonical generated evidence back to formal branch
+        if: env.FINALIZE_RC == '0' && env.SELFCHECK_RC == '0' && env.PREFLIGHT_RC == '0'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/manifest.json submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/self_check.json
+          git diff --cached --check
+          git commit -m "Finalize Jing-Zhang submission with machine self-check"
+          git push origin HEAD:refs/heads/submission/miyuuteshima984/jingzhang-ai-civic-infrastructure
