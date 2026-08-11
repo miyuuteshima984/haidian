@@ -6,7 +6,7 @@ on:
       - automation/jingzhang-finalize
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   issues: write
 
@@ -34,7 +34,7 @@ jobs:
             brief/site-package/
             data/source_registry.json
             submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Install current review dependencies
         run: |
