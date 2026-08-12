@@ -1,0 +1,1 @@
+Previous handoff-only marker commits do not affect the formal submission branch.
