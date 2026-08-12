@@ -1,0 +1,1 @@
+Trigger strict persisted validation against the latest synchronized formal branch.
