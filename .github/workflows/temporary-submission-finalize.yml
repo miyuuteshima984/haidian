@@ -31,6 +31,8 @@ jobs:
             docs
             skills
             templates
+            scenarios
+            tracks
             submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
 
       - name: Install validator dependencies
@@ -55,17 +57,18 @@ jobs:
               "brand-vi-direction.svg","public-space-components-wayfinding.svg","landmarks-events-conversion.svg"
           ]
           existing={x.get("path") for x in m.get("files",[])}
+          zero="0"*64
           for name in primary:
               zh=f"assets/figures/{name}"
               en=f"assets/figures/{Path(name).stem}.en.svg"
               if zh not in existing:
-                  m["files"].append({"path":zh,"role":"proposal_figure","required":False,"language":"zh"})
+                  m["files"].append({"path":zh,"role":"proposal_figure","required":False,"language":"zh","sha256":zero})
                   existing.add(zh)
               if en not in existing:
-                  m["files"].append({"path":en,"role":"proposal_figure","required":False,"language":"en","translation_of":zh})
+                  m["files"].append({"path":en,"role":"proposal_figure","required":False,"language":"en","translation_of":zh,"sha256":zero})
                   existing.add(en)
           if "changelog.md" not in existing:
-              m["files"].append({"path":"changelog.md","role":"changelog","required":True})
+              m["files"].append({"path":"changelog.md","role":"changelog","required":True,"sha256":zero})
           m["generated_at"]=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
           m.setdefault("validation_claim",{})["self_checked"]=False
           m["validation_claim"]["known_blockers"]=[]
@@ -89,9 +92,7 @@ jobs:
           try:
               d=json.loads(raw)
           except Exception as e:
-              print('JSON_PARSE_ERROR',repr(e))
-              print(raw[:12000])
-              raise SystemExit
+              print('JSON_PARSE_ERROR',repr(e)); print(raw[:12000]); raise SystemExit
           print('TOP ok=',d.get('ok'),'can_enter_formal_review=',d.get('can_enter_formal_review'),'review_status=',d.get('review_status'))
           keys={'issues','errors','blockers','next_actions','warnings','blocking_issues','failures'}
           def walk(x,path='root'):
