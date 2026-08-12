@@ -1,0 +1,1 @@
+Official upstream PR creation checkpoint: strict self-check and participant preflight passed after syncing fork main; latest upstream drift contains only unrelated participant submission files and no validator/tooling changes.
