@@ -72,28 +72,44 @@ jobs:
           p.write_text(json.dumps(m,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
 
-      - name: Refresh manifest with diagnostic annotation
+      - name: Refresh manifest
         shell: bash
-        run: |
-          set +e
-          python3 scripts/refresh_submission_manifest.py "$PKG" > /tmp/refresh.log 2>&1
-          rc=$?
-          cat /tmp/refresh.log
-          if [ $rc -ne 0 ]; then
-            msg="$(tail -c 6000 /tmp/refresh.log | tr '\n' ' ' | sed 's/%/%25/g;s/\r/%0D/g')"
-            echo "::error title=refresh_submission_manifest::$msg"
-            exit $rc
-          fi
+        run: python3 scripts/refresh_submission_manifest.py "$PKG"
 
-      - name: Strict self-check with diagnostic annotation
+      - name: Strict self-check concise diagnostic
         shell: bash
         run: |
           set +e
           python3 scripts/self_check_submission.py "$PKG" --pr-author miyuuteshima984 --mark-self-checked --json > /tmp/selfcheck.log 2>&1
           rc=$?
-          cat /tmp/selfcheck.log
+          python3 - <<'PY' > /tmp/concise.log
+          import json
+          from pathlib import Path
+          raw=Path('/tmp/selfcheck.log').read_text(encoding='utf-8',errors='replace')
+          try:
+              d=json.loads(raw)
+          except Exception as e:
+              print('JSON_PARSE_ERROR',repr(e))
+              print(raw[:12000])
+              raise SystemExit
+          print('TOP ok=',d.get('ok'),'can_enter_formal_review=',d.get('can_enter_formal_review'),'review_status=',d.get('review_status'))
+          keys={'issues','errors','blockers','next_actions','warnings','blocking_issues','failures'}
+          def walk(x,path='root'):
+              if isinstance(x,dict):
+                  if x.get('ok') is False or x.get('pass') is False or x.get('passed') is False:
+                      compact={k:v for k,v in x.items() if k in {'name','id','code','title','ok','pass','passed','status','summary','message','detail','issues','errors','blockers','next_actions','warnings'} and v not in (None,[],{},'')}
+                      print('FAILED_NODE',path,json.dumps(compact,ensure_ascii=False)[:5000])
+                  for k,v in x.items():
+                      if k in keys and v not in (None,[],{},''):
+                          print('NONEMPTY',path+'.'+k,json.dumps(v,ensure_ascii=False)[:7000])
+                      walk(v,path+'.'+str(k))
+              elif isinstance(x,list):
+                  for i,v in enumerate(x): walk(v,f'{path}[{i}]')
+          walk(d)
+          PY
+          cat /tmp/concise.log
           if [ $rc -ne 0 ]; then
-            msg="$(tail -c 12000 /tmp/selfcheck.log | tr '\n' ' ' | sed 's/%/%25/g;s/\r/%0D/g')"
-            echo "::error title=strict_self_check::$msg"
+            msg="$(head -c 14000 /tmp/concise.log | tr '\n' ' ' | sed 's/%/%25/g;s/\r/%0D/g')"
+            echo "::error title=strict_self_check_concise::$msg"
             exit $rc
           fi
