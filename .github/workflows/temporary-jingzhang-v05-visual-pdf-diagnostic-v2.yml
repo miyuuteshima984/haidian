@@ -1,0 +1,176 @@
+name: Temporary Jingzhang v0.5 visual and PDF diagnostic v2
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+
+permissions:
+  contents: read
+
+env:
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v05
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Sparse checkout v0.5
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python3 -m pip install -r requirements-review.txt
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+
+      - name: Prepare canonical v0.5 wired state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from datetime import datetime,timezone
+          import json
+          pkg=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          zh=(pkg/'proposal.md').read_text(encoding='utf-8'); en=(pkg/'proposal.en.md').read_text(encoding='utf-8')
+          rows=[
+            ('这些案例不支撑京张的法定边界、高度或强度，只支撑组织与运营方法。[source:CASE-AISG-100E] [source:CASE-SEOUL-AI-HUB] [source:CASE-PUNGGOL]','![全球 AI 创新生态案例对照：机制—京张转译—不复制边界](assets/figures/case-study-comparison.svg)','case-study-comparison.svg','These cases do not support statutory Jing-Zhang boundaries, heights or development intensity; they support organisational and operating choices only. [source:CASE-AISG-100E] [source:CASE-SEOUL-AI-HUB] [source:CASE-PUNGGOL]','![Global AI innovation ecosystem comparison: mechanism—Jing-Zhang translation—non-copy boundary](assets/figures/case-study-comparison.en.svg)','case-study-comparison.en.svg'),
+            ('运营层建议每年进行 C7 城市完整度公开走查、开发者开放周、受控机器人测试开放日、社区公共服务评议和京张技术史展。公开的不应只有“新增了什么 AI”，也应包括“哪项普通城市能力仍有缺口、哪些试点被停止或回退”。','![三个公共荣誉节点、年度活动节奏与研究—测试—采用—长期服务转化路径](assets/figures/landmarks-events-conversion.svg)','landmarks-events-conversion.svg','Long-term operation can include a public C7 walk-through, developer open week, controlled robotics open day, community public-service review and Jing-Zhang technology-history exhibition. Annual reporting should not only announce “what new AI was deployed”; it should also state which ordinary urban capability remains incomplete and which pilots were stopped, rolled back or redesigned.','![Three public honor nodes, annual event rhythm, and the research—test—adoption—long-term-service conversion pathway](assets/figures/landmarks-events-conversion.en.svg)','landmarks-events-conversion.en.svg')]
+          for za,zi,zn,ea,ei,en_n in rows:
+              if zn not in zh: zh=zh.replace(za,za+'\n\n'+zi)
+              if en_n not in en: en=en.replace(ea,ea+'\n\n'+ei)
+          (pkg/'proposal.md').write_text(zh,encoding='utf-8'); (pkg/'proposal.en.md').write_text(en,encoding='utf-8')
+          cm_path=pkg/'compliance_matrix.json'; cm=json.loads(cm_path.read_text(encoding='utf-8'))
+          vm={'agent.1':['三大定位—五大功能—三区两翼协同闭环','C7品牌与VI概念方向'],'agent.2':['全球AI创新生态案例对照表','AI全要素生态图谱','区域协同验证矩阵'],'agent.3':['10张AI+场景卡','AI场景数据流与隐私治理表'],'agent.4':['公共空间组件库与三层导视系统','公共荣誉地标+年度活动+转化路径'],'agent.5':['C7品牌与VI概念方向','公共空间组件库与三层导视系统'],'agent.6':['公共荣誉地标+年度活动+转化路径','实施与长期运营矩阵','C7品牌VI概念方向']}
+          for item in cm.get('requirements',[]):
+              if item.get('requirement_id') in vm:
+                  vals=list(item.get('visual_sections') or [])
+                  for v in vm[item['requirement_id']]:
+                      if v not in vals: vals.append(v)
+                  item['visual_sections']=vals
+          cm_path.write_text(json.dumps(cm,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          sm_path=pkg/'standard_matrix.json'; sm=json.loads(sm_path.read_text(encoding='utf-8'))
+          for item in sm.get('standards',[]):
+              if item.get('standard_id')=='PROJECT-AGENT-OPEN-CALL-TASKBOOK': item['evidence_summary_zh']='agent.1-agent.6 已进入 compliance_matrix；v0.5 进一步形成任务书协同闭环、六案例对照、八要素生态图谱、10场景卡、公共荣誉/组件/导视、长期运营、隐私治理和C7品牌VI的双语可读证据。'
+          sm_path.write_text(json.dumps(sm,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          cp_path=pkg/'report/copyright_statement.md'; cp=cp_path.read_text(encoding='utf-8')
+          if 'case-study-comparison.svg' not in cp:
+              marker='## Fonts, icons, code, and toolchain'
+              block='''### v0.5 additional visual-asset ledger\n\n| Asset group | Paths | Author / generation method | Third-party material embedded | Rights / status |\n| --- | --- | --- | --- | --- |\n| Global case comparison | `assets/figures/case-study-comparison.svg`, `.en.svg` | Original comparison diagram from six first-party factual references in `sources.json` | None; no case logo, image, map, video or proprietary diagram embedded | Submission-original layout; factual-reference-only source use |\n| Public landmarks, events and conversion | `assets/figures/landmarks-events-conversion.svg`, `.en.svg` | Original concept diagram from this submission's public-space, scenario and operating logic | None | Submission-original; concept names are not official awards, organizer brands or commitments |\n\n'''
+              cp_path.write_text(cp.replace(marker,block+marker),encoding='utf-8')
+          mp=pkg/'manifest.json'; m=json.loads(mp.read_text(encoding='utf-8')); zero='0'*64
+          names=['taskbook-coordination-loop.svg','case-study-comparison.svg','ai-ecosystem-map.svg','ai-scenario-cards.svg','regional-collaboration-matrix.svg','implementation-operations-matrix.svg','privacy-data-governance.svg','brand-vi-direction.svg','public-space-components-wayfinding.svg','landmarks-events-conversion.svg']
+          existing={x.get('path') for x in m.get('files',[])}
+          for name in names:
+              zp=f'assets/figures/{name}'; ep=f'assets/figures/{Path(name).stem}.en.svg'
+              if zp not in existing: m['files'].append({'path':zp,'role':'proposal_figure','required':False,'language':'zh','sha256':zero}); existing.add(zp)
+              if ep not in existing: m['files'].append({'path':ep,'role':'proposal_figure','required':False,'language':'en','translation_of':zp,'sha256':zero}); existing.add(ep)
+          m['generated_at']=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z'); m.setdefault('validation_claim',{})['self_checked']=False; m['validation_claim']['known_blockers']=[]
+          mp.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          python3 scripts/render_proposal_html.py "$PKG"
+          python3 scripts/refresh_submission_manifest.py "$PKG"
+          python3 scripts/self_check_submission.py "$PKG" --pr-author miyuuteshima984 --mark-self-checked --json >/tmp/wired.json
+
+      - name: Append v0.5 evidence to canonical visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import html
+          pkg=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          items=[('任务书协同闭环','Taskbook coordination loop','taskbook-coordination-loop.svg'),('全球 AI 案例对照','Global AI case comparison','case-study-comparison.svg'),('AI 全要素生态','Full-factor AI ecosystem','ai-ecosystem-map.svg'),('10 张 AI+ 场景卡','Ten AI scenario cards','ai-scenario-cards.svg'),('区域协同验证','Regional collaboration','regional-collaboration-matrix.svg'),('实施与长期运营','Implementation & operations','implementation-operations-matrix.svg'),('数据流与隐私治理','Privacy & data governance','privacy-data-governance.svg'),('品牌 / VI 方向','Brand / VI direction','brand-vi-direction.svg'),('公共空间组件与导视','Components & wayfinding','public-space-components-wayfinding.svg'),('公共荣誉地标与活动转化','Landmarks, events & conversion','landmarks-events-conversion.svg')]
+          for en,name in [(False,'index.html'),(True,'index.en.html')]:
+              p=pkg/'visual'/name; s=p.read_text(encoding='utf-8')
+              if 'id="v05-evidence"' in s: continue
+              cards=[]
+              for z,e,n in items:
+                  src=n
+                  if en:
+                      q=Path(n).with_name(Path(n).stem+'.en'+Path(n).suffix)
+                      if (pkg/'assets/figures'/q).exists(): src=q.as_posix()
+                  label=e if en else z
+                  cards.append(f'<div class="card"><h3>{html.escape(label)}</h3><img src="../assets/figures/{src}" alt="{html.escape(label)}" style="width:100%;height:auto;display:block;border:1px solid #d8dee8;border-radius:8px"></div>')
+              title='v0.5 taskbook enhancement evidence' if en else 'v0.5 任务书深化证据'
+              note='Added evidence only; all canonical map, scope, metrics, source, assumption and self-check sections above remain controlling.' if en else '仅追加深化证据；上方 canonical 总览、范围、指标、来源、假设与自检区继续作为控制性展示。'
+              block=f'<section class="sheet" id="v05-evidence"><div class="head"><h2>{title}</h2><div class="muted">{note}</div></div><div class="body"><div class="grid">{"".join(cards)}</div></div></section>\n'
+              if '</main>' in s: s=s.replace('</main>',block+'</main>',1)
+              else: s=s.replace('</body>',block+'</body>',1)
+              p.write_text(s,encoding='utf-8')
+          PY
+          python3 scripts/refresh_submission_manifest.py "$PKG"
+          set +e
+          python3 scripts/self_check_submission.py "$PKG" --pr-author miyuuteshima984 --mark-self-checked --json >/tmp/visual.json 2>&1
+          rc=$?
+          python3 - <<'PY' >/tmp/visual-diag.txt
+          import json
+          d=json.load(open('/tmp/visual.json'))
+          print('VISUAL_APPEND',d.get('ok'),d.get('can_enter_formal_review'),d.get('review_status'))
+          print('NEXT',json.dumps(d.get('next_actions') or [],ensure_ascii=False))
+          PY
+          cat /tmp/visual-diag.txt
+          msg="$(cat /tmp/visual-diag.txt | tr '\n' ' ' | sed 's/%/%25/g;s/\r/%0D/g')"
+          if [ $rc -ne 0 ]; then echo "::error title=v05_visual_append::$msg"; exit $rc; else echo "::notice title=v05_visual_append::$msg"; fi
+
+      - name: Rebuild A3 A0 PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          pkg=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure').resolve(); fig=pkg/'assets/figures'; tmp=Path('/tmp/jzv05'); tmp.mkdir(exist_ok=True)
+          items=[('任务书协同闭环','Taskbook coordination loop','taskbook-coordination-loop.svg'),('全球 AI 案例对照','Global AI case comparison','case-study-comparison.svg'),('AI 全要素生态','Full-factor AI ecosystem','ai-ecosystem-map.svg'),('10 张 AI+ 场景卡','Ten AI scenario cards','ai-scenario-cards.svg'),('区域协同验证','Regional collaboration','regional-collaboration-matrix.svg'),('实施与长期运营','Implementation & operations','implementation-operations-matrix.svg'),('数据流与隐私治理','Privacy & data governance','privacy-data-governance.svg'),('品牌 / VI 方向','Brand / VI direction','brand-vi-direction.svg'),('公共空间组件与导视','Components & wayfinding','public-space-components-wayfinding.svg'),('公共荣誉地标与活动转化','Landmarks, events & conversion','landmarks-events-conversion.svg'),('总体范围与 C7 方法','Site overview','site-overview.png'),('概念用地结构','Land-use structure','land-use-structure.png'),('三处重点区域','Three key areas','key-areas.png'),('慢行与蓝绿系统','Mobility & blue-green','mobility-bluegreen.png'),('指标与证据缺口','Metrics & evidence','metrics-evidence.png')]
+          def file_for(n,en):
+              p=Path(n); q=p.with_name(p.stem+'.en'+p.suffix); return q if en and (fig/q).exists() else p
+          def uri(n,en): return (fig/file_for(n,en)).resolve().as_uri()
+          a3=[[x] for x in items]; a0=[items[:5],items[5:10],items[10:]]
+          def boards(en,size,pages):
+              ss=[]
+              for i,page in enumerate(pages,1):
+                  fs=[]
+                  for z,e,n in page:
+                      label=e if en else z; fs.append(f'<figure><img src="{uri(n,en)}"><figcaption>{label}</figcaption></figure>')
+                  ss.append(f'<section><header><b>{"JING-ZHANG CITY COMPLETENESS" if en else "京张城市完整度"}</b><span>{i}/{len(pages)}</span></header><div class="g n{len(page)}">{"".join(fs)}</div><footer>{"Concept proposal · provisional geometry is not an official redline · AI opt-out" if en else "概念建议 · provisional geometry 不是官方红线 · AI 可退出"}</footer></section>')
+              return f'''<!doctype html><html><head><meta charset="utf-8"><style>@page{{size:{size} landscape;margin:7mm}}*{{box-sizing:border-box}}body{{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#172033}}section{{height:calc(100vh - 2mm);break-after:page;display:flex;flex-direction:column;gap:3mm;overflow:hidden}}header{{display:flex;justify-content:space-between;border-bottom:1mm solid #245b8f;padding-bottom:2mm;font-size:18pt}}.g{{flex:1;display:grid;gap:3mm;min-height:0}}.n1{{grid-template-columns:1fr}}.n5{{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}}figure{{margin:0;border:.3mm solid #ccd5e0;display:flex;flex-direction:column;overflow:hidden;min-height:0}}img{{width:100%;height:100%;min-height:0;object-fit:contain}}figcaption{{font-size:8pt;font-weight:700;padding:1mm 2mm}}footer{{font-size:7pt;color:#667085}}</style></head><body>{''.join(ss)}</body></html>'''
+          for en,lang in [(False,'zh'),(True,'en')]:
+              (tmp/f'a3-{lang}.html').write_text(boards(en,'A3',a3),encoding='utf-8'); (tmp/f'a0-{lang}.html').write_text(boards(en,'A0',a0),encoding='utf-8')
+          PY
+          for lang in zh en; do
+            if [ "$lang" = zh ]; then A3="$PKG/drawings/a3-booklet.pdf"; A0="$PKG/drawings/a0-boards.pdf"; else A3="$PKG/drawings/a3-booklet.en.pdf"; A0="$PKG/drawings/a0-boards.en.pdf"; fi
+            "$CHROME" --headless --no-sandbox --disable-gpu --allow-file-access-from-files --virtual-time-budget=3000 --print-to-pdf="$A3" "file:///tmp/jzv05/a3-$lang.html"
+            "$CHROME" --headless --no-sandbox --disable-gpu --allow-file-access-from-files --virtual-time-budget=3000 --print-to-pdf="$A0" "file:///tmp/jzv05/a0-$lang.html"
+          done
+          python3 scripts/refresh_submission_manifest.py "$PKG"
+          set +e
+          python3 scripts/self_check_submission.py "$PKG" --pr-author miyuuteshima984 --mark-self-checked --json >/tmp/pdf.json 2>&1
+          rc=$?
+          python3 - <<'PY' >/tmp/pdf-diag.txt
+          import json
+          d=json.load(open('/tmp/pdf.json'))
+          print('PDF_STAGE',d.get('ok'),d.get('can_enter_formal_review'),d.get('review_status'))
+          print('NEXT',json.dumps(d.get('next_actions') or [],ensure_ascii=False))
+          PY
+          cat /tmp/pdf-diag.txt
+          msg="$(cat /tmp/pdf-diag.txt | tr '\n' ' ' | sed 's/%/%25/g;s/\r/%0D/g')"
+          if [ $rc -ne 0 ]; then echo "::error title=v05_pdf_stage::$msg"; exit $rc; else echo "::notice title=v05_pdf_stage::$msg"; fi
