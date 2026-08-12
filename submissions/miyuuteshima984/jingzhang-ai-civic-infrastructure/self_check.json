@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1.0",
+  "ok": false,
+  "submission_dir": "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure",
+  "pr_author": "miyuuteshima984",
+  "stage": "formal",
+  "can_enter_formal_review": false,
+  "package_type": "professional_design_package",
+  "review_status": "diagnostic-pending",
+  "next_actions": [
+    "Run python3 scripts/finalize_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure to promote the package from scaffold to ready_for_review and refresh manifest hashes.",
+    "Then run python3 scripts/self_check_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --mark-self-checked --json to persist the real four-gate result."
+  ],
+  "checks": [
+    {
+      "check_id": "DETERMINISTIC_VALIDATION",
+      "result": "unknown",
+      "severity": "blocking",
+      "target": "validate_local_submission.py",
+      "message": "Pending four-gate self-check execution after finalization; no pass is claimed yet."
+    },
+    {
+      "check_id": "SPATIAL_REVIEW",
+      "result": "unknown",
+      "severity": "blocking",
+      "target": "spatial_review.py",
+      "message": "Pending four-gate self-check execution after finalization; no pass is claimed yet."
+    },
+    {
+      "check_id": "VISUAL_PACKAGING",
+      "result": "unknown",
+      "severity": "blocking",
+      "target": "visual_review.py",
+      "message": "Pending four-gate self-check execution after finalization; no pass is claimed yet."
+    },
+    {
+      "check_id": "PROFESSIONAL_EVIDENCE",
+      "result": "unknown",
+      "severity": "blocking",
+      "target": "professional_review.py",
+      "message": "Pending four-gate self-check execution after finalization; no pass is claimed yet."
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": "0.1.0",
+  "sources": [
+    {
+      "id": "SITE-PACKAGE",
+      "path": "brief/site-package/",
+      "source_type": "official_public",
+      "usage": "任务范围、枚举、标准、设计边界、规划限制和缺资料约束。"
+    },
+    {
+      "id": "SOURCE-REGISTRY",
+      "path": "data/source_registry.json",
+      "source_type": "repository_public_registry",
+      "usage": "区分 formal、background 与 provisional 资料用途。"
+    },
+    {
+      "id": "PROCESSED-FACT-PACK",
+      "path": "data/processed/agent_fact_pack.md",
+      "source_type": "repository_processed_reference",
+      "usage": "任务、范围、资料用途和缺口的导航层；不升级原始来源权威级别。"
+    },
+    {
+      "id": "AGENT-TASKBOOK",
+      "path": "brief/site-package/agent_taskbook.json",
+      "source_type": "user_provided_cleared",
+      "usage": "三大定位、五大功能、三区两翼、六项 agent 任务、共创原则和统一边界条款。"
+    },
+    {
+      "id": "DESIGN-BRIEF",
+      "path": "brief/site-package/design_brief.json",
+      "source_type": "user_provided_cleared_summary",
+      "usage": "43.6 km²、11.4 km²、368.4 ha 三层范围及三处重点区任务。"
+    },
+    {
+      "id": "PLANNING-LIMITS",
+      "path": "brief/site-package/ranges/planning_limits.json",
+      "source_type": "repository_public_reference",
+      "usage": "确认正式 FAR、高度、密度、绿地率、退界等控制条件当前缺失。"
+    },
+    {
+      "id": "ALLOWED-DESIGN-SPACE",
+      "path": "brief/site-package/allowed_design_space.json",
+      "source_type": "repository_public_reference",
+      "usage": "确认 locked/editable layers、provisional geometry 的允许用途和禁止结论。"
+    },
+    {
+      "id": "LAND-USE-CODES",
+      "path": "brief/site-package/enums/land_use_codes.json",
+      "source_type": "official_public_subset",
+      "usage": "住宅、社区服务、科研、文化、教育、商业服务、绿地与开敞空间等提交用地编码。"
+    },
+    {
+      "id": "BUILDING-TYPES",
+      "path": "brief/site-package/enums/building_types.json",
+      "source_type": "repository_public_enum",
+      "usage": "居住、人才公寓、社区服务、科研、办公、混合功能、教育、文化和交通接驳等建筑类型。"
+    },
+    {
+      "id": "BOUNDARY-SOURCE",
+      "path": "brief/site-package/geometry/provisional_boundaries.geojson",
+      "source_type": "agent_inferred_from_public_data",
+      "usage": "总体设计范围临时粗略 geometry，仅用于生成、可视化、拓扑与 intake 自检；不得作为官方红线、权属或工程依据。"
+    },
+    {
+      "id": "KEY-AREA-SOURCE",
+      "path": "brief/site-package/geometry/provisional_boundaries.geojson",
+      "source_type": "agent_inferred_from_public_data",
+      "usage": "三处重点区临时粗略 geometry；不得用于精确站点、地块、产权或工程落位。"
+    },
+    {
+      "id": "OFFICIAL-ANNOUNCEMENT",
+      "url": "https://ghzrzyw.beijing.gov.cn/zhengwuxinxi/tzgg/hd/202605/t20260509_4643047.html",
+      "source_type": "official_public",
+      "usage": "确认项目正式征集、三层范围、重点区与设计任务。"
+    },
+    {
+      "id": "FORMAL-GUIDE",
+      "path": "docs/formal-submission-guide.md",
+      "source_type": "repository_public_reference",
+      "usage": "v2 formal 结构、双语契约、图件/HTML/PDF 对照版本和 preflight 要求。"
+    },
+    {
+      "id": "CASE-VECTOR",
+      "url": "https://vectorinstitute.ai/about/",
+      "source_type": "official_public",
+      "publisher": "Vector Institute",
+      "usage": "研究—人才—产业采用的独立非营利连接机制；不作为京张空间控制依据。"
+    },
+    {
+      "id": "CASE-MILA",
+      "url": "https://mila.quebec/en/about/about-mila",
+      "source_type": "official_public",
+      "publisher": "Mila - Quebec AI Institute",
+      "usage": "大学协作、开放科学、AI 研究与公共价值机制；不作为京张空间控制依据。"
+    },
+    {
+      "id": "CASE-TURING",
+      "url": "https://www.turing.ac.uk/about-us",
+      "source_type": "official_public",
+      "publisher": "the Alan Turing Institute",
+      "usage": "跨学科国家 AI 研究机构、知识交换和公众参与机制；不作为京张空间控制依据。"
+    },
+    {
+      "id": "CASE-AISG-100E",
+      "url": "https://aisingapore.org/innovation/100e/",
+      "source_type": "official_public",
+      "publisher": "AI Singapore",
+      "usage": "从真实问题进入 PoC/MVP 的限期试验机制；金额与周期不直接移植为京张承诺。"
+    },
+    {
+      "id": "CASE-SEOUL-AI-HUB",
+      "url": "https://www.seoulaihub.kr/eng1/index2.asp",
+      "source_type": "official_public",
+      "publisher": "Seoul AI Hub",
+      "usage": "创业支持、人才培养、共享空间与产业交流机制；不作为京张招商或企业数量承诺。"
+    },
+    {
+      "id": "CASE-PUNGGOL",
+      "url": "https://www.jtc.gov.sg/punggoldigitaldistrict",
+      "source_type": "official_public",
+      "publisher": "JTC, Government of Singapore",
+      "usage": "产业、大学、社区、公共空间和数字基础设施邻接的城市机制；不移植其投资规模、技术系统或建设指标。"
+    }
+  ]
+}
