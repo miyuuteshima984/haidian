@@ -23,6 +23,16 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
           persist-credentials: true
 
       - name: Prepare branch and upstream
@@ -32,7 +42,7 @@ jobs:
           git checkout -B "$TARGET_BRANCH" "origin/$TARGET_BRANCH"
           git remote remove upstream 2>/dev/null || true
           git remote add upstream https://github.com/open-city-ai/haidian.git
-          git fetch upstream main --no-tags
+          git fetch upstream main --no-tags --filter=blob:none
           git status --short
 
       - name: Install review dependencies
@@ -88,7 +98,6 @@ jobs:
           (pkg / "proposal.md").write_text(zh, encoding="utf-8")
           (pkg / "proposal.en.md").write_text(en, encoding="utf-8")
 
-          # Strengthen machine-readable task coverage without disturbing official 1.3/1.4/1.5 entries.
           cm_path = pkg / "compliance_matrix.json"
           cm = json.loads(cm_path.read_text(encoding="utf-8"))
           visual_map = {
