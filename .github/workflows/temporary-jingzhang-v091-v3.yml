@@ -1,0 +1,126 @@
+name: Temporary Jingzhang v0.91 fresh PR build v3
+
+on:
+  push:
+    branches: [automation/jingzhang-finalize]
+    paths: [.github/workflows/temporary-jingzhang-v091-v3.yml]
+
+permissions:
+  contents: write
+
+env:
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v091
+  V07_HEAD: b35790ae96144224ea26dd8530b2a41641cffa3f
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Sparse checkout trusted tooling and submission
+        uses: actions/checkout@v4
+        with:
+          ref: automation/jingzhang-finalize
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            .github/jingzhang_sprint
+          persist-credentials: true
+
+      - name: Put proven v0.7 package on latest upstream main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          git fetch origin "$V07_HEAD" --no-tags --depth=1
+          UPSTREAM="$(git rev-parse upstream/main)"
+          echo "UPSTREAM=$UPSTREAM" >> "$GITHUB_ENV"
+          git checkout -B "$TARGET_BRANCH" "$UPSTREAM"
+          git checkout "$V07_HEAD" -- "$PKG"
+          mkdir -p /tmp/jingzhang_sprint
+          touch /tmp/jingzhang_sprint/__init__.py
+          for f in sprint_common.py sprint_v08.py sprint_v09.py sprint_v091.py sprint_v010.py sprint_runner.py; do
+            git show "origin/automation/jingzhang-finalize:.github/jingzhang_sprint/$f" > "/tmp/jingzhang_sprint/$f"
+          done
+          echo "upstream=$UPSTREAM"
+          echo "design_baseline=$V07_HEAD"
+
+      - name: Install review and rendering dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+
+      - name: Rebuild reality anchors on v0.7
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.9 "$PKG" > /tmp/v09.log 2>&1
+          code=$?
+          cat /tmp/v09.log
+          if [ "$code" -ne 0 ]; then
+            tail -c 5000 /tmp/v09.log | sed 's/%/%25/g;s/\r/%0D/g;s/\n/%0A/g' | xargs -0 printf '::error title=V091_V09_STAGE_FAILURE::%s\n' || true
+            exit "$code"
+          fi
+          set -e
+
+      - name: Apply v0.91 public-task design refinement
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.91 "$PKG" > /tmp/v091.log 2>&1
+          code=$?
+          cat /tmp/v091.log
+          if [ "$code" -ne 0 ]; then
+            python3 - <<'PY'
+          from pathlib import Path
+          text=Path('/tmp/v091.log').read_text(encoding='utf-8',errors='replace')[-5000:]
+          text=text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+          print(f'::error title=V091_BUILD_FAILURE::{text}')
+          PY
+            exit "$code"
+          fi
+          set -e
+          git diff --check
+
+      - name: Commit candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add "$PKG"
+          git status --short
+          test -n "$(git diff --cached --name-only)"
+          git commit -m "v0.91: return reality anchors to ordinary public tasks"
+
+      - name: Participant preflight and push dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee /tmp/preflight-v091.json
+
+      - name: Publish fresh v0.91 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:"$TARGET_BRANCH" --force
