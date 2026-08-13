@@ -80,8 +80,20 @@ jobs:
       - name: Build and validate parallel candidate
         shell: bash
         run: |
-          set -euo pipefail
-          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py "${{ matrix.variant }}" "$PKG"
+          set +e
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py "${{ matrix.variant }}" "$PKG" > /tmp/sprint.log 2>&1
+          code=$?
+          cat /tmp/sprint.log
+          if [ "$code" -ne 0 ]; then
+            python3 - <<'PY'
+          from pathlib import Path
+          text=Path('/tmp/sprint.log').read_text(encoding='utf-8',errors='replace')[-3500:]
+          text=text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+          print(f'::error title=SPRINT_BUILD_FAILURE::{text}')
+          PY
+            exit "$code"
+          fi
+          set -e
           git diff --check
 
       - name: Commit validated candidate
