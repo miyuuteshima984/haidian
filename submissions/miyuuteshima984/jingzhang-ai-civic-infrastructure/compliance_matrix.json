@@ -55,7 +55,8 @@
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
         "交通、轨道、市政与公共服务设施",
-        "蓝绿空间、公共空间与城市风貌"
+        "蓝绿空间、公共空间与城市风貌",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -70,7 +71,10 @@
         "green_ratio",
         "conceptual_building_count",
         "everyday_journey_count",
-        "reversible_urban_form_prototype_count"
+        "reversible_urban_form_prototype_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -90,7 +94,10 @@
         "ALLOWED-DESIGN-SPACE",
         "HD-URBAN-RENEWAL-GUIDE-2025",
         "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "HD-AI-DISTRICT-PROGRESS-2025Q4",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-C7-006",
@@ -110,7 +117,8 @@
       "report_sections": [
         "重点区域详细设计",
         "AI 创新生态、人才画像与 AI+ 场景",
-        "蓝绿空间、公共空间与城市风貌"
+        "蓝绿空间、公共空间与城市风貌",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -122,7 +130,10 @@
         "land_use_community_service_sqm",
         "land_use_education_sqm",
         "green_ratio",
-        "persona_count"
+        "persona_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -140,7 +151,10 @@
         "DESIGN-BRIEF",
         "HD-URBAN-RENEWAL-GUIDE-2025",
         "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "HD-AI-DISTRICT-PROGRESS-2025Q4",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-EXISTING-004",
@@ -232,14 +246,18 @@
       "mandatory": true,
       "report_sections": [
         "三层范围工作框架",
-        "重点区域详细设计"
+        "重点区域详细设计",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/key_areas.geojson"
       ],
       "metrics": [
         "key_area_announced_total_sqm",
-        "key_area_count"
+        "key_area_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -254,7 +272,10 @@
       "source_ids": [
         "OFFICIAL-ANNOUNCEMENT",
         "DESIGN-BRIEF",
-        "KEY-AREA-SOURCE"
+        "KEY-AREA-SOURCE",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -312,7 +333,8 @@
       "mandatory": true,
       "report_sections": [
         "统筹研究范围产业与未来城市研究",
-        "总体设计范围城市更新与控规深度城市设计"
+        "总体设计范围城市更新与控规深度城市设计",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -325,7 +347,10 @@
         "east_west_stitch_count",
         "green_ratio",
         "everyday_journey_count",
-        "reversible_urban_form_prototype_count"
+        "reversible_urban_form_prototype_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -342,7 +367,10 @@
         "AGENT-TASKBOOK",
         "HD-URBAN-RENEWAL-GUIDE-2025",
         "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "HD-AI-DISTRICT-PROGRESS-2025Q4",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-C7-006"
@@ -358,7 +386,8 @@
       "mandatory": true,
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
-        "用地、建筑规模与拆改留方案"
+        "用地、建筑规模与拆改留方案",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -368,7 +397,10 @@
         "land_use_research_sqm",
         "land_use_commercial_service_sqm",
         "conceptual_building_count",
-        "implementation_path_count"
+        "implementation_path_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -387,7 +419,10 @@
         "BUILDING-TYPES",
         "HD-URBAN-RENEWAL-GUIDE-2025",
         "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "HD-AI-DISTRICT-PROGRESS-2025Q4",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-BUILDING-MODEL-005",
@@ -405,7 +440,8 @@
       "mandatory": true,
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
-        "更新项目清单、实施政策与分期计划"
+        "更新项目清单、实施政策与分期计划",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -414,7 +450,10 @@
       ],
       "metrics": [
         "city_completeness_segment_count",
-        "conceptual_building_count"
+        "conceptual_building_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -428,7 +467,10 @@
         "v0.7 AI城市形态原型"
       ],
       "source_ids": [
-        "DESIGN-BRIEF"
+        "DESIGN-BRIEF",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-EXISTING-004",
@@ -808,7 +850,8 @@
       "title_zh": "AI+场景赋能新范式与智能化AI活力城市设计",
       "mandatory": true,
       "report_sections": [
-        "AI 创新生态、人才画像与 AI+ 场景"
+        "AI 创新生态、人才画像与 AI+ 场景",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/public_space.geojson",
@@ -818,7 +861,10 @@
       "metrics": [
         "ai_scenario_count",
         "industry_test_scenario_count",
-        "non_ai_baseline_coverage_ratio"
+        "non_ai_baseline_coverage_ratio",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -841,7 +887,10 @@
         "AGENT-TASKBOOK",
         "HD-URBAN-RENEWAL-GUIDE-2025",
         "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "HD-AI-DISTRICT-PROGRESS-2025Q4",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-AI-BASELINE-008"
@@ -857,7 +906,8 @@
       "mandatory": true,
       "report_sections": [
         "AI 创新生态、人才画像与 AI+ 场景",
-        "蓝绿空间、公共空间与城市风貌"
+        "蓝绿空间、公共空间与城市风貌",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/public_space.geojson",
@@ -866,7 +916,10 @@
       ],
       "metrics": [
         "public_space_count",
-        "pilgrimage_landmark_count"
+        "pilgrimage_landmark_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -881,7 +934,10 @@
         "评审证据索引"
       ],
       "source_ids": [
-        "AGENT-TASKBOOK"
+        "AGENT-TASKBOOK",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-BUILDING-MODEL-005"
@@ -938,7 +994,8 @@
       "title_zh": "一带全球AI创新活动体系与长期运营设计",
       "mandatory": true,
       "report_sections": [
-        "更新项目清单、实施政策与分期计划"
+        "更新项目清单、实施政策与分期计划",
+        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
         "geometry/phasing.geojson",
@@ -947,7 +1004,10 @@
       "metrics": [
         "public_space_count",
         "ai_scenario_count",
-        "implementation_path_count"
+        "implementation_path_count",
+        "official_constraint_anchor_count",
+        "reference_plot_condition_count",
+        "design_response_rule_count"
       ],
       "drawings": [
         "drawings/a3-booklet.pdf",
@@ -965,7 +1025,10 @@
       "source_ids": [
         "AGENT-TASKBOOK",
         "HD-URBAN-RENEWAL-GUIDE-2025",
-        "HD-URBAN-RENEWAL-IMPLEMENTATION-2025"
+        "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
+        "HD00-1601-DRAFT-RESPONSE-V09",
+        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
+        "HD-PLOT-CONDITIONS-REFERENCE-V09"
       ],
       "assumption_ids": [
         "A-C7-006"

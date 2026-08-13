@@ -103,3 +103,9 @@ Any future third-party image, font, code library, map layer, institutional logo 
 - `assets/figures/ai-urban-form-change.svg` / `.en.svg`: submission-original / AI-assisted vector diagram; no third-party logo, image, map tile, font file or proprietary diagram is embedded. Spatial interfaces require later verification against official geometry, field surveys and professional requirements.
 
 - `assets/figures/key-area-spatial-sections.svg` / `.en.svg` and rendered `key-areas.png` / `.en.png`: submission-original / AI-assisted spatial section diagrams. No third-party image, logo, map tile, font file or identifiable person is embedded; all people/buildings/trees are diagrammatic primitives, and the sections are conceptual rather than surveyed existing conditions.
+
+
+## v0.9 新增资产 / New assets
+
+- `reality-constraint-design-response*.svg` 与重建的 `mobility-bluegreen*.png` 为 v0.9 原创图解，不复制官方图件。
+- `reference-plot-conditions.json` 只转录政府公开原件中的数值字段并明确不可外推；官方网页/原件链接保留在 `sources.json`。

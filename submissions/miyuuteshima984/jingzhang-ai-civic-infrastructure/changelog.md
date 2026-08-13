@@ -1,5 +1,13 @@
 # 方案迭代记录
 
+
+## v0.9 - 2026-08-13
+
+- reality-anchored 并行候选：只把能改变空间判断的公开原始证据放入主叙事。
+- 新增 3 组官方现实锚点与 5 条“现实约束 → 空间响应”规则。
+- 登记 7 个公开规划条件地块作不可外推的现实强度参照；本案 approved FAR/height 继续 unknown。
+- 重建固定 `mobility-bluegreen*.png`，区分普通缝合、知春路竖向连续性、绿廊人优先界面和站城到达。
+
 ## v0.7 - 2026-08-13
 
 - Added three current official Haidian public sources (2025 Urban Renewal Guide, 2025 implementation guide, and 2025 Q4 AI-district progress) and split implementation into reversible low-disturbance actions versus changes that require real project generation, implementation-plan review and permitting.

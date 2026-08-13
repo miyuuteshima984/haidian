@@ -48,6 +48,12 @@
       "status": "proposal_policy",
       "statement": "十个 AI 场景均保留非 AI 基线、人工接管或常规服务路径。",
       "impact": "AI 增强退出时，基本城市服务不应因单一模型、设备、账号或平台下线而一并消失。"
+    },
+    {
+      "id": "A-V09-REFERENCE-009",
+      "status": "official_reference_not_transferable",
+      "statement": "v0.9 引入的 7 个地块规划条件只作现实尺度参照；控规采信通告仍是草案阶段公开信息。",
+      "impact": "本案 approved FAR/height 等继续 unknown；任何参照值不得外推为本案地块指标、工程方案或审批状态。"
     }
   ]
 }
