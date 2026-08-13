@@ -1,0 +1,154 @@
+name: Temporary Jingzhang v0.7 public implementation anchor
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v07-implementation-anchor.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sparse checkout v0.7 package
+        uses: actions/checkout@v4
+        with:
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v07
+          fetch-depth: 1
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          sparse-checkout-cone-mode: false
+
+      - name: Add official public implementation anchors
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          root = Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          sp = root/'sources.json'
+          data = json.loads(sp.read_text(encoding='utf-8'))
+          sources = data['sources']
+          existing = {s.get('id') for s in sources}
+          additions = [
+            {
+              'id':'HD-URBAN-RENEWAL-GUIDE-2025',
+              'url':'https://zyk.bjhd.gov.cn/zwdt/zcwj/202507/t20250716_4779051.shtml',
+              'source_type':'official_public',
+              'usage':'海淀区城市更新总体方向：街区/校区/园区/社区融合、生活圈与创新圈融合、人工智能创新街区、站城融合、公共服务补充与数智空间/城市功能融合。',
+              'provenance':'北京市海淀区人民政府《海淀区城市更新导则（2025年版）》现行有效公开页面。',
+              'accessed_or_snapshot_date':'2026-08-13',
+              'rights_and_reuse':'政府公开信息；仅做事实摘要、实施逻辑和来源链接，不复制页面图片或长段文本。',
+              'limitations':'区级导则不是本方案的项目审批、地块控规、建设许可或实施承诺；不能替代 official geometry 和项目级专业条件。',
+              'permitted_use':'支撑城市完整度与产城融合/站城融合/AI创新街区的设计逻辑，以及实施分级边界。',
+              'publisher':'北京市海淀区人民政府',
+              'collection_method':'2026-08-13 读取政府公开网页并提取与本方案直接相关的政策方向。',
+              'geographic_temporal_coverage':'海淀区，2025年版城市更新导则，当前公开页面标注现行有效。',
+              'transformations':'只转译为本方案的空间设计原则与实施分级，不移植指标、项目名单或审批结论。'
+            },
+            {
+              'id':'HD-URBAN-RENEWAL-IMPLEMENTATION-2025',
+              'url':'https://www.bjhd.gov.cn/ztzx/2025/csgxsszy/',
+              'source_type':'official_public',
+              'usage':'海淀城市更新项目生成、实施方案审查、行政许可、建设运营流程，以及涉及公共利益/公共安全和用地/规模/高度等变化时的实施方案要求。',
+              'provenance':'北京市海淀区人民政府公开《海淀区城市更新实施指引（2025年）》专题页面。',
+              'accessed_or_snapshot_date':'2026-08-13',
+              'rights_and_reuse':'政府公开信息；仅做流程与职责边界摘要。',
+              'limitations':'流程适用性和具体实施主体必须在真实项目生成后由主管部门确认；本方案不能据此自认入库、立项、许可或实施主体。',
+              'permitted_use':'把概念更新动作区分为低扰动可逆研究与需要正式实施方案/许可的重改造路径。',
+              'publisher':'北京市海淀区人民政府',
+              'collection_method':'2026-08-13 读取政府公开专题页的项目生成、方案审查、许可与建设运营条目。',
+              'geographic_temporal_coverage':'海淀区城市更新项目实施流程，2025年版。',
+              'transformations':'提炼为设计阶段的前置证据门和不得越权的实施路径，不推断项目已启动。'
+            },
+            {
+              'id':'HD-AI-DISTRICT-PROGRESS-2025Q4',
+              'url':'https://zyk.bjhd.gov.cn/jbdt/auto4488_51784/zdrw/202601/t20260115_4801833_hd.shtml',
+              'source_type':'official_public',
+              'usage':'公开确认人工智能创新街区“两区一带”推进、五道口 AI 原点社区建设，以及交通/教育/医疗/养老等“可感可及”场景方向的现实政策语境。',
+              'provenance':'海淀区发展和改革委员会《2025年区政府重点任务落实情况（第四季度情况）》公开页面。',
+              'accessed_or_snapshot_date':'2026-08-13',
+              'rights_and_reuse':'政府公开信息；仅用于现实语境与方向核对。',
+              'limitations':'公开进展不等于本投稿的任何场景、位置、合作方、资金或实施安排获得批准；不得据此推导项目级承诺。',
+              'permitted_use':'支撑 AI 原点和可感知公共服务场景属于真实政策议题，而本方案的具体空间原型仍保持概念属性。',
+              'publisher':'北京市海淀区发展和改革委员会',
+              'collection_method':'2026-08-13 读取政府公开重点任务落实页面。',
+              'geographic_temporal_coverage':'海淀区人工智能创新街区，2025年第四季度工作进展。',
+              'transformations':'只提取方向性事实，不复制项目成果或把现有示范项目写成本方案成果。'
+            }
+          ]
+          for item in additions:
+              if item['id'] not in existing:
+                  sources.append(item)
+          sp.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+
+          zh = root/'proposal.md'
+          t = zh.read_text(encoding='utf-8')
+          anchor='三处重点区均配置可进入的公共交流空间：众智园开放交流场、AI 原点社区公共客厅与南段城市公共界面，首先解决日常使用，再承担传播功能。[data:geometry/public_space.geojson#PUBLIC-004] [metric:public_space_count]\n\n'
+          block='''### v0.7 与海淀现行城市更新实施逻辑对齐\n\n城市完整度不是脱离现实政策的自造评价表。海淀区《城市更新导则（2025年版）》明确提出街区、校区、园区、社区“四区”融合，推动生活圈与创新圈融合，并把人工智能创新街区、轨道交通站点一体化、公共服务补充以及数智空间与城市功能融合作为重点方向。[source:HD-URBAN-RENEWAL-GUIDE-2025] 因此 C7 的作用，是把“产城融合”进一步翻译成居民、研究者、服务劳动者和访客每天能否完成 HOME / LEARN / CARE / MOVE / GREEN / WORK / COMMON LIFE，而不是另造一套法定规划指标。\n\nv0.7 同时把实施动作分成两条真实路径。**低扰动、可逆动作**——如遮阴/坐凳、实体导视、人工服务界面、受控测试边界标识、可拆换小型服务节点——仍需现场核验、权属/运营许可和安全检查，但概念阶段可以明确其“最小可用空间”和退出状态；**改变用地、建筑规模/高度、站城工程、市政容量或涉及公共利益/公共安全的重改造**，则必须进入真实项目生成、实施方案审查和后续行政许可路径，本包不越权预设。[source:HD-URBAN-RENEWAL-IMPLEMENTATION-2025]\n\n海淀公开的 2025 年四季度重点任务进展已把五道口 AI 原点社区和交通、教育、医疗、养老等“可感可及”场景列为现实工作语境。[source:HD-AI-DISTRICT-PROGRESS-2025Q4] 这只证明题目真实存在，不证明本方案的具体试点、位置、合作方、预算或许可已经获得确认。\n\n'''
+          if '### v0.7 与海淀现行城市更新实施逻辑对齐' not in t:
+              t=t.replace(anchor, anchor+block)
+          zh.write_text(t,encoding='utf-8')
+
+          en = root/'proposal.en.md'
+          t = en.read_text(encoding='utf-8')
+          anchor='All three key areas include an accessible public-exchange space: Zhongzhiyuan open exchange ground, the AI Origin civic commons, and the southern station-city public interface. Each must first solve everyday use before taking on communication or landmark roles. [data:geometry/public_space.geojson#PUBLIC-004] [metric:public_space_count]\n\n'
+          block='''### v0.7 Alignment with Haidian's Current Urban-Renewal Implementation Logic\n\nCity Completeness is not an invented statutory scorecard. Haidian's 2025 Urban Renewal Guide explicitly calls for integration of streets, campuses, parks and neighborhoods, the fusion of living and innovation circles, and stronger mixed use, public services, AI innovation districts, station-city integration, and digital-space/urban-function integration. [source:HD-URBAN-RENEWAL-GUIDE-2025] C7 translates that direction into an everyday-life test for residents, researchers, service workers and visitors rather than creating a new regulatory index.\n\nv0.7 also separates two implementation paths. **Low-disturbance reversible actions**—shade/seating, static wayfinding, staffed service interfaces, bounded test markings and removable service nodes—still require field verification, property/operational permission and safety checks, but the concept package can define their minimum usable space and exit state. **Changes to land use, building scale/height, station-city engineering, municipal capacity, or projects involving public interest/safety** must follow real project generation, implementation-plan review and subsequent permitting; this package does not pre-authorize them. [source:HD-URBAN-RENEWAL-IMPLEMENTATION-2025]\n\nHaidian's published 2025 Q4 progress already identifies the Wudaokou AI Origin Community and perceptible scenarios in transport, education, healthcare and elder care as real policy context. [source:HD-AI-DISTRICT-PROGRESS-2025Q4] That confirms the problem context only; it does not approve this proposal's pilots, locations, partners, budgets or permits.\n\n'''
+          if "### v0.7 Alignment with Haidian's Current Urban-Renewal Implementation Logic" not in t:
+              t=t.replace(anchor, anchor+block)
+          en.write_text(t,encoding='utf-8')
+
+          dp = root/'design_depth_matrix.json'
+          d = json.loads(dp.read_text(encoding='utf-8'))
+          byid={x['item_id']:x for x in d['items']}
+          for iid in ['overall_spatial_structure','three_key_area_detailed_design','renewal_project_list','phasing_implementation']:
+              item=byid.get(iid)
+              if not item: continue
+              for sid in ['HD-URBAN-RENEWAL-GUIDE-2025']:
+                  if sid not in item['source_ids']: item['source_ids'].append(sid)
+          for iid in ['renewal_project_list','phasing_implementation']:
+              item=byid.get(iid)
+              if item and 'HD-URBAN-RENEWAL-IMPLEMENTATION-2025' not in item['source_ids']:
+                  item['source_ids'].append('HD-URBAN-RENEWAL-IMPLEMENTATION-2025')
+          item=byid.get('three_key_area_detailed_design')
+          if item and 'HD-AI-DISTRICT-PROGRESS-2025Q4' not in item['source_ids']:
+              item['source_ids'].append('HD-AI-DISTRICT-PROGRESS-2025Q4')
+          if byid.get('phasing_implementation'):
+              byid['phasing_implementation']['evidence_summary_zh']='v0.7 将实施分为低扰动可逆动作与需正式实施方案/行政许可的重改造两条路径；近期仍以现场核验和最小可用空间为前提，中长期站城、建筑和市政改变不在概念包内预授权。'
+              byid['phasing_implementation']['completeness_limited_by']=['真实项目统筹/实施主体尚未确定','项目级现场条件、资金匡算和许可条件尚未核验']
+          if byid.get('three_key_area_detailed_design'):
+              byid['three_key_area_detailed_design']['evidence_summary_zh']='v0.7 用固定 key-areas 核心图把众智园创新校园、AI原点长期社区和大钟寺站城生活区画成三套不同首层/公共空间关系；精确落位仍服从 provisional geometry 和现场核验。'
+              byid['three_key_area_detailed_design']['completeness_limited_by']=['official key-area polygons 尚未提供','真实入口、权属、现状建筑与公共服务容量待现场/官方资料核验']
+          if byid.get('traffic_rail_slow_parking'):
+              byid['traffic_rail_slow_parking']['completeness_limited_by']=['真实轨道出入口、道路红线和交通调查尚未核验']
+          dp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          sm=root/'standard_matrix.json'; d=json.loads(sm.read_text(encoding='utf-8'))
+          for item in d['standards']:
+              if item.get('standard_id')=='PROJECT-OFFICIAL-ANNOUNCEMENT':
+                  for sid in ['HD-URBAN-RENEWAL-GUIDE-2025','HD-URBAN-RENEWAL-IMPLEMENTATION-2025']:
+                      if sid not in item['source_ids']: item['source_ids'].append(sid)
+                  item['evidence_summary_zh']='公告任务继续由固定正文、GeoJSON、指标与矩阵响应；v0.7 进一步用海淀现行城市更新导则/实施指引校准“四区融合、站城融合、AI创新街区”和项目实施/许可边界。'
+          sm.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          c=root/'changelog.md'; t=c.read_text(encoding='utf-8')
+          line='- Added three current official Haidian public sources (2025 Urban Renewal Guide, 2025 implementation guide, and 2025 Q4 AI-district progress) and split implementation into reversible low-disturbance actions versus changes that require real project generation, implementation-plan review and permitting.\n'
+          if line not in t: t=t.replace('## v0.7 - 2026-08-13\n\n','## v0.7 - 2026-08-13\n\n'+line,1)
+          c.write_text(t,encoding='utf-8')
+          PY
+
+      - name: Commit and push public implementation anchors
+        shell: bash
+        run: |
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git status --short
+          git diff --cached --quiet && exit 0
+          git commit -m "v0.7: anchor implementation to current public guidance"
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v07
