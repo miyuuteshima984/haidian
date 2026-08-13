@@ -1,0 +1,163 @@
+name: Temporary Jingzhang v0.7 key-area spatial sections
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v07-keyareas-spatial.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sparse checkout v0.7 package
+        uses: actions/checkout@v4
+        with:
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v07
+          fetch-depth: 1
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          sparse-checkout-cone-mode: false
+
+      - name: Install SVG renderer and CJK font
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin fonts-noto-cjk
+
+      - name: Build bilingual key-area spatial sections and fixed core PNGs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re
+
+          root = Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          figures = root / 'assets/figures'
+          figures.mkdir(parents=True, exist_ok=True)
+
+          def esc(s): return html.escape(s, quote=True)
+
+          def person(x,y,scale=1):
+              return f'<circle cx="{x}" cy="{y-18*scale}" r="{7*scale}" fill="#172033"/><rect x="{x-5*scale}" y="{y-11*scale}" width="{10*scale}" height="{23*scale}" rx="4" fill="#172033"/>'
+
+          def tree(x,y,scale=1):
+              return f'<rect x="{x-4*scale}" y="{y-24*scale}" width="{8*scale}" height="{28*scale}" fill="#7c5b3e"/><circle cx="{x}" cy="{y-34*scale}" r="{20*scale}" fill="#86c99a"/>'
+
+          def svg(lang='zh'):
+              zh = lang == 'zh'
+              title = 'v0.7｜三处重点区：三种不同的完整城市空间' if zh else 'v0.7 | Three key areas, three distinct complete-city spatial types'
+              sub = '不是三张 AI 展厅效果图：创新校园、长期社区、站城生活区在首层、公共空间、测试/服务接口和失败退出方式上必须不同。' if zh else 'Not three AI showrooms: innovation campus, long-term neighborhood and station-city district differ in ground floor, public realm, test/service interfaces and exit states.'
+              out=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1350" viewBox="0 0 1800 1350" role="img"><style>text{{font-family:"Noto Sans CJK SC","Noto Sans CJK TC",Arial,sans-serif;fill:#172033}}.h1{{font-size:50px;font-weight:700}}.sub{{font-size:20px;fill:#5f6b79}}.h2{{font-size:30px;font-weight:700}}.b{{font-size:19px}}.s{{font-size:15px;fill:#64748b}}.panel{{fill:#fff;stroke:#d7dee8;stroke-width:2}}.ground{{fill:#d9dce1}}.green{{fill:#dff2e4}}.water{{fill:#d9eef8}}.research{{fill:#dcecff}}.home{{fill:#fde9d6}}.civic{{fill:#efe5ff}}.retail{{fill:#fff2b9}}.test{{fill:#edf2ff;stroke:#2563eb;stroke-width:3;stroke-dasharray:10 7}}.route{{fill:none;stroke:#0f766e;stroke-width:8;stroke-linecap:round}}.walk{{fill:none;stroke:#334155;stroke-width:5;stroke-linecap:round}}.ai{{fill:none;stroke:#2563eb;stroke-width:4;stroke-dasharray:9 7}}.exit{{fill:none;stroke:#b91c1c;stroke-width:3;stroke-dasharray:7 7}}.thin{{stroke:#94a3b8;stroke-width:2}}.white{{fill:#fff}}</style><rect width="1800" height="1350" fill="#f7f9fc"/><text x="70" y="78" class="h1">{esc(title)}</text><text x="70" y="118" class="sub">{esc(sub)}</text>']
+
+              # 1 Zhongzhiyuan
+              y=160
+              head='01 众智园｜完整创新校园' if zh else '01 Zhongzhiyuan | Complete Innovation Campus'
+              note='研发楼 + 公共绿脊 + 吃饭/休息 + 人工监护 + 受控测试口袋；测试不占普通通行。' if zh else 'R&D + civic green spine + food/rest + staffed supervision + bounded test pocket; testing never occupies ordinary circulation.'
+              out += [f'<g transform="translate(60,{y})"><rect width="1680" height="330" rx="20" class="panel"/><text x="30" y="48" class="h2">{esc(head)}</text><text x="30" y="80" class="s">{esc(note)}</text>',
+                      '<rect x="30" y="250" width="1620" height="28" class="ground"/>',
+                      '<rect x="95" y="125" width="250" height="125" rx="6" class="research"/><rect x="115" y="105" width="205" height="20" class="research"/><rect x="375" y="178" width="245" height="72" rx="8" class="retail"/><rect x="690" y="198" width="300" height="52" rx="8" class="green"/><rect x="1070" y="155" width="360" height="95" rx="12" class="test"/><rect x="1465" y="185" width="145" height="65" rx="8" class="civic"/>',
+                      '<path d="M55 235 H1030" class="route"/><path d="M1030 235 H1450" class="walk"/><path d="M1110 180 C1210 125 1320 125 1400 180" class="ai"/><path d="M1100 275 C1220 310 1340 310 1445 274" class="exit"/>']
+              for x in [70,430,650,1015,1490]: out.append(person(x,235,1))
+              for x in [720,800,900]: out.append(tree(x,235,.75))
+              labels = [('研发 / 共享设备','R&D / shared equipment',120,155),('食堂 / 休息','food / rest',400,210),('公共绿脊','civic green spine',760,225),('受控测试口袋','bounded test pocket',1140,205),('人工监护','staffed supervision',1480,220)]
+              for z,e,x,yy in labels: out.append(f'<text x="{x}" y="{yy}" class="b">{esc(z if zh else e)}</text>')
+              out += ['</g>']
+
+              # 2 AI Origin
+              y=520
+              head='02 AI 原点｜完整长期社区' if zh else '02 AI Origin | Complete Long-Term Neighborhood'
+              note='家门—托育/照护—遮阴休息—普通商业—公共客厅形成无手机也能完成的短距离日常链。' if zh else 'Home—childcare/care—shade/rest—ordinary retail—civic commons form a short daily chain that works without a phone.'
+              out += [f'<g transform="translate(60,{y})"><rect width="1680" height="330" rx="20" class="panel"/><text x="30" y="48" class="h2">{esc(head)}</text><text x="30" y="80" class="s">{esc(note)}</text>',
+                      '<rect x="30" y="250" width="1620" height="28" class="ground"/>',
+                      '<rect x="80" y="135" width="250" height="115" rx="6" class="home"/><rect x="360" y="175" width="220" height="75" rx="8" class="civic"/><rect x="660" y="205" width="240" height="45" rx="8" class="green"/><rect x="980" y="175" width="220" height="75" rx="8" class="retail"/><rect x="1270" y="145" width="290" height="105" rx="8" class="civic"/>',
+                      '<path d="M55 235 H1600" class="route"/><path d="M375 150 C430 110 520 110 575 150" class="ai"/><path d="M365 278 C430 305 520 305 590 278" class="exit"/>']
+              for x in [55,340,615,930,1225,1580]: out.append(person(x,235,1))
+              for x in [680,750,825,900]: out.append(tree(x,235,.8))
+              labels=[('长期住房','long-term housing',105,175),('托育 / 照护 / 人工服务','childcare / care / staffed help',375,210),('遮阴 + 坐凳 + 实体导视','shade + seating + static signs',670,225),('普通商业','ordinary retail',1010,210),('公共客厅 / 共享工作','civic commons / shared work',1300,190)]
+              for z,e,x,yy in labels: out.append(f'<text x="{x}" y="{yy}" class="b">{esc(z if zh else e)}</text>')
+              out += ['</g>']
+
+              # 3 Dazhongsi
+              y=880
+              head='03 大钟寺｜完整站城生活区' if zh else '03 Dazhongsi | Complete Station-City Everyday District'
+              note='固定双语导视—人工问询—无障碍换乘—普通商业/等候—京张遗产公共界面；动态信息只是增强。' if zh else 'Fixed bilingual signs—staffed help—accessible interchange—ordinary retail/waiting—Jing-Zhang heritage public interface; dynamic information only enhances.'
+              out += [f'<g transform="translate(60,{y})"><rect width="1680" height="330" rx="20" class="panel"/><text x="30" y="48" class="h2">{esc(head)}</text><text x="30" y="80" class="s">{esc(note)}</text>',
+                      '<rect x="30" y="250" width="1620" height="28" class="ground"/>',
+                      '<rect x="80" y="120" width="250" height="130" rx="6" class="research"/><rect x="365" y="175" width="210" height="75" rx="8" class="civic"/><rect x="650" y="190" width="250" height="60" rx="8" class="retail"/><rect x="980" y="165" width="240" height="85" rx="8" class="retail"/><rect x="1290" y="190" width="275" height="60" rx="8" class="green"/>',
+                      '<path d="M55 235 H1600" class="route"/><path d="M90 165 C170 100 260 100 335 165" class="ai"/><path d="M75 278 C170 310 270 310 350 278" class="exit"/>']
+              for x in [55,340,610,930,1260,1580]: out.append(person(x,235,1))
+              for x in [1330,1410,1500]: out.append(tree(x,235,.75))
+              labels=[('固定中英导视 / 到达门','fixed bilingual signs / arrival',105,160),('人工问询','staffed help',395,210),('无障碍换乘','accessible interchange',680,220),('普通商业 / 等候','ordinary retail / waiting',1010,205),('遗产 + 公共绿脊','heritage + civic green spine',1320,220)]
+              for z,e,x,yy in labels: out.append(f'<text x="{x}" y="{yy}" class="b">{esc(z if zh else e)}</text>')
+              out += ['</g>']
+
+              footer='共同设计纪律：AI 关闭、设备撤走或账号拒绝后，三处重点区仍分别是一座能工作的校园、一座能长期生活的社区和一处能读懂/换乘/停留的站城街区。' if zh else 'Shared design discipline: after AI is off, devices are removed or accounts are refused, the three areas still function as a campus, a long-term neighborhood and a legible station-city district.'
+              out += [f'<text x="70" y="1265" class="b">{esc(footer)}</text><text x="70" y="1305" class="s">Concept-only · provisional key-area geometry · not a survey, regulatory plan, station engineering boundary or approved implementation.</text></svg>']
+              return ''.join(out)
+
+          (figures/'key-area-spatial-sections.svg').write_text(svg('zh'), encoding='utf-8')
+          (figures/'key-area-spatial-sections.en.svg').write_text(svg('en'), encoding='utf-8')
+
+          # proposal text: clarify that the required key-areas core figure is now a spatial section set
+          for rel, english in [('proposal.md',False),('proposal.en.md',True)]:
+              p=root/rel; t=p.read_text(encoding='utf-8')
+              if english:
+                  anchor='![C7 gaps and design tasks in the three key areas](assets/figures/key-areas.en.png)'
+                  para='The v0.7 fixed key-area figure is no longer a task card alone. It draws the three distinct ground-floor/public-space sections side by side: a research campus with a physically bounded test pocket; a long-term neighborhood with home—care—rest—commons continuity; and a station-city arrival chain with fixed bilingual signs, staffed help, accessible interchange, ordinary retail and heritage public realm.'
+              else:
+                  anchor='![三处重点区域的 C7 缺口与补齐任务](assets/figures/key-areas.png)'
+                  para='v0.7 的固定重点区核心图不再只是任务卡，而把三种不同的首层/公共空间关系并置画出：众智园是研发校园 + 与普通通行物理分离的测试口袋；AI 原点是家门—照护—休息—公共客厅连续的长期社区；大钟寺是固定双语导视—人工问询—无障碍换乘—普通商业—遗产公共界面组成的站城到达链。'
+              if para not in t:
+                  t=t.replace(anchor, anchor+'\n\n'+para)
+              p.write_text(t,encoding='utf-8')
+
+          # surface the new fixed core figure in offline visual key-area section without replacing canonical headings
+          for rel, english in [('visual/index.html',False),('visual/index.en.html',True)]:
+              p=root/rel; t=p.read_text(encoding='utf-8')
+              if english:
+                  marker='<section class="sheet"><div class="head"><h2>Key Areas</h2>'
+                  img='<div style="margin-top:14px"><img class="evidence-img" src="../assets/figures/key-areas.en.png" alt="Spatial sections for the three key areas"></div>'
+              else:
+                  marker='<section class="sheet"><div class="head"><h2>重点区域</h2>'
+                  img='<div style="margin-top:14px"><img class="evidence-img" src="../assets/figures/key-areas.png" alt="三处重点区域的差异化空间剖面"></div>'
+              start=t.find(marker)
+              if start>=0:
+                  end=t.find('</section>',start)
+                  if end>=0 and img not in t[start:end]:
+                      t=t[:end]+img+t[end:]
+              p.write_text(t,encoding='utf-8')
+
+          c=root/'changelog.md'; t=c.read_text(encoding='utf-8')
+          line='- Rebuilt the mandatory bilingual `key-areas.png` core figure as three actual spatial sections—innovation campus, long-term neighborhood and station-city everyday district—so the Review Agent fixed visual packet sees spatial differentiation directly rather than reviewer-oriented task cards.\n'
+          if line not in t:
+              t=t.replace('## v0.7 - 2026-08-13\n\n','## v0.7 - 2026-08-13\n\n'+line,1)
+          c.write_text(t,encoding='utf-8')
+
+          rights=root/'report/copyright_statement.md'; t=rights.read_text(encoding='utf-8')
+          note='- `assets/figures/key-area-spatial-sections.svg` / `.en.svg` and rendered `key-areas.png` / `.en.png`: submission-original / AI-assisted spatial section diagrams. No third-party image, logo, map tile, font file or identifiable person is embedded; all people/buildings/trees are diagrammatic primitives, and the sections are conceptual rather than surveyed existing conditions.\n'
+          if note not in t:
+              t += '\n'+note
+          rights.write_text(t,encoding='utf-8')
+          PY
+
+          rsvg-convert -w 1800 -h 1350 submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/key-area-spatial-sections.svg \
+            -o submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/key-areas.png
+          rsvg-convert -w 1800 -h 1350 submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/key-area-spatial-sections.en.svg \
+            -o submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/key-areas.en.png
+          file submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/key-areas*.png
+
+      - name: Commit and push spatial key-area core figure
+        shell: bash
+        run: |
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git status --short
+          git diff --cached --quiet && exit 0
+          git commit -m "v0.7: spatialize the three key areas"
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v07
