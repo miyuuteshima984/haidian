@@ -511,7 +511,8 @@
         "OFFICIAL-ANNOUNCEMENT",
         "AGENT-TASKBOOK",
         "BOUNDARY-SOURCE",
-        "KEY-AREA-SOURCE"
+        "KEY-AREA-SOURCE",
+        "GENERATIVE-AI-REGULATION"
       ],
       "assumption_ids": [
         "A-CONTROLS-001"

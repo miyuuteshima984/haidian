@@ -87,6 +87,19 @@
    }
   ],
   "kit_is_open_drawing": true,
+  "failure_display": {
+   "defect_zh": "**这一条是本方案自己的规则打自己。** L2 闭合差碑——那面「允许自己难看」的墙——立在 BM-1 众智园，一个研发片区；而读数不一致真正落到的人在 BM-303，一个约 3 km 外的三等社区点。**机构的公开认错，立在机构自己所在的地方。** 本方案通篇主张「把复核权放在需要走十五分钟才能到的专门机构，等于没有给」，这处选址正是那句话的反例。",
+   "defect_en": "**This is the proposal's own rule turned against it.** The L2 closure stele — the wall that is allowed to look bad — stands at BM-1 in Zhongzhiyuan, an R&D district, while the person a wrong reading lands on is at BM-303, a third-order community point some 3 km away. **The institution's public confession is sited where the institution is.** This proposal argues throughout that review placed fifteen minutes' walk away has not been given; this siting was the counter-example.",
+   "correction_zh": "当期失败读数在**每一个三等社区点**同步显示，用的是既有标准件 KIT-02 读数牌，不新增构筑物：退回中的场景以基准红标出，写明退回日期与恢复条件。L2 保留为**年度归零仪式**与全年闭合记录的所在，因为那是一次集中的、面向全线的仪式；而**当期的坏消息属于它发生的地方**。",
+   "correction_en": "The current-cycle failure reading is shown at **every third-order community point**, using the existing KIT-02 reading plate rather than any new structure: a returned scenario is marked in datum red with its return date and the conditions for resumption. L2 remains the site of the annual return-to-datum ceremony and the year's closure record, because that is one line-wide occasion — but **the current bad news belongs where it happened**.",
+   "replicated_at": [
+    "BM-301",
+    "BM-302",
+    "BM-303"
+   ],
+   "component": "KIT-02",
+   "new_structures_required": 0
+  },
   "kit_note_zh": "五类标准件统一规格、开放图纸，使全线任何新增节点都能以一致语言接入。"
  },
  "developer_community_operation": {
@@ -222,6 +235,325 @@
     "exit_en": "continues to meet each cycle; exceeding returns the segment and removes the devices"
    }
   ],
+  "annual_operating_cost": {
+   "rows": [
+    {
+     "benchmark": "BM-0",
+     "order": "datum",
+     "place_zh": "水准原点",
+     "cadence_zh": "年度",
+     "sessions_per_year": 1,
+     "professional_persons": 3,
+     "community_persons": 0,
+     "hours_per_session": [
+      5.0,
+      8.0
+     ],
+     "paid_hours": [
+      15.0,
+      24.0
+     ],
+     "volunteer_hours": [
+      0.0,
+      0.0
+     ],
+     "consumables_cny": [
+      600,
+      1500
+     ],
+     "convener_zh": "项目实施主体 + 具测绘资质单位",
+     "convener_en": "the implementing body with a licensed surveying unit",
+     "budget_line_zh": "市政设施维护——测绘与标石维护",
+     "budget_line_en": "municipal facility maintenance — survey and monument upkeep"
+    },
+    {
+     "benchmark": "BM-1",
+     "order": "first",
+     "place_zh": "一等水准点",
+     "cadence_zh": "年度",
+     "sessions_per_year": 1,
+     "professional_persons": 3,
+     "community_persons": 0,
+     "hours_per_session": [
+      4.0,
+      6.0
+     ],
+     "paid_hours": [
+      12.0,
+      18.0
+     ],
+     "volunteer_hours": [
+      0.0,
+      0.0
+     ],
+     "consumables_cny": [
+      500,
+      1200
+     ],
+     "convener_zh": "项目实施主体 + 具测绘资质单位",
+     "convener_en": "the implementing body with a licensed surveying unit",
+     "budget_line_zh": "市政设施维护——测绘与标石维护",
+     "budget_line_en": "municipal facility maintenance — survey and monument upkeep"
+    },
+    {
+     "benchmark": "BM-2",
+     "order": "first",
+     "place_zh": "一等水准点",
+     "cadence_zh": "年度",
+     "sessions_per_year": 1,
+     "professional_persons": 3,
+     "community_persons": 0,
+     "hours_per_session": [
+      4.0,
+      6.0
+     ],
+     "paid_hours": [
+      12.0,
+      18.0
+     ],
+     "volunteer_hours": [
+      0.0,
+      0.0
+     ],
+     "consumables_cny": [
+      500,
+      1200
+     ],
+     "convener_zh": "项目实施主体 + 具测绘资质单位",
+     "convener_en": "the implementing body with a licensed surveying unit",
+     "budget_line_zh": "市政设施维护——测绘与标石维护",
+     "budget_line_en": "municipal facility maintenance — survey and monument upkeep"
+    },
+    {
+     "benchmark": "BM-21",
+     "order": "second",
+     "place_zh": "二等水准点",
+     "cadence_zh": "季度",
+     "sessions_per_year": 4,
+     "professional_persons": 2,
+     "community_persons": 2,
+     "hours_per_session": [
+      2.5,
+      4.0
+     ],
+     "paid_hours": [
+      20.0,
+      32.0
+     ],
+     "volunteer_hours": [
+      20.0,
+      32.0
+     ],
+     "consumables_cny": [
+      300,
+      700
+     ],
+     "convener_zh": "园区运营方",
+     "convener_en": "the park operator",
+     "budget_line_zh": "园区运营——场景开放与科技服务",
+     "budget_line_en": "park operations — scenario open days and tech services"
+    },
+    {
+     "benchmark": "BM-22",
+     "order": "second",
+     "place_zh": "二等水准点",
+     "cadence_zh": "季度",
+     "sessions_per_year": 4,
+     "professional_persons": 2,
+     "community_persons": 2,
+     "hours_per_session": [
+      2.5,
+      4.0
+     ],
+     "paid_hours": [
+      20.0,
+      32.0
+     ],
+     "volunteer_hours": [
+      20.0,
+      32.0
+     ],
+     "consumables_cny": [
+      300,
+      700
+     ],
+     "convener_zh": "园区运营方",
+     "convener_en": "the park operator",
+     "budget_line_zh": "园区运营——场景开放与科技服务",
+     "budget_line_en": "park operations — scenario open days and tech services"
+    },
+    {
+     "benchmark": "BM-301",
+     "order": "third",
+     "place_zh": "三等水准点",
+     "cadence_zh": "月度",
+     "sessions_per_year": 12,
+     "professional_persons": 1,
+     "community_persons": 2,
+     "hours_per_session": [
+      1.5,
+      2.5
+     ],
+     "paid_hours": [
+      18.0,
+      30.0
+     ],
+     "volunteer_hours": [
+      36.0,
+      60.0
+     ],
+     "consumables_cny": [
+      200,
+      500
+     ],
+     "convener_zh": "属地街道 / 社区居委会",
+     "convener_en": "the sub-district office or residents' committee",
+     "budget_line_zh": "社区治理服务采购——属地街道",
+     "budget_line_en": "community governance service procurement — sub-district"
+    },
+    {
+     "benchmark": "BM-302",
+     "order": "third",
+     "place_zh": "三等水准点",
+     "cadence_zh": "月度",
+     "sessions_per_year": 12,
+     "professional_persons": 1,
+     "community_persons": 2,
+     "hours_per_session": [
+      1.5,
+      2.5
+     ],
+     "paid_hours": [
+      18.0,
+      30.0
+     ],
+     "volunteer_hours": [
+      36.0,
+      60.0
+     ],
+     "consumables_cny": [
+      200,
+      500
+     ],
+     "convener_zh": "属地街道 / 社区居委会",
+     "convener_en": "the sub-district office or residents' committee",
+     "budget_line_zh": "社区治理服务采购——属地街道",
+     "budget_line_en": "community governance service procurement — sub-district"
+    },
+    {
+     "benchmark": "BM-303",
+     "order": "third",
+     "place_zh": "三等水准点",
+     "cadence_zh": "月度",
+     "sessions_per_year": 12,
+     "professional_persons": 1,
+     "community_persons": 2,
+     "hours_per_session": [
+      1.5,
+      2.5
+     ],
+     "paid_hours": [
+      18.0,
+      30.0
+     ],
+     "volunteer_hours": [
+      36.0,
+      60.0
+     ],
+     "consumables_cny": [
+      200,
+      500
+     ],
+     "convener_zh": "属地街道 / 社区居委会",
+     "convener_en": "the sub-district office or residents' committee",
+     "budget_line_zh": "社区治理服务采购——属地街道",
+     "budget_line_en": "community governance service procurement — sub-district"
+    }
+   ],
+   "sessions_per_year_total": 47,
+   "paid_hours_total": [
+    133.0,
+    214.0
+   ],
+   "volunteer_hours_total": [
+    148.0,
+    244.0
+   ],
+   "consumables_cny_total": [
+    2800,
+    6800
+   ],
+   "rate_band_cny_per_hour": [
+    120,
+    260
+   ],
+   "labour_cny_total": [
+    15960,
+    55640
+   ],
+   "annual_cny_total": [
+    18760,
+    62440
+   ],
+   "derivation_zh": "每行的年次数由 `spatial.json` 中该点自己声明的复测周期换算，未在此处手写；工时 = 年次数 × 人数 × 每次工时区间；金额 = 工时 × 费率区间 + 耗材区间。",
+   "derivation_en": "Sessions per year are converted from the re-survey cadence each point declares in `spatial.json`, not typed into this table; hours = sessions × people × the per-session band; money = hours × the rate band plus consumables.",
+   "volunteer_note_zh": "**志愿工时照列，不计价。** 折成钱会让成本看起来更高，且那笔钱没有人支付；不折成钱又不列出来，等于假装它免费。它是这套机制每年向社区索取的小时数——在同意之前，应该先看见它。",
+   "volunteer_note_en": "**Volunteer hours are counted and not priced.** Pricing them would inflate a cost nobody pays; omitting them would pretend they are free. They are the hours this mechanism asks of residents each year, and that is a quantity to see before agreeing to it.",
+   "weakest_input_zh": "**这张表里唯一不是数出来的数，是费率**：120–260 元/工时是一个区间估计，包内没有可核对的费率来源，证据等级 provisional。其余每一格都是次数、人数、小时或件数。把费率换成你自己的口径，整张表重算即可——公式随表公布正是为了这个。",
+   "weakest_input_en": "**The only number here that is not counted is the rate**: CNY 120–260 per hour is a band with no verifiable source in this package, and it is graded provisional. Every other cell is a count of sessions, people, hours or items. Substitute your own rate and the table recomputes — the formula ships beside it for exactly that reason."
+  },
+  "removal_bond": {
+   "creates_new_instrument": false,
+   "instruments_zh": [
+    "履约保证金（或等额银行/保险保函替代）",
+    "第三方责任险"
+   ],
+   "instruments_en": [
+    "a performance bond (or an equivalent bank or insurance guarantee)",
+    "third-party liability insurance"
+   ],
+   "why_existing_zh": "**不新设保证金。** 撤除义务挂靠到工程与市政领域已经在用的两件工具：履约保证金约束「按期撤除并恢复场地」这一条履约义务，第三方责任险覆盖设备存续期间对他人造成的损害。新设一项保证金要新设收取、保管、争议与释放的全套规则，而本方案不设立任何新机构——没有机构，就不该有只有新机构才能管的钱。",
+   "why_existing_en": "**No new deposit is created.** The removal obligation is docked to two instruments already in use in construction and municipal works: a performance bond covers the specific obligation to remove on time and restore the site, and third-party liability insurance covers harm caused while the devices stand. Creating a new deposit would mean creating rules for collecting, holding, disputing and releasing it — and this proposal establishes no new body, so it should not propose money only a new body could hold.",
+   "custodian_zh": "存入独立托管账户，由发包方（项目实施主体）与属地街道**双签支用**；亦可由承建方以等额银行/保险保函替代，不占用现金。",
+   "custodian_en": "Held in an independent escrow account drawn on by **dual signature** — the contracting party (the implementing body) and the sub-district office together; or replaced at equal value by a bank or insurance guarantee so no cash is tied up.",
+   "release_authority_zh": "双签释放，缺任一方签字不得释放。**单方释放不成立**——为撤除付钱的一方，不能同时是判断撤除是否发生的一方。",
+   "release_authority_en": "Released on both signatures; neither party alone can release it. **Single-party release does not hold** — the party that pays for removal cannot also be the party that decides whether removal happened.",
+   "borrowed_from_zh": "双签托管的构造借自本场另一份方案（wocaonimaworinixi-collab，X08 撤除准备金）：全场 738 份里只有它给撤除押金写了受托方与支用规则。借来是因为它比本包原来的「发包方释放、街道确认为前置」更硬。",
+   "borrowed_from_en": "The dual-signature escrow construction is borrowed from another submission in this call (wocaonimaworinixi-collab, X08): of 738 packages it is the only one that gives a removal deposit a trustee and a rule for drawing on it. It is borrowed because it is harder than what this package had — release by the contracting party with a confirmation attached.",
+   "service_level_zh": "服务水平：撤除令发出后 30 日内完成撤除与场地恢复；第三方责任险在设备存续期内不得断保，断保即触发停止条件。",
+   "service_level_en": "Service level: removal and site restoration complete within 30 days of a removal order; third-party liability cover may not lapse while the devices stand, and a lapse is itself a stop condition.",
+   "stop_conditions_zh": [
+    "连续两个复测周期 f > F（与 PATH-5 同一条件）",
+    "责任险断保",
+    "撤除令逾期未执行"
+   ],
+   "stop_conditions_en": [
+    "f > F for two consecutive cycles (the same condition as PATH-5)",
+    "liability cover lapses",
+    "a removal order passes its deadline"
+   ],
+   "release_conditions_zh": [
+    "设备已撤除",
+    "场地恢复至进场基线照片所示状态",
+    "无未决第三方索赔"
+   ],
+   "release_conditions_en": [
+    "the devices are removed",
+    "the site is restored to the state in the baseline photographs taken on entry",
+    "no third-party claim is outstanding"
+   ],
+   "forfeit_path_zh": "逾期未撤除：发包方以保证金委托第三方撤除并恢复，费用据实结算，差额向责任方追偿。",
+   "forfeit_path_en": "If removal is overdue the contracting party commissions removal and restoration from the bond, settles at actual cost, and recovers any shortfall from the responsible party.",
+   "amount_basis_zh": "**以撤除与恢复的估算成本为基数，不以合同额的百分比为基数。** 按合同额取百分比的保证金与撤除成本无关——一处造价低、位置难的装置，拆掉可能比装上贵。",
+   "amount_basis_en": "**The base is the estimated cost of removal and restoration, not a percentage of contract price.** A percentage of contract price bears no relation to what removal costs: a cheap installation in an awkward place can cost more to take out than to put in.",
+   "amount_band_pct_of_removal_cost": [
+    100,
+    150
+   ],
+   "amount_band_note_zh": "取撤除恢复估算成本的 100%–150%（区间，非点估计）；上限用于承担第三方代为撤除的组织成本。具体比例上限以发包方所适用的规定为准，本方案不引用具体条款号。",
+   "amount_band_note_en": "100%–150% of the estimated removal-and-restoration cost — a band, not a point estimate; the upper end covers the cost of organising removal by a third party. Any statutory ceiling is the contracting party's to apply; this proposal cites no article number it cannot show you.",
+   "evidence_class": "provisional"
+  },
   "international_communication_zh": "以公开读数为素材，不以承诺为素材。",
   "international_communication_en": "External communication draws on published readings, not on promises.",
   "limits_en": "All of the above are proposed operating mechanisms; whether they are adopted rests with the responsible parties' own decisions, and this proposal may not be cited as a commitment made by any of them.",

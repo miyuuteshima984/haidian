@@ -26,8 +26,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -64,8 +63,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "existing_conditions_diagnosis 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "existing_conditions_diagnosis is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "把临时边界、缺失控规、站点偏移和建筑权属缺口并列为诊断输入，所有空间结论均保留回算入口。",
+      "evidence_summary_en": "Provisional boundaries, missing controls, station offset, and ownership gaps are treated as diagnostic inputs, with every spatial result kept recalculable."
     },
     {
       "item_id": "three_level_scope_framework",
@@ -92,8 +91,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -130,8 +128,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "three_level_scope_framework 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "three_level_scope_framework is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "研究、总体与重点区三层分别回答区域接口、公共基线与不可互换的三院职责，避免尺度混写。",
+      "evidence_summary_en": "The research, overall, and key-area scales separately address regional interfaces, the civic baseline, and three non-exchangeable yard duties."
     },
     {
       "item_id": "overall_spatial_structure",
@@ -158,8 +156,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -169,7 +166,13 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "proofing_gate_count",
+        "synthetic_proof_case_count",
+        "synthetic_proof_pass_count",
+        "proofing_pilot_duration_weeks",
+        "proofing_stop_condition_count",
+        "regional_interface_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -188,7 +191,9 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PROOFING-001",
+        "A-REGIONAL-INTERFACE-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -196,8 +201,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "overall_spatial_structure 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "overall_spatial_structure is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "一脊串联三院；六门作为公共准入协议嵌入空间序列，任一门失败即恢复普通服务。",
+      "evidence_summary_en": "One spine links three yards; six civic admission gates sit in the spatial sequence, and any failed gate restores ordinary service."
     },
     {
       "item_id": "land_use_layout",
@@ -224,8 +229,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -262,8 +266,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "land_use_layout 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "land_use_layout is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "GeoJSON 将创新、公共服务、混合文化与开放空间原型分层，分类、面积和来源可复算。",
+      "evidence_summary_en": "GeoJSON separates innovation, civic service, mixed culture, and open-space prototypes with reproducible classes, areas, and sources."
     },
     {
       "item_id": "development_intensity_controls",
@@ -290,8 +294,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -328,8 +331,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "development_intensity_controls 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "development_intensity_controls is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "容积率、高度和法定绿地率保持 unknown，只交付取得正式控规后应复核的清单与方法。",
+      "evidence_summary_en": "FAR, height, and statutory green ratio remain unknown; the package provides only the recalculation method and confirmation checklist."
     },
     {
       "item_id": "height_massing_character",
@@ -356,8 +359,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -394,8 +396,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "height_massing_character 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "height_massing_character is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "风貌以首层公共性、开放界面、低扰动可逆装置表达，不用虚构高度数值替代法定控制。",
+      "evidence_summary_en": "Character is expressed through public ground floors, open interfaces, and low-impact reversible devices, never fabricated height values."
     },
     {
       "item_id": "retain_renovate_demolish",
@@ -422,8 +424,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -460,8 +461,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "retain_renovate_demolish 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "retain_renovate_demolish is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "坚持保留—修缮—可逆增补；未获结构、权属与文保数据前，不对具体建筑作拆除判断。",
+      "evidence_summary_en": "The order is retain, repair, reversible addition; no building-specific demolition judgment is made without structural, ownership, and heritage data."
     },
     {
       "item_id": "traffic_rail_slow_parking",
@@ -488,8 +489,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -526,8 +526,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "traffic_rail_slow_parking 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "traffic_rail_slow_parking is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "表达连续慢行、无障碍换乘和服务节点，不冒充道路红线、桥隧、轨道或停车工程方案。",
+      "evidence_summary_en": "The proposal shows walking continuity, accessible interchange, and service nodes without posing as a road, tunnel, rail, or parking engineering scheme."
     },
     {
       "item_id": "municipal_new_infrastructure",
@@ -539,7 +539,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -554,8 +556,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -565,7 +566,14 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -584,7 +592,10 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -592,8 +603,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "municipal_new_infrastructure 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "municipal_new_infrastructure is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "新设施先验证隔离、人工接管、回退和维护责任；未知容量与管线条件列入开工前门槛。",
+      "evidence_summary_en": "New infrastructure must prove isolation, human handoff, rollback, and stewardship; unknown capacity and utility conditions are pre-start gates."
     },
     {
       "item_id": "blue_green_public_space",
@@ -620,8 +631,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -658,8 +668,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "blue_green_public_space 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "blue_green_public_space is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "蓝绿慢行是永久公共基线，AI 服务为可逆叠加层；数字层退出后无障碍与开放空间仍连续。",
+      "evidence_summary_en": "The blue-green slow network is the permanent public baseline and AI is a reversible layer; access and open space persist after removal."
     },
     {
       "item_id": "three_key_area_detailed_design",
@@ -671,7 +681,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -686,8 +698,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -697,7 +708,20 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "proofing_gate_count",
+        "synthetic_proof_case_count",
+        "synthetic_proof_pass_count",
+        "proofing_pilot_duration_weeks",
+        "proofing_stop_condition_count",
+        "regional_interface_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -716,7 +740,12 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PROOFING-001",
+        "A-REGIONAL-INTERFACE-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -724,8 +753,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "three_key_area_detailed_design 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "three_key_area_detailed_design is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "三院分别提交空间序列、概念断面、首证据、停止条件和无 AI 基线；TG-PILOT-01 给出可复用的 72 平方米五区运营原型。",
+      "evidence_summary_en": "Each yard provides a spatial sequence, conceptual section, first evidence, stop condition, and no-AI baseline; TG-PILOT-01 adds a reusable 72 sqm five-zone operating prototype."
     },
     {
       "item_id": "renewal_project_list",
@@ -737,7 +766,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -752,8 +783,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -763,7 +793,14 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -782,7 +819,10 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -790,8 +830,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "renewal_project_list 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "renewal_project_list is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "T-01 至 T-07 按主体、输出、前置条件、停止条件、依赖与退出动作形成可拆分项目包；T-07 为可撤离校译单元。",
+      "evidence_summary_en": "T-01 through T-07 form separable project packages with owners, outputs, prerequisites, stop conditions, dependencies, and exit actions; T-07 is the removable proofing bay."
     },
     {
       "item_id": "phasing_implementation",
@@ -803,7 +843,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -818,8 +860,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -829,7 +870,20 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "proofing_gate_count",
+        "synthetic_proof_case_count",
+        "synthetic_proof_pass_count",
+        "proofing_pilot_duration_weeks",
+        "proofing_stop_condition_count",
+        "regional_interface_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -848,7 +902,12 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PROOFING-001",
+        "A-REGIONAL-INTERFACE-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -856,8 +915,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "phasing_implementation 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "phasing_implementation is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "以 S0—S4 五态、12 周概念试验和 R0/R1/R2 资源带替代虚构投资数；未过门或不达标即重译、缩减或退场。",
+      "evidence_summary_en": "S0-S4 states, a 12-week concept trial, and R0/R1/R2 resource bands replace invented investment figures; gate failure or missed targets trigger retranslation, reduction, or retirement."
     },
     {
       "item_id": "metrics_recalculation",
@@ -869,7 +928,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -884,8 +945,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -895,7 +955,20 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "proofing_gate_count",
+        "synthetic_proof_case_count",
+        "synthetic_proof_pass_count",
+        "proofing_pilot_duration_weeks",
+        "proofing_stop_condition_count",
+        "regional_interface_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -914,7 +987,12 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PROOFING-001",
+        "A-REGIONAL-INTERFACE-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -922,8 +1000,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "metrics_recalculation 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "metrics_recalculation is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "面积、比例、门数、五态、八字段和合成路径均有公式或本地脚本；8/8、12/12 与 7/7 只证明结构或逻辑符合预期。",
+      "evidence_summary_en": "Areas, ratios, gates, five states, eight fields, and synthetic paths have formulas or local scripts; 8/8, 12/12, and 7/7 prove only expected structure or logic."
     },
     {
       "item_id": "risk_missing_data",
@@ -935,7 +1013,9 @@
         "三层范围工作框架",
         "总体设计范围城市更新与控规深度城市设计",
         "重点区域详细设计",
-        "风险、版权与合规说明"
+        "风险、版权与合规说明",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -950,8 +1030,7 @@
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
         "geometry/constraints.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -961,7 +1040,20 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "proofing_gate_count",
+        "synthetic_proof_case_count",
+        "synthetic_proof_pass_count",
+        "proofing_pilot_duration_weeks",
+        "proofing_stop_condition_count",
+        "regional_interface_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -980,7 +1072,12 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PROOFING-001",
+        "A-REGIONAL-INTERFACE-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -988,8 +1085,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "risk_missing_data 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "risk_missing_data is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "把官方边界、控规、文保、道路、市政、权属、选址、运营主体、预算与授权逐项列为未决条件；72 平方米和 120 秒均非现场事实。",
+      "evidence_summary_en": "Official boundaries, controls, heritage, roads, utilities, ownership, siting, operator, budget, and authority remain unresolved; 72 sqm and 120 seconds are not field facts."
     }
   ]
 }

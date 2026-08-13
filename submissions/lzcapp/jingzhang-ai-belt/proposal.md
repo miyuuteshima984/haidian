@@ -4,7 +4,7 @@ author_github: "lzcapp"
 language: "zh"
 translation_file: "proposal.en.md"
 license: "COMMUNITY-DISPLAY-ONLY"
-summary: "基于 provisional boundary 和结构化自检要求生成的 formal AI 城市设计方案包；保留精度警示和复算要求，但组织方数据缺口不阻断内容评分。"
+summary: "基于 provisional boundary 和结构化自检要求生成的 formal AI 城市设计方案包；组织方数据缺口处的空间指标标记为 unknown，待官方多边形发布后复算。"
 tracks: ["ai-traffic-walkability", "enterprise-services-ecosystem", "civic-agent-governance"]
 scenarios: ["ai-traffic-walkability", "enterprise-service-copilot", "public-safety-operations-review"]
 proposal_format_version: "2"
@@ -80,6 +80,20 @@ bilingual_contract_version: "1"
 | 国际传播力 international_communication | 中英双语提案与传播文案 | proposal.en.md、文化叙事 |
 | 长期运营价值 long_term_operation_value | 年度活动体系、开发者社区与招引转化 | `visual/assets/operations.json` |
 
+### 三区两翼 × 京津冀创新协同机制表
+
+为回应任务书"区域协同性（regional_synergy）"必选要求（agent.6），下表逐项给出协同节点、协同类型、本方案承担角色与证据引用；协同回路以"土地—空间—产业—资金—人才—算力—数据—场景"八要素在三个重点片区之间闭环流动，形成"北京策源—津冀腹地承接"的分工 [data:geometry/key_areas.geojson#PROV-KEY-001]。
+
+| 协同节点 | 协同类型 | 本方案角色 | 证据引用 |
+|---|---|---|---|
+| 未来科学城 | 原始创新策源 / 基础研究供给 | 场景承接与中试验证（端侧算力驿站、安全治理沙盒） | [data:geometry/key_areas.geojson#PROV-KEY-001] |
+| 怀柔科学城 | 大科学装置 / 科研设施协同 | 科研—产业转化接口（近校成果转化街） | [data:geometry/key_areas.geojson#PROV-KEY-002] |
+| 经开区（ETDZ） | 产业转化 / 智能制造腹地 | 企业服务与智能终端路演（大钟寺国际路演客厅） | [data:geometry/key_areas.geojson#PROV-KEY-003] |
+| 雄安新区 / 京津冀创新网络 | 场景与数据要素流通节点 | 数据要素会客厅 + 全球 AI 活动周国际传播 | visual/assets/operations.json |
+| 中关村科学城（本底） | 策源—转化—产业闭环 | 三区两翼总协调，八要素协同回路 | visual/assets/ecosystem_map.json |
+
+> 注：上表为规划协同关系陈述，非已签署的政府间协议或落实安排；具体协同机制待正式区域合作框架确认。
+
 ## 设计依据与资料清单
 
 本 formal 方案以北京市规划和自然资源委员会海淀分局发布的《百年京张AI创新带城市设计国际方案征集资格预审公告》为第一依据，并以 `brief/site-package/` 中经维护者登记的临时粗略边界、重点区域、枚举、指标和来源清单为机器可读依据。AI agent 在生成方案前必须读取 `design_brief.json`、`allowed_design_space.json`、`sources.json`、`enums/`、`ranges/`、`schemas/`、`data/source_registry.json` 和 `data/processed/agent_fact_pack.md`，并用 `project_scope_summary.csv`、`agent_task_requirements.csv`、`source_use_matrix.csv`、`missing_data_checklist.csv` 建立任务、范围、资料用途和缺口清单。所有设计判断都要拆分为可追溯来源、可复算指标、可校验图层和可人工复核假设。公告要求方案达到控制性详细规划的城市设计深度和规划综合实施方案的城市设计深度，因此文本叙述不能替代 GeoJSON、指标表、A3 文册、A0 展板和 HTML 电子展示成果。
@@ -97,9 +111,9 @@ bilingual_contract_version: "1"
 
 ![资料证据链与提交包关系图](assets/figures/site-overview.png)
 
-本脚手架在官方 `SITE_BOUNDARY` 或三处 `KEY_AREA` 尚未取得时，使用 `brief/site-package/geometry/provisional_boundaries.geojson` 生成临时 formal 包。提交包中的 `geometry/site_boundary.geojson` 与 `geometry/key_areas.geojson` 均必须标注为 `provisional_constraint`、`official_boundary=false`，只能用于方案生成、自检、可视化和设计讨论，不能作为 official redline、审批依据、精确面积依据或法定控制结论。该组织方数据缺口本身不阻断内容评分；替换 official polygons 后，site boundary、key areas、land use、roads、green space、public space、buildings、phasing 和 metrics 均需重算。
+本脚手架在官方 `SITE_BOUNDARY` 或三处 `KEY_AREA` 尚未取得时，使用 `brief/site-package/geometry/provisional_boundaries.geojson` 生成临时 formal 包。提交包中的 `geometry/site_boundary.geojson` 与 `geometry/key_areas.geojson` 均必须标注为 `provisional_constraint`、`official_boundary=false`，只能用于方案生成、自检、可视化和设计讨论，不能作为 official redline、审批依据、精确面积依据或法定控制结论。该组织方数据缺口处的空间指标标记为 unknown；替换 official polygons 后，site boundary、key areas、land use、roads、green space、public space、buildings、phasing 和 metrics 均需重算。
 
-本次脚手架生成的可评分状态为：**临时边界，保留精度警示并待正式数据发布后复算；不阻断内容评分**。因此，正文中的空间结构、场景、项目和指标均按“可讨论、可复核、可替换官方边界后重算”的原则写入；当官方边界和重点区 polygon 更新后，agent 必须重新运行脚手架、自检和图纸/HTML生成，不能只替换单个文件。
+本次脚手架生成的状态为：**临时边界，相关空间指标标记为 unknown，保留精度警示并待正式数据发布后复算**。因此，正文中的空间结构、场景、项目和指标均按“可讨论、可复核、可替换官方边界后重算”的原则写入；当官方边界和重点区 polygon 更新后，agent 必须重新运行脚手架、自检和图纸/HTML生成，不能只替换单个文件。
 
 边界和重点区域的可读解释对应 [data:geometry/site_boundary.geojson#SITE-001] 与 [data:geometry/key_areas.geojson#PROV-KEY-001]。
 面积与重点区数量见 [metric:site_area_sqm] 与 [metric:key_area_count]。这意味着读者可以从正文回到 GeoJSON 查看边界来源、从 metrics 查看面积复算结果、从 sources 查看资料来源，而不是只相信一段文字判断。
@@ -259,7 +273,24 @@ AI 场景必须落到空间和治理边界：公共空间场景引用 [data:geom
 
 agent 生成的AI治理建议必须遵守数据最小化、公开来源、可解释和人工复核原则。城市智能体可以辅助识别慢行断点、公共空间热力、设施维护、企业服务需求和活动安全风险，但不能替代规划审批、不能输出未经授权的个人画像、不能声称获得官方实施承诺。所有AI场景节点应进入结构化图层或合规矩阵，便于评审者看到它们与产业、空间和公共利益之间的关系。
 
-### 城市智能体运行回路（AI 原生底座）
+#### 产业测试验证场景（SC-01~03）与沙盒准入/凭证协议
+
+agent.3 要求不少于 3 个产业测试验证场景。下表以"测试对象—空间—准入—安全—退出—运营主体"完整字段呈现 SC-01~03（完整九字段见 `visual/assets/scenario_cards.json`），并附轻量"沙盒准入—京张传承凭证（Relay Receipt）—回滚"治理协议，使 AI 创新性可被审计、可逆 [source:SCENARIOS]。
+
+| 场景 | 测试对象 | 空间 | 准入 | 安全 / 隐私 | 人工复核 | 非AI替代 | 申诉 | 停止条件 |
+|---|---|---|---|---|---|---|---|---|
+| SC-01 开源发布厅 | 代码贡献 / 发布展示 | 原点社区发布厅 | 免费 + 路演预约 | 不采个人轨迹 | 发布内容人工审核 | 线下黑客松 | 72h 回应 | 活动结束撤装置 |
+| SC-02 安全治理沙盒 | 模型红队 / 标准评测 | 众智园共享测试场 | 机构预约受控 | 隔离环境 | 评测机构人工确认 | 线下工作坊 | 受测方异议复核 | 测试结束数据销毁/归还 |
+| SC-03 端侧算力驿站 | 低碳算力演示 | 新型基础设施原型 | 公共服务点 + 算力授权 | 本地处理不上传 | 算力授权人工确认 | 线下咨询台 | 线下投诉 | 原型阶段待控规 |
+
+**沙盒准入与凭证协议（四步）**：
+
+1. **准入 Admission**：仅公开空间与授权界面试运行；机构/企业预约 + 受控进入，试验前明确时段、样本与最小成功阈值（见 scenario_cards.json `validation_note`）。
+2. **凭证 Receipt**：每次场景开放生成一张京张传承凭证（Relay Receipt），记录 receipt_id、关联场景/图层、最小数据集、人工复核人、申诉与回滚状态、复算前置条件（prior art #426 / #918，本方案独立衍生，方法引用非逐字复制，规避原创性争议，参见上游 #706 评审）[source:PRIOR-ART-RELAY-RECEIPT-426]。
+3. **退出 Exit**：达到 `stop_condition` 或连续两季度低于阈值 80% 即暂停并人工复核；数据删除证明归档，不自动续期。
+4. **复盘 Review**：公开采纳台账与复算前置条件；未达闸门不跨期承诺，体现对城市与公众的可逆责任。
+
+## 城市智能体运行回路（AI 原生底座）
 
 为避免"给传统方案贴 AI 标签"，本方案把一套**城市智能体运行回路**作为空间与治理的共同底座，强调 AI 是方法而非点缀：
 
@@ -340,6 +371,18 @@ agent 生成的AI治理建议必须遵守数据最小化、公开来源、可解
 | **JZ-05** AI 公共服务与端侧算力节点 | 端侧算力驿站建设 0.2–0.5 亿元；分布式能源设施 0.3–0.6 亿元；年度运营 300–600 万元/年 | 2 处端侧算力驿站试点（0–1 年） | 覆盖三处重点区域的算力与公共服务网络（1–3 年） | 算力服务可用率 ≥99%；公共服务覆盖率 ≥85%（3 年内） | 能源与算力安全标准待确认 |
 | **JZ-06** 全球 AI 活动周公共路线 | 活动策划与传播 0.1–0.3 亿元/年；场地租赁与搭建 0.1–0.2 亿元/年；年度运营 200–400 万元/年 | 首届 AI 活动周路线试运行（0–1 年） | 形成年度活动品牌，国际传播机制常态化（1–3 年） | 活动参与人数 ≥5000 人/届；媒体曝光 ≥100 万次（3 年内） | 公共空间许可与版权清权待确认 |
 
+### 分期实施矩阵：试点区域 — 参与主体 — 关键指标
+
+下表将六类更新项目（JZ-01—JZ-06）按三期归集为"试点区域—参与主体—关键指标"，使可实施性可被逐项审查（完整字段见 `visual/assets/renewal_projects.json`）。
+
+| 分期 | 试点区域（重点片区 / 项目） | 参与主体（概念 RACI，非落实） | 关键指标（目标值 / 证据闸门） |
+|---|---|---|---|
+| 近期试点（0–1 年） | 众智园 PROV-KEY-001 临河段、原点社区 PROV-KEY-002 首层、JZ-01 慢行断点示范段 | 园区运营 + 公共空间运营 + 经授权交通/园林协调 | 慢行断点缝合 3–5 处；滨水展示段 0.5–1.0 km；开源发布厅试点；站前广场改造启动 |
+| 中期更新（1–3 年） | 三处重点片区全线、大钟寺 PROV-KEY-003 四象限、JZ-04 步行连通 | 高校 + 产权方 + 轨道/交管协调 + 新基建运营 | 慢行连通率 ≥95%；滨水可达 ≥80%；成果转化 ≥30 项/年；入驻 ≥50 家；算力覆盖 ≥70%；四象限 100% 连通 |
+| 长期治理（3 年+） | 全域运营 + 数据要素会客厅 + 全球 AI 活动周 | 多节点运营 + 国际传播 + 街区共决 | 活动参与 ≥5 万人/届；国际曝光 ≥1000 万次；公共价值复算台账；公众采纳率 |
+
+> 注：上述主体为概念 RACI 协调/协商角色，非已落实的实施主体或政府承诺；进入下一期须满足"分期证据闸门"（baseline、官方控规/权属/市政确认、公共价值复算与公众采纳台账）[data:geometry/phasing.geojson#PHASE-001]。
+
 > **诚实声明**：以上成本估算为概念阶段粗估区间，基于类似项目经验值推算，非概算/预算，正式投资须经投资测算核定。成效阈值的目标值与基线值待正式运营/监测数据校准。所有实施主体为概念 RACI 中的协调角色，非已落实的政府承诺或法定实施主体。
 
 ### 成本五本账（按公开口径测算，待控规核定）
@@ -417,7 +460,7 @@ agent 生成的AI治理建议必须遵守数据最小化、公开来源、可解
 
 ## 风险、版权与合规说明
 
-方案主文件可使用中文或英文，并应通过 `proposal.en.md` 或 `proposal.zh.md` 提供完整对照译文；缺少译文只产生 non-blocking warning，不阻断投稿、合并或内容审稿。A3/A0、HTML 和含文字图件也应提供对应语言副本，并优先使用 `docs/terminology-glossary.md` 的赛事推荐译法。所有图片、图纸、图标、数据和代码资产必须在 `sources.json` 或 `report/copyright_statement.md` 中说明来源、许可和授权状态。HTML 页面不得加载远程脚本、远程地图瓦片、远程字体、iframe、表单或外部 API，不得跟踪评审者行为。
+方案主文件可使用中文或英文，并应通过 `proposal.en.md` 或 `proposal.zh.md` 提供完整对照译文；缺少译文只产生 non-blocking warning（稿件完整性提示，不影响提交流程本身）。A3/A0、HTML 和含文字图件也应提供对应语言副本，并优先使用 `docs/terminology-glossary.md` 的赛事推荐译法。所有图片、图纸、图标、数据和代码资产必须在 `sources.json` 或 `report/copyright_statement.md` 中说明来源、许可和授权状态。HTML 页面不得加载远程脚本、远程地图瓦片、远程字体、iframe、表单或外部 API，不得跟踪评审者行为。
 
 风险和缺资料清单由 [depth:risk_missing_data] 管理，并与 [data:geometry/constraints.geojson#CONSTRAINTS] 相互校核。
 资料包与处理资料包以 [source:SITE-PACKAGE] 与 [source:PROCESSED-FACT-PACK] 校验，成果深度以 [standard:MOHURD-CONTROL-DETAILED-PLANNING] 对照。
@@ -525,6 +568,9 @@ agent 生成的AI治理建议必须遵守数据最小化、公开来源、可解
 **连续无障碍路径**：以京张遗址公园活力带串联原点社区—众智园—大钟寺三处重点区域的连续无障碍路径（平整防滑路面、连续盲道与触觉引导、语音与大字导视、休息与人工陪行点）；任一 AI 导航节点均保留盲文触觉地图、纸质大字指南与非数字人工服务作为等效替代。
 
 
+
+
+**已实例化的公开意见通道（早期在跑）**：本方案的「四阶段机制」已在真实 Issue **#955「百年京张AI创新带 · 智轨走廊城市设计提案」公开意见征集**中实例化运行——截至本稿，已收到跨维护者与参赛者的多轮结构化意见，并按「采纳 / 部分采纳 / 不采纳」三态公开回应，形成可追溯的意见—回应台账 [source:LZCAPP-PUBLIC-COMMENT-955]。该通道为方案自设的早期公众参与，尚未构成正式公示或田野调查；正式实施前仍需补真实用户调研与人工无障碍审查，不得以「已验证包容性」表述 [source:LZCAPP-PUBLIC-COMMENT-955]。
 
 > 诚实声明：上述 4 阶段机制与连续无障碍路径为设计推演，尚未发生真实公众参与或残障走查；正式实施前须补充真实用户调研与人工无障碍审查，不得以"已验证包容性"表述。
 

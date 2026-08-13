@@ -83,6 +83,20 @@ The five stages release affordable reversible space, insert bounded real scenari
 
 ![Anchor, community and enterprise ecosystem network](assets/figures/ecosystem-network.en.png)
 
+### Seven Evidence Gates: from available resources to public return
+
+| Gate | Minimum evidence | Accountable owner | Continue/adjust/exit rule |
+|---|---|---|---|
+| G0 Resource interface | Public catalogue, rights status and named contact | Program office | Do not advertise as callable if any item is missing |
+| G1 Space opening | Structure/fire/accessibility/rights sign-off | Owner + professional signer | Without sign-off, non-building activities only |
+| G2 Scenario launch | Problem owner, D0-D3 class, insurance and response plan | Scenario lead | No launch with unclear data or safety boundary |
+| G3 Community formation | Stable teams, contribution licenses and resident feedback | Community operator | Footfall alone is not a community outcome |
+| G4 Project generation | Reproducible test sheet, accepter and failure review | Test operator + demand owner | Irreproducible work returns to validation |
+| G5 Entity growth | First order/procurement review, compliance sign-off and service continuity | Enterprise platform | Pitching or intent never substitutes for transaction evidence |
+| G6 Public return | Open hours, affordability, complaint closure and knowledge return | Collaboration council | Falling public value pauses expansion |
+
+The chain separates weak signals—footfall, events, pitches and intent—from stronger evidence such as reproducible tests, professional sign-off, procurement review, service continuity and public return. Missing G1-G6 evidence freezes the last verified state; an operations dashboard may never promote a project automatically on publicity volume alone.[depth:risk_missing_data]
+
 Land-use polygons form a complete provisional partition. FAR, height, road redlines, total floor area and utility capacity remain pending official controls and surveys.[data:geometry/land_use.geojson#LU-001] [standard:MNR-LAND-USE-CLASSIFICATION-GUIDE] [depth:development_intensity_controls]
 
 ## Detailed Design of Key Areas
@@ -236,6 +250,32 @@ The proposed operating platform combines a public or ownership base, professiona
 | Q3 Origin Developer Nights | Open-source clinic + residency mid-review | Community operator A / maintainers R / residents C | Courses, mentors and family support | Stable teams / license completeness | Disturbance or license dispute -> reduce/cancel |
 | Q4 First-order Season | Validated outcomes + demand owners + services | First-order platform A / demand owner R / compliance C | Procurement boundary, disclosure and sessions | Procurement evaluations / conflict disclosure | No promised orders; undisclosed conflict -> remove |
 | Annual Regional Developer Week | Cross-node exchange + rail-heritage curation | Program office A / each node R | Rights-cleared content, translation and visitor support | Effective exchanges / follow-up conversion | No partnership name without written confirmation |
+
+### WP0-WP6 Procurable Delivery Packages
+
+| Package | Object | Scope | Acceptance evidence | RACI | Stop condition |
+|---|---|---|---|---|---|
+| WP0 | Baseline and rights | Official polygons, survey, rights, structure/fire, utilities and asset clearance | Signed baseline pack + variance register | Owner A / specialists R | No permanent works before baseline |
+| WP1 | Public base | Heritage axis, walking, accessibility, lighting, base network and opening rules | Continuous route + opening hours + maintenance owner | Owner A / public-realm operator R | Adjust if anonymous passage or maintenance funding is lost |
+| WP2 | Validation facilities | Shared labs, compute adaptation, bounded robotics and standards court | Equipment log + reproducible sheet + safety drill | Test operator A/R | Stop on major incident or irreproducibility |
+| WP3 | Talent-community services | Open-source room, clinics, residency, night school and family support | Course/mentor/license/complaint records | Community operator A/R | Reduce on disturbance, exclusion or rights dispute |
+| WP4 | First-order and enterprise services | Demand catalogue, enterprise hall, compliance, sessions and exchange | Complete demand-validation-procurement-review chain | First-order platform A / demand owner R | Remove false demand or undisclosed conflict |
+| WP5 | Identity and public programs | Wayfinding, three landmarks, seasonal programs and cross-node curation | Rights-cleared content + annual review + withdrawal route | Program office A/R | No partner name or mark without written permission |
+| WP6 | Data and evaluation | NIS/EHS, public audit, appeal and quarterly health check | Metric dictionary + owner + public aggregate + decision record | Data lead R / council A | No baseline, no score; privilege breach forces read-only |
+
+The packages translate what the fifteen projects do into who can procure them, what evidence accepts them and when work stops. WP0 comes first and cannot be bypassed by construction procurement. WP1 public base and WP2-WP5 operating products keep separate accounts. WP6 supplies evidence and decision support only; it never replaces decisions by owners, demand owners, professional signers or statutory authorities.
+
+### 90-Day Minimum Credible Pilot
+
+| Period | Action | Package | Acceptance evidence | Stop condition |
+|---|---|---|---|---|
+| D0–15 Baseline | Register boundaries, rights, demand and risks | WP0 | Signed baseline pack + variance register | Stop if any right or safety owner is unclear |
+| D16–30 Protocol | Complete charter, D0-D3 classes, acceptance and appeal | WP1/WP6 | Charter + data protocol + named owners | Stop without human takeover or appeal |
+| D31–60 Bounded tests | Run model safety, domestic compute and bounded robotics tests | WP2 | Reproducible sheets + event logs + safety sign-off | Stop on major incident, privilege breach or irreproducibility |
+| D61–75 Public test | Open day, accessibility check, resident co-governance and first-order matching | WP3/WP4 | Use records + inclusion review + demand-test chain | Adjust on complaint cluster, exclusion or false demand |
+| D76–90 Decision | Publish anonymous audit summary and continue-adjust-exit decision | WP5/WP6 | Audit summary + decision record + next-cycle responsibility | Do not expand without complete evidence or public-value gate |
+
+The pilot treats executable rules, reproducible tests, human takeover, public appeal and failure exit—not permanent construction or recruitment counts—as acceptance objects. Day 90 produces only a continue, adjust or exit recommendation for the next cycle; it is not project approval, a funding arrangement or a government implementation decision.
 
 The unit account uses a normalized sensitivity example rather than invented currency: revenue index equals utilization × unit price × operable quantity. Test a 20% utilization decline, 10% price decline and 20% equipment-hour decline. If any case crowds out public-service hours, maintenance reserve or safety staffing, expansion stops and the space mix or low-performing project is adjusted or exited. Parameter ranges are added only when ownership, operator and contract/procurement evidence exists.[assumption:A-UNIT-ECONOMICS-007]
 

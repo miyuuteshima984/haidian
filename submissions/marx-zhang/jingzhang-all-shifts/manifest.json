@@ -26,7 +26,7 @@
       "role": "narrative",
       "required": true,
       "language": "zh",
-      "sha256": "cc5aba2ff45d49a1a0ed6002e1d7d6b522df9511e6adea2ba9d530a9ac013bc8"
+      "sha256": "d187381412a221b5c82a5be8beff13475f60ff041ff5c93be567cc2fad3e1a3c"
     },
     {
       "path": "agent.json",
@@ -38,13 +38,13 @@
       "path": "metrics.json",
       "role": "metrics",
       "required": true,
-      "sha256": "49ad93c81929f24878dd3309756bac03ce0208d1d89c3ced490129b9140792eb"
+      "sha256": "c9dcb67aa6aec2cbe676c1addc8c52ca36966631d0467bf50a129466d14a948f"
     },
     {
       "path": "assumptions.json",
       "role": "assumptions",
       "required": true,
-      "sha256": "6cf350ef9a024d3090caf7474146d7d97b30f711f7e273df42ce57413778b3bd"
+      "sha256": "bdae65c5660c6f64585f3cb2673ea60c76f7abb0996539a7f65417d489e07c9e"
     },
     {
       "path": "sources.json",
@@ -56,7 +56,7 @@
       "path": "self_check.json",
       "role": "self_check",
       "required": true,
-      "sha256": "edadf5cbb77f3682329665570d87b89bd5f64827ad4e1676bec6ab4624eb1040"
+      "sha256": "89073e72495076b51e2ca3b3b24055198d7352a06cfa32e792e4864e55d45f57"
     },
     {
       "path": "compliance_matrix.json",
@@ -81,7 +81,7 @@
       "role": "rendered_proposal_html",
       "required": true,
       "language": "zh",
-      "sha256": "dcff83b669da79b1628fd23255b232ade0b3bfcad325053bd92b34bb6e52b6a9"
+      "sha256": "013331ddeeba0261f1c85547107d450b87654242421d172beeb763357f243fda"
     },
     {
       "path": "report/narrative.md",
@@ -93,28 +93,28 @@
       "path": "report/copyright_statement.md",
       "role": "copyright_statement",
       "required": true,
-      "sha256": "97e7d4dd236a6357cdae7b1bbc18c628810b9083d694b45530edc1a279b6732c"
+      "sha256": "dc92f12ebf354e96f2a87627b416bfa80821f4e43d15ab7ee049483ad078012d"
     },
     {
       "path": "drawings/a3-booklet.pdf",
       "role": "drawing",
       "required": true,
       "language": "zh",
-      "sha256": "b63fd523d29e5a84cdb3439bb16bbd7c1943fee381cd7c248e79087361ba5129"
+      "sha256": "1ed8806359e5c4b77793acc2c67c2ddbaad38acd426b63b773b303b7c918a1e6"
     },
     {
       "path": "drawings/a0-boards.pdf",
       "role": "drawing",
       "required": true,
       "language": "zh",
-      "sha256": "b2617d945e42ce9ec1d69e4b545d55b7c8eda99647d62354000f2312bc8d8ac6"
+      "sha256": "25f909591655ff0ba59090d7a3afe22038a3447cdcc940b559fa79ebff98face"
     },
     {
       "path": "visual/index.html",
       "role": "visualization",
       "required": true,
       "language": "zh",
-      "sha256": "0119c1fd2fc158e24452113fcf568b837ede2090ff67b16b11345062f4b178a5"
+      "sha256": "55931131979ea6526aa130e6f6faaaf5ad2bdc3ba00bf9687e02e8d704e138c9"
     },
     {
       "path": "assets/figures/key-areas.png",
@@ -211,7 +211,7 @@
       "required": true,
       "language": "en",
       "translation_of": "proposal.md",
-      "sha256": "a283d36e9b93fd4a94a0b02815acb465acfb292869caa5c9c15cfdef1be03d21"
+      "sha256": "414e323743327f4beaf2b8fa91c29a3579a69cfa0f3bc862493f83ff61a9533e"
     },
     {
       "path": "report/proposal.en.html",
@@ -219,7 +219,7 @@
       "required": true,
       "language": "en",
       "translation_of": "report/proposal.html",
-      "sha256": "a40c72536eedde5e889970a3750081ebde83ce6ef8baf3d13b4c59b28f415692"
+      "sha256": "c2ff085f7691a8bfcf617f86a85bde901e14caa005ca72b4d056642d2c60ce2f"
     },
     {
       "path": "drawings/a3-booklet.en.pdf",
@@ -227,7 +227,7 @@
       "required": true,
       "language": "en",
       "translation_of": "drawings/a3-booklet.pdf",
-      "sha256": "76413520912c8fff3bce08e6712b6862fb868105fb149218e490f11f1ef95513"
+      "sha256": "f54a3d9cbe35ee53b05e540ca603d0d77f398a8e322c882f312d6533491b4643"
     },
     {
       "path": "drawings/a0-boards.en.pdf",
@@ -235,7 +235,7 @@
       "required": true,
       "language": "en",
       "translation_of": "drawings/a0-boards.pdf",
-      "sha256": "492542fc5c302417de6016f350d487b61ea383066b362d3fd52857c8fbd77f6b"
+      "sha256": "23740ee8e660fb7c9c733c0f605e32ffeeb0addae372932d531937f12b1fc1c6"
     },
     {
       "path": "visual/index.en.html",
@@ -243,7 +243,7 @@
       "required": true,
       "language": "en",
       "translation_of": "visual/index.html",
-      "sha256": "3466c39393d15cac30130168b34d2962c28ae7a3558f71c827ae03dbb319f012"
+      "sha256": "57877a93a1072acf9201cdf48d91b97b9e1568246dd6e98b2fb787eeb24bbfad"
     },
     {
       "path": "assets/figures/key-areas.en.png",
@@ -432,6 +432,50 @@
       "sha256": "a8dd3fb04f396eb0ea99d5c3b6b7f8450f0101a33696e605861a6ad0af2db6e3"
     },
     {
+      "path": "assets/media/three-area-access-tour.webm",
+      "role": "video",
+      "language": "neutral",
+      "required": false,
+      "title_zh": "三处场景 × 84 秒无障碍导览",
+      "title_en": "Three Areas × 84-Second Accessible Tour",
+      "description_zh": "以静音可理解的概念序列连接维护、学习与照护、换乘和夜间安全离开；不是现场影像或实施授权。",
+      "description_en": "A mute-comprehensible conceptual sequence connecting maintenance, learning and care, transfer, and safe night departure; not site footage or implementation authorisation.",
+      "poster": "assets/media/cover.webp",
+      "caption": "assets/media/three-area-access-tour-zh.vtt",
+      "transcript": "assets/media/three-area-access-tour-zh.md",
+      "sha256": "03f5fad9e94acb4ebced63478511a41321ddf24347d07772d9b08b89f66c9e35"
+    },
+    {
+      "path": "assets/media/three-area-access-tour-zh.vtt",
+      "role": "caption_track",
+      "language": "zh",
+      "required": false,
+      "sha256": "8234cb0548f53bc4dd7ffee2789791ca3c443905c0e041bb7ea5024624a32868"
+    },
+    {
+      "path": "assets/media/three-area-access-tour-en.vtt",
+      "role": "caption_track",
+      "language": "en",
+      "translation_of": "assets/media/three-area-access-tour-zh.vtt",
+      "required": false,
+      "sha256": "cd43168893938fb59c76b853c6bfc9bbce31066b28d2109acd3bd1941a64dfad"
+    },
+    {
+      "path": "assets/media/three-area-access-tour-zh.md",
+      "role": "transcript",
+      "language": "zh",
+      "required": false,
+      "sha256": "93a23a8f49ca25aa8b35ae2cf70abea90f2835fbb9fc24b747929d19501e4141"
+    },
+    {
+      "path": "assets/media/three-area-access-tour-en.md",
+      "role": "transcript",
+      "language": "en",
+      "translation_of": "assets/media/three-area-access-tour-zh.md",
+      "required": false,
+      "sha256": "f9077387c8d3827b8a8490fbec1ba3cc1340e114b621c07ea68d171fb32bb0ed"
+    },
+    {
       "path": "assets/media/zhongzhiyuan-concept.webp",
       "role": "media_poster",
       "language": "neutral",
@@ -469,7 +513,7 @@
       "role": "changelog",
       "language": "zh",
       "required": false,
-      "sha256": "9ccf81d35a3dd693208ed9456facd84052b86cf027f4ace7bc29b563b59914fe"
+      "sha256": "a980e04b0badacea3eec93231dabe62bbf9afa8b52ed61d534e8fd7c56aa47b5"
     },
     {
       "path": "assets/figures/daily-script-overview.png",

@@ -2,19 +2,49 @@
   "version": 1,
   "summary": "本方案最需要人工复核的两类风险是实施复杂度与政策不确定性：方案涉及道路组织、公共空间改造和多主体协同，且全部控制条件（控规、红线、权属、空域）均待官方发布，不能以愿景叙事掩盖待确认事实。",
   "rollback_trigger_registry": [
-    {"id": "R-01", "class_zh": "安全类", "simulation_key": "safety", "trigger_zh": "实体或线上安全事件，事故即停", "used_in": "正文三重点区（众智园）；simulation.json rollback_triggers.safety"},
-    {"id": "R-02", "class_zh": "隐私类", "simulation_key": "privacy", "trigger_zh": "数据越界即停，投诉即停", "used_in": "正文三重点区（原点社区）；simulation.json rollback_triggers.privacy"},
-    {"id": "R-03", "class_zh": "文保类", "simulation_key": "heritage", "trigger_zh": "文保冲突即撤除相关展示", "used_in": "正文三重点区（大钟寺）；simulation.json rollback_triggers.heritage"},
-    {"id": "R-04", "class_zh": "经济类", "simulation_key": "economics", "trigger_zh": "运营超支不可持续即暂停放量，重核资金组合", "used_in": "正文三重点区（众智园）；simulation.json rollback_triggers.economics"},
-    {"id": "R-05", "class_zh": "生态类", "simulation_key": "ecology", "trigger_zh": "生态侵占公共空间或绿量流失即停止相关建设", "used_in": "simulation.json rollback_triggers.ecology"}
+    {
+      "id": "R-01",
+      "class_zh": "安全类",
+      "simulation_key": "safety",
+      "trigger_zh": "实体或线上安全事件，事故即停",
+      "used_in": "正文三重点区（众智园）；simulation.json rollback_triggers.safety"
+    },
+    {
+      "id": "R-02",
+      "class_zh": "隐私类",
+      "simulation_key": "privacy",
+      "trigger_zh": "数据越界即停，投诉即停",
+      "used_in": "正文三重点区（原点社区）；simulation.json rollback_triggers.privacy"
+    },
+    {
+      "id": "R-03",
+      "class_zh": "文保类",
+      "simulation_key": "heritage",
+      "trigger_zh": "文保冲突即撤除相关展示",
+      "used_in": "正文三重点区（大钟寺）；simulation.json rollback_triggers.heritage"
+    },
+    {
+      "id": "R-04",
+      "class_zh": "经济类",
+      "simulation_key": "economics",
+      "trigger_zh": "运营超支不可持续即暂停放量，重核资金组合",
+      "used_in": "正文三重点区（众智园）；simulation.json rollback_triggers.economics"
+    },
+    {
+      "id": "R-05",
+      "class_zh": "生态类",
+      "simulation_key": "ecology",
+      "trigger_zh": "生态侵占公共空间或绿量流失即停止相关建设",
+      "used_in": "simulation.json rollback_triggers.ecology"
+    }
   ],
   "dimensions": [
     {
       "id": "data_privacy",
       "label": "数据隐私",
       "score": 2,
-      "note": "公共空间 AI 服务仅使用公开资料、授权反馈和聚合指标，不采集个人敏感信息。",
-      "mitigation": "场景卡一律声明数据边界与人工复核路径，健康类数据不落盘、不用于商业推荐。"
+      "note": "公共空间 AI 服务仅使用公开资料、授权反馈和聚合指标，不采集个人敏感信息；数据最小化与留存期上限 30 天（见 proposal 场景章）。",
+      "mitigation": "场景卡一律声明数据边界与人工复核路径，健康类数据不落盘、不用于商业推荐，留存期满自动清除。"
     },
     {
       "id": "implementation_complexity",

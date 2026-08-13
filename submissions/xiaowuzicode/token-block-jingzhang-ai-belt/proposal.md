@@ -231,6 +231,26 @@ The separation is the point. The Line Operator has an incentive to fill the cale
 
 **Operations and the annual system.** The belt is proposed to run an annual Global AI Week using the line itself as the venue, a rolling scenario-open calendar publishing which segments are bookable, a developer community anchored at the Zero-Kilometre release hall, and a conversion pathway that moves a team from open-source contributor to bookable-track user to tenant. Brand assets accumulate in the belt rather than in any single event: the line, the station names, the marker, the board. All of this is an operating proposal for professional and operating teams to develop — not a confirmed government programme, funding commitment, investment arrangement or approved event schedule.
 
+**Offline protocol replay — the rules are executable, not rhetorical.** The token block
+protocol is not only prose: `simulation.json` records [metric:simulation_task_count] synthetic
+replay tasks executed by a deterministic script against this package's own data, with a machine-
+readable index of [metric:token_protocol_rule_count] protocol rules. Every scenario card is
+checked once for qualified admission and against four failure branches (anonymous booking,
+missing data boundary, out-of-section placement, automated cancellation of the human review
+point); every running section runs one full book–install–run–return token cycle; eight further
+state-machine branches replay the hard rules — a second token refused while one is out, an
+overdue return escalating, one token never spanning two sections, a step-free break stopping an
+installation, a missing non-digital equivalent pausing a run, an out-of-boundary collection
+revoking the token — and six topology checks bind the cards to the submitted geometry. Of the
+replays, [metric:simulation_negative_branch_count] are negative branches, where success means
+**the rule correctly refused the attempt**; the overall outcome is
+[metric:simulation_success_rate] with [metric:tool_schema_pass_rate] schema-valid task records
+and [metric:audit_completeness] audit-complete receipts. Governance coverage is itself
+recomputable from the geometry layer: [metric:scenario_data_boundary_count] scenario cards carry
+a declared data boundary and [metric:scenario_human_review_count] carry an uncancellable human
+review point. These replays are synthetic checks of this package's own stated rules — they are
+not field evidence, not a safety proof, and not an approval of any operation.
+
 ## Metrics, Area Recalculation, and Compliance Matrix｜指标体系、面积复算与合规矩阵
 
 Metrics are split into three honest classes. **Class A — recomputable from submitted geometry**: every value below is reproduced by projecting the layers to EPSG:4548 and recomputing, and is checked against `spatial_review.py`. **Class B — pending official regulatory conditions**: floor area ratio, total floor area, building height, road area and road area ratio are recorded as `unknown` with reasons. **Class C — performance indicators** requiring operating data over time, which this package does not pretend to know [depth:metrics_recalculation].

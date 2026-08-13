@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.6.0",
   "status": "participant_authored_navigation_not_independent_review",
   "purpose_zh": "让评审从一个问题直接找到正文判断、结构化证据、图件和仍待补齐的事实",
   "purpose_en": "Let a reviewer move from one question to the relevant claim, structured evidence, drawing, and unresolved fact",
@@ -18,13 +18,15 @@
     {
       "dimension_id": "originality",
       "question_zh": "本方案有哪一件别人难以替代的原创工具",
-      "answer_zh": "城市可用性编译器把责任、无 App 路径、最少数据、人工接手、停止条件和验证指标写成放行合同",
+      "answer_zh": "城市可用性编译器把六项责任条件写成放行合同，开门前排演器再用九十项合成样例反向检查规则能否挡错",
       "evidence_refs": [
         "visual/assets/build_usability_evidence.js",
         "visual/assets/task_journeys.json",
-        "visual/assets/usability-readiness.json"
+        "visual/assets/usability-readiness.json",
+        "visual/assets/run_preopening_rehearsal.js",
+        "visual/assets/preopening-rehearsal.json"
       ],
-      "known_limit": "the compiler validates contract completeness, not field performance"
+      "known_limit": "the compiler and rehearsal validate declared structure and synthetic decisions, not field performance"
     },
     {
       "dimension_id": "ai_planning_innovation",
@@ -40,9 +42,10 @@
     {
       "dimension_id": "implementation_feasibility",
       "question_zh": "第一天谁来开场，出错以后谁来停",
-      "answer_zh": "开场前逐项点名授权人、值守人和安全负责人，三类故障演练都以人工恢复或关停结束",
+      "answer_zh": "开场前逐项点名授权人、值守人和安全负责人，六张故障卡都以人工恢复或关停结束",
       "evidence_refs": [
         "visual/assets/day_one_operations_drill.json",
+        "visual/assets/preopening-rehearsal.json",
         "visual/assets/implementation_playbook.json",
         "proposal.md#更新项目清单实施政策与分期计划"
       ],

@@ -653,3 +653,24 @@ Two fresh deterministic builds produced the same four SHA-256 values. Page-size,
 - `a0-boards.pdf`: 18 pages; SHA-256 `32d9f5e9c0eec2140d8057b58c68ce92bb74e6710a28a0318ff9833804a7712f`
 - `a3-booklet.en.pdf`: 73 pages; SHA-256 `0e4bc3aae048eddbeb39aaa9211e7a4a3158396405cc52b3d4d7630b76022932`
 - `a3-booklet.pdf`: 69 pages; SHA-256 `d225e095cf5c95a2ccdd83c37d5f8ecba30a8fb647f74ddd902673d975bbafd5`
+
+## Round 15 field-evidence intake / 第15轮现场证据采集与替换
+
+第15轮只把既有 D01—D08 与 H01—H07 转成空白资料包、保管链、最低质量门和专业处置状态。八包均为 `not_collected`、材料 0、现场值 `null`、接收用于复算 0、批准 0；三处未来采集路线完成数 0。众智园针对隔离、停止和还场；原点针对同意撤回、保障和居民日常；大钟寺针对高峰连续、来源版本和纠错。模板、字段覆盖、文件 PASS、PR 审查或合并都不是现场证据、专业接受或 G1 授权。
+
+Round 15 turns existing D01-D08 and H01-H07 into empty packets, custody, minimum-quality gates and professional dispositions only. All eight packets remain `not_collected`, with 0 artifacts, `null` field values, 0 acceptances for recalculation and 0 approvals; completed future route walks remain 0. Zhongzhiyuan focuses on isolation, stop and restoration; Origin on consent withdrawal, safeguarding and resident daily life; Dazhongsi on peak continuity, source version and correction. A template, field coverage, file PASS, PR review or merge is not field evidence, professional acceptance or G1 authorization.
+
+[source:SOURCE-JZ-COMMONS-LOOP-METHOD-R15] PR #2266 contributes public disposition semantics only. The package normalizes them into retaining the ordinary baseline, returning a packet, applying NO-GO/conflict hold, and restoring ordinary use or retiring an overlay. No Commons Loop brand, composition, geometry, metric, figure, media or claim is imported.
+
+The final publications were built twice in fresh Python processes with a fixed font timestamp and produced identical file bytes. Layout QA must still be read together with the G0 and rights boundaries; publication determinism proves no field fact.
+
+| PDF | Pages / format | SHA-256 |
+|---|---|---|
+| `drawings/a3-booklet.pdf` | 66 / A3 portrait | `8f6b8bea4f9c2b458876a99a4642660e1954dd8d8b45291801db137b2c20a035` |
+| `drawings/a3-booklet.en.pdf` | 71 / A3 portrait | `524d6ca44aaa9820658855c256aa4152dce18e9694536a4bcc6364a62edaa7e4` |
+| `drawings/a0-boards.pdf` | 18 / A0 landscape | `686a2524d9d6f72486d32fbc3e13da3feb1e3f1d5e7f298c6ba9ce89559d47aa` |
+| `drawings/a0-boards.en.pdf` | 18 / A0 landscape | `540a4da7756ee2ff4ccf5cf6f55013c03a12ef7a7caf4ba796bde1f2694e490f` |
+
+本轮新增 1 个双语图对、1 个结构化合同和 1 个基线哈希记录；12 场景、8 项目、3 重点区、99 槽、geometry、metrics、全部 G0、临时边界、NO-GO 与 `not_fully_cleared` 不变。基线记录证明文件字节冻结，不证明其中空间信息已成为官方或现实真值。
+
+This round adds one bilingual figure pair, one structured contract and one baseline-hash record. Twelve scenes, eight projects, three key areas, 99 slots, geometry, metrics, all-G0 status, provisional boundaries, NO-GO and `not_fully_cleared` remain unchanged. The baseline record freezes file bytes; it does not make their spatial content official or true in the field.

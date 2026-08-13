@@ -56,6 +56,7 @@
         "总体设计范围城市更新与控规深度城市设计",
         "交通、轨道、市政与公共服务设施",
         "蓝绿空间、公共空间与城市风貌",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -72,6 +73,9 @@
         "conceptual_building_count",
         "everyday_journey_count",
         "reversible_urban_form_prototype_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -118,6 +122,7 @@
         "重点区域详细设计",
         "AI 创新生态、人才画像与 AI+ 场景",
         "蓝绿空间、公共空间与城市风貌",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -131,6 +136,9 @@
         "land_use_education_sqm",
         "green_ratio",
         "persona_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -247,6 +255,7 @@
       "report_sections": [
         "三层范围工作框架",
         "重点区域详细设计",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -255,6 +264,9 @@
       "metrics": [
         "key_area_announced_total_sqm",
         "key_area_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -334,6 +346,7 @@
       "report_sections": [
         "统筹研究范围产业与未来城市研究",
         "总体设计范围城市更新与控规深度城市设计",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -348,6 +361,9 @@
         "green_ratio",
         "everyday_journey_count",
         "reversible_urban_form_prototype_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -387,6 +403,7 @@
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
         "用地、建筑规模与拆改留方案",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -398,6 +415,9 @@
         "land_use_commercial_service_sqm",
         "conceptual_building_count",
         "implementation_path_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -441,6 +461,7 @@
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
         "更新项目清单、实施政策与分期计划",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -451,6 +472,9 @@
       "metrics": [
         "city_completeness_segment_count",
         "conceptual_building_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -851,6 +875,7 @@
       "mandatory": true,
       "report_sections": [
         "AI 创新生态、人才画像与 AI+ 场景",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -862,6 +887,9 @@
         "ai_scenario_count",
         "industry_test_scenario_count",
         "non_ai_baseline_coverage_ratio",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -907,6 +935,7 @@
       "report_sections": [
         "AI 创新生态、人才画像与 AI+ 场景",
         "蓝绿空间、公共空间与城市风貌",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -917,6 +946,9 @@
       "metrics": [
         "public_space_count",
         "pilgrimage_landmark_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"
@@ -995,6 +1027,7 @@
       "mandatory": true,
       "report_sections": [
         "更新项目清单、实施政策与分期计划",
+        "v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION",
         "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
       ],
       "geojson_layers": [
@@ -1005,6 +1038,9 @@
         "public_space_count",
         "ai_scenario_count",
         "implementation_path_count",
+        "flagship_physical_prototype_count",
+        "preregistered_observation_slot_count",
+        "civic_station_operating_state_count",
         "official_constraint_anchor_count",
         "reference_plot_condition_count",
         "design_response_rule_count"

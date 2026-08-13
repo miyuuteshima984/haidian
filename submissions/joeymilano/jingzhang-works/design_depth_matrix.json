@@ -38,6 +38,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -56,7 +57,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -69,6 +72,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -111,6 +115,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -129,7 +134,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -142,6 +149,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -184,6 +192,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -202,7 +211,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -215,6 +226,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -257,6 +269,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -275,7 +288,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -288,6 +303,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -330,6 +346,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -348,7 +365,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -361,6 +380,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -403,6 +423,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -421,7 +442,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -434,6 +457,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -476,6 +500,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -494,7 +519,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -507,6 +534,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -549,6 +577,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -567,7 +596,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -580,6 +611,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -622,6 +654,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -640,7 +673,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -653,6 +688,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -695,6 +731,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -713,7 +750,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -726,6 +765,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -768,6 +808,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -786,7 +827,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -799,6 +842,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -841,6 +885,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -859,7 +904,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -872,6 +919,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -914,6 +962,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -932,7 +981,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -945,6 +996,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -987,6 +1039,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -1005,7 +1058,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -1018,6 +1073,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],
@@ -1060,6 +1116,7 @@
         "green_ratio",
         "public_space_ratio",
         "scenario_ready_count",
+        "complete_task_step_count",
         "field_observation_count"
       ],
       "source_ids": [
@@ -1078,7 +1135,9 @@
         "V11-FIELDWORK-KIT",
         "V11-STRESS-TEST",
         "V12-REVIEWER-EVIDENCE-INDEX",
-        "V12-DAY-ONE-DRILL"
+        "V12-DAY-ONE-DRILL",
+        "V13-COMPLETE-TASK-RECEIPT",
+        "V14-PHOTO-CREDITS"
       ],
       "assumption_ids": [
         "A-BOUNDARY-001",
@@ -1091,6 +1150,7 @@
         "KEY_AREAS_TRUST",
         "LAND_USE_TOPOLOGY",
         "USABILITY_COMPILER",
+        "COMPLETE_TASK_RECEIPT",
         "BILINGUAL_PARITY",
         "VISUAL_STATIC"
       ],

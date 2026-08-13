@@ -13,7 +13,8 @@
     "layer": "PHASE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "MultiPolygon",
@@ -89,7 +90,8 @@
     "layer": "PHASE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -143,7 +145,8 @@
     "layer": "PHASE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",

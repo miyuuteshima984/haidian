@@ -1,14 +1,14 @@
 {
   "schema_version": "0.1.0",
-  "checked_on": "2026-08-10",
-  "base_commit": "ea115e01bb8ee8aa6943447df1af7ea4dae90180",
+  "checked_on": "2026-08-13",
+  "base_commit": "5af41c9917351c084f36a9513563c1c3918d38f8",
   "validator": "scripts/self_check_submission.py from current origin/main",
   "command": "python scripts/self_check_submission.py submissions/Empress7211/open-jingzhang --pr-author Empress7211 --json",
   "status": "formal_review_ready",
   "deterministic": {
     "status": "pass",
     "errors": 0,
-    "warnings": 13
+    "warnings": 7
   },
   "spatial": {
     "status": "pass",
@@ -31,8 +31,9 @@
   },
   "can_enter_formal_review": true,
   "expected_non_blocking_notices": [
-    "legacy v1 bilingual compatibility notices",
+    "legacy v1 evidence-density notices",
+    "English A3/A0 compatibility notices",
     "provisional geometry precision notices"
   ],
-  "note": "self_check.json remains the preserved original submission record; this file is a separate maintenance-run summary."
+  "note": "self_check.json is the current persisted readiness record; this file is a compact summary of the same current-base run."
 }

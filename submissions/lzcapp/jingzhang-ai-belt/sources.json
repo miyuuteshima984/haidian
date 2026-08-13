@@ -280,6 +280,16 @@
       "usage": "Calibrates the waterfront/greenway construction cost band (5,000-8,000 CNY/m) in the Cost Five-Accounts.",
       "registry_type": "official_announcement",
       "url": "https://ggzy.zj.gov.cn/jyxxgk/002001/002001005/20251115/e4f6ce14-6068-46dc-b95b-77718adc48b4.html"
+    },
+    {
+      "id": "LZCAPP-PUBLIC-COMMENT-955",
+      "path": "https://github.com/open-city-ai/haidian/issues/955",
+      "source_type": "public_comment_channel",
+      "authority_level": "participant_self_reported",
+      "usable_for": "Demonstrating the four-stage public-participation mechanism operationalized as a live, early-stage channel with a traceable comment-response ledger (adopt / partially-adopt / reject tri-state).",
+      "not_usable_for": "As verified field study, accessibility audit, formal statutory consultation, or official public-participation record.",
+      "usage": "Lzcapp's self-initiated Public Comment Channel (#955) for the Jingzhang AI Belt proposal; multi-round structured comments from maintainers and participants, answered tri-state.",
+      "registry_type": "participant_channel"
     }
   ]
 }

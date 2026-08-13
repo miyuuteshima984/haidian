@@ -981,5 +981,34 @@
     "real_installations": 0,
     "real_restoration_acceptances": 0,
     "decision": "NO-GO"
+  },
+  "round_15_field_evidence_intake": {
+    "canonical_contract_ref": "visual/assets/field-evidence-intake-contract.json",
+    "purpose": "Give D01-D08 and H01-H07 an empty, field-usable packet, custody and disposition schema without claiming that any material has been collected.",
+    "replacement_ids_reused": [
+      "D01_OFFICIAL_GEOMETRY",
+      "D02_EXISTING_CONDITION_SURVEY",
+      "D03_REGULATORY_OWNERSHIP",
+      "D04_ACCESSIBILITY_PUBLIC_PARITY",
+      "D05_TRANSPORT_AND_PEAK_CONTINUITY",
+      "D06_SPECIALIST_CONSTRAINTS",
+      "D07_RESPONSIBILITY_OPERATIONS",
+      "D08_RIGHTS_AND_REUSE"
+    ],
+    "handoff_pack_ids_reused": [
+      "H01_AUTHORITY",
+      "H02_APPROVAL_SCOPE",
+      "H03_BASELINE",
+      "H04_DATA_SAFETY",
+      "H05_STOP_RECOVERY",
+      "H06_PUBLIC_PARITY",
+      "H07_RETEST_DECISION"
+    ],
+    "peer_method_boundary": "PR #2266 contributes public disposition semantics only; no Commons Loop brand, spatial grammar, geometry, metric, figure, media or claim is reused.",
+    "field_packet_count": 0,
+    "accepted_for_recalculation_count": 0,
+    "approval_count": 0,
+    "current_gate": "G0",
+    "decision": "NO-GO"
   }
 }

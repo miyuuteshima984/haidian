@@ -26,10 +26,10 @@ for (const item of [...(index.rubric_questions || []), ...(index.taskbook_direct
 }
 if (drill.status !== "rehearsal_protocol_not_executed") errors.push("day-one drill must remain explicitly unexecuted");
 if ((drill.run_of_day || []).length !== 7) errors.push("day-one drill must contain seven operating actions");
-if ((drill.fault_cards || []).length !== 3) errors.push("day-one drill must contain three fault cards");
+if ((drill.fault_cards || []).length !== 6) errors.push("day-one drill must contain six fault cards");
 for (const key of ["site", "date", "people", "budget", "permit"]) if (drill.unconfirmed_fields?.[key] !== null) errors.push(`${key} must remain null until confirmed`);
 const output = {
-  validator_version: "1.2.0",
+  validator_version: "1.6.0",
   index_sha256: crypto.createHash("sha256").update(indexBytes).digest("hex"),
   drill_sha256: crypto.createHash("sha256").update(drillBytes).digest("hex"),
   summary: {rubric_questions: dimensions.length, taskbook_links: tasks.length, operating_actions: (drill.run_of_day || []).length, fault_cards: (drill.fault_cards || []).length, errors: errors.length},

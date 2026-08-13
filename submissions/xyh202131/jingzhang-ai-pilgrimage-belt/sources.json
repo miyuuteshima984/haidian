@@ -1340,6 +1340,72 @@
         "No independent accessibility audit or file-level rights clearance"
       ],
       "license": "Repository review only pending complete terms and independent rights audit"
+    },
+    {
+      "id": "SOURCE-JZ-FIELD-INTAKE-CONTRACT-R15",
+      "rights_evidence_id": "SRC-RIGHTS-JZ-FIELD-INTAKE-CONTRACT-R15",
+      "title": "第15轮现场证据采集与替换空白合同",
+      "publisher": "xyh202131",
+      "path": "visual/assets/field-evidence-intake-contract.json",
+      "source_type": "package_authored_empty_evidence_contract",
+      "accessed_date": "2026-08-13",
+      "authority_level": "submission_author",
+      "collection_method": "Round 15 package-authored synthesis of existing D01-D08, H01-H07, key-area and rights contracts; contains no field values",
+      "allowable_uses": [
+        "Repository review",
+        "Internal package consistency checks"
+      ],
+      "restrictions": [
+        "Empty template only; not field evidence, professional acceptance, approval or maturity authorization"
+      ],
+      "known_gaps": [
+        "All real issuers, collectors, custodians, reviewers, artifacts, values, approvals and results remain unknown or 0"
+      ],
+      "license": "Repository review only pending complete terms and independent rights audit"
+    },
+    {
+      "id": "SOURCE-JZ-FIELD-INTAKE-FIGURE-R15",
+      "rights_evidence_id": "SRC-RIGHTS-JZ-FIELD-INTAKE-FIGURE-R15",
+      "title": "第15轮现场证据采集与替换双语系统图",
+      "publisher": "xyh202131",
+      "path": "assets/figures/field-evidence-intake.svg",
+      "source_type": "package_authored_concept_figure",
+      "accessed_date": "2026-08-13",
+      "authority_level": "submission_author",
+      "collection_method": "Package-authored SVG from the empty Round 15 contract, rasterized locally with Chrome",
+      "allowable_uses": [
+        "Repository review",
+        "Internal package consistency checks"
+      ],
+      "restrictions": [
+        "Not to scale; no field, approval, professional, operating or rights-clearance result"
+      ],
+      "known_gaps": [
+        "No independent visual or file-level rights audit"
+      ],
+      "license": "Repository review only pending complete terms and independent rights audit"
+    },
+    {
+      "id": "SOURCE-JZ-COMMONS-LOOP-METHOD-R15",
+      "rights_evidence_id": "SRC-RIGHTS-JZ-COMMONS-LOOP-METHOD-R15",
+      "title": "PR #2266 京张共创环的公众处置方法（仅方法对照）",
+      "publisher": "xyh202131",
+      "url": "https://github.com/open-city-ai/haidian/pull/2266",
+      "path": "submissions/xyh202131/jingzhang-commons-loop-v1/proposal.md",
+      "source_type": "same_author_peer_proposal_method_comparison",
+      "accessed_date": "2026-08-13",
+      "authority_level": "peer_method_only",
+      "collection_method": "Read merged proposal at commit 8cd86936a434b532645c13932281a90417344bd7 and extract public disposition semantics only",
+      "allowable_uses": [
+        "Method comparison for repository review"
+      ],
+      "restrictions": [
+        "Do not copy the Commons Loop brand, one-spine/two-wing/three-courtyard composition, geometry, metrics, figures, media, text assets or provisional/real-world claims"
+      ],
+      "known_gaps": [
+        "Separate proposal remains provisional and cannot supply field evidence or authorization for this package"
+      ],
+      "license": "Citation and method comparison only pending complete terms and independent rights audit"
     }
   ]
 }

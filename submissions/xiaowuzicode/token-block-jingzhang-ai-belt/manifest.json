@@ -26,14 +26,14 @@
       "path": "proposal.md",
       "role": "narrative",
       "required": true,
-      "sha256": "82064f31202ab0c5f37d558c9d9183abdfa52248c7af90147c2b9ebab6f1575e",
+      "sha256": "64072323699b649a45c8401830bc7010c9cb623337479724ecf40d5afcd65c67",
       "language": "en"
     },
     {
       "path": "report/proposal.zh.html",
       "role": "rendered_proposal_html",
       "required": false,
-      "sha256": "159d3976af918ee2148e74b9d4ab8ef70a44d35f4bbfe820953502e8417e4643",
+      "sha256": "d6ce9431e7a85a9134c9dc631218978bcf93c3818d4d00b83477e35eab0d3d5e",
       "language": "zh",
       "translation_of": "report/proposal.html"
     },
@@ -41,7 +41,7 @@
       "path": "proposal.zh.md",
       "role": "narrative",
       "required": false,
-      "sha256": "e89ebe8ed49a8c22e657589c11adaedbc00381495cbedbf9fae7668b3709ca86",
+      "sha256": "d4be98388a833ebaf0a8597b6f487a34a93262128a92fc6c3907adbf47eadeb9",
       "language": "zh",
       "translation_of": "proposal.md"
     },
@@ -49,7 +49,7 @@
       "path": "changelog.md",
       "role": "narrative",
       "required": false,
-      "sha256": "943878d3d2cf68d3132233082629eb644120f61f13c607e83d50043a1df4ff57"
+      "sha256": "916397dc65b6b257f1c2fddb9d7d8c7075477e0afca4f24b832129526b1e46eb"
     },
     {
       "path": "agent.json",
@@ -61,7 +61,7 @@
       "path": "metrics.json",
       "role": "metrics",
       "required": true,
-      "sha256": "515416cc2d1a5afbdf03f50af0835b21a7d8cf8df12382b45fcc6e487d999f49"
+      "sha256": "7711bc3d5b84948157910112b309d385ff7fe62c5220115d09a2fe1006aab7d6"
     },
     {
       "path": "assumptions.json",
@@ -79,7 +79,7 @@
       "path": "self_check.json",
       "role": "self_check",
       "required": true,
-      "sha256": "d8e068886ebc707d4efe2534341161901358788be2f84f1e9b3dd24c0927c270"
+      "sha256": "9ad4076c99c81a354a378251526e09eb106e16be260fed6fafb5bfcbc049d685"
     },
     {
       "path": "compliance_matrix.json",
@@ -103,7 +103,7 @@
       "path": "report/proposal.html",
       "role": "rendered_proposal_html",
       "required": true,
-      "sha256": "c408cd8f7c0e1b9cda438130e8f157062b3c4bbcaf7c65b9d1deecda81bfe324",
+      "sha256": "37246a97854a1483bca8774303cdf4b55d81be3b77d7c1e29d1f3fb9c0e729cf",
       "language": "en"
     },
     {
@@ -122,21 +122,21 @@
       "path": "drawings/a3-booklet.pdf",
       "role": "drawing",
       "required": true,
-      "sha256": "8b24e529defc4550561c6c7f7c19e50aac6b5b3202f9fd41038ae99040d4cb50",
+      "sha256": "01307c8403bf1a08b260fe438f46d126448c08d05c1c4314589851bb0f59faa4",
       "language": "en"
     },
     {
       "path": "drawings/a0-boards.pdf",
       "role": "drawing",
       "required": true,
-      "sha256": "e2adb46b52fc062eb0a32a6bf8e2acc5450c23dbc4aed221016d419f7c306ec7",
+      "sha256": "f399e95f9724e432ba760db9da925c7de38e03554fb25d6b83c173837b332d1f",
       "language": "en"
     },
     {
       "path": "visual/index.html",
       "role": "visualization",
       "required": true,
-      "sha256": "8fe2cc2b1a476eca462dd6e8b1c50d807e2fbe5d4031f58a9bf8e686305d78fe"
+      "sha256": "a149aa2cf468f7d43a8b2ecaf61c0669025e7040749c60d9752cc5664a449e00"
     },
     {
       "path": "assets/figures/identity-system.png",
@@ -149,35 +149,35 @@
       "path": "assets/figures/key-areas.png",
       "role": "proposal_figure",
       "required": true,
-      "sha256": "cdafe94fd7edacb291ae4b572f235947af5c8d67f204e967ef28b68918194048",
+      "sha256": "2ef3b9059875e2b047eb027e201b293b577a787e72911cfc97ee94ab65995d4d",
       "language": "neutral"
     },
     {
       "path": "assets/figures/land-use-structure.png",
       "role": "proposal_figure",
       "required": true,
-      "sha256": "8aea045b1cc631a3b48d4030d7e66f280e897ed7962c88383e4f2ab6893ede88",
+      "sha256": "d95a56239c5ab9b855a2457fb23e2b85cec80fa3afc1be6a0053e1a8ea7be9c5",
       "language": "neutral"
     },
     {
       "path": "assets/figures/metrics-evidence.png",
       "role": "proposal_figure",
       "required": true,
-      "sha256": "1649ffe6d1217d1ab4ff9e6950e5a6484e196891552bcaf71f33f0e15238dd5d",
+      "sha256": "73f3f42504f91f3415797a642e9fa35370dce51381b51407584f9b8b892ff5b0",
       "language": "neutral"
     },
     {
       "path": "assets/figures/mobility-bluegreen.png",
       "role": "proposal_figure",
       "required": true,
-      "sha256": "28f6299b74e529dce7fc80aa31ff4f02fa1e1d6a4ca43583f78859846ea704fc",
+      "sha256": "83714611498ac4b9d452e5fafcb333c00ee98632e4e9cdf7a1f58463191f4710",
       "language": "neutral"
     },
     {
       "path": "assets/figures/site-overview.png",
       "role": "proposal_figure",
       "required": true,
-      "sha256": "124bedf74ef0f2f678d04137241e22116fa360ef1120f20679c183a881ac7999",
+      "sha256": "13b764167326ca02c890fb280b47af05d2eded90d88c87669e1f422eba172032",
       "language": "neutral"
     },
     {
@@ -271,7 +271,7 @@
       "path": "drawings/a3-booklet.zh.pdf",
       "role": "drawing",
       "required": false,
-      "sha256": "e111c83943e452a5dbee015c1c49b78841cda8b541efd1d67705fbe5eaf49269",
+      "sha256": "fd59c86165a68fa09873458da897b603088b5743438709b337459e581942ead4",
       "language": "zh",
       "translation_of": "drawings/a3-booklet.pdf"
     },
@@ -279,7 +279,7 @@
       "path": "drawings/a0-boards.zh.pdf",
       "role": "drawing",
       "required": false,
-      "sha256": "ad760d0a28dcb9c4032bc2c83e3b3705fc156491eef556ffd252f180f7983448",
+      "sha256": "40bb2b8a638cb607fccba9dfd3a345571cea482f61f3c1a48b4a17bc873e2cad",
       "language": "zh",
       "translation_of": "drawings/a0-boards.pdf"
     },
@@ -295,43 +295,53 @@
       "path": "assets/figures/key-area-dazhongsi.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "c49ee17542858e15fac93e1608cf42569a0b323ddc8a2f2f86f75c415c291bb4",
+      "sha256": "5dd19a5e8456743f2386eee73d176d18a58157e5289903c3e344561afd273ff5",
       "language": "neutral"
     },
     {
       "path": "assets/figures/key-area-origin.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "af00ec350294b7d35f85cee694b69dd5ad8a5cd59b4372223f5baa35a6b61e6c",
+      "sha256": "bdf5298fba462dd8061e52d56c244e9e2f7114ed670b404c5f8879ea63ef83ae",
       "language": "neutral"
     },
     {
       "path": "assets/figures/key-area-zhongzhiyuan.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "363e560444dcab6e602194fd5781045afd0d4410af454181f531da0cc6eb88a6",
+      "sha256": "e93763d8e357d1e2de970fe728a70de5f8bb08d6a45b4e6792de1b88422cda0b",
       "language": "neutral"
     },
     {
       "path": "assets/figures/public-realm-section.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "2e9135e6db5cf4d497eec24446a736440e49ecdf5bd8852bab44ccd6b48e1297",
+      "sha256": "5eec284ccce5edb56ff2ef92b72495febd37983fee8694bd711f7a7672d2cc15",
       "language": "neutral"
     },
     {
       "path": "assets/figures/implementation-gates.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "f9282314b15d4ea25fdf0c2738308cf35f560e83b8ad4bcc14dd3d5fb865eea2",
+      "sha256": "bc16c365371dd98cfc0177da4678290dab4739b4a91e57cbb7597c7f5e12cf37",
       "language": "neutral"
     },
     {
       "path": "assets/figures/scenarios-personas.png",
       "role": "proposal_figure",
       "required": false,
-      "sha256": "4d2564396114f498c4452e04dde6affc8cada7519ddf548d810eef68b7e0fc6f",
+      "sha256": "ea982fc7932472578733d92fcd24e061c0891ecea479c7cf72d0d1b47c47134b",
       "language": "neutral"
+    },
+    {
+      "path": "simulation.json",
+      "role": "simulation_model",
+      "required": false,
+      "sha256": "ea0033d85b18eb16323b18c74d6f68f81282aa28ad419e00a97190cd1cf94bcd",
+      "title_zh": "令牌协议离线复演",
+      "title_en": "Offline token-protocol replay",
+      "description_zh": "确定性脚本对本包自身数据实际执行的 80 项合成复演（55 项负分支）：场景准入、令牌周期、协议状态机与几何拓扑校验；负分支成功 = 规则正确拒绝。不构成现场证据或运营批准。",
+      "description_en": "80 synthetic replay tasks (55 negative branches) executed by a deterministic script against this package's own data: scenario admission, token cycles, protocol state-machine branches and geometry-topology checks. A negative branch succeeds when the rule correctly refuses. Not field evidence and not an approval."
     }
   ],
   "validation_claim": {

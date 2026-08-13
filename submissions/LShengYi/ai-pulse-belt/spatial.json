@@ -9,7 +9,7 @@
       "title": "众智园AI自主创新加速区",
       "summary": "花园型全栈自主创新街区：科研院落、标准文化馆、体育测试场与留白弹性用地，结合清河开展建筑—绿地—水系一体化设计。",
       "source": "geometry/key_areas.geojson#PROV-KEY-001",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "ai-traffic-walkability",
         "robot-delivery-low-speed"
@@ -26,7 +26,7 @@
       "title": "北京AI原点社区",
       "summary": "近校型成果转化与人才社区：清华东路教育带缝合校区园区，原点发布厅承载开源社区与成果发布。",
       "source": "geometry/key_areas.geojson#PROV-KEY-002",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "enterprise-service-copilot"
       ],
@@ -42,7 +42,7 @@
       "title": "大钟寺AI产业聚集区",
       "summary": "站城一体化智能经济街区：站前四象限步行连通、知春路商业带、数据要素楼与国际路演节点。",
       "source": "geometry/key_areas.geojson#PROV-KEY-003",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "ai-cultural-guide",
         "ai-health-service-navigation"
@@ -76,7 +76,7 @@
       "title": "小月河场景赋能翼",
       "summary": "东侧蓝绿生态界面：防护绿带与场景测试段，承载受控试点与生态体验。",
       "source": "geometry/green_space.geojson#GREEN-001",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "robot-delivery-low-speed"
       ],
@@ -92,7 +92,7 @@
       "title": "智脉大道接驳廊道",
       "summary": "概念红线宽度（约 26–30 m 区间，待交通专项与控规确认）的新设计街道，组织街区微循环并承载无人接驳示范线（概念）与车路协同测试段。",
       "source": "geometry/roads.geojson#ROAD-008",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "ai-traffic-walkability"
       ],
@@ -108,7 +108,7 @@
       "title": "清河—绿地水系一体化带",
       "summary": "众智园片区结合清河及水绿资源开展建筑—绿地—水系一体化设计并展示清河文化（概念建议）。",
       "source": "geometry/green_space.geojson#GREEN-001",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [],
       "order": 7,
       "geometry": {
@@ -184,7 +184,7 @@
       "title": "车路协同开放测试段",
       "summary": "智脉大道概念段 1.2 km 受控测试场地，验证车路协同与无人接驳，按脉冲协议 P2 运行。",
       "source": "geometry/public_space.geojson#PUBLIC-013",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "ai-traffic-walkability"
       ],
@@ -200,7 +200,7 @@
       "title": "低空配送航线验证点",
       "summary": "众智园—大钟寺概念航线的低空物流接驳试验驿站，空域审批前不开通。",
       "source": "geometry/public_space.geojson#PUBLIC-014",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "robot-delivery-low-speed"
       ],
@@ -216,7 +216,7 @@
       "title": "多模态导视测评场",
       "summary": "绿廊中段无障碍导行多模态测评节点，不保存个人轨迹、现场可核验。",
       "source": "geometry/public_space.geojson#PUBLIC-015",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "ai-health-service-navigation"
       ],
@@ -262,7 +262,7 @@
       "title": "端侧算力驿站节点",
       "summary": "端侧算力服务点与分布式能源节点，支撑能耗调控示范楼与 AI 咖啡机器人驿站等场景。",
       "source": "geometry/buildings.geojson#BLDG-001",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [
         "enterprise-service-copilot"
       ],
@@ -278,7 +278,7 @@
       "title": "南部留白弹性用地",
       "summary": "南端用地代码 16 的 4 处留白弹性用地，为未来 AI 业态预留，远期随控规确认功能。",
       "source": "geometry/land_use.geojson#LU-001",
-      "public_level": "provisional",
+      "public_level": "public",
       "linked_scenarios": [],
       "order": 18,
       "geometry": {

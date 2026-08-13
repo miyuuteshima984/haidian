@@ -65,6 +65,12 @@
  ],
  "type_size_at_A0": [
   {
+   "sheet": "svg/crossing",
+   "min_font_units": 9.0,
+   "min_height_mm_at_A0": 4.73,
+   "pass": true
+  },
+  {
    "sheet": "svg/ecosystem",
    "min_font_units": 9.5,
    "min_height_mm_at_A0": 4.99,
@@ -125,6 +131,12 @@
    "pass": true
   },
   {
+   "sheet": "svg/sections",
+   "min_font_units": 9.5,
+   "min_height_mm_at_A0": 4.99,
+   "pass": true
+  },
+  {
    "sheet": "svg/site-check",
    "min_font_units": 9.5,
    "min_height_mm_at_A0": 4.99,
@@ -138,6 +150,12 @@
   },
   {
    "sheet": "svg/street-eye-level",
+   "min_font_units": 9.0,
+   "min_height_mm_at_A0": 4.73,
+   "pass": true
+  },
+  {
+   "sheet": "svg.en/crossing",
    "min_font_units": 9.0,
    "min_height_mm_at_A0": 4.73,
    "pass": true
@@ -203,6 +221,12 @@
    "pass": true
   },
   {
+   "sheet": "svg.en/sections",
+   "min_font_units": 9.5,
+   "min_height_mm_at_A0": 4.99,
+   "pass": true
+  },
+  {
    "sheet": "svg.en/site-overview",
    "min_font_units": 9.5,
    "min_height_mm_at_A0": 4.99,
@@ -217,21 +241,21 @@
  ],
  "offline_html": {
   "visual/index.html": {
-   "images": 12,
+   "images": 14,
    "images_without_alt": 0,
    "has_lang": true,
    "heading_level_jumps": 0,
-   "figcaptions": 13,
+   "figcaptions": 15,
    "interactive_elements_needing_focus": 0,
    "has_dark_mode": true,
    "inline_script_tags": 0
   },
   "visual/index.en.html": {
-   "images": 12,
+   "images": 14,
    "images_without_alt": 0,
    "has_lang": true,
    "heading_level_jumps": 0,
-   "figcaptions": 13,
+   "figcaptions": 15,
    "interactive_elements_needing_focus": 0,
    "has_dark_mode": true,
    "inline_script_tags": 0
@@ -240,13 +264,13 @@
  "asset_references": [
   {
    "file": "visual/index.html",
-   "references": 12,
+   "references": 14,
    "missing": [],
    "remote": []
   },
   {
    "file": "visual/index.en.html",
-   "references": 12,
+   "references": 14,
    "missing": [],
    "remote": []
   },

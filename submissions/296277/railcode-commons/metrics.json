@@ -15,8 +15,8 @@
       "formula": "polygon_area(submitted_site_boundary)",
       "confidence": "low",
       "assumptions": [
-        "Trusted official boundary is present in the site package.",
-        "Geometry uses the repository provisional rough boundary and is not an official red line."
+        "Calculated from the repository provisional rough boundary; no trusted official site polygon is available.",
+        "Recalculate all spatial metrics and derived figures when official geometry is supplied."
       ]
     },
     "building_footprint_area_sqm": {
@@ -126,6 +126,68 @@
       "formula": "count(documented_honour_nodes)",
       "confidence": "high",
       "assumptions": []
+    },
+    "pilot_duration_days": {
+      "status": "known",
+      "value": 90,
+      "unit": "day",
+      "source_files": [
+        "proposal.md"
+      ],
+      "formula": "documented_pilot_duration",
+      "confidence": "high",
+      "assumptions": [
+        "Self-imposed reversible pilot duration; not a government schedule."
+      ]
+    },
+    "implementation_gate_count": {
+      "status": "known",
+      "value": 5,
+      "unit": "count",
+      "source_files": [
+        "proposal.md",
+        "geometry/phasing.geojson"
+      ],
+      "formula": "count(G0..G4)",
+      "confidence": "high",
+      "assumptions": []
+    },
+    "delivery_contract_count": {
+      "status": "known",
+      "value": 6,
+      "unit": "count",
+      "source_files": [
+        "proposal.md"
+      ],
+      "formula": "count(RC-01..RC-06)",
+      "confidence": "high",
+      "assumptions": []
+    },
+    "redline_kpi_count": {
+      "status": "known",
+      "value": 6,
+      "unit": "count",
+      "source_files": [
+        "proposal.md"
+      ],
+      "formula": "count(documented_redline_KPIs)",
+      "confidence": "high",
+      "assumptions": [
+        "Project targets, not statutory metrics or achieved performance."
+      ]
+    },
+    "human_fallback_target_seconds": {
+      "status": "known",
+      "value": 30,
+      "unit": "second",
+      "source_files": [
+        "proposal.md"
+      ],
+      "formula": "pilot_target",
+      "confidence": "high",
+      "assumptions": [
+        "Self-imposed target; subject to pilot measurement."
+      ]
     }
   }
 }

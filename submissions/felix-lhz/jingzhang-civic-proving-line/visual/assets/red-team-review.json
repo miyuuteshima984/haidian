@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "review_date": "2026-08-12",
+  "status": "local_review_complete",
+  "summary": {
+    "blocking": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "rounds": [
+    {
+      "id": "urban_design_site_specificity",
+      "status": "pass",
+      "evidence": [
+        "OSM low-contrast context",
+        "Z01-Z07 / A11-A16 / D21-D26",
+        "six stitches and S4-S6 spine nodes"
+      ],
+      "blocking": 0,
+      "major": 0
+    },
+    {
+      "id": "ai_governance_industry_translation",
+      "status": "pass",
+      "evidence": [
+        "12/12 plan-section-flow-exit trace",
+        "five admission gates",
+        "adopt/revise/stop human authority"
+      ],
+      "blocking": 0,
+      "major": 0
+    },
+    {
+      "id": "accessibility_public_rights",
+      "status": "pass",
+      "evidence": [
+        "baseline independently complete",
+        "step-free bypass/passages/four-quadrant walk",
+        "staffed fallback and appeal"
+      ],
+      "blocking": 0,
+      "major": 0
+    }
+  ],
+  "note": "Internal adversarial review only; not an official score or field validation.",
+  "reviewed_at": "2026-08-13",
+  "version": "V3"
+}

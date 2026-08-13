@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "engine_id": "noonline-sla-engine",
+  "assertions": "deterministic_expected_results",
+  "errors": [],
+  "output": "visual/assets/noonline-sla-report.json"
+}

@@ -162,6 +162,16 @@ Dazhongsi Exchange Yard organizes transfers, short rests and safe departure for 
 
 At every yard and hour, staffed access, no-scan service, a continuous accessible route and public duty information stay online. Missing staffed access, blocked accessibility, covert tracking, personal scoring, automated punishment or production-system connection means pause and do not open. The scripts do not substitute for real site, fire, title, labor or professional-verification conclusions.
 
+## Phase 5 Deepening: Three Areas × 84-Second Accessible Tour
+
+The offline tour condenses the four action-script windows into an 84-second mute-comprehensible sequence: Zhongzhiyuan maintenance and staffed handover at 06:00–10:00; AI Origin learning, care and accessible wayfinding at 10:00–18:00; Dazhongsi transfer, short rest and help at 18:00–24:00; and recovery with safe departure at 00:00–06:00. The video uses only existing conceptual scenes, script diagrams and abstract route/service overlays. Chinese and English each have captions and a full transcript; no narration, music or scan is needed to understand it [metric:accessibility_tour_duration_seconds] [metric:accessibility_tour_time_window_count].
+
+![Three Areas accessible-tour still cover](assets/media/cover.webp)
+
+[Play the tour in the offline visual](visual/index.en.html#accessible-tour) · [中文文字稿](assets/media/three-area-access-tour-zh.md) · [English transcript](assets/media/three-area-access-tour-en.md)
+
+The tour remains a design-research presentation: it does not confirm actual sites, rosters, footfall, opening hours or implementation authorisation. Every segment assumes AI assistance only, staffed access, no-scan service and a continuous accessible route. Missing staffed access, broken accessibility, covert tracking, personal scoring, automated punishment or production-system connection means pause rather than continue [metric:accessibility_tour_silent_equivalence_count].
+
 ## AI Innovation Ecosystem, Personas, and AI+ Scenarios
 
 | Persona | Core needs |

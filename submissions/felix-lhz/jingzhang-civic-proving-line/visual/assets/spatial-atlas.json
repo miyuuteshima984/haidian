@@ -1,0 +1,621 @@
+{
+  "schema_version": "1.1.0",
+  "dataset_id": "jingzhang-two-answers-spatial-atlas",
+  "status": "concept_proposal_under_provisional_boundaries",
+  "view_box": [
+    0,
+    0,
+    1200,
+    1800
+  ],
+  "layers": [
+    {
+      "id": "baseline",
+      "order": 1,
+      "color": "#26715c"
+    },
+    {
+      "id": "ai_plugin",
+      "order": 2,
+      "color": "#e59b24"
+    },
+    {
+      "id": "evidence",
+      "order": 3,
+      "color": "#246b9a"
+    }
+  ],
+  "components": [
+    {
+      "id": "B01",
+      "family": "baseline",
+      "type": "continuous_accessible_path",
+      "name": {
+        "zh": "连续无障碍路径",
+        "en": "Continuous step-free path"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "B02",
+      "family": "baseline",
+      "type": "shade_seat_water",
+      "name": {
+        "zh": "遮阴、座椅、饮水",
+        "en": "Shade, seating and drinking water"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "B03",
+      "family": "baseline",
+      "type": "static_wayfinding_staffed_service",
+      "name": {
+        "zh": "静态导视与人工服务",
+        "en": "Static wayfinding and staffed service"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "A01",
+      "family": "ai_plugin",
+      "type": "low_speed_robot_bay",
+      "name": {
+        "zh": "低速机器人测试湾",
+        "en": "Low-speed robot test bay"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "A02",
+      "family": "ai_plugin",
+      "type": "edge_compute_cabinet",
+      "name": {
+        "zh": "端侧算力机柜",
+        "en": "Edge-compute cabinet"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "A03",
+      "family": "ai_plugin",
+      "type": "optional_service_terminal",
+      "name": {
+        "zh": "可选服务终端",
+        "en": "Optional service terminal"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "E01",
+      "family": "evidence",
+      "type": "live_status_metric_board",
+      "name": {
+        "zh": "实时状态与指标牌",
+        "en": "Live status and metric board"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "E02",
+      "family": "evidence",
+      "type": "human_takeover_stop_desk",
+      "name": {
+        "zh": "人工接管与急停台",
+        "en": "Human takeover and emergency-stop desk"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "E03",
+      "family": "evidence",
+      "type": "feedback_appeal_exit_notice",
+      "name": {
+        "zh": "反馈、申诉与退出公告",
+        "en": "Feedback, appeal and exit notice"
+      },
+      "source_type": "agent_generated_design",
+      "geometry_role": "design_proposal",
+      "status": "concept_proposal"
+    }
+  ],
+  "stations": [
+    {
+      "id": "zhongzhiyuan",
+      "name": {
+        "zh": "众智园能力验证庭",
+        "en": "Zhongzhiyuan Capability Validation Court"
+      },
+      "prototype": "controlled_loop_complete_bypass",
+      "scenario_ids": [
+        "SCN-001",
+        "SCN-002",
+        "SCN-003"
+      ],
+      "component_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "A01",
+        "A02",
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "view_box": [
+        0,
+        0,
+        1200,
+        700
+      ],
+      "context_bbox": [
+        116.341,
+        40.006,
+        116.356,
+        40.027
+      ],
+      "drawing_scale": "1:5000",
+      "scale_note": {
+        "zh": "概念比例，待官方底图复核",
+        "en": "Concept scale; verify against official base"
+      },
+      "section_id": "SEC-Z-01",
+      "operator_flow_id": "FLOW-Z-01",
+      "booklet_pages": [
+        8,
+        9
+      ],
+      "plan_type": "controlled_loop_complete_bypass",
+      "spatial_problem": {
+        "zh": "测试活动与全天公众通行冲突。",
+        "en": "Controlled testing conflicts with all-day public passage."
+      },
+      "design_elements": [
+        {
+          "id": "Z01",
+          "type": "public_bypass",
+          "name": {
+            "zh": "完整公共旁路",
+            "en": "Complete public bypass"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z02",
+          "type": "robot_loop",
+          "name": {
+            "zh": "围合机器人测试环",
+            "en": "Enclosed robot loop"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z03",
+          "type": "reproduction_room",
+          "name": {
+            "zh": "模型复现室",
+            "en": "Reproduction room"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z04",
+          "type": "cabinet_yard",
+          "name": {
+            "zh": "端侧机柜运维院",
+            "en": "Edge cabinet service yard"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z05",
+          "type": "safety_buffer",
+          "name": {
+            "zh": "人机安全缓冲",
+            "en": "Human–machine safety buffer"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z06",
+          "type": "emergency_sightline",
+          "name": {
+            "zh": "急停视线",
+            "en": "Emergency-stop sightline"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "Z07",
+          "type": "removal_route",
+          "name": {
+            "zh": "设备撤场通道",
+            "en": "Equipment removal route"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        }
+      ],
+      "operator_flow": [
+        "baseline_arrival",
+        "staffed_check",
+        "optional_ai_admission",
+        "evidence_capture",
+        "human_decision",
+        "exit_restore"
+      ]
+    },
+    {
+      "id": "ai_origin",
+      "name": {
+        "zh": "AI 原点公共转译厅",
+        "en": "AI Origin Public Translation Hall"
+      },
+      "prototype": "porous_public_hall",
+      "scenario_ids": [
+        "SCN-004",
+        "SCN-005",
+        "SCN-006"
+      ],
+      "component_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "A03",
+        "E01",
+        "E03"
+      ],
+      "view_box": [
+        0,
+        0,
+        1200,
+        700
+      ],
+      "context_bbox": [
+        116.34,
+        39.982,
+        116.355,
+        39.995
+      ],
+      "drawing_scale": "1:5000",
+      "scale_note": {
+        "zh": "概念比例，待官方底图复核",
+        "en": "Concept scale; verify against official base"
+      },
+      "section_id": "SEC-A-01",
+      "operator_flow_id": "FLOW-A-01",
+      "booklet_pages": [
+        10,
+        11
+      ],
+      "plan_type": "porous_public_hall",
+      "spatial_problem": {
+        "zh": "专业服务门槛与社区日常穿行割裂。",
+        "en": "Professional service thresholds sever everyday public passage."
+      },
+      "design_elements": [
+        {
+          "id": "A11",
+          "type": "step_free_paths",
+          "name": {
+            "zh": "三条无门槛穿行路径",
+            "en": "Three step-free passages"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "A12",
+          "type": "staffed_frontdesk",
+          "name": {
+            "zh": "人工企业服务台",
+            "en": "Staffed enterprise desk"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "A13",
+          "type": "bilingual_arrival",
+          "name": {
+            "zh": "双语抵达台",
+            "en": "Bilingual arrival desk"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "A14",
+          "type": "workshop_tables",
+          "name": {
+            "zh": "开源共创桌",
+            "en": "Open-source workshop tables"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "A15",
+          "type": "closeable_plugin_wall",
+          "name": {
+            "zh": "可关闭插件墙",
+            "en": "Closeable plug-in wall"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "A16",
+          "type": "human_review_backoffice",
+          "name": {
+            "zh": "人工复核后台",
+            "en": "Human review back office"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        }
+      ],
+      "operator_flow": [
+        "baseline_arrival",
+        "staffed_check",
+        "optional_ai_admission",
+        "evidence_capture",
+        "human_decision",
+        "exit_restore"
+      ]
+    },
+    {
+      "id": "dazhongsi",
+      "name": {
+        "zh": "大钟寺城市采用场",
+        "en": "Dazhongsi Civic Adoption Field"
+      },
+      "prototype": "interchange_forecourt_timed_bay",
+      "scenario_ids": [
+        "SCN-010",
+        "SCN-011",
+        "SCN-012"
+      ],
+      "component_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "A01",
+        "A03",
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "view_box": [
+        0,
+        0,
+        1200,
+        700
+      ],
+      "context_bbox": [
+        116.34,
+        39.942,
+        116.357,
+        39.952
+      ],
+      "drawing_scale": "1:5000",
+      "scale_note": {
+        "zh": "概念比例，待官方底图复核",
+        "en": "Concept scale; verify against official base"
+      },
+      "section_id": "SEC-D-01",
+      "operator_flow_id": "FLOW-D-01",
+      "booklet_pages": [
+        12,
+        13
+      ],
+      "plan_type": "interchange_forecourt_timed_bay",
+      "spatial_problem": {
+        "zh": "轨道接驳、日常广场与限时试验争夺同一前场。",
+        "en": "Transit, daily plaza life and timed trials compete for one forecourt."
+      },
+      "design_elements": [
+        {
+          "id": "D21",
+          "type": "four_quadrant_walk",
+          "name": {
+            "zh": "四象限步行联系",
+            "en": "Four-quadrant walking links"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "D22",
+          "type": "conventional_forecourt",
+          "name": {
+            "zh": "常规接驳前场",
+            "en": "Conventional interchange forecourt"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "D23",
+          "type": "low_speed_bay",
+          "name": {
+            "zh": "独立低速试验湾",
+            "en": "Independent low-speed trial bay"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "D24",
+          "type": "evacuation_surface",
+          "name": {
+            "zh": "活动疏散面",
+            "en": "Event evacuation surface"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "D25",
+          "type": "evidence_square",
+          "name": {
+            "zh": "证据广场",
+            "en": "Evidence square"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        },
+        {
+          "id": "D26",
+          "type": "restoration_route",
+          "name": {
+            "zh": "普通用途恢复路径",
+            "en": "Ordinary-use restoration route"
+          },
+          "source_type": "agent_generated_design",
+          "geometry_role": "design_proposal",
+          "status": "concept_proposal"
+        }
+      ],
+      "operator_flow": [
+        "baseline_arrival",
+        "staffed_check",
+        "optional_ai_admission",
+        "evidence_capture",
+        "human_decision",
+        "exit_restore"
+      ]
+    }
+  ],
+  "wings": [
+    {
+      "id": "service_wing",
+      "name": {
+        "zh": "中关村科技服务翼",
+        "en": "Zhongguancun Technology Service Wing"
+      }
+    },
+    {
+      "id": "scene_wing",
+      "name": {
+        "zh": "小月河场景赋能翼",
+        "en": "Xiaoyuehe Scenario Enablement Wing"
+      }
+    }
+  ],
+  "stitches": [
+    {
+      "id": "STITCH-01",
+      "station": "zhongzhiyuan",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "STITCH-02",
+      "station": "zhongzhiyuan",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "STITCH-03",
+      "station": "ai_origin",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "STITCH-04",
+      "station": "ai_origin",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "STITCH-05",
+      "station": "dazhongsi",
+      "status": "concept_proposal"
+    },
+    {
+      "id": "STITCH-06",
+      "station": "dazhongsi",
+      "status": "concept_proposal"
+    }
+  ],
+  "usage_note": {
+    "zh": "仅为临时边界下的概念性空间布局；不得作为现状测绘、法定总平面、道路红线或审批依据。",
+    "en": "Conceptual spatial layout under provisional boundaries; not a survey, statutory plan, road redline or approval basis."
+  },
+  "publication_version": "V3",
+  "context_dataset": "context-open-map.json",
+  "spine": {
+    "id": "public_baseline_spine",
+    "scenario_ids": [
+      "SCN-007",
+      "SCN-008",
+      "SCN-009"
+    ],
+    "nodes": [
+      {
+        "id": "SP-S4",
+        "scenario": "SCN-007",
+        "name": {
+          "zh": "京张文化停靠",
+          "en": "Jing-Zhang culture stop"
+        }
+      },
+      {
+        "id": "SP-S5",
+        "scenario": "SCN-008",
+        "name": {
+          "zh": "无障碍导航节点",
+          "en": "Accessible navigation node"
+        }
+      },
+      {
+        "id": "SP-S6",
+        "scenario": "SCN-009",
+        "name": {
+          "zh": "气候休息节点",
+          "en": "Climate rest node"
+        }
+      }
+    ],
+    "source_type": "agent_generated_design",
+    "geometry_role": "design_proposal",
+    "status": "concept_proposal"
+  }
+}

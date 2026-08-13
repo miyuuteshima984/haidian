@@ -1,5 +1,27 @@
 # 方案迭代记录
 
+## v1.3 - 2026-08-13
+
+### 改动摘要
+
+- 新增 `simulation.json` 令牌协议离线复演（80 项任务、55 项负分支、10 条协议规则机读索引），
+  由确定性脚本 **实际执行** 于本包自身数据：每张场景卡 1 次合规准入 + 4 个失败分支（匿名预订/
+  缺数据边界/越出区间/自动取消人工复核）；每个区间 1 次完整「预订—布设—运行—归还」令牌周期；
+  8 条状态机分支复演硬规则（含「第一枚令牌未归还时第二枚必须被拒」「归还之后才发下一枚」）；
+  6 项拓扑校验把场景卡绑定到提交几何。负分支记 rule_check_success 表示规则正确拒绝了该尝试；
+  两次运行输出逐字节一致。**不构成现场证据、安全证明或运营批准。**
+- `metrics.json` 新增 8 项 known 指标并全部挂接正文锚点：4 项复演聚合值
+  （simulation_task_count / simulation_success_rate / tool_schema_pass_rate /
+  audit_completeness，均可被仓库校验器从任务记录重算）、simulation_negative_branch_count、
+  token_protocol_rule_count，及 2 项治理覆盖指标（scenario_data_boundary_count /
+  scenario_human_review_count，从 geometry/constraints.geojson 复算）。
+- 双语正文新增「离线协议复演」小节；A3 第 18 页与 A0 第 7 板新增「协议复演与治理覆盖」
+  紧凑区块（面积一致性校核移至右栏，两语言版均无溢出）。
+- 复演过程中澄清并修正了一处检查语义：场景卡「位于声明区间内」指位于场地边界内、该区间
+  纬度带范围内——场景卡可以朝向站台广场或重点区临街面，不要求压在轨道段 polygon 上
+  （SCEN-09 / SCEN-10 即此情形，距轨道段约 140–170 米）。
+
+
 ## v1.2 - 2026-08-12
 
 ### 改动摘要

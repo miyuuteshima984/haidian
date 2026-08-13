@@ -114,7 +114,7 @@
       "role": "visualization",
       "required": true,
       "language": "zh",
-      "sha256": "3372f8ccf4fb7398f2a51455260609f17751d0471cd4801fa12f4e86609cb22c"
+      "sha256": "48ed858133dcf0636d8469fcb2d363736cf2b81f8196a5d900ca6f919781ee27"
     },
     {
       "path": "assets/figures/key-areas.png",
@@ -243,7 +243,7 @@
       "required": true,
       "language": "en",
       "translation_of": "visual/index.html",
-      "sha256": "3ec5eedaf9d8ecd6e565b1af44e8081e3e85f2823aa834fe988932926f89916d"
+      "sha256": "f7f9eb97ccaa33d842bd13dc9eb08bdba077ac6bb5954554c9e87e45488cf3a9"
     },
     {
       "path": "visual/assets/mainline-tabletop.json",

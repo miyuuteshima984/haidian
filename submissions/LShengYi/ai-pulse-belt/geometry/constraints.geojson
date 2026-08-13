@@ -3,15 +3,17 @@
  "features": [
   {
    "type": "Feature",
-   "id": "CONSTRAINTS",
+   "id": "CONSTRAINTS-01",
    "properties": {
     "name_zh": "京张智脉绿廊保护控制带（概念）",
     "constraint_type": "concept_greenway",
-    "id": "CONSTRAINTS",
+    "usage_note": "分析辅助层：绿廊保护控制带为概念表达、非强制控制线，超出站界部分不构成任何实施承诺",
+    "id": "CONSTRAINTS-01",
     "layer": "REGULATORY_CONTROL",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "analysis_helper"
+    "geometry_role": "analysis_helper",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -51,7 +53,8 @@
     "layer": "HERITAGE_PROTECTION",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "analysis_helper"
+    "geometry_role": "analysis_helper",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -91,7 +94,8 @@
     "layer": "HERITAGE_PROTECTION",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "analysis_helper"
+    "geometry_role": "analysis_helper",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",

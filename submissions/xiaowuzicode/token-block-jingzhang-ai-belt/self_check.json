@@ -64,6 +64,7 @@
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/report/proposal.zh.html",
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/risk.json",
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/self_check.json",
+        "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/simulation.json",
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/sources.json",
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/standard_matrix.json",
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt/visual/assets/three-0.160.0.min.js",
@@ -73,7 +74,7 @@
       "ai_package_stages": {
         "submissions/xiaowuzicode/token-block-jingzhang-ai-belt": "formal"
       },
-      "total_bytes": 13654156,
+      "total_bytes": 13714621,
       "maintainer_bypass": false
     },
     "stderr": ""
@@ -162,7 +163,15 @@
         "phasing_area_phase_1_sqm": 2766468.08,
         "phasing_area_phase_2_sqm": 4819993.633,
         "phasing_area_phase_3_sqm": 3826369.035,
-        "ai_scenario_card_count": 12.0
+        "ai_scenario_card_count": 12.0,
+        "simulation_task_count": 80.0,
+        "simulation_success_rate": 1.0,
+        "tool_schema_pass_rate": 1.0,
+        "audit_completeness": 1.0,
+        "simulation_negative_branch_count": 55.0,
+        "token_protocol_rule_count": 10.0,
+        "scenario_data_boundary_count": 12.0,
+        "scenario_human_review_count": 12.0
       }
     },
     "stderr": ""
@@ -176,7 +185,7 @@
       "summary": {
         "standard_matrix_items": 6,
         "design_depth_items": 15,
-        "known_metric_refs_required": 32,
+        "known_metric_refs_required": 40,
         "proposal_format_version": "1",
         "evidence_contract": "legacy-exhaustive-inline",
         "proposal_reference_counts": {
@@ -184,7 +193,7 @@
           "standard": 6,
           "depth": 15,
           "data": 25,
-          "metric": 32
+          "metric": 40
         }
       }
     },

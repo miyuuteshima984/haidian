@@ -8,7 +8,7 @@
     "disclosure_effect": "audit_ready_not_cleared"
   },
   "coverage": {
-    "source_record_count": 46,
+    "source_record_count": 50,
     "osm_element_count": 120,
     "completed_independent_file_level_clearance_audits": 0,
     "asset_ledger_ref": "rights-clearance-ledger.json#asset_records"
@@ -1986,6 +1986,135 @@
         "evidence_state": "source_record_statement_only",
         "independent_review_status": "not_started",
         "package_use_mode": "repository_input"
+      },
+      "downstream_asset_ref": "rights-clearance-ledger.json#asset_records",
+      "unresolved_item_ids": [
+        "RIGHTS-OPEN-01",
+        "RIGHTS-OPEN-02",
+        "RIGHTS-OPEN-04"
+      ]
+    },
+    {
+      "evidence_id": "SRC-RIGHTS-JZ-FIELD-INTAKE-CONTRACT-R15",
+      "source_id": "SOURCE-JZ-FIELD-INTAKE-CONTRACT-R15",
+      "source_record_ref": "../../sources.json#SOURCE-JZ-FIELD-INTAKE-CONTRACT-R15",
+      "publisher": "xyh202131",
+      "locator": {
+        "kind": "repository_path",
+        "value": "visual/assets/field-evidence-intake-contract.json"
+      },
+      "published_or_obtained": {
+        "status": "recorded",
+        "value": "2026-08-13",
+        "basis": "Package-authored empty evidence contract; not a field, professional, approval or operating date."
+      },
+      "accessed_date": "2026-08-13",
+      "original_format": {
+        "status": "observed_from_repository_object",
+        "label": "JSON empty field-evidence intake contract",
+        "media_type": "application/json",
+        "basis": "Observed directly from the package object."
+      },
+      "integrity": {
+        "method": "sha256",
+        "algorithm": "sha256",
+        "digest": "76164f013430569f8b6c438b6e259fe4b111e883816da08ea0049d50021b8a0d",
+        "digest_scope": "Exact package bytes at visual/assets/field-evidence-intake-contract.json before final manifest refresh",
+        "artifact_in_submission": true,
+        "limitation": "Fixes template bytes only and establishes no collected artifact, professional decision, approval or rights clearance."
+      },
+      "rights_basis": {
+        "declared_basis": "package_author_statement_for_repository_review_only",
+        "terms_locator": null,
+        "evidence_state": "source_record_statement_only",
+        "independent_review_status": "not_started",
+        "package_use_mode": "repository_input"
+      },
+      "downstream_asset_ref": "rights-clearance-ledger.json#asset_records",
+      "unresolved_item_ids": [
+        "RIGHTS-OPEN-01",
+        "RIGHTS-OPEN-02",
+        "RIGHTS-OPEN-04"
+      ]
+    },
+    {
+      "evidence_id": "SRC-RIGHTS-JZ-FIELD-INTAKE-FIGURE-R15",
+      "source_id": "SOURCE-JZ-FIELD-INTAKE-FIGURE-R15",
+      "source_record_ref": "../../sources.json#SOURCE-JZ-FIELD-INTAKE-FIGURE-R15",
+      "publisher": "xyh202131",
+      "locator": {
+        "kind": "repository_path",
+        "value": "assets/figures/field-evidence-intake.svg"
+      },
+      "published_or_obtained": {
+        "status": "recorded",
+        "value": "2026-08-13",
+        "basis": "Package-authored Round 15 system figure; not field, approval, professional or rights evidence."
+      },
+      "accessed_date": "2026-08-13",
+      "original_format": {
+        "status": "observed_from_repository_object",
+        "label": "SVG concept system figure",
+        "media_type": "image/svg+xml",
+        "basis": "Observed directly from the package object."
+      },
+      "integrity": {
+        "method": "sha256",
+        "algorithm": "sha256",
+        "digest": "1969c5bb2717ec83b77d8e51d4c93d014c2ba58628d445d259e6a936277e8866",
+        "digest_scope": "Exact package bytes at assets/figures/field-evidence-intake.svg before final manifest refresh",
+        "artifact_in_submission": true,
+        "limitation": "Fixes concept-figure bytes only and establishes no field or clearance result."
+      },
+      "rights_basis": {
+        "declared_basis": "package_author_statement_for_repository_review_only",
+        "terms_locator": null,
+        "evidence_state": "source_record_statement_only",
+        "independent_review_status": "not_started",
+        "package_use_mode": "repository_input"
+      },
+      "downstream_asset_ref": "rights-clearance-ledger.json#asset_records",
+      "unresolved_item_ids": [
+        "RIGHTS-OPEN-01",
+        "RIGHTS-OPEN-02",
+        "RIGHTS-OPEN-04"
+      ]
+    },
+    {
+      "evidence_id": "SRC-RIGHTS-JZ-COMMONS-LOOP-METHOD-R15",
+      "source_id": "SOURCE-JZ-COMMONS-LOOP-METHOD-R15",
+      "source_record_ref": "../../sources.json#SOURCE-JZ-COMMONS-LOOP-METHOD-R15",
+      "publisher": "xyh202131",
+      "locator": {
+        "kind": "repository_commit_path",
+        "value": "8cd86936a434b532645c13932281a90417344bd7:submissions/xyh202131/jingzhang-commons-loop-v1/proposal.md"
+      },
+      "published_or_obtained": {
+        "status": "recorded",
+        "value": "2026-08-13",
+        "basis": "Merged repository proposal inspected for same-author method comparison only."
+      },
+      "accessed_date": "2026-08-13",
+      "original_format": {
+        "status": "observed_from_repository_object",
+        "label": "Markdown peer proposal",
+        "media_type": "text/markdown",
+        "basis": "Observed at the fixed merged repository commit."
+      },
+      "integrity": {
+        "method": "git_object",
+        "algorithm": "sha1",
+        "digest": "6d7b520b978c5cee2eeb9ce9c30e8e7f682172d8",
+        "digest_scope": "Git blob for the peer proposal at merged commit 8cd86936a434b532645c13932281a90417344bd7",
+        "artifact_in_submission": false,
+        "limitation": "Fixes the method-reading source only; no asset, geometry, metric or real-world claim is imported."
+      },
+      "rights_basis": {
+        "declared_basis": "same_author_method_comparison_and_citation_only",
+        "terms_locator": null,
+        "evidence_state": "source_record_statement_only",
+        "independent_review_status": "not_started",
+        "package_use_mode": "citation_only"
       },
       "downstream_asset_ref": "rights-clearance-ledger.json#asset_records",
       "unresolved_item_ids": [

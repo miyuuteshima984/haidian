@@ -33,6 +33,10 @@
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/failure-governance-writeback.en.svg",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/failure-governance-writeback.png",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/failure-governance-writeback.svg",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/field-evidence-intake.en.png",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/field-evidence-intake.en.svg",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/field-evidence-intake.png",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/field-evidence-intake.svg",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/implementation-roadmap.en.png",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/implementation-roadmap.png",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/assets/figures/industry-public-value-state.en.png",
@@ -114,6 +118,7 @@
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/climate-resilience-contract.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/evidence-freshness-policy.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/failure-governance-register.json",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/field-evidence-intake-contract.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/g0-offline-enterprise-service-baseline.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/g1-preregistration-register.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/implementation-handoff-matrix.json",
@@ -129,6 +134,7 @@
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/review-walkthrough.js",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/review-walkthrough.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/rights-clearance-ledger.json",
+        "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/round15-baseline.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/run_t02_g0_g1_replay.js",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/site-grounding-register.json",
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt/visual/assets/source-rights-evidence.json",
@@ -143,7 +149,7 @@
       "ai_package_stages": {
         "submissions/xyh202131/jingzhang-ai-pilgrimage-belt": "formal"
       },
-      "total_bytes": 39386641,
+      "total_bytes": 24729353,
       "maintainer_bypass": false
     },
     "stderr": ""
@@ -232,10 +238,10 @@
         "proposal_format_version": "2",
         "evidence_contract": "section-anchors-plus-structured-audit",
         "proposal_reference_counts": {
-          "source": 30,
+          "source": 31,
           "standard": 6,
           "depth": 15,
-          "data": 64,
+          "data": 69,
           "metric": 80
         }
       }

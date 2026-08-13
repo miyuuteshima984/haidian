@@ -10,18 +10,7 @@
       "ok": true,
       "errors": [],
       "warnings": [
-        "submissions/LShengYi/ai-pulse-belt/geometry/site_boundary.geojson: uses provisional boundary; do not treat it as an official redline or precise-area basis. Organizer data gaps do not block content scoring; recalculate when official geometry is supplied",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[0]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[1]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[2]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[4]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[5]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[6]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[11]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[12]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[13]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[16]: provisional spatial concept needs maintainer review before being treated as public-facing context",
-        "submissions/LShengYi/ai-pulse-belt/spatial.json: items[17]: provisional spatial concept needs maintainer review before being treated as public-facing context"
+        "submissions/LShengYi/ai-pulse-belt/geometry/site_boundary.geojson: uses provisional boundary; do not treat it as an official redline or precise-area basis. Organizer data gaps do not block content scoring; recalculate when official geometry is supplied"
       ],
       "proposal_files": [
         "submissions/LShengYi/ai-pulse-belt/proposal.md"
@@ -82,7 +71,7 @@
       "ai_package_stages": {
         "submissions/LShengYi/ai-pulse-belt": "formal"
       },
-      "total_bytes": 12449576,
+      "total_bytes": 18124051,
       "maintainer_bypass": false
     },
     "stderr": ""
@@ -156,15 +145,15 @@
       "summary": {
         "standard_matrix_items": 14,
         "design_depth_items": 15,
-        "known_metric_refs_required": 5,
+        "known_metric_refs_required": 44,
         "proposal_format_version": "2",
         "evidence_contract": "section-anchors-plus-structured-audit",
         "proposal_reference_counts": {
-          "source": 13,
+          "source": 11,
           "standard": 14,
           "depth": 15,
           "data": 27,
-          "metric": 9
+          "metric": 48
         }
       }
     },

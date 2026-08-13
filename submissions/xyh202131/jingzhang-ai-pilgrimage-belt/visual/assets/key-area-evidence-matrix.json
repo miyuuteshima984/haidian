@@ -2120,5 +2120,19 @@
     ],
     "current_matrix_field_coverage_ratio": 1.0,
     "coverage_definition": "The ratio measures presence of required crosswalk fields in the three records; it is not field coverage, partner confirmation, approval, operating performance, or public-value evidence."
+  },
+  "round_15_differentiated_field_routes": {
+    "canonical_contract_ref": "visual/assets/field-evidence-intake-contract.json#three_differentiated_future_routes",
+    "route_refs": {
+      "KAE-001": "FIELD-ROUTE-ZZY",
+      "KAE-002": "FIELD-ROUTE-ORIGIN",
+      "KAE-003": "FIELD-ROUTE-DZS"
+    },
+    "non_copyable_rule": "Zhongzhiyuan collects isolation/restoration evidence, Origin collects consent/withdrawal and resident-ordinary-life evidence, and Dazhongsi collects peak-continuity and source-correction evidence; one route must not be substituted for another.",
+    "completed_field_route_count": 0,
+    "collected_artifact_count": 0,
+    "known_field_result_count": 0,
+    "current_state": "future_method_not_executed",
+    "maturity_upgrade": false
   }
 }

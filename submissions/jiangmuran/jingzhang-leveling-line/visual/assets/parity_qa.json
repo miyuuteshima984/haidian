@@ -1,6 +1,6 @@
 {
  "method": "English words per Chinese character, tables and code fences excluded. Calibrated to the field: 0.784 words/char measured across the 41 scored packages (see score_correlates.json); the floor is 0.75 of that. This measures content parity, which string-coverage counters do not. Parity does not predict review score (r = -0.20); the gate exists for the reader.",
- "overall_ratio": 0.869,
+ "overall_ratio": 0.868,
  "floor": 0.75,
  "sections": [
   {
@@ -19,9 +19,9 @@
   },
   {
    "section": "Design Basis and Source List",
-   "zh_chars": 9260,
-   "en_words": 6142,
-   "ratio": 0.846,
+   "zh_chars": 9654,
+   "en_words": 6424,
+   "ratio": 0.849,
    "pass": true
   },
   {
@@ -75,9 +75,9 @@
   },
   {
    "section": "Blue-Green Network, Public Space, and Urban Character",
-   "zh_chars": 3511,
-   "en_words": 2179,
-   "ratio": 0.792,
+   "zh_chars": 4871,
+   "en_words": 3071,
+   "ratio": 0.804,
    "pass": true
   },
   {
@@ -89,8 +89,8 @@
   },
   {
    "section": "Metrics, Area Recalculation, and Compliance Matrix",
-   "zh_chars": 4796,
-   "en_words": 3324,
+   "zh_chars": 4820,
+   "en_words": 3340,
    "ratio": 0.884,
    "pass": true
   },
@@ -103,9 +103,9 @@
   },
   {
    "section": "References",
-   "zh_chars": 1824,
-   "en_words": 1402,
-   "ratio": 0.98,
+   "zh_chars": 1991,
+   "en_words": 1508,
+   "ratio": 0.966,
    "pass": true
   }
  ],

@@ -130,6 +130,22 @@ The spatial effect of AI is reduced to six reversible prototypes: test pockets, 
 
 ![How AI changes urban form: six reversible physical interfaces](assets/figures/ai-urban-form-change.en.svg)
 
+<!-- V08-PROTOTYPE-START -->
+### v0.8 | One 1:1 urban prototype from six interfaces: C7 CIVIC STATION
+
+v0.8 is a **prototype-first parallel candidate** branched from the v0.7 exact head. Instead of adding another reviewer dashboard, it converges the six reversible interfaces into one public-space prototype that can be read on one page and later developed against real site conditions: **C7 CIVIC STATION**. It is not an “AI kiosk”; it is a spatial sequence in which the ordinary city works first and AI enters only as an optional layer. [metric:flagship_physical_prototype_count]
+
+The prototype always has five parts: **(1) ordinary-city base** (shade, seating, continuous accessibility, fixed bilingual wayfinding and ordinary passage) → **(2) staffed service** (no-account counter, paper/telephone entry and human takeover) → **(3) optional AI** (multilingual Q&A, route assistance and service matching) → **(4) controlled test pocket** (physically separated from public passage, closable and removable) → **(5) AI-OFF recovery state** (basic passage, help, staying and service remain available after shutdown). Its three operating states are DAILY / CONTROLLED TEST / AI-OFF. A test may never displace ordinary passage, accessibility or basic public service. [metric:civic_station_operating_state_count]
+
+![C7 CIVIC STATION: one reversible and recoverable 1:1 urban prototype](assets/figures/c7-civic-station-prototype.en.svg)
+
+The same prototype is embedded differently in the three key areas. Zhongzhiyuan separates controlled testing from the ordinary paths of workers and visitors; AI Origin prioritizes no-phone and care journeys before optional AI; Dazhongsi prioritizes fixed bilingual arrival and staffed interchange before dynamic information. The fixed `key-areas.en.png` is rebuilt to show these three distinct embeddings rather than another governance matrix.
+
+### v0.8 | Fifteen preregistered observation slots, with no fabricated field values
+
+Each key area receives five stable observation categories—**arrival continuity, no-account/staffed equivalence, accessibility and staying, test boundary, shutdown/recovery and maintenance**—for 15 `observation_id` values in total. [metric:preregistered_observation_slot_count] All are currently `not_measured`; coordinates, sample sizes, thresholds, field readings, permission and named responsible entities remain pending real survey and professional confirmation. This is a future field-work package, not field evidence. See `visual/assets/field-observation-register.json`.
+<!-- V08-PROTOTYPE-END -->
+
 <!-- V09-REALITY-START -->
 ### v0.9 | REALITY-ANCHORED: a source enters the design story only if it changes a spatial decision
 

@@ -10,7 +10,9 @@
       "proposal_sections": [
         "设计依据与资料清单",
         "总体设计范围城市更新与控规深度城市设计",
-        "指标体系、面积复算与合规矩阵"
+        "指标体系、面积复算与合规矩阵",
+        "TG-PILOT-01：72 平方米可撤离校译单元",
+        "城市校样回执：把退出权交还给使用者"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -24,8 +26,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -35,7 +36,14 @@
         "key_area_count",
         "scenario_node_count",
         "test_validation_scenario_count",
-        "landmark_count"
+        "landmark_count",
+        "pilot_module_area_sqm",
+        "pilot_operating_state_count",
+        "pilot_minimum_open_shift_staff_count",
+        "pilot_handoff_target_seconds",
+        "proof_receipt_required_field_count",
+        "synthetic_inclusion_journey_count",
+        "synthetic_inclusion_journey_pass_count"
       ],
       "source_ids": [
         "SITE-PACKAGE",
@@ -54,7 +62,10 @@
         "A-ROAD-001",
         "A-HERITAGE-001",
         "A-IMPLEMENTATION-001",
-        "A-CASE-TRANSFER-001"
+        "A-CASE-TRANSFER-001",
+        "A-PILOT-MODULE-001",
+        "A-PILOT-TARGET-001",
+        "A-INCLUSION-SYNTHETIC-001"
       ],
       "self_check_ids": [
         "BOUNDARY_TRUST",
@@ -62,8 +73,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "PROJECT-OFFICIAL-ANNOUNCEMENT 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "PROJECT-OFFICIAL-ANNOUNCEMENT is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "用三层范围、三院详细设计和可复算成果逐项对应公告 1.3—1.5；临时边界不升级为正式控制。",
+      "evidence_summary_en": "Three scales, detailed yard designs, and reproducible outputs respond item by item to Sections 1.3–1.5; provisional boundaries are not upgraded."
     },
     {
       "standard_id": "PROJECT-AGENT-OPEN-CALL-TASKBOOK",
@@ -88,8 +99,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -126,8 +136,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "PROJECT-AGENT-OPEN-CALL-TASKBOOK 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "PROJECT-AGENT-OPEN-CALL-TASKBOOK is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "六项智能体任务分别落入概念、生态、场景、公共空间、文化和运营证据，并共享一套六门退出逻辑。",
+      "evidence_summary_en": "The six agent tasks map to concept, ecosystem, scenarios, public space, culture, and operations evidence under one Six-Gate exit logic."
     },
     {
       "standard_id": "MOHURD-URBAN-DESIGN-MEASURES",
@@ -152,8 +162,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -190,8 +199,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "MOHURD-URBAN-DESIGN-MEASURES 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "MOHURD-URBAN-DESIGN-MEASURES is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "以空间结构、公共界面、慢行蓝绿和风貌原则指导后续建筑深化，同时清楚限制当前概念深度。",
+      "evidence_summary_en": "Spatial structure, civic interfaces, blue-green mobility, and character principles guide later architecture while current concept depth stays explicit."
     },
     {
       "standard_id": "MOHURD-CONTROL-DETAILED-PLANNING",
@@ -216,8 +225,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -254,8 +262,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "MOHURD-CONTROL-DETAILED-PLANNING 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "MOHURD-CONTROL-DETAILED-PLANNING is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "已知值、设计原型与待确认控规分栏表达，容积率、高度、拆改留等法定结论保持 unknown。",
+      "evidence_summary_en": "Known values, design prototypes, and pending controls are separated; statutory FAR, height, and demolition conclusions remain unknown."
     },
     {
       "standard_id": "MNR-LAND-USE-CLASSIFICATION-GUIDE",
@@ -280,8 +288,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -318,8 +325,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "MNR-LAND-USE-CLASSIFICATION-GUIDE 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "MNR-LAND-USE-CLASSIFICATION-GUIDE is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "用地 GeoJSON 保留 land_use_code、类别和面积复算关系，不以三院叙事名称替代用地分类。",
+      "evidence_summary_en": "Land-use GeoJSON retains codes, classes, and reproducible areas; yard narratives do not replace land-use classification."
     },
     {
       "standard_id": "MOHURD-ARCH-DESIGN-DEPTH-2016",
@@ -344,8 +351,7 @@
         "geometry/roads.geojson",
         "geometry/green_space.geojson",
         "geometry/public_space.geojson",
-        "geometry/phasing.geojson",
-        "geometry/scenario_nodes.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
@@ -382,8 +388,8 @@
         "LAND_USE_TOPOLOGY",
         "VISUAL_STATIC"
       ],
-      "evidence_summary_zh": "MOHURD-ARCH-DESIGN-DEPTH-2016 由京张译场的具体设计判断、双语图纸、GeoJSON、指标公式、风险假设和四门自检共同支撑；临时几何与资料缺口均未升级为正式结论。",
-      "evidence_summary_en": "MOHURD-ARCH-DESIGN-DEPTH-2016 is evidenced by design judgments, bilingual drawings, GeoJSON, metric formulas, risk assumptions, and four-gate checks without upgrading provisional data into formal claims."
+      "evidence_summary_zh": "当前仅交付概念断面、体量原则和资料缺口；取得正式文件、测绘和控规后才进入建筑专业深度。",
+      "evidence_summary_en": "Only conceptual sections, massing principles, and data gaps are delivered; architectural depth waits for the official document, survey, and controls."
     }
   ]
 }

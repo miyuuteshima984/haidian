@@ -10,8 +10,7 @@
       "ok": true,
       "errors": [],
       "warnings": [
-        "submissions/Pluto-cn/jingzhang-learning-vein/geometry/site_boundary.geojson: uses provisional boundary; do not treat it as an official redline or precise-area basis. Organizer data gaps do not block content scoring; recalculate when official geometry is supplied",
-        "submissions/Pluto-cn/jingzhang-learning-vein/changelog.md: 可能涉及非公开或敏感资料; maintainer review required"
+        "submissions/Pluto-cn/jingzhang-learning-vein/geometry/site_boundary.geojson: uses provisional boundary; do not treat it as an official redline or precise-area basis. Organizer data gaps do not block content scoring; recalculate when official geometry is supplied"
       ],
       "proposal_files": [
         "submissions/Pluto-cn/jingzhang-learning-vein/proposal.md"
@@ -65,7 +64,7 @@
       "ai_package_stages": {
         "submissions/Pluto-cn/jingzhang-learning-vein": "formal"
       },
-      "total_bytes": 2708413,
+      "total_bytes": 2729901,
       "maintainer_bypass": false
     },
     "stderr": ""

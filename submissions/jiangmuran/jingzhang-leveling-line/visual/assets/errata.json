@@ -4,27 +4,29 @@
  "note_en": "A register of this package's own errors. Not a changelog: a changelog says what changed, this says what was wrong, what shape the error had, who found it, and which commit fixed it. Every entry names a commit, and the build verifies that commit exists and touched the file blamed. An errata register that cannot be joined to the repository is the defect it records.",
  "why_zh": "全场 351 份方案中没有一份勘误、撤回或作者自述的复盘。一个主张城市应当公开自身误差的方案，不能自己呈现一个无瑕的表面：它提出的整套机制都建立在「看不见失败的测量不值得信任」之上，文档同理。",
  "counts": {
-  "total": 49,
+  "total": 53,
   "by_found_by": {
-   "audit": 23,
+   "audit": 25,
    "own-gate": 2,
    "external-reviewer": 4,
-   "self": 20
+   "self": 22
   },
   "by_shape": {
    "reference-does-not-resolve": 4,
    "number-outlived-the-sentence-holding-it": 4,
    "two-copies-of-one-thing-drifted": 4,
-   "check-measured-the-convenient-thing": 11,
+   "check-measured-the-convenient-thing": 12,
    "geometry-does-not-mean-what-it-says": 4,
    "term-of-art-misapplied": 1,
    "claim-outlived-the-package": 3,
-   "deliverable-not-inspected-before-shipping": 8,
+   "deliverable-not-inspected-before-shipping": 9,
    "gate-reported-and-was-ignored": 1,
    "measurement-answering-a-question-it-cannot-answer": 2,
    "six-classes-for-a-seven-class-partition": 1,
    "the-table-stopped-being-a-table": 1,
    "index-that-does-not-index": 1,
+   "requirement-with-nobody-to-execute-it": 1,
+   "rule-applied-to-others-but-not-to-self": 1,
    "attribution-to-a-file-that-refuses-it": 1,
    "number-with-no-file-behind-it": 2,
    "claim-outlived-the-corpus": 1
@@ -474,6 +476,46 @@
    "what_zh": "图纸索引上方写「共十二张图纸，FIG.00–FIG.11 连续编号」，下方的表只有九行（FIG.01–FIG.09）。缺 FIG.00（全文开篇那张）、FIG.10（人视街道剖面）与 FIG.11（区域协同接口）——**而正文在 L531 按编号引用了 FIG.11**，把读者指向一个不含它的索引。同一处的复核清单则编号成 1…10、8、9，十二项用了十个号。",
    "why_zh": "两个语种带着同样的九行，所以这不是翻译疏漏，是**完整性声明写在表格上方那句话里、而不是由表格本身承担**。清单的编号是看得见的那个缺陷，危险的是另一个：清单上每一项都指名一个路径，一份把评审指向不存在文件的清单，比没有清单更糟。",
    "fix_zh": "两者都改为生成：索引由 `build_figure_index.py` 从随包 PNG 生成，句中的份数写自 `len(FIGURES)`，并断言每张随包图有编号、每个编号有文件、正文引用的每个 FIG.NN 都能解析到行；清单由 `enumerate` 编号，且十二项声明的 17 条路径必须全部在包内解析。"
+  },
+  {
+   "id": "E53",
+   "commit": "866d9df3",
+   "file": "assets/figures/sections.en.png",
+   "found_by": "self",
+   "shape": "check-measured-the-convenient-thing",
+   "what_zh": "`figures._extent` 用一张字宽估计表排版全部图纸：小写 0.52 em、大写 0.60 em。用 fontTools 读 NotoSansCJK-Regular（`SANS` 实际解析到的那一支）实测：小写均值 0.572、大写 0.636、数字 0.555。英文散文上估计值偏小约 5%。",
+   "why_zh": "**中文里这个估计是精确的**——汉字进距正好 1 em，所以偏差在中文版本上永远看不见，只在英文版本上发作。后果是一整行注记：309 个字符按 1,447 px 排进列宽，实际画出 1,522 px，**每一张英文图纸的出处注记都越过了右边框**。而 `overflow_qa` 正是用同一个函数判定越界的——**检查器与被检查者共用一个错的估计，彼此永远吻合**。这是本册记过十一次的那型缺陷的一个新变体：不是量了方便的东西，是量尺本身错了，而唯一的校验用的是同一把尺。",
+   "fix_zh": "系数改为实测值（小写 0.58、大写 0.64、数字 0.56、窄字符 0.30、汉字 1.0），并在源码里写明来源与测法；注记列宽留 12 px 余量。重排后 `overflow_qa` 在 4 组 55 张图上仍为 0 越界——说明此前没有其他图纸处在临界，这一处是唯一的实际受害者。"
+  },
+  {
+   "id": "E52",
+   "commit": "866d9df3",
+   "file": "assets/figures/crossing.en.png",
+   "found_by": "self",
+   "shape": "deliverable-not-inspected-before-shipping",
+   "what_zh": "图纸框 `sheet()` 在图号对面印一行小字，放的是「另一种语言的标题」：中文图纸上印英文，英文图纸上印 `title_zh`。而 `txt()` 对每一个字符串都走 `tr()`——于是中文标题被译回英文，**每一张英文图纸都把自己的标题印了两遍**，相隔三厘米，两种字号。",
+   "why_zh": "十四张英文图纸，每一张都如此，而这些图纸的正文被逐张渲染读过多次。**读了图，没读页眉。** 发现它的方式也说明问题：这次是把 FIG.13 的英文成品当作一张纸从头看到尾，而不是去看它画对没有。",
+   "fix_zh": "英文图纸不再印这一行。不能改印中文标题——一个汉字就会拉进一套 CID 字体子集，而英文图册从 9.52 MB 降到 0.479 MB 靠的正是页面上没有汉字。对语言的分支写进 `_counter_title` 并注明理由，不再藏在一个三元表达式里。"
+  },
+  {
+   "id": "E51",
+   "commit": "f41277a4",
+   "file": "visual/assets/operations.json",
+   "found_by": "audit",
+   "shape": "requirement-with-nobody-to-execute-it",
+   "what_zh": "转化路径第五步的进入条件写着「水准合格且**撤除保证金**到位」。而包内没有一个字说明那是什么保证金、谁收、存在哪、按什么条件释放、逾期不撤怎么办。同一处还缺一整张表：八个水准点、四档周期、五步路径都写到了退出条件的精度，**却没有一句话交代谁召集、一年多少次、花多少钱**。",
+   "why_zh": "**一个没有保管方的保证金是一句话，不是一项约束。** 它在正文里起的是「此处已有制度保障」的作用，而读者若真去执行，会发现无处可执行——这与本包反复批评他人的「承诺型条款」是同一件事，只是写在自己这一侧。成本的缺席同理：把机制写到进出条件的精度而不写它的年成本，等于把最容易被否决的那一问留给评审自己去猜，而「由属地统筹」不是答案，是答案本该出现的位置。两处都不是可计算的量，包内闸门都抓不到，由独立评图指出。",
+   "fix_zh": "保证金**不新设**，挂靠到已有的两件工具：履约保证金（可由等额银行/保险保函替代，不占现金）与第三方责任险；保管方为发包方专户，释放权在发包方且以属地街道出具的场地恢复确认为前置，逾期未撤由发包方以保证金委托第三方撤除并追偿差额。**金额以撤除恢复的估算成本为基数取 100%–150% 区间，而非合同额百分比**——按合同额取百分比与撤除成本无关，造价低而位置难的装置，拆掉可能比装上贵。成本表按水准点逐点给出八行：年次数由 `spatial.json` 中该点自己声明的复测周期换算，不在成本模型里手写，改了周期不改这里就构建失败；志愿工时照列不计价（全年 148–244 小时，是这套机制向社区索取的量）；全年 47 次、专业工时 133–214，含耗材 18,760–62,440 元/年，全部为区间。**表里唯一不是数出来的数是费率**，并且写明它是 provisional、包内无可核来源，公式随表公布以便读者换自己的费率重算。"
+  },
+  {
+   "id": "E50",
+   "commit": "c443cb85",
+   "file": "visual/assets/operations.json",
+   "found_by": "audit",
+   "shape": "rule-applied-to-others-but-not-to-self",
+   "what_zh": "L2 闭合差碑——那面「允许自己难看」的墙——立在 BM-1 众智园（研发片区），而读数不一致真正落到的人在约 3 km 外的三等社区点 BM-303。**机构的公开认错，立在机构自己所在的地方。**",
+   "why_zh": "本方案通篇主张「把复核权放在需要走十五分钟才能到的专门机构，等于没有给」，而这处选址正是那句话的反例——**规则对别人成立，对自己没有执行**。这不是数字过期，也不是引用错误：是一处**本方案自己的伦理主张与自己的选址相矛盾**，而包内没有任何闸门能发现它，因为它不是可计算的量。发现它的是一次独立评图。",
+   "fix_zh": "当期失败读数改为在**每一个三等社区点**同步显示，用既有标准件 KIT-02 读数牌，新增构筑物 0 处；L2 保留为年度归零仪式与全年闭合记录的所在。**当期的坏消息属于它发生的地方**；一次面向全线的年度仪式可以集中，一条正在退回的场景不行。"
   },
   {
    "id": "E49",

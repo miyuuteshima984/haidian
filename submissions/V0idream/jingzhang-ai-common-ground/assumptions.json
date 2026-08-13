@@ -56,6 +56,41 @@
       "statement": "六个全球案例仅用于提炼机制，不能证明其可直接复制或支持本项目法定控制。",
       "statement_en": "Six global cases are used only to extract mechanisms; they do not prove direct transferability or support statutory local controls.",
       "impact": "所有转化建议必须通过本地试点、人工复核和专业深化。"
+    },
+    {
+      "id": "A-PROOFING-001",
+      "status": "synthetic_logic_only",
+      "statement": "六门校译记录的 7 条路径均为匿名合成案例；本地通过只证明规则按预期放行或阻断。",
+      "statement_en": "All seven Six-Gate Civic Proofing paths are anonymous synthetic cases; local passes verify only expected allow/block logic.",
+      "impact": "真实场地、运营主体、公众参与、无障碍共测、安全绩效和部署授权均为空，不得从本地结果推断。"
+    },
+    {
+      "id": "A-REGIONAL-INTERFACE-001",
+      "status": "conceptual_uncommitted_interfaces",
+      "statement": "五类区域协同接口是任务书驱动的概念输入输出关系，未得到相关机构承诺。",
+      "statement_en": "The five regional interfaces are taskbook-driven conceptual input/output relationships with no institutional commitment.",
+      "impact": "不得表述为合作协议、数据共享、采购、投资或结果互认。"
+    },
+    {
+      "id": "A-PILOT-MODULE-001",
+      "status": "conceptual_removable_module",
+      "statement": "TG-PILOT-01 的 12 米乘 6 米、72 平方米校译单元是可撤离空间原型，不绑定具体建筑或地块，也未完成权属、消防、无障碍、市政或运营审批。",
+      "statement_en": "The 12 m by 6 m, 72 sqm TG-PILOT-01 proofing bay is a removable spatial prototype, not tied to a building or parcel and not reviewed for ownership, fire, accessibility, utilities, or operations.",
+      "impact": "任何现场试点前必须由专业团队按真实场地重新布置和核验；本方案面积不得作为建设规模或投资依据。"
+    },
+    {
+      "id": "A-PILOT-TARGET-001",
+      "status": "unmeasured_design_targets",
+      "statement": "两名开班人员、120 秒人工接管、一个开放班次内确认撤回等均为待运营和专业团队校准的概念目标，不是已测绩效或服务承诺。",
+      "statement_en": "Two open-shift staff, 120-second human handoff, and withdrawal acknowledgement within one open shift are concept targets for operator and professional calibration, not measured performance or service promises.",
+      "impact": "真实基线、排班、风险等级和服务复杂度到位后，目标须先校准再决定是否进入公众校样。"
+    },
+    {
+      "id": "A-INCLUSION-SYNTHETIC-001",
+      "status": "anonymous_synthetic_inclusion_logic",
+      "statement": "12 条包容性路径均为无个人数据的匿名合成用例，用于检查纸质、人工、无障碍、跨语、监护和技术日志条件是否能触发放行或重译。",
+      "statement_en": "All 12 inclusion journeys are anonymous synthetic cases with no personal data, testing whether paper, staffed, accessible, bilingual, guardian, and technical-log conditions trigger proof or retranslation.",
+      "impact": "12/12 仅代表规则结果符合预期；不代表残障者、居民、青年、国际访客或企业已经参与、同意或认可。"
     }
   ]
 }

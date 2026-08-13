@@ -20,6 +20,10 @@
       ],
       "changed_files": [
         "submissions/V0idream/jingzhang-ai-common-ground/agent.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/identity-system.en.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/identity-system.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/inclusion-paths.en.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/inclusion-paths.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/key-areas.en.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/key-areas.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/land-use-structure.en.png",
@@ -28,9 +32,20 @@
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/metrics-evidence.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/mobility-bluegreen.en.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/mobility-bluegreen.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/pilot-bay.en.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/pilot-bay.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/proof-receipt.en.png",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/proof-receipt.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/site-overview.en.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/figures/site-overview.png",
         "submissions/V0idream/jingzhang-ai-common-ground/assets/media/cover.webp",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough-en.mp4",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough-en.vtt",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough-en.webp",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough.md",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough.mp4",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough.vtt",
+        "submissions/V0idream/jingzhang-ai-common-ground/assets/media/pilot-walkthrough.webp",
         "submissions/V0idream/jingzhang-ai-common-ground/assumptions.json",
         "submissions/V0idream/jingzhang-ai-common-ground/changelog.md",
         "submissions/V0idream/jingzhang-ai-common-ground/compliance_matrix.json",
@@ -59,13 +74,21 @@
         "submissions/V0idream/jingzhang-ai-common-ground/self_check.json",
         "submissions/V0idream/jingzhang-ai-common-ground/sources.json",
         "submissions/V0idream/jingzhang-ai-common-ground/standard_matrix.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/pilot-operations-plan.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/pilot-readiness-evidence.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/run-pilot-readiness.js",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/run-six-gate-proofing.js",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/six-gate-proof-evidence.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/six-gate-proofing.schema.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/synthetic-inclusive-journeys.json",
+        "submissions/V0idream/jingzhang-ai-common-ground/visual/assets/synthetic-proof-cases.json",
         "submissions/V0idream/jingzhang-ai-common-ground/visual/index.en.html",
         "submissions/V0idream/jingzhang-ai-common-ground/visual/index.html"
       ],
       "ai_package_stages": {
         "submissions/V0idream/jingzhang-ai-common-ground": "formal"
       },
-      "total_bytes": 6337843,
+      "total_bytes": 8212454,
       "maintainer_bypass": false
     },
     "stderr": ""
@@ -123,9 +146,17 @@
       "ok": true,
       "issues": [],
       "metrics_seen": {
+        "proofing_gate_count": 6.0,
+        "synthetic_proof_pass_count": 7.0,
+        "proofing_pilot_duration_weeks": 12.0,
+        "regional_interface_count": 5.0,
         "site_area_sqm": 11412825.386,
         "green_ratio": 0.215536,
-        "public_space_ratio": 0.056098
+        "public_space_ratio": 0.056098,
+        "pilot_module_area_sqm": 72.0,
+        "synthetic_inclusion_journey_pass_count": 12.0,
+        "pilot_handoff_target_seconds": 120.0,
+        "proof_receipt_required_field_count": 8.0
       }
     },
     "stderr": ""
@@ -139,7 +170,7 @@
       "summary": {
         "standard_matrix_items": 6,
         "design_depth_items": 15,
-        "known_metric_refs_required": 13,
+        "known_metric_refs_required": 26,
         "proposal_format_version": "2",
         "evidence_contract": "section-anchors-plus-structured-audit",
         "proposal_reference_counts": {
@@ -147,7 +178,7 @@
           "standard": 6,
           "depth": 15,
           "data": 10,
-          "metric": 13
+          "metric": 25
         }
       }
     },

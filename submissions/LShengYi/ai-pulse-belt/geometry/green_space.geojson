@@ -5,13 +5,14 @@
    "type": "Feature",
    "id": "GREEN-001",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-001",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -49,14 +50,15 @@
    "type": "Feature",
    "id": "GREEN-002",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "east_wing_loop": "concept",
     "id": "GREEN-002",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -90,14 +92,15 @@
    "type": "Feature",
    "id": "GREEN-003",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "east_wing_loop": "concept",
     "id": "GREEN-003",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -131,13 +134,14 @@
    "type": "Feature",
    "id": "GREEN-004",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-004",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -183,14 +187,15 @@
    "type": "Feature",
    "id": "GREEN-005",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "east_wing_loop": "concept",
     "id": "GREEN-005",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -220,13 +225,14 @@
    "type": "Feature",
    "id": "GREEN-006",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-006",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -260,13 +266,14 @@
    "type": "Feature",
    "id": "GREEN-007",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "id": "GREEN-007",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -312,13 +319,14 @@
    "type": "Feature",
    "id": "GREEN-008",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-008",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -352,13 +360,14 @@
    "type": "Feature",
    "id": "GREEN-009",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "id": "GREEN-009",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -392,13 +401,14 @@
    "type": "Feature",
    "id": "GREEN-010",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-010",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -432,13 +442,14 @@
    "type": "Feature",
    "id": "GREEN-011",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-011",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -472,13 +483,14 @@
    "type": "Feature",
    "id": "GREEN-012",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-012",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -512,13 +524,14 @@
    "type": "Feature",
    "id": "GREEN-013",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "id": "GREEN-013",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -552,13 +565,14 @@
    "type": "Feature",
    "id": "GREEN-014",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-014",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -592,14 +606,15 @@
    "type": "Feature",
    "id": "GREEN-015",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "east_wing_loop": "concept",
     "id": "GREEN-015",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -637,13 +652,14 @@
    "type": "Feature",
    "id": "GREEN-016",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-016",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -677,14 +693,15 @@
    "type": "Feature",
    "id": "GREEN-017",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "east_wing_loop": "concept",
     "id": "GREEN-017",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -718,13 +735,14 @@
    "type": "Feature",
    "id": "GREEN-018",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-018",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -758,13 +776,14 @@
    "type": "Feature",
    "id": "GREEN-019",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-019",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -798,13 +817,14 @@
    "type": "Feature",
    "id": "GREEN-020",
    "properties": {
-    "name_zh": "防护绿地绿地",
+    "name_zh": "防护绿地",
     "green_type": "protective",
     "id": "GREEN-020",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",
@@ -850,13 +870,14 @@
    "type": "Feature",
    "id": "GREEN-021",
    "properties": {
-    "name_zh": "公园绿地绿地",
+    "name_zh": "公园绿地",
     "green_type": "park",
     "id": "GREEN-021",
     "layer": "GREEN_SPACE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "Polygon",

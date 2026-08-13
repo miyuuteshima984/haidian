@@ -28,6 +28,8 @@
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/ai-urban-form-change.svg",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/brand-vi-direction.en.svg",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/brand-vi-direction.svg",
+        "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/c7-civic-station-prototype.en.svg",
+        "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/c7-civic-station-prototype.svg",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/case-study-comparison.en.svg",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/case-study-comparison.svg",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/assets/figures/everyday-journey-sections.en.svg",
@@ -98,6 +100,8 @@
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/sources.json",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/spatial.json",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/standard_matrix.json",
+        "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/visual/assets/c7-civic-station-contract.json",
+        "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/visual/assets/field-observation-register.json",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/visual/assets/reality-constraint-register.json",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/visual/assets/reference-plot-conditions.json",
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/visual/index.en.html",
@@ -106,7 +110,7 @@
       "ai_package_stages": {
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure": "formal"
       },
-      "total_bytes": 7422403,
+      "total_bytes": 6853332,
       "maintainer_bypass": false
     },
     "stderr": ""
@@ -180,7 +184,7 @@
       "summary": {
         "standard_matrix_items": 6,
         "design_depth_items": 15,
-        "known_metric_refs_required": 39,
+        "known_metric_refs_required": 42,
         "proposal_format_version": "2",
         "evidence_contract": "section-anchors-plus-structured-audit",
         "proposal_reference_counts": {
@@ -188,7 +192,7 @@
           "standard": 6,
           "depth": 15,
           "data": 11,
-          "metric": 36
+          "metric": 39
         }
       }
     },

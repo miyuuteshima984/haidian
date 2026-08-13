@@ -86,7 +86,7 @@ V2 进一步补上一个仍然存在的缺口：方案已经提出验证线、�
 
 ### 证据不是一次性快照：失效必须向下游传播
 
-`sources.json` 已记录 35 条来源及访问日期，但同一天访问不等于内容永久有效，也不能发现修订、替代、失联或临时边界被正式资料取代。`visual/assets/evidence-freshness-policy.json` 把来源分成项目资料、临时空间数据、城市背景、政策标准、案例参考和第 8—9 轮包内概念材料六类，规定复核触发点、建议最长未核时间、责任角色和失效动作；来源变为 `review_due`、`superseded` 或 `unavailable` 时，受影响主张、矩阵项和场景门级必须同步降级或冻结。当前只确认已有访问日期，尚未形成带内容摘要的刷新审计，因此完成刷新审计数保持为 0，临时空间数据无论多新也仍然只是 `provisional_only` [data:visual/assets/evidence-freshness-policy.json#FRESH-01] [data:visual/assets/evidence-freshness-policy.json#FRESH-02] [data:visual/assets/evidence-freshness-policy.json#FRESH-06]。
+`sources.json` 已记录 50 条来源及访问日期，但同一天访问不等于内容永久有效，也不能发现修订、替代、失联或临时边界被正式资料取代。`visual/assets/evidence-freshness-policy.json` 把来源分成项目资料、临时空间数据、城市背景、政策标准、案例参考和第 8—15 轮包内概念/方法材料六类，规定复核触发点、建议最长未核时间、责任角色和失效动作；来源变为 `review_due`、`superseded` 或 `unavailable` 时，受影响主张、矩阵项和场景门级必须同步降级或冻结。当前只确认已有访问日期，尚未形成带内容摘要的刷新审计，因此完成刷新审计数保持为 0，临时空间数据无论多新也仍然只是 `provisional_only` [data:visual/assets/evidence-freshness-policy.json#FRESH-01] [data:visual/assets/evidence-freshness-policy.json#FRESH-02] [data:visual/assets/evidence-freshness-policy.json#FRESH-06]。
 
 专业响应按问题拆分，而不是把标准编号堆在一个结论后：
 
@@ -558,7 +558,7 @@ AI 与公共价值指标同样按核验问题拆开：
 - AI 与数据风险：偏差、幻觉、隐私泄露、越权自动化和供应商锁定通过最小数据、源端保留、日志、人工责任、复测、到期和退役控制；不得自动执法、诊断或替代正式审批。
 - 安全与韧性风险：机器人、车辆和设备测试只在授权范围；实体急停、现场安全员、离线人工和 L0/L1/L2 降级必须可用。能源和恢复指标未实测时保持未知。
 - 文化与历史风险：史实、人物、文物和工程资料需由官方/馆藏/清权来源复核；AI 生成内容显式与元数据标识，争议内容可纠错、下架和追溯 [assumption:A-CULTURE-CONTENT-006]。
-- 版权与品牌风险：本次提交的最终文件集合为 manifest 中 99 个路径（其中 98 个为非 manifest 内容文件）；99 条逐文件资产记录与 35 条来源证据记录只证明披露和链接闭合，覆盖完整性只在 manifest 与权利状态台账从最终 Git blobs 刷新并通过校验后成立。当前独立逐文件清权审计完成数为 0，总体状态为 `not_fully_cleared`。`submission-use-rights-matrix.json` 已逐条记录公告 8.1、仓库评审、主办方项目内使用、投稿人对外展示、跨项目复用和第三方组件的当前决策，但本包未证明正式公告条款与本次 GitHub 开源 Agent 征集具有完全相同的适用关系；`COMMUNITY-DISPLAY-ONLY` 完整条款、书面同意、OSM ODbL 义务、PDF 字体、Node.js 运行时与生成工具条款以及 Logo/地标商标仍待复核，不能声称已经全部清权 [data:visual/assets/rights-clearance-ledger.json#RIGHTS-01] [data:visual/assets/submission-use-rights-matrix.json#JZ-SUBMISSION-USE-RIGHTS-V1]。
+- 版权与品牌风险：本次提交的最终文件集合为 manifest 中 125 个路径（其中 124 个为非 manifest 内容文件）；125 条逐文件资产记录与 50 条来源证据记录只证明披露和链接闭合，覆盖完整性只在 manifest 与权利状态台账从最终 Git blobs 刷新并通过校验后成立。当前独立逐文件清权审计完成数为 0，总体状态为 `not_fully_cleared`。`submission-use-rights-matrix.json` 已逐条记录公告 8.1、仓库评审、主办方项目内使用、投稿人对外展示、跨项目复用和第三方组件的当前决策，但本包未证明正式公告条款与本次 GitHub 开源 Agent 征集具有完全相同的适用关系；`COMMUNITY-DISPLAY-ONLY` 完整条款、书面同意、OSM ODbL 义务、PDF 字体、Node.js 运行时与生成工具条款以及 Logo/地标商标仍待复核，不能声称已经全部清权 [data:visual/assets/rights-clearance-ledger.json#RIGHTS-01] [data:visual/assets/submission-use-rights-matrix.json#JZ-SUBMISSION-USE-RIGHTS-V1]。
 - 外部协同风险：未来科学城、怀柔科学城、经开区、其他创新街区和京津冀只作为可选复测角色，未经书面确认不得写成合作方、投资方或落地承诺 [assumption:A-EXTERNAL-COLLAB-005]。
 - 运营与公平风险：活动热度不能替代居民满意、可达、公平与投诉闭环；贡献荣誉不得用于流量排名、就业筛选或行政评价。
 - 工具与证据风险：机器检查只验证结构、拓扑、引用和一致性，不替代规划、建筑、交通、市政、景观、生态、消防、铁路、数据安全、无障碍、社区与法律专业判断 [depth:risk_missing_data]。
@@ -909,3 +909,42 @@ geometry、既有 SCENE/JZ/T 编号、八个项目、全部 G0、临时边界和
 从 `visual/index.html#accessible-review-walk` 按五步读取：双轨空间语法 → 三处不可互换原型 → 非 AI 普通任务 → 故障与恢复 → 真实资料替换和专业 NO-GO。页面完全离线，无账号、扫码、远程资源或 AI 依赖；禁用 JavaScript 时五步正文、限制与证据回链仍按文档顺序完整可读。键盘增强只提供直接定位、前后步和 Home/End 导航，打印模式展开全部内容；这些是可访问性意图与评审呈现，不是 WCAG 认证或新增证据。
 
 本轮新增概念、场景、项目、geometry、批准、现场测试、运营、专业责任接受和权利清除均为 **0**。12 场景、8 项目、3 重点区、99 个关闭槽、G0、临时边界、D01—D08、H01—H07 与 `not_fully_cleared` 不变。专业团队可修改、拒绝或删除概念；重大资料、普通权利或权利缺口继续 NO-GO。
+
+## 第 15 轮：现场证据采集与替换包
+
+### 不是“补数据”，而是规定真实资料如何进入、被退回或被否决
+
+本轮不填入任何现场观察、测量、访谈、批准、人员、机构、排班或运行成绩。`field-evidence-intake-contract.json` 把既有 D01—D08 替换缺口和 H01—H07 专业门转成八类空白资料包：每包当前都是 `not_collected`，材料数 0、现场值 `null`、接收用于复算 0、批准 0；来源主体、采集/签发时间、版本、范围、权利、隐私处理、SHA-256、专业复核和有效期均等待真实材料 [data:visual/assets/field-evidence-intake-contract.json#current_reality_state]。模板字段完整只说明“知道该问什么”，不能证明资料已取得、专业已接受或项目可从 G0 升级。
+
+每件未来材料必须同时回答四组问题：它是谁签发或采集、何时何地以何种方法形成；原件、版本、哈希与保管人如何追踪；个人信息、同意撤回、公开级别、留存删除和复用权如何处理；它能证明什么、不能证明什么、何时过期。官方文件、测绘、照片/视频、测量、访谈/同意、运行记录、批准/授权和恢复回执各有最低质量门。照片不能推出尺寸或无风险，访谈不能推出总体支持，批准不能推出建成或运行成功，恢复回执也不能自动生成重启资格 [data:visual/assets/field-evidence-intake-contract.json#artifact_type_rules]。
+
+### D01—D08 空包与 H01—H07 专业处置
+
+| 资料包 | 当前空白状态 | 最小进入条件 | 即使完整也不能证明 |
+|---|---|---|---|
+| D01 官方几何 | 0 材料 / `null` | 签发主体、依据、范围 ID、CRS、精度、版本、用途权限和与临时几何的差异报告 | 本方案获批、权属、可建性或现场表现 |
+| D02 现状测绘 | 0 材料 / `null` | 覆盖、方法、日期、精度、标高/出入口/表面/设施和 before-state | 全时段现状、结构安全或普遍无障碍合规 |
+| D03 控规权属 | 0 材料 / `null` | 有效控规、权利依据、四线、活动范围、条件、期限和冲突台账 | 本方案的场地、建设、消防或未来同意 |
+| D04 同任务同权 | 0 材料 / `null` | 同一任务、路线实测、分群同意、撤回、非 AI 完成、人工兜底和人群差异 | 普遍合规、总体接受或未参与人群表现 |
+| D05 交通高峰 | 0 材料 / `null` | 方式、分母、计数方法、愿望线、站点接口、高峰定义和侵路冲突 | 未来需求、道路红线、因果或活动容量 |
+| D06 专项约束 | 0 材料 / `null` | 专业资质类型、适用范围、规则版本、结论、条件、否决/修改和未决冲突 | 全专业放行或施工批准 |
+| D07 责任运营 | 0 材料 / `null` | 书面责任接受、可达联络、覆盖时窗、替补、停/启权、预算及维护退役责任 | 未来在线、志愿劳动充分、服务质量或采购 |
+| D08 权利复用 | 0 材料 / `null` | 对象/版本、权利人依据、条款、同意、地域、期限、翻译/衍生权、撤回和独立审计 | 全包清权、内容真实或权利人背书 |
+
+专业处置只允许七种状态：未提交、已收未核、退回补全、冲突挂起、专业拒绝、接收用于复算、过期。`accepted_for_recalculation` 只允许替换类型化占位并触发下游重算，不等于场地、规划、建设、运营、部署或 G1 批准。冲突时先保护普通公共权利并暂停受影响验证叠层；专业团队可以修改、拒绝或删除概念，不得修改官方证据迁就图面 [data:visual/assets/field-evidence-intake-contract.json#professional_disposition_contract]。
+
+### 三条不可互换的未来现场路
+
+**众智园：设备隔离与还场基线路。** 先冻结连续观察旁路和 before-state，设备不启动，只核对隔离、实体停止、人工接管和还场回执需要哪些材料。缺少旁路基线、停止权或专项意见即停在 NO-GO；这不是居民同意共学路线。
+
+**原点社区：同意撤回与居民日常路。** 一条日常街和无屏同任务路径先完整存在，未来采集必须提供纸面/人工说明、可撤回同意、未成年人和脆弱人群保障，并只记录去身份化的人群差异。撤回失败、过度采集、静音或居民日常受损即停；这不是设备测试路线。
+
+**大钟寺：高峰连续与来源纠错路。** 四向通勤先连续，人工服务和证据发布只在路径外。计数分母、高峰定义和来源版本在实际工作前保持空白，不能先写一个数字再找依据；侵路、排队溢出、来源过期或权利争议即撤下发布叠层。这不是验证庭 [data:visual/assets/field-evidence-intake-contract.json#three_differentiated_future_routes]。
+
+### 对 #2266 的有限借鉴
+
+同一投稿人的独立方案 [source:SOURCE-JZ-COMMONS-LOOP-METHOD-R15] PR #2266 只提供一种可借鉴方法：让公众看得懂一项材料为何被保留、退回修改、暂停或归还。本包将其规范化为既有语法下的“保留普通基线／退回证据包／NO-GO 冲突挂起／恢复普通使用或退役叠层”；不引入“京张共创环”品牌、一脊两翼三庭构图、该包几何、指标、图件、媒体或任何临时/现实结论 [data:visual/assets/field-evidence-intake-contract.json#peer_method_lineage]。
+
+![现场证据采集与替换包：八类空白资料包、保管链、专业处置和三处差异化未来采集路径；现场采集、批准和责任接受均为 0](assets/figures/field-evidence-intake.png)
+
+本轮保持 12 场景、8 项目、3 重点区、99 槽、全部 geometry 与 metrics 字节不变；全部对象仍为 G0、临时边界、NO-GO 和 `not_fully_cleared`。该合同不是现场任务书、采购单、调查结果、专业意见、审批记录或实施授权。

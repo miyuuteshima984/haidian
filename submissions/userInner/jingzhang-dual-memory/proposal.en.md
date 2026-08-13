@@ -4,7 +4,7 @@ author_github: "userInner"
 language: "en"
 proposal_format_version: "2"
 bilingual_contract_version: "1"
-iteration: "v6.0"
+iteration: "v7.0"
 translation_of: "proposal.md"
 license: "COMMUNITY-DISPLAY-ONLY"
 summary: "A human-directed AI urban corridor where public memory accumulates, personal data can expire, and the benefits of innovation are shared."
@@ -14,20 +14,22 @@ scenarios: ["ai-traffic-walkability", "enterprise-service-copilot", "public-safe
 
 # DOUBLE MEMORY JINGZHANG
 
-> **v6.0 thesis:** Prove one block before expansion. The corridor vision is contracted into three reversible, verifiable and reinstatable Dual-Memory proof blocks: ordinary service runs independently, AI can be removed, responsibility can be signed, and results can be published. Statutory controls remain pending official data; field results remain `not_field_tested / HOLD`.
+> **v7.0 thesis:** Lock evidence before siting a proof block. This edition separates public verified facts, reproducible derivatives, pending fieldwork, and prohibited inference. One two-parcel transaction is verified at Dazhongsi, one public-works contract at Qinghe, and a formal planning procedure along the corridor; official key-area polygons and qualifying field observations remain unavailable, so every proof block stays at `HOLD`.
 
-| Review dimension | Material v6.0 advance | Verification entry |
+| Review dimension | Material v7.0 advance | Verification entry |
 | --- | --- | --- |
 | Alignment and originality | The Proof Mile connects the public-memory spine, daily routes, passports, and implementation gates into one legible method | `proof-mile-spatial-atlas.json` |
 | AI-planning innovation | AI becomes a civic service constrained by D0–D4 data classes, deletion receipts, physical stops, and independent review | `forgetfulness-budget.json`; offline audit |
-| Feasibility | Each key area becomes a minimum block with named accountability, reconciled cost and executable fallback, linked to 0–180-day gates | `three-proof-blocks.json`; `implementation-contract.json` |
-| Public interest | Each key area has an account-free daily route with an ordinary equivalent, tested separately by six personas | `key-area-daily-routes.json` |
-| Risk and expression | The atlas and control ledger separate known facts, design targets, unknown controls, and HOLD decisions | boards 01 and 03–05; spatial audit |
+| Feasibility | A Qinghe public-works contract and a Dazhongsi two-parcel transaction enter the evidence ledger and constrain accountability, cost and fallback claims | `site-evidence-ledger.json`; `three-proof-blocks.json` |
+| Public interest | Three field routes now define observation points, time windows and privacy admission; qualifying observations remain zero | `field-survey-register.json` |
+| Risk and expression | Departmental joint review is not approval; a project client is not a land-right holder; two parcels cannot represent the whole key area | Board 10; site-evidence audit |
 | International communication and long-term operation | The 24-Hour Civic Innovation Line sustains operation while three proof blocks govern incremental delivery and release | `24h-public-innovation-line.json`; Board 09 |
 
 ![Dual-Memory corridor vision: public-memory spine, blue-green systems, railway heritage and continuous civic life (AI-generated concept experience, not existing-condition or approval evidence)](assets/media/cover-v6-vision.webp)
 
 ![Three Dual-Memory proof blocks: contracting the corridor vision into reversible, verifiable and reinstatable delivery units](assets/boards/board-09.en.jpg)
+
+![Evidence before siting: official records, reproducible metrics, pending routes, and prohibited inference](assets/boards/board-10.en.jpg)
 
 ![24-hour operations-space board: each of five windows records ordinary service, optional AI, accountable owner, release condition and evidence state](assets/boards/board-08.en.jpg)
 
@@ -50,6 +52,14 @@ Sources are separated by role. Official notices and policies support task, direc
 ![Restored old Qinghuayuan Station, 2024 (N509FZ, CC BY-SA 4.0)](assets/reference/2024-qinghuayuan-renovated-cc-by-sa-4.jpg)
 
 The three images provide visual evidence for engineering history, daily railway life, and adaptive reuse. Authors, licences, original pages, and modification notes are registered in the source and copyright files. [source:IMAGE-JINGZHANG-1909] [source:IMAGE-QHY-2016] [source:IMAGE-QHY-2024]
+
+### v7 official records and ownership boundary
+
+Draft control plans for HD00-1601, 1602, 1603, 1604 and 1605 were displayed from 19 December 2024 to 19 January 2025. Haidian's first-quarter 2026 progress record says only that the corridor control plan passed municipal departmental joint review and continued towards approval and implementation. This verifies an advancing procedure—not final approval, official polygons, land-use controls or development parameters. [source:JZ-CONTROL-PLAN-NOTICE] [source:JZ-CONTROL-PLAN-PROGRESS]
+
+At Qinghe, an official public-works contract covers the east side of the Jing-Zhang high-speed railway from Xiaoying West Road to Xierqi North Road: 134,619.3 square metres, CNY 28,986,162.09, Qinghe Subdistrict Office as client, and 29 May 2026 as planned completion. It verifies contract scope and parties, not actual completion or land rights. The derived CNY 215.32 per square metre records scale only and is not directly comparable with proof-block concept costs. [source:QINGHE-CONTRACT] [metric:verified_qinghe_public_project_area_sqm]
+
+Near Dazhongsi, an official transaction covers parcels HD00-1603-01 and HD00-1603-03A: 39,522.11 square metres of land, a 96,811.51-square-metre above-ground floor-area cap, a derived FAR cap of 2.4496, a CNY 2.8 billion price, and Beijing Yunyue Changshi Technology Co., Ltd. as winning bidder. The right record applies only to these two parcels; it is not a complete ownership map for the approximately 72-hectare key area and says nothing about adjacent roads, stations or buildings. [source:DAZHONGSI-LAND-TRANSACTION] [metric:verified_dazhongsi_parcel_far_cap]
 
 ## Three-Level Scope Framework
 
@@ -139,9 +149,15 @@ All three areas follow retain, light retrofit, reversible trial, review, then ex
 
 ### Three Dual-Memory proof blocks: from vision to delivery unit
 
-v6.0 does not enlarge the three areas into unverified megaprojects. It first delivers one minimum block in each place. Zhongzhiyuan’s Stop Garden uses the 60 m × 14 m Consent Section as its envelope, retaining a 4 m no-AI route beside a bounded low-speed test court. AI Origin’s Provenance Clinic uses a reversible ground floor and forecourt for paper registration, staffed appeal and revocable provenance records. Dazhongsi’s Account-Free Commons combines step-free arrival, staffed multilingual service and optional on-device assistance at the station-neighbourhood interface.
+v7.0 does not enlarge the three areas into unverified megaprojects. It first delivers one minimum block in each place. Zhongzhiyuan’s Stop Garden uses the 60 m × 14 m Consent Section as its envelope, retaining a 4 m no-AI route beside a bounded low-speed test court. AI Origin’s Provenance Clinic uses a reversible ground floor and forecourt for paper registration, staffed appeal and revocable provenance records. Dazhongsi’s Account-Free Commons combines step-free arrival, staffed multilingual service and optional on-device assistance at the station-neighbourhood interface.
 
 The three blocks carry a concept band of CNY 3.5–6.5 million; shared baseline work, permits, operation, independent review and reinstatement readiness carry CNY 4.0–7.0 million, reconciling with the implementation contract’s CNY 7.5–13.5 million total. Release proceeds through G0 lock facts, G1 ordinary base first, G2 reversible prototype, G3 no more than 20 staffed windows, and G4 retain/revise/retire. Targets are 100% ordinary-route completion, 100% human handoff, at least 80% boundary comprehension and zero unresolved major issues. These are concept costs and pilot targets—not quotations, approved budgets or measured results. Any missing responsibility, permit or baseline keeps the block at `HOLD`. See `visual/assets/three-proof-blocks.json`. [depth:renewal_project_list]
+
+### Three field routes and evidence admission
+
+Fieldwork is now an executable protocol. FS-01 follows the Qinghe contract segment with at least 12 points across weekday morning peak, midday and evening peak. FS-02 links Wudaokou and Qinghua East Road West Exit with at least 15 points across a weekday afternoon and weekend daytime. FS-03 covers four Dazhongsi station quadrants and the public edges of the two known parcels with at least 16 points across weekday morning peak, evening peak and weekend daytime. An observation enters the formal ledger only with timestamp, position and accuracy, viewing direction, a public-space location, structured finding, privacy-cleared photo hash and reviewer.
+
+This edition contains zero observations meeting those conditions; all three routes remain `planned`. It therefore makes no verified claim about route performance, user feedback, actual completion or co-design outcomes. Eight of eight desktop evidence checks pass, proving source, calculation and wording consistency only—not field performance. [metric:completed_field_observation_count] [depth:key_area_urban_design]
 
 ![Three key-area daily routes: ordinary entry—no-AI path—staffed service—opt-in threshold—ordinary exit](assets/boards/board-04.en.jpg)
 

@@ -143,10 +143,10 @@
       "tool_id": "TOOL-CHROME",
       "name": "Chromium-family headless browser (Google Chrome / Microsoft Edge)",
       "version": "Chrome 151.0.7922.108; Edge 151.0.4129.72",
-      "usage": "以离线 headless SVG 渲染双轨总体图、非 AI 优先公共服务蓝图、AI 城市代谢账本、反脆弱失败治理回写图、气候韧性验证走廊、百年时间博物馆、公共任务经济和全年公共运营的中英文 PNG 展示导出；不加载远程资源，不改变 geometry、场景编号或空间精度。",
+      "usage": "以离线 headless SVG 渲染双轨总体图、非 AI 优先公共服务蓝图、AI 城市代谢账本、反脆弱失败治理回写图、气候韧性验证走廊、百年时间博物馆、公共任务经济、全年公共运营和第15轮现场证据空白采集合同的中英文 PNG 展示导出；不加载远程资源，不改变 geometry、场景编号或空间精度。",
       "license_or_terms_status": "Browser distribution and font-resolution terms are not independently audited here.",
       "redistribution_status": "Browser executable and system fonts are not redistributed by this submission.",
-      "reproduction_path": "Render the bilingual assets/figures/site-overview, non-ai-service-blueprint, urban-metabolism-ledger, failure-governance-writeback, climate-resilience-corridor, century-timeline, industry-public-value-state, year-round-civic-operations, and review-professional-handoff SVG pairs with a local Chromium-family headless browser at the checked-in 1800×1100 viewBox and compare the resulting PNGs."
+      "reproduction_path": "Render the bilingual assets/figures/site-overview, non-ai-service-blueprint, urban-metabolism-ledger, failure-governance-writeback, climate-resilience-corridor, century-timeline, industry-public-value-state, year-round-civic-operations, review-professional-handoff, and field-evidence-intake SVG pairs with a local Chromium-family headless browser at the checked-in 1800×1100 viewBox and compare the resulting PNGs."
     },
     {
       "tool_id": "TOOL-OPENAI-IMAGEGEN",
@@ -232,6 +232,7 @@
     "不承诺任何政府实施安排，成果为可讨论、可复核、可替换官方数据后重算的设计建议。",
     "不采集、不推断、不发布任何个人身份信息。",
     "Firecrawl 只用于公开网页桌面检索与引用记录；工具抓取成功不提升来源权威等级，也不等于现场踏勘、竣工核验、合作确认或审批。",
-    "Round 14 accessibility features are presentation intentions only; no independent accessibility certification, field evidence, approval, operation, professional acceptance or rights clearance is claimed."
+    "Round 14 accessibility features are presentation intentions only; no independent accessibility certification, field evidence, approval, operation, professional acceptance or rights clearance is claimed.",
+    "Round 15 defines empty field-evidence packets and future collection routes only. Every real artifact, value, collector, custodian, reviewer, acceptance, approval and completed route walk remains unknown or 0; no template or PR status may be represented as field evidence."
   ]
 }

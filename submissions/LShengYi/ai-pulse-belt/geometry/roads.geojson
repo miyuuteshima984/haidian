@@ -12,7 +12,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -39,7 +40,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -66,7 +68,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -93,7 +96,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -119,7 +123,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -145,7 +150,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -171,7 +177,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -198,7 +205,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -224,7 +232,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "MultiLineString",
@@ -262,7 +271,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "medium",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -288,7 +298,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -314,7 +325,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",
@@ -340,7 +352,8 @@
     "layer": "ROAD_CENTERLINE",
     "source_type": "agent_generated_design",
     "confidence": "low",
-    "geometry_role": "design_proposal"
+    "geometry_role": "design_proposal",
+    "iteration": "v10.2"
    },
    "geometry": {
     "type": "LineString",

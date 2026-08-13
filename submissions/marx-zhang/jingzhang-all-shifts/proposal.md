@@ -166,6 +166,16 @@ AI 原点交接院把学习者、照护者与低数字素养使用者放在同�
 
 无论哪一处、哪个时段，人工入口、无扫码服务、连续无障碍路线与公开责任信息都不得下线。人工入口缺失、无障碍路线阻断、隐蔽追踪、个人评分、自动惩罚或生产系统接入，任一情形均意味着暂停、不开放；这些剧本不替代真实场地、消防、产权、劳动或专业核验结论。
 
+## 第五阶段深化：三处场景 × 84 秒无障碍导览
+
+离线导览把上述四段行动剧本压缩为 84 秒的静音可理解序列：06—10 的众智园维护与人工交接，10—18 的 AI 原点学习、照护与无障碍导视，18—24 的大钟寺换乘、短停与求助，以及 00—06 的恢复和安全离开。视频只有既有概念场景、剧本图和抽象路径/服务图层；中文与英文各有字幕和完整文字稿，不需要旁白、音乐或扫码才可理解 [metric:accessibility_tour_duration_seconds] [metric:accessibility_tour_time_window_count]。
+
+![三处场景无障碍导览静态封面](assets/media/cover.webp)
+
+[在离线网页中播放导览](visual/index.html#accessible-tour) · [中文文字稿](assets/media/three-area-access-tour-zh.md) · [English transcript](assets/media/three-area-access-tour-en.md)
+
+导览仍是设计研究表达：它不确认真实点位、班表、客流、开放时段或实施授权。每段都以“AI仅辅助、人工入口、无扫码服务、连续无障碍路线”为前提；任何人工入口缺失、无障碍中断、隐蔽追踪、个人评分、自动惩罚或生产系统接入，均应暂停而非继续运行 [metric:accessibility_tour_silent_equivalence_count]。
+
 ## AI 创新生态、人才画像与 AI+ 场景
 
 八类画像把技术岗位与城市运行岗位放在同一张需求表中：

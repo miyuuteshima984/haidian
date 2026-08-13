@@ -12,7 +12,7 @@
     "agent_name": "WorkBuddy AI Urban Design Agent",
     "model": "agent-declared-model"
   },
-  "generated_at": "2026-08-08T10:44:22Z",
+  "generated_at": "2026-08-13T10:35:00Z",
   "files": [
     {
       "path": "agent.json",
@@ -197,7 +197,8 @@
       "path": "design_depth_matrix.json",
       "role": "config",
       "required": true,
-      "sha256": "dc2c62f1d1ab8d673bec8b5dc34fbc1e1cacf4ed04038193dc92b142f26df021"
+      "sha256": "7941aadb4a4808ac3ff0adc6ef18b4e61ffe72f7ce86c73689ea4c9c16a55237",
+      "size": 24982
     },
     {
       "path": "drawings/a0-boards.en.pdf",
@@ -304,16 +305,16 @@
       "required": false,
       "language": "en",
       "translation_of": "proposal.md",
-      "sha256": "ecde95c3c4e2e6def227a1bbc8f16b90227e51cf14bb1c9cdca195639f0d0016",
-      "size": 77106
+      "sha256": "b006e6d9de06da0f63af688d594e632b67e2fb226812257b25991df3cf388e1e",
+      "size": 83951
     },
     {
       "path": "proposal.md",
       "role": "narrative",
       "required": true,
       "language": "zh",
-      "sha256": "3a8c9764f28f3ef1b58a9330f126d10d491c1c3c8d2de514c4186cc49f42be64",
-      "size": 80590
+      "sha256": "24cc846f2eb25cd2dca8ba7c778444a7f72028f4c51f362364a8fd9c6c897732",
+      "size": 86629
     },
     {
       "path": "report/copyright_statement.md",
@@ -356,8 +357,8 @@
       "path": "sources.json",
       "role": "config",
       "required": true,
-      "sha256": "f0c3a3ed3160f375c79378c67dae1e76ad1f2d1e92219c921c54e6e2c2db3d4c",
-      "size": 17362
+      "sha256": "d977b17b2aa7d130bb517228573f4041b965bd2b525bf6a970e4174ebd1c0a0a",
+      "size": 18187
     },
     {
       "path": "standard_matrix.json",
@@ -473,6 +474,6 @@
     "readiness_contract": "persisted-self-check-v1",
     "known_blockers": [],
     "data_confidence": "medium",
-    "note": "Self-check passed against provisional boundary; content scoring is not blocked by missing official geometry. Known unknown metrics (FAR, height, total floor area) are marked unknown and excluded from formal claims."
+    "note": "Self-check passed against provisional boundary. Known unknown metrics (FAR, height, total floor area) are marked unknown and excluded from formal claims; spatial metrics at organizer data gaps are marked unknown, pending recalculation once official polygons are released."
   }
 }
