@@ -1,0 +1,142 @@
+name: Temporary Jingzhang v0.7 design-first sparse
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v07-design-first-sparse.yml
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sparse checkout v0.7 package
+        uses: actions/checkout@v4
+        with:
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v07
+          fetch-depth: 1
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          sparse-checkout-cone-mode: false
+
+      - name: Integrate design-first spatial narratives
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re
+
+          root = Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          figures = root / 'assets/figures'
+          figures.mkdir(parents=True, exist_ok=True)
+
+          def esc(s): return html.escape(s, quote=True)
+
+          def journey_svg(lang='zh'):
+              zh = lang == 'zh'
+              title = 'v0.7｜三条日常城市链：先看人怎么过一天，再看 AI 放在哪里' if zh else 'v0.7 | Three everyday journeys: start with a day in the city, then place AI'
+              sub = '黑色=人和普通城市功能 · 绿色=物理空间补齐 · 蓝色虚线=可选 AI · 红色虚线=失败/退出后仍可走' if zh else 'Black=people/ordinary city · Green=physical repair · Blue dash=optional AI · Red dash=functioning exit path'
+              rows = [
+                  ('01 众智园｜研究者 + 服务劳动者' if zh else '01 Zhongzhiyuan | researcher + service worker',
+                   ['到达 / 工作' if zh else 'arrival / work','吃饭 + 休息' if zh else 'food + rest','普通步行' if zh else 'ordinary walking','受控测试院' if zh else 'bounded test yard'],
+                   '测试空间与普通通行物理分开；设备退出后仍是完整创新校园。' if zh else 'Testing is physically separated from ordinary circulation; the campus still works after devices exit.'),
+                  ('02 AI 原点｜老人 + 照护者 + 无手机使用者' if zh else '02 AI Origin | older resident + carer + no-phone user',
+                   ['家门' if zh else 'home','遮阴 + 坐凳' if zh else 'shade + seating','照护 + 人工服务' if zh else 'care + staffed help','公共客厅' if zh else 'civic commons'],
+                   'AI 导航只叠加在物理无障碍和人工求助上；拒绝账号不降低基本服务。' if zh else 'AI navigation layers onto physical accessibility and staffed help; refusing an account never degrades basic service.'),
+                  ('03 大钟寺｜通勤者 + 国际访客 + 服务劳动者' if zh else '03 Dazhongsi | commuter + international visitor + service worker',
+                   ['固定双语导视' if zh else 'fixed bilingual signs','人工换乘帮助' if zh else 'staffed interchange help','普通商业 / 休息' if zh else 'ordinary retail / rest','遗产 + 公共绿脊' if zh else 'heritage + green spine'],
+                   '动态信息可增强可读性；错误建议时立即回到实体路径与人工服务。' if zh else 'Dynamic information may enhance legibility; bad advice falls back immediately to physical routes and human service.')
+              ]
+              out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><style>text{{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#172033}}.h1{{font-size:44px;font-weight:700}}.sub{{font-size:18px;fill:#5f6b79}}.h2{{font-size:26px;font-weight:700}}.b{{font-size:17px}}.s{{font-size:14px;fill:#64748b}}.p{{fill:#fff;stroke:#d7dee8;stroke-width:2}}.g{{fill:#d8f1df}}.bl{{fill:#dcecff}}.w{{fill:#fde8d0}}.r{{fill:none;stroke:#0f766e;stroke-width:8;stroke-linecap:round}}.ai{{fill:none;stroke:#2563eb;stroke-width:4;stroke-dasharray:10 8}}.x{{fill:none;stroke:#b91c1c;stroke-width:4;stroke-dasharray:7 7}}.human{{fill:#172033}}</style><rect width="1600" height="1000" fill="#f7f9fc"/><text x="60" y="68" class="h1">{esc(title)}</text><text x="60" y="104" class="sub">{esc(sub)}</text>']
+              colors = ['bl','g','w','g']
+              for i,(head,nodes,note) in enumerate(rows):
+                  y=145+i*260
+                  out += [f'<g transform="translate(55,{y})"><rect width="1490" height="235" rx="18" class="p"/><text x="25" y="42" class="h2">{esc(head)}</text><path d="M70 150 H1420" class="r"/>']
+                  for j,node in enumerate(nodes):
+                      x=100+j*355
+                      out += [f'<rect x="{x}" y="82" width="250" height="75" rx="12" class="{colors[j]}"/><text x="{x+16}" y="126" class="b">{esc(node)}</text>']
+                  out += ['<circle cx="72" cy="136" r="12" class="human"/><rect x="65" y="148" width="14" height="28" rx="5" class="human"/>',
+                          '<path d="M1160 118 C1240 62 1340 62 1410 118" class="ai"/><path d="M1160 180 C1240 214 1340 214 1420 178" class="x"/>',
+                          f'<text x="25" y="215" class="s">{esc(note)}</text></g>']
+              footer = 'Concept-only · provisional geometry · 真实站口、道路、许可、保险与责任主体需另行核验。' if zh else 'Concept-only · provisional geometry · real entrances, roads, permits, insurance and accountable parties require verification.'
+              out += [f'<text x="60" y="965" class="s">{esc(footer)}</text></svg>']
+              return ''.join(out)
+
+          def form_svg(lang='zh'):
+              zh = lang == 'zh'
+              title = 'v0.7｜AI 改变城市形态：六类可逆物理接口' if zh else 'v0.7 | How AI changes urban form: six reversible physical interfaces'
+              sub = 'ordinary city baseline → 空间补齐 → 可选 AI → 退出后仍可用' if zh else 'ordinary-city baseline → physical repair → optional AI → functioning exit state'
+              cards = [
+                  ('A｜测试口袋' if zh else 'A | Test pockets','测试边界与普通通行分开；撤设备后恢复普通院落。' if zh else 'Separate testing from ordinary circulation; remove devices and keep an ordinary yard.'),
+                  ('B｜无障碍求助节点' if zh else 'B | Accessible help nodes','坐凳、遮阴、实体导视、人工服务先成立，导航/翻译后叠加。' if zh else 'Seating, shade, static signs and staffed help come first; navigation/translation layers later.'),
+                  ('C｜连续站城到达界面' if zh else 'C | Continuous station-city arrival','固定双语导视、人工问询、休息与普通商业组成基础到达链。' if zh else 'Fixed bilingual signs, staffed help, rest and ordinary retail form the basic arrival chain.'),
+                  ('D｜可替换服务节点' if zh else 'D | Replaceable service nodes','端侧算力、充电、维护做成可拆换节点，而不是永久巨构。' if zh else 'Edge compute, charging and maintenance become removable nodes, not permanent megastructures.'),
+                  ('E｜人优先的公共首层' if zh else 'E | People-first public ground floors','可坐、可停、可吃饭、可会面、可人工服务的空间优先于设备。' if zh else 'Space for sitting, staying, food, meeting and staffed service takes priority over equipment.'),
+                  ('F｜可回退空间版本链' if zh else 'F | Reversible spatial versioning','观察 → 小范围原型 → 公共/专业复核 → 合并或回退。' if zh else 'Observe → bounded prototype → public/professional review → merge or rollback.')]
+              out=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img"><style>text{{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#172033}}.h1{{font-size:44px;font-weight:700}}.sub{{font-size:18px;fill:#5f6b79}}.h2{{font-size:24px;font-weight:700}}.b{{font-size:16px}}.s{{font-size:14px;fill:#64748b}}.c{{fill:#fff;stroke:#d8e0ea;stroke-width:2}}.g{{fill:#d9f1df}}.bl{{fill:#dcecff}}.ln{{stroke:#0f766e;stroke-width:6}}.ai{{stroke:#2563eb;stroke-width:4;stroke-dasharray:9 8;fill:none}}.x{{stroke:#b91c1c;stroke-width:4;stroke-dasharray:7 7;fill:none}}</style><rect width="1600" height="1000" fill="#f7f9fc"/><text x="60" y="68" class="h1">{esc(title)}</text><text x="60" y="104" class="sub">{esc(sub)}</text>']
+              for i,(head,body) in enumerate(cards):
+                  col=i%3; row=i//3; x=55+col*510; y=150+row*350
+                  out += [f'<g transform="translate({x},{y})"><rect width="470" height="310" rx="18" class="c"/><text x="22" y="42" class="h2">{esc(head)}</text><rect x="30" y="78" width="410" height="105" rx="12" fill="#e9edf1"/><rect x="65" y="100" width="120" height="62" rx="9" class="g"/><rect x="265" y="100" width="120" height="62" rx="9" class="bl"/><path d="M185 130 H265" class="ln"/><path d="M270 92 C310 65 365 65 405 92" class="ai"/><path d="M270 172 C310 195 365 195 405 170" class="x"/><text x="25" y="225" class="b">{esc(body)}</text><text x="25" y="270" class="s">AI is optional; physical city function remains after exit.</text></g>']
+              footer='共同原则：AI 不是第八类用地，而是让测试、服务、到达、基础设施与规划过程需要“可开 / 可停 / 可替换”的空间接口。' if zh else 'Shared principle: AI is not an eighth land-use category; it creates spatial interfaces that can start, stop and be replaced.'
+              out += [f'<text x="60" y="900" class="sub">{esc(footer)}</text><text x="60" y="940" class="s">Concept-only · all dimensions and engineering interfaces require later verification.</text></svg>']
+              return ''.join(out)
+
+          (figures/'everyday-journey-sections.svg').write_text(journey_svg('zh'), encoding='utf-8')
+          (figures/'everyday-journey-sections.en.svg').write_text(journey_svg('en'), encoding='utf-8')
+          (figures/'ai-urban-form-change.svg').write_text(form_svg('zh'), encoding='utf-8')
+          (figures/'ai-urban-form-change.en.svg').write_text(form_svg('en'), encoding='utf-8')
+
+          zh = root/'proposal.md'
+          t = zh.read_text(encoding='utf-8').replace('iteration: "v0.6"','iteration: "v0.7"')
+          anchor='场景治理遵守同一底线：不用 App 仍能通行与获得基本服务；不参加测试不会失去社区权益；高风险判断转人工；设备或模型退出后，基本城市功能仍在。这既是技术鲁棒性，也是公共空间的公平性要求。\n\n'
+          insert='''### v0.7 三条日常城市链：把协议重新变成空间\n\nv0.7 不再把“评审索引”当作第一视觉，而从三类真实日常路径重新组织重点区：众智园的研究者与服务劳动者从到达、研发、吃饭休息走到受控测试；AI 原点的老人、照护者与无手机使用者从家门、休息、照护走到公共客厅；大钟寺的通勤者、国际访客与服务劳动者从到达、换乘、普通商业走到京张遗产公共界面。每条路径都先要求物理空间完整，再允许 AI 作为可关闭的增强层。\n\n![三条日常城市链：普通城市基线—空间补齐—可选 AI—退出后仍可用](assets/figures/everyday-journey-sections.svg)\n\n### AI 如何改变城市形态，而不是只增加屏幕\n\nAI 对城市形态的影响被压缩为六类可逆空间原型：测试口袋、无障碍求助节点、连续站城到达界面、可替换小型服务节点、人优先的公共首层，以及“观察—小范围原型—公共/专业复核—合并或回退”的可回退空间版本链。这回答的是 AI 如何改变空间组织和规划方法，而不是如何给既有空间附加更多数字界面。\n\n![AI 如何改变城市形态：六类可逆物理接口](assets/figures/ai-urban-form-change.svg)\n\n'''
+          if '### v0.7 三条日常城市链' not in t: t=t.replace(anchor,anchor+insert)
+          t=re.sub(r'v0\.6 不把新增证据继续藏在附件末端.*?\n\n!\[七维 rubric 与 agent\.1–agent\.6 评审证据索引\]\(assets/figures/reviewer-evidence-index\.svg\)\n\n','v0.7 将 v0.6 的 reviewer evidence dashboard / index 降为后部追溯附件，不再作为设计叙事或首屏主视觉；评分、gate 与设计内容继续分离。\n\n',t,flags=re.S)
+          zh.write_text(t,encoding='utf-8')
+
+          en = root/'proposal.en.md'
+          t = en.read_text(encoding='utf-8').replace('iteration: "v0.6"','iteration: "v0.7"')
+          anchor='All scenarios share a governance floor: basic circulation and services work without an app; non-participation does not remove community rights; high-risk decisions escalate to humans; and basic urban functions survive when a model, device, account or platform is withdrawn. This is both technological robustness and public-space equity.\n\n'
+          insert='''### v0.7 Three Everyday Journeys: Turn Protocols Back into Space\n\nv0.7 no longer treats a reviewer index as the first visual. The three key areas are reorganized around everyday journeys: a researcher and service worker in Zhongzhiyuan move from arrival to R&D, food/rest and a bounded test yard; an older resident, carer and no-phone user in AI Origin move from home to rest, care and civic commons; a commuter, international visitor and service worker in Dazhongsi move from arrival and interchange through ordinary retail to the Jing-Zhang heritage public interface. Each journey requires a complete physical city first; AI is only a switchable enhancement layer.\n\n![Three everyday journeys: ordinary-city baseline—physical repair—optional AI—functioning exit state](assets/figures/everyday-journey-sections.en.svg)\n\n### How AI Changes Urban Form, Not Just Screens\n\nThe spatial effect of AI is reduced to six reversible prototypes: test pockets, accessible help nodes, continuous station-city arrival interfaces, replaceable small service nodes, people-first public ground floors, and a reversible spatial version chain—observe, bounded prototype, public/professional review, merge or rollback. This answers how AI changes spatial organization and planning method rather than merely attaching more digital interfaces to existing space.\n\n![How AI changes urban form: six reversible physical interfaces](assets/figures/ai-urban-form-change.en.svg)\n\n'''
+          if '### v0.7 Three Everyday Journeys' not in t: t=t.replace(anchor,anchor+insert)
+          t=re.sub(r'v0\.6 stops hiding new evidence at the end of supplemental files\..*?\n\n!\[Seven-dimension rubric and agent\.1–agent\.6 reviewer evidence index\]\(assets/figures/reviewer-evidence-index\.en\.svg\)\n\n','v0.7 demotes the v0.6 reviewer evidence dashboard/index to a back-of-package traceability appendix. It is no longer part of the design narrative or first-screen visual; scoring, gates and design content remain separate.\n\n',t,flags=re.S)
+          en.write_text(t,encoding='utf-8')
+
+          for rel,english in [('visual/index.html',False),('visual/index.en.html',True)]:
+              p=root/rel; t=p.read_text(encoding='utf-8').replace('<span>v0.6 evidence-first</span>','<span>v0.7 design-first</span>')
+              if english:
+                  new='<section class="sheet" id="v07-everyday-journeys"><div class="head"><h2>v0.7 First Screen | Three Everyday Journeys</h2><div class="muted">Start from a day in the city and real spatial interfaces. AI arrives only after ordinary urban functions work.</div></div><div class="body"><img class="evidence-img" src="../assets/figures/everyday-journey-sections.en.svg" alt="Three everyday journeys across Zhongzhiyuan, AI Origin and Dazhongsi"></div></section>\n'
+                  t=re.sub(r'<section class="sheet" id="v06-review-evidence">.*?</section>\n',new,t,count=1,flags=re.S)
+                  t=t.replace('<tr><td>Review traceability</td><td>Seven public rubric dimensions + agent.1–agent.6 reviewer evidence index</td></tr>','<tr><td>Spatial experience prototypes</td><td>Three everyday journeys + six AI urban-form interfaces; audit index moved to back-of-package traceability</td></tr>')
+              else:
+                  new='<section class="sheet" id="v07-everyday-journeys"><div class="head"><h2>v0.7 首屏｜三条日常城市链</h2><div class="muted">从人的一天和真实空间接口出发；AI 只在普通城市功能成立后进入。</div></div><div class="body"><img class="evidence-img" src="../assets/figures/everyday-journey-sections.svg" alt="众智园、AI原点和大钟寺三条日常城市链"></div></section>\n'
+                  t=re.sub(r'<section class="sheet" id="v06-review-evidence">.*?</section>\n',new,t,count=1,flags=re.S)
+                  t=t.replace('<tr><td>评审可追溯</td><td>七维 rubric + agent.1–agent.6 reviewer evidence index</td></tr>','<tr><td>空间体验原型</td><td>三条日常城市链 + 六类 AI 城市形态接口；审计索引退到后部追溯附件</td></tr>')
+              p.write_text(t,encoding='utf-8')
+
+          c=root/'changelog.md'; t=c.read_text(encoding='utf-8')
+          if '## v0.7 - 2026-08-13' not in t:
+              entry='''## v0.7 - 2026-08-13\n\n- Reversed the v0.6 rubric-first presentation after #2143 merged at Review Agent 76/100 despite all four gates passing: the above-fold reviewer dashboard is demoted to traceability and the first visual returns to actual urban experience.\n- Added bilingual three everyday journey diagrams for Zhongzhiyuan, AI Origin and Dazhongsi: ordinary-city baseline, physical repair, optional AI enhancement and a functioning failure/exit route.\n- Added bilingual AI-urban-form prototypes: bounded test pockets, accessible help thresholds, continuous arrival interfaces, replaceable service nodes, people-first public ground floors and reversible spatial versioning.\n- Started from upstream main `0f051ddb5b91bf5e1992a1b32b8c3b2763978fc8` to inherit the latest validator/schema changes.\n\n'''
+              t=t.replace('# 方案迭代记录\n\n','# 方案迭代记录\n\n'+entry,1)
+          c.write_text(t,encoding='utf-8')
+
+          rights=root/'report/copyright_statement.md'; t=rights.read_text(encoding='utf-8')
+          if 'everyday-journey-sections.svg' not in t:
+              t += '\n\n## v0.7 design-first spatial diagrams\n\n- `assets/figures/everyday-journey-sections.svg` / `.en.svg`: submission-original / AI-assisted vector diagram; no third-party logo, image, map tile, font file, identifiable person or proprietary diagram is embedded. Conceptual storyboard only, not observed user behavior.\n- `assets/figures/ai-urban-form-change.svg` / `.en.svg`: submission-original / AI-assisted vector diagram; no third-party logo, image, map tile, font file or proprietary diagram is embedded. Spatial interfaces require later verification against official geometry, field surveys and professional requirements.\n'
+          rights.write_text(t,encoding='utf-8')
+          PY
+
+      - name: Commit and push v0.7 design-first package
+        shell: bash
+        run: |
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git status --short
+          git diff --cached --quiet && exit 0
+          git commit -m "v0.7: restore design-first spatial narratives"
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v07
