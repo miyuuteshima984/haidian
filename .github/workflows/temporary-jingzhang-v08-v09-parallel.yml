@@ -1,4 +1,4 @@
-name: Temporary Jingzhang v0.9 rebase and validate
+name: Temporary Jingzhang v0.9 merge-safe reconcile and validate
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
             submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
           persist-credentials: true
 
-      - name: Rebase candidate onto latest upstream main
+      - name: Prepare latest upstream base and helpers
         shell: bash
         run: |
           set -euo pipefail
@@ -54,11 +54,12 @@ jobs:
           git remote remove upstream 2>/dev/null || true
           git remote add upstream https://github.com/open-city-ai/haidian.git
           git fetch upstream main --no-tags --filter=blob:none
+          UPSTREAM="$(git rev-parse upstream/main)"
+          echo "UPSTREAM=$UPSTREAM" >> "$GITHUB_ENV"
           git checkout -B "$TARGET_BRANCH"
-          git reset --hard upstream/main
+          git reset --hard "$UPSTREAM"
           echo "old_target=$OLD_TARGET"
-          echo "upstream=$(git rev-parse upstream/main)"
-          echo "rebased_base=$(git rev-parse HEAD)"
+          echo "upstream=$UPSTREAM"
 
       - name: Install review and rendering dependencies
         shell: bash
@@ -84,14 +85,14 @@ jobs:
           from pathlib import Path
           text=Path('/tmp/sprint.log').read_text(encoding='utf-8',errors='replace')[-5000:]
           text=text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
-          print(f'::error title=V09_REBASE_BUILD_FAILURE::{text}')
+          print(f'::error title=V09_RECONCILE_BUILD_FAILURE::{text}')
           PY
             exit "$code"
           fi
           set -e
           git diff --check
 
-      - name: Commit validated rebased candidate
+      - name: Commit rebuilt candidate tree
         shell: bash
         run: |
           set -euo pipefail
@@ -103,7 +104,18 @@ jobs:
             echo "No v0.9 candidate changes to commit"
             exit 1
           fi
-          git commit -m "v0.9: rebase reality-anchored design onto current main"
+          git commit -m "v0.9: rebuild reality-anchored design on current main"
+
+      - name: Reconcile histories with merge-safe exact head
+        shell: bash
+        run: |
+          set -euo pipefail
+          TREE="$(git rev-parse HEAD^{tree})"
+          MERGE_SHA="$(printf '%s\n' 'v0.9: reconcile reality-anchored design with current main' | git commit-tree "$TREE" -p "$OLD_TARGET" -p "$UPSTREAM")"
+          git reset --hard "$MERGE_SHA"
+          git merge-base --is-ancestor "$OLD_TARGET" HEAD
+          git merge-base --is-ancestor "$UPSTREAM" HEAD
+          echo "merge_safe_head=$MERGE_SHA"
 
       - name: Participant preflight with push dry-run
         shell: bash
@@ -115,4 +127,4 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git push origin HEAD:"$TARGET_BRANCH" --force-with-lease="refs/heads/$TARGET_BRANCH:$OLD_TARGET"
+          git push origin HEAD:"$TARGET_BRANCH"
