@@ -2,7 +2,7 @@ import sys, subprocess
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 if str(HERE) not in sys.path: sys.path.insert(0,str(HERE.parent))
-from jingzhang_sprint import sprint_common, sprint_v08, sprint_v09
+from jingzhang_sprint import sprint_common, sprint_v08, sprint_v09, sprint_v091, sprint_v010
 
 _orig_upsert = sprint_common.upsert_before
 def _robust_upsert(path,start,end,block,marker):
@@ -16,6 +16,7 @@ _orig_matrix = sprint_common.update_matrices
 def _exact_matrix(section,mids,sids=()):
     if section.startswith('v0.8 '): section='v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION'
     if section.startswith('v0.9 '): section='v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事'
+    if section.startswith('v0.10 '): section='v0.10｜三条公共城市承诺：评委先看到城市怎么被人使用'
     return _orig_matrix(section,mids,sids)
 sprint_common.update_matrices=_exact_matrix
 
@@ -48,8 +49,10 @@ def _verbose_run(args,*a,**kw):
 sprint_common.subprocess.run=_verbose_run
 
 if len(sys.argv)!=3:
-    raise SystemExit('usage: sprint_runner.py <v0.8|v0.9> <package>')
+    raise SystemExit('usage: sprint_runner.py <v0.8|v0.9|v0.91|v0.10> <package>')
 variant,pkg=sys.argv[1:]
 if variant=='v0.8': sprint_v08.apply(pkg)
 elif variant=='v0.9': sprint_v09.apply(pkg)
+elif variant=='v0.91': sprint_v091.apply(pkg)
+elif variant=='v0.10': sprint_v010.apply(pkg)
 else: raise SystemExit(f'unknown variant {variant}')
