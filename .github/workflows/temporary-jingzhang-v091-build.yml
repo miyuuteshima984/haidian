@@ -1,0 +1,198 @@
+name: Temporary Jingzhang v0.91 design-first build
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v091-build.yml
+
+permissions:
+  contents: write
+
+env:
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v091
+  V07_HEAD: b35790ae96144224ea26dd8530b2a41641cffa3f
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout fork with write credentials
+        uses: actions/checkout@v4
+        with:
+          ref: automation/jingzhang-finalize
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: true
+
+      - name: Restore v0.7 package on latest upstream main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          git fetch origin "$V07_HEAD" --no-tags --depth=1
+          UPSTREAM="$(git rev-parse upstream/main)"
+          echo "UPSTREAM=$UPSTREAM" >> "$GITHUB_ENV"
+          git checkout -B "$TARGET_BRANCH" "$UPSTREAM"
+          git checkout "$V07_HEAD" -- "$PKG"
+          mkdir -p /tmp/jingzhang_sprint
+          touch /tmp/jingzhang_sprint/__init__.py
+          for f in sprint_common.py sprint_v09.py; do
+            git show "origin/automation/jingzhang-finalize:.github/jingzhang_sprint/$f" > "/tmp/jingzhang_sprint/$f"
+          done
+          echo "baseline_upstream=$UPSTREAM"
+          echo "baseline_v07=$V07_HEAD"
+
+      - name: Install review and rendering dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+
+      - name: Apply reality anchors then design-first v0.91 refinement
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=/tmp python3 - <<'PY'
+          from pathlib import Path
+          import html
+          from jingzhang_sprint import sprint_common as c, sprint_v09
+
+          pkg = Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+
+          # Recreate the useful v0.9 reality anchors on the proven v0.7 package.
+          sprint_v09.apply(str(pkg))
+
+          # v0.91 returns the first multimodal impression to everyday urban design.
+          c.configure('v0.91', str(pkg))
+          c.set_iteration()
+          fig = pkg / 'assets' / 'figures'
+          va = pkg / 'visual' / 'assets'
+
+          stages_zh = [
+              ('01 家 / HOME','普通入口可识别','AI：可选提醒','退出：无账号照常出门'),
+              ('02 街 / STREET','连续人行与遮阴','AI：可选路径提示','退出：实体导视继续'),
+              ('03 绿廊 / GREEN','步行、停留先成立','AI：可选环境信息','退出：座椅树荫不掉线'),
+              ('04 换乘 / MOVE','固定双语导视+人工','AI：可选动态导航','退出：人工接手'),
+              ('05 服务 / CARE','窗口与公共空间可达','AI：可选辅助分流','退出：无手机等价服务'),
+              ('06 返回 / RETURN','普通城市闭环完整','AI：不成为必经层','退出：AI-OFF仍回得了家'),
+          ]
+          stages_en = [
+              ('01 HOME','legible ordinary entrance','AI: optional reminder','exit: no-account departure works'),
+              ('02 STREET','continuous walk + shade','AI: optional route cue','exit: fixed signs remain'),
+              ('03 GREEN','walking + staying first','AI: optional environment info','exit: shade/seating stay physical'),
+              ('04 MOVE','fixed bilingual signs + staff','AI: optional dynamic navigation','exit: human takeover'),
+              ('05 CARE','reachable counter + commons','AI: optional triage assist','exit: no-phone equivalent service'),
+              ('06 RETURN','ordinary city loop complete','AI: never a mandatory layer','exit: AI-OFF still gets you home'),
+          ]
+
+          def loop_svg(title, subtitle, stages, off_title, off_items, footer):
+              W,H=1600,900
+              p=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+                 '<rect width="1600" height="900" fill="#f8fafc"/>',
+                 '<style>text{font-family:"Noto Sans CJK SC","Noto Sans",Arial,sans-serif}.t{font-weight:700;fill:#111827}.s{fill:#64748b}.h{font-weight:700;fill:#0f766e}.b{fill:#334155}.a{fill:#2563eb}.o{fill:#b45309}</style>',
+                 f'<text x="60" y="70" font-size="42" class="t">{html.escape(title)}</text>',
+                 f'<text x="60" y="108" font-size="19" class="s">{html.escape(subtitle)}</text>',
+                 '<path d="M120 340 H1480" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>']
+              xs=[130,390,650,910,1170,1430]
+              for i,(head,base,ai,exit_) in enumerate(stages):
+                  x=xs[i]
+                  p += [f'<circle cx="{x}" cy="340" r="25" fill="#0f766e"/><text x="{x}" y="347" text-anchor="middle" font-size="17" fill="white" font-weight="700">{i+1}</text>',
+                        f'<rect x="{x-112}" y="165" width="224" height="145" rx="18" fill="white" stroke="#cbd5e1" stroke-width="2"/>',
+                        f'<text x="{x}" y="202" text-anchor="middle" font-size="19" class="t">{html.escape(head)}</text>',
+                        f'<text x="{x}" y="236" text-anchor="middle" font-size="15" class="b">{html.escape(base)}</text>',
+                        f'<text x="{x}" y="265" text-anchor="middle" font-size="14" class="a">{html.escape(ai)}</text>',
+                        f'<text x="{x}" y="294" text-anchor="middle" font-size="13" class="o">{html.escape(exit_)}</text>']
+              p += ['<rect x="60" y="430" width="1480" height="290" rx="26" fill="white" stroke="#cbd5e1" stroke-width="2"/>',
+                    f'<text x="90" y="480" font-size="28" class="t">{html.escape(off_title)}</text>',
+                    '<text x="90" y="515" font-size="16" class="s">ordinary urban life must remain physically complete when the optional digital layer is unavailable</text>']
+              x0s=[95,455,815,1175]
+              for x,(a,b) in zip(x0s,off_items):
+                  p += [f'<rect x="{x}" y="555" width="320" height="115" rx="18" fill="#f8fafc" stroke="#dbe4ee"/>',
+                        f'<circle cx="{x+28}" cy="590" r="9" fill="#0f766e"/>',
+                        f'<text x="{x+50}" y="597" font-size="17" class="h">{html.escape(a)}</text>',
+                        f'<text x="{x+22}" y="635" font-size="14" class="b">{html.escape(b)}</text>']
+              p += [f'<text x="60" y="820" font-size="15" class="s">{html.escape(footer)}</text>','</svg>']
+              return ''.join(p)
+
+          off_zh=[('普通通行','道路、人行与到达不依赖 AI'),('人工服务','窗口/值守能接管基本任务'),('静态信息','固定双语导视继续可读'),('公共停留','遮阴、座椅、绿地继续可用')]
+          off_en=[('ordinary passage','streets and arrivals do not depend on AI'),('staffed service','people can take over basic tasks'),('fixed information','bilingual static signs remain legible'),('public staying','shade, seating and green stay usable')]
+          (fig/'jingzhang-daily-loop.svg').write_text(loop_svg('JING-ZHANG DAILY LOOP｜一天不是六个系统','家 → 街 → 绿廊 → 换乘 → 公共服务 → 返回；每一步先有普通城市底座，再谈可选 AI。',stages_zh,'AI-OFF｜停机不是城市停摆',off_zh,'v0.91 design-first candidate · provisional geometry remains non-statutory · reality anchors change decisions, not the right to fabricate facts.'),encoding='utf-8')
+          (fig/'jingzhang-daily-loop.en.svg').write_text(loop_svg('JING-ZHANG DAILY LOOP | One day, not six disconnected systems','home → street → green corridor → transfer → public service → return; ordinary urban function first, optional AI second.',stages_en,'AI-OFF | shutdown is not urban shutdown',off_en,'v0.91 design-first candidate · provisional geometry remains non-statutory · reality anchors change decisions, not the right to fabricate facts.'),encoding='utf-8')
+
+          bridge={
+            'schema_version':'1.0','variant':'v0.91','status':'design_contract_not_field_result',
+            'title_zh':'京张日常闭环：普通城市底座 / 可选 AI / 人工与无账号退出',
+            'stages':[
+              {'id':'DL-01','stage':'home','baseline':'legible ordinary entrance','optional_ai':'reminder','fallback':'no-account departure'},
+              {'id':'DL-02','stage':'street','baseline':'continuous walk and shade','optional_ai':'route cue','fallback':'fixed wayfinding'},
+              {'id':'DL-03','stage':'green_corridor','baseline':'walk + stay + public frontage','optional_ai':'environment info','fallback':'physical shade and seating','reality_rule':'RR-02'},
+              {'id':'DL-04','stage':'transfer','baseline':'fixed bilingual signs + staffed help','optional_ai':'dynamic navigation','fallback':'human takeover','reality_rule':'RR-01 where railway vertical continuity applies'},
+              {'id':'DL-05','stage':'public_service','baseline':'reachable staffed counter and commons','optional_ai':'triage assist','fallback':'no-phone equivalent service'},
+              {'id':'DL-06','stage':'return','baseline':'ordinary city loop remains complete','optional_ai':'none required','fallback':'AI-OFF return remains possible'}],
+            'ai_off_invariants':['ordinary_passage','staffed_basic_service','fixed_bilingual_information','physical_public_staying'],
+            'principle':'AI may shorten or personalize a task, but loss of AI must not delete the ordinary urban task.'}
+          c.writej(va/'jingzhang-daily-loop-contract.json',bridge)
+
+          zh_start='<!-- V091-DAILY-LOOP-START -->'; zh_end='<!-- V091-DAILY-LOOP-END -->'
+          zh=f'''{zh_start}\n### v0.91｜JING-ZHANG DAILY LOOP：一天不是六个系统\n\nv0.91 从已经获得 86 分的 v0.7 设计优先包重新出发，只吸收 v0.9 中**真正改变空间判断**的现实约束，不继承 v0.8 把方案收束成单一设施原型的做法。核心改动是一条普通人的日常闭环：**家 → 街 → 绿廊 → 换乘 → 公共服务 → 返回**。每一步都先写普通城市底座，再写可选 AI、人工接手和无账号退出；AI 可以缩短任务，但不能删除任务。[metric:daily_loop_stage_count] [metric:ai_off_invariant_count]\n\n![京张日常闭环](assets/figures/jingzhang-daily-loop.svg)\n\n**现实资料藏在设计判断里，而不是占据首屏。** 知春路的下穿事实只改变需要核实的竖向连续性节点；京张绿廊的公开规划语境只强化“步行、停留、公共首层在设备之前”；7 个公开地块的 FAR/高度只作现实量级参照，绝不转写成本案控制值。[source:HD00-1601-DRAFT-RESPONSE-V09] [source:HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09] [source:HD-PLOT-CONDITIONS-REFERENCE-V09]\n\n**AI-OFF 是空间状态，不是免责声明。** 当数字层不可用，普通通行、人工基本服务、固定双语信息和公共停留四件事仍要在物理空间里成立。机器可读合同见 `visual/assets/jingzhang-daily-loop-contract.json`。\n{zh_end}'''
+          c.upsert_before(pkg/'proposal.md',zh_start,zh_end,zh,'## 用地、建筑规模与拆改留方案')
+
+          en_start='<!-- V091-DAILY-LOOP-START -->'; en_end='<!-- V091-DAILY-LOOP-END -->'
+          en=f'''{en_start}\n### v0.91 | JING-ZHANG DAILY LOOP: one day, not six disconnected systems\n\nv0.91 restarts from the v0.7 design-first package that scored 86, selectively retaining only the v0.9 reality anchors that actually change a spatial decision. It does not inherit the v0.8 move to reduce the proposal to one facility prototype. The core addition is one ordinary daily loop: **home → street → green corridor → transfer → public service → return**. Every step states the ordinary urban baseline first, then optional AI, human takeover and a no-account exit. AI may shorten a task; it may not delete the task. [metric:daily_loop_stage_count] [metric:ai_off_invariant_count]\n\n![Jing-Zhang daily loop](assets/figures/jingzhang-daily-loop.en.svg)\n\n**Reality evidence stays inside design decisions rather than taking over the first screen.** The Zhichun Road underpass fact only changes the unresolved vertical-continuity condition; the public planning context at the Jing-Zhang green edge strengthens walking, staying and public frontage before equipment; seven public plot conditions remain scale references only and are never transferred as proposal controls. [source:HD00-1601-DRAFT-RESPONSE-V09] [source:HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09] [source:HD-PLOT-CONDITIONS-REFERENCE-V09]\n\n**AI-OFF is a spatial state, not a disclaimer.** When the digital layer is unavailable, ordinary passage, staffed basic service, fixed bilingual information and physical public staying still work. The contract is machine-readable at `visual/assets/jingzhang-daily-loop-contract.json`.\n{en_end}'''
+          c.upsert_before(pkg/'proposal.en.md',en_start,en_end,en,'## Land Use, Building Capacity, and Retain-Renovate-Demolish Strategy')
+
+          c.add_metric('daily_loop_stage_count',{'status':'known','value':6,'unit':'count','source_files':['visual/assets/jingzhang-daily-loop-contract.json','assets/figures/jingzhang-daily-loop.svg'],'formula':'count(DL-01..DL-06)','confidence':'high','assumptions':['Counts design stages, not completed field observations.']})
+          c.add_metric('ai_off_invariant_count',{'status':'known','value':4,'unit':'count','source_files':['visual/assets/jingzhang-daily-loop-contract.json'],'formula':'count(ai_off_invariants)','confidence':'high','assumptions':['Design invariants only; implementation remains subject to field, property, safety and approval checks.']})
+          c.manifest_add('visual/assets/jingzhang-daily-loop-contract.json','evidence_data')
+          c.manifest_add('assets/figures/jingzhang-daily-loop.svg','illustration','zh')
+          c.manifest_add('assets/figures/jingzhang-daily-loop.en.svg','illustration','en','assets/figures/jingzhang-daily-loop.svg')
+          c.copyright_note('- `jingzhang-daily-loop*.svg` and `visual/assets/jingzhang-daily-loop-contract.json`: submission-authored v0.91 design synthesis; no third-party visual asset embedded.')
+          c.changelog('''## v0.91 - 2026-08-13\n\n- Restarted from the proven v0.7 design-first package rather than the v0.8 single-prototype line.\n- Retained v0.9 reality anchors only where they change a spatial decision.\n- Added a six-stage JING-ZHANG DAILY LOOP and four explicit AI-OFF physical invariants so ordinary urban life remains complete without the digital layer.\n- Rebuilt the bilingual first-page package around everyday public use rather than a reviewer/evidence dashboard.''')
+
+          c.finalize_package(
+            ('京张日常闭环：AI-OFF 也完整','Jing-Zhang daily loop: complete even AI-OFF','jingzhang-daily-loop.svg'),
+            'v091-daily-loop',
+            'v0.91 首屏｜京张日常闭环：AI-OFF 也完整',
+            'v0.91 First screen | Jing-Zhang daily loop: complete even AI-OFF',
+            'jingzhang-daily-loop.svg',
+            'v0.91 design-first daily-loop')
+          PY
+          git diff --check
+
+      - name: Commit validated v0.91 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add "$PKG"
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No v0.91 changes to commit"
+            exit 1
+          fi
+          git commit -m "v0.91: refine v0.7 into an everyday AI-OFF urban loop"
+
+      - name: Participant preflight with push dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee /tmp/preflight-v091.json
+
+      - name: Publish fresh v0.91 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:"$TARGET_BRANCH" --force
