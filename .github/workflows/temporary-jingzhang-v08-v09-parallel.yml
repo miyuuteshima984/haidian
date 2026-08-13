@@ -1,0 +1,111 @@
+name: Temporary Jingzhang v0.8-v0.9 parallel sprint
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v08-v09-parallel.yml
+      - .github/jingzhang_sprint/**
+
+permissions:
+  contents: write
+
+env:
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: v0.8
+            target_branch: submission/miyuuteshima984/jingzhang-city-completeness-v08
+            commit_message: "v0.8: converge C7 into one reversible civic prototype"
+          - variant: v0.9
+            target_branch: submission/miyuuteshima984/jingzhang-city-completeness-v09
+            commit_message: "v0.9: anchor spatial decisions to public planning evidence"
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Sparse checkout target branch and trusted tooling
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.target_branch }}
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          persist-credentials: true
+
+      - name: Prepare automation helpers and upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -B "${{ matrix.target_branch }}" "origin/${{ matrix.target_branch }}"
+          git fetch origin automation/jingzhang-finalize --no-tags --depth=1
+          mkdir -p /tmp/jingzhang_sprint
+          touch /tmp/jingzhang_sprint/__init__.py
+          for f in sprint_common.py sprint_v08.py sprint_v09.py sprint_runner.py; do
+            git show "origin/automation/jingzhang-finalize:.github/jingzhang_sprint/$f" > "/tmp/jingzhang_sprint/$f"
+          done
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          echo "target=$(git rev-parse HEAD)"
+          echo "upstream=$(git rev-parse upstream/main)"
+
+      - name: Install review and rendering dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+
+      - name: Build and validate parallel candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py "${{ matrix.variant }}" "$PKG"
+          git diff --check
+
+      - name: Commit validated candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add "$PKG"
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No candidate changes to commit"
+          else
+            git commit -m "${{ matrix.commit_message }}"
+          fi
+
+      - name: Participant preflight with push dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee "/tmp/preflight-${{ matrix.variant }}.json"
+
+      - name: Push validated candidate branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:"${{ matrix.target_branch }}"
