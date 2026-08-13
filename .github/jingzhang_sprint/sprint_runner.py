@@ -19,6 +19,17 @@ def _exact_matrix(section,mids,sids=()):
     return _orig_matrix(section,mids,sids)
 sprint_common.update_matrices=_exact_matrix
 
+_orig_manifest_add=sprint_common.manifest_add
+def _schema_role_manifest_add(path,role,language=None,translation_of=None):
+    role_map={
+        'prototype_contract':'evidence_data',
+        'field_observation_register':'evidence_data',
+        'reality_constraint_register':'evidence_data',
+        'reference_plot_conditions':'evidence_data',
+    }
+    return _orig_manifest_add(path,role_map.get(role,role),language,translation_of)
+sprint_common.manifest_add=_schema_role_manifest_add
+
 _orig_run=sprint_common.subprocess.run
 def _verbose_run(args,*a,**kw):
     is_sc=isinstance(args,(list,tuple)) and any('self_check_submission.py' in str(x) for x in args)
