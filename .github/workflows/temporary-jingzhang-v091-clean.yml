@@ -1,0 +1,86 @@
+name: Temporary Jingzhang v0.91 clean baseline
+
+on:
+  push:
+    branches: [automation/jingzhang-finalize]
+    paths: [.github/workflows/temporary-jingzhang-v091-clean.yml]
+
+permissions:
+  contents: write
+
+env:
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v091-clean
+  V07_HEAD: b35790ae96144224ea26dd8530b2a41641cffa3f
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: automation/jingzhang-finalize
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            .github/jingzhang_sprint
+          persist-credentials: true
+      - name: Exact v0.7 package on latest upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          git fetch origin "$V07_HEAD" --no-tags --depth=1
+          git checkout -B "$TARGET_BRANCH" upstream/main
+          rm -rf "$PKG"
+          git checkout "$V07_HEAD" -- "$PKG"
+          mkdir -p /tmp/jingzhang_sprint
+          touch /tmp/jingzhang_sprint/__init__.py
+          for f in sprint_common.py sprint_v08.py sprint_v09.py sprint_v091.py sprint_v010.py sprint_runner.py; do
+            git show "origin/automation/jingzhang-finalize:.github/jingzhang_sprint/$f" > "/tmp/jingzhang_sprint/$f"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('/tmp/jingzhang_sprint/sprint_runner.py'); s=p.read_text(); needle="        'reference_plot_conditions':'evidence_data',\n"
+          if "'illustration':'figure'" not in s: s=s.replace(needle,needle+"        'illustration':'figure',\n")
+          p.write_text(s)
+          PY
+      - name: Dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          test -n "$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+      - name: Build v0.91
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.9 "$PKG"
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.91 "$PKG"
+          git diff --check
+      - name: Commit validate publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add "$PKG"
+          git commit -m "v0.91: return reality anchors to ordinary public tasks"
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json
+          git push origin HEAD:"$TARGET_BRANCH"
