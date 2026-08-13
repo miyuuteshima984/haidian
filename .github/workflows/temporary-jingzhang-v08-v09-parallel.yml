@@ -1,4 +1,4 @@
-name: Temporary Jingzhang v0.8-v0.9 parallel sprint
+name: Temporary Jingzhang v0.9 rebase and validate
 
 on:
   push:
@@ -13,26 +13,17 @@ permissions:
 
 env:
   PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v09
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - variant: v0.8
-            target_branch: submission/miyuuteshima984/jingzhang-city-completeness-v08
-            commit_message: "v0.8: converge C7 into one reversible civic prototype"
-          - variant: v0.9
-            target_branch: submission/miyuuteshima984/jingzhang-city-completeness-v09
-            commit_message: "v0.9: anchor spatial decisions to public planning evidence"
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - name: Sparse checkout target branch and trusted tooling
+      - name: Sparse checkout current v0.9 branch and trusted tooling
         uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.target_branch }}
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v09
           fetch-depth: 0
           filter: blob:none
           sparse-checkout: |
@@ -48,11 +39,12 @@ jobs:
             submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
           persist-credentials: true
 
-      - name: Prepare automation helpers and upstream
+      - name: Rebase candidate onto latest upstream main
         shell: bash
         run: |
           set -euo pipefail
-          git checkout -B "${{ matrix.target_branch }}" "origin/${{ matrix.target_branch }}"
+          OLD_TARGET="$(git rev-parse HEAD)"
+          echo "OLD_TARGET=$OLD_TARGET" >> "$GITHUB_ENV"
           git fetch origin automation/jingzhang-finalize --no-tags --depth=1
           mkdir -p /tmp/jingzhang_sprint
           touch /tmp/jingzhang_sprint/__init__.py
@@ -62,8 +54,11 @@ jobs:
           git remote remove upstream 2>/dev/null || true
           git remote add upstream https://github.com/open-city-ai/haidian.git
           git fetch upstream main --no-tags --filter=blob:none
-          echo "target=$(git rev-parse HEAD)"
+          git checkout -B "$TARGET_BRANCH"
+          git reset --hard upstream/main
+          echo "old_target=$OLD_TARGET"
           echo "upstream=$(git rev-parse upstream/main)"
+          echo "rebased_base=$(git rev-parse HEAD)"
 
       - name: Install review and rendering dependencies
         shell: bash
@@ -77,26 +72,26 @@ jobs:
           test -n "$CHROME"
           "$CHROME" --version
 
-      - name: Build and validate parallel candidate
+      - name: Rebuild v0.9 on latest main and validate
         shell: bash
         run: |
           set +e
-          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py "${{ matrix.variant }}" "$PKG" > /tmp/sprint.log 2>&1
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.9 "$PKG" > /tmp/sprint.log 2>&1
           code=$?
           cat /tmp/sprint.log
           if [ "$code" -ne 0 ]; then
             python3 - <<'PY'
           from pathlib import Path
-          text=Path('/tmp/sprint.log').read_text(encoding='utf-8',errors='replace')[-3500:]
+          text=Path('/tmp/sprint.log').read_text(encoding='utf-8',errors='replace')[-5000:]
           text=text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
-          print(f'::error title=SPRINT_BUILD_FAILURE::{text}')
+          print(f'::error title=V09_REBASE_BUILD_FAILURE::{text}')
           PY
             exit "$code"
           fi
           set -e
           git diff --check
 
-      - name: Commit validated candidate
+      - name: Commit validated rebased candidate
         shell: bash
         run: |
           set -euo pipefail
@@ -105,19 +100,19 @@ jobs:
           git add "$PKG"
           git status --short
           if git diff --cached --quiet; then
-            echo "No candidate changes to commit"
-          else
-            git commit -m "${{ matrix.commit_message }}"
+            echo "No v0.9 candidate changes to commit"
+            exit 1
           fi
+          git commit -m "v0.9: rebase reality-anchored design onto current main"
 
       - name: Participant preflight with push dry-run
         shell: bash
         run: |
           set -euo pipefail
-          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee "/tmp/preflight-${{ matrix.variant }}.json"
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee /tmp/preflight-v09.json
 
-      - name: Push validated candidate branch
+      - name: Push new exact head safely
         shell: bash
         run: |
           set -euo pipefail
-          git push origin HEAD:"${{ matrix.target_branch }}"
+          git push origin HEAD:"$TARGET_BRANCH" --force-with-lease="refs/heads/$TARGET_BRANCH:$OLD_TARGET"
