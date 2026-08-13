@@ -1,0 +1,104 @@
+name: Temporary Jingzhang v0.10 design-first build
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v010-only.yml
+
+permissions:
+  contents: write
+
+env:
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v010
+
+jobs:
+  build:
+    name: Build and validate v0.10 from v0.7 baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout v0.7-based v0.10 branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: true
+
+      - name: Preserve v0.7 package on current main and load tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          V07_BASE="$(git rev-parse HEAD)"
+          git fetch origin automation/jingzhang-finalize --no-tags --depth=1
+          mkdir -p /tmp/jingzhang_sprint
+          touch /tmp/jingzhang_sprint/__init__.py
+          for f in sprint_common.py sprint_v08.py sprint_v09.py sprint_v091.py sprint_v010.py sprint_runner.py; do
+            git show "origin/automation/jingzhang-finalize:.github/jingzhang_sprint/$f" > "/tmp/jingzhang_sprint/$f"
+          done
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git merge --no-commit --no-ff upstream/main || true
+          git rm -r --ignore-unmatch "$PKG" >/dev/null 2>&1 || true
+          git checkout "$V07_BASE" -- "$PKG"
+          git add "$PKG"
+          unresolved="$(git diff --name-only --diff-filter=U | grep -v "^$PKG/" || true)"
+          test -z "$unresolved" || { echo "$unresolved"; exit 1; }
+          git add -u
+          if ! git diff --cached --quiet; then
+            git commit -m "v0.10: preserve v0.7 design baseline on current main"
+          fi
+          echo "v07_base=$V07_BASE"
+          echo "upstream=$(git rev-parse upstream/main)"
+
+      - name: Install review and rendering dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+
+      - name: Build and validate v0.10
+        shell: bash
+        run: |
+          set +e
+          PYTHONPATH=/tmp python3 /tmp/jingzhang_sprint/sprint_runner.py v0.10 "$PKG" 2>&1 | tee /tmp/v010-build.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -ne 0 ]; then
+            python3 -c "from pathlib import Path; t=Path('/tmp/v010-build.log').read_text(encoding='utf-8',errors='replace')[-12000:]; t=t.replace('%','%25').replace(chr(13),'%0D').replace(chr(10),'%0A'); print('::error title=V010_BUILD_FAILURE::'+t)"
+            exit "$code"
+          fi
+          set -euo pipefail
+          git diff --check
+
+      - name: Commit validated package
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add "$PKG"
+          git status --short
+          git diff --cached --quiet && { echo "No v0.10 changes"; exit 1; }
+          git commit -m "v0.10: sharpen three public city promises"
+
+      - name: Participant preflight with push dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee /tmp/preflight-v010.json
+
+      - name: Push v0.10 exact head
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:"$TARGET_BRANCH"
