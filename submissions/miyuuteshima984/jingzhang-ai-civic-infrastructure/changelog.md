@@ -1,12 +1,20 @@
 # 方案迭代记录
 
 
-## v0.8 - 2026-08-13
 
-- prototype-first 并行候选：把六类可逆接口收束为一个 C7 CIVIC STATION 1:1 公共原型。
-- 新增 DAILY / CONTROLLED_TEST / AI_OFF 三状态与五段空间合同。
-- 新增三区 × 五类共 15 个 `not_measured` 现场待测槽位，不虚构现场数值。
-- 重建固定 `key-areas*.png`，让 reviewer 输入直接看到同一原型在三种城市织体中的差异化落位。
+## v0.10 - 2026-08-13
+
+- Returned to the 86-point v0.7 design-first package baseline, then absorbed only the v0.9 reality anchors that materially change spatial decisions.
+- Added three memorable public-space promises: ARRIVE WITHOUT APP, CARE WITHOUT ACCOUNT, and TEST WITHOUT BLOCKING.
+- Rebuilt the fixed `site-overview*.png` reviewer input so the overall structure is read through ordinary urban tasks and AI-OFF recovery rather than a reviewer-facing dashboard.
+- Kept the v0.7 key-area spatial sections, added reality-aware mobility logic, and preserved all provisional/unknown statutory boundaries.
+
+## v0.9 - 2026-08-13
+
+- reality-anchored 并行候选：只把能改变空间判断的公开原始证据放入主叙事。
+- 新增 3 组官方现实锚点与 5 条“现实约束 → 空间响应”规则。
+- 登记 7 个公开规划条件地块作不可外推的现实强度参照；本案 approved FAR/height 继续 unknown。
+- 重建固定 `mobility-bluegreen*.png`，区分普通缝合、知春路竖向连续性、绿廊人优先界面和站城到达。
 
 ## v0.7 - 2026-08-13
 

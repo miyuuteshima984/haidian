@@ -9,7 +9,7 @@ license: "COMMUNITY-DISPLAY-ONLY"
 summary: "Uses City Completeness as the spatial review method for the Centennial Jing-Zhang AI Innovation Belt: seven ordinary-city capabilities—HOME, LEARN, CARE, MOVE, GREEN, WORK and COMMON LIFE—form a durable everyday base first, while AI enters research, community, mobility and commerce as an optional enhancement layer. The structure is one public green spine, six completeness segments, six east-west stitching links and three key areas; Shuangfen Fortress remains only a community-name easter egg inside AI Origin Community."
 tracks: ["ai-origin-community", "ai-public-services", "ai-traffic-walkability"]
 scenarios: ["ai-traffic-walkability", "robot-delivery-low-speed", "enterprise-service-copilot", "ai-cultural-guide", "ai-health-service-navigation"]
-iteration: "v0.8"
+iteration: "v0.10"
 ---
 
 # JING-ZHANG CITY COMPLETENESS
@@ -130,21 +130,31 @@ The spatial effect of AI is reduced to six reversible prototypes: test pockets, 
 
 ![How AI changes urban form: six reversible physical interfaces](assets/figures/ai-urban-form-change.en.svg)
 
-<!-- V08-PROTOTYPE-START -->
-### v0.8 | One 1:1 urban prototype from six interfaces: C7 CIVIC STATION
+<!-- V09-REALITY-START -->
+### v0.10 | DESIGN-FIRST + REALITY: evidence appears only when it changes space
 
-v0.8 is a **prototype-first parallel candidate** branched from the v0.7 exact head. Instead of adding another reviewer dashboard, it converges the six reversible interfaces into one public-space prototype that can be read on one page and later developed against real site conditions: **C7 CIVIC STATION**. It is not an “AI kiosk”; it is a spatial sequence in which the ordinary city works first and AI enters only as an optional layer. [metric:flagship_physical_prototype_count]
+v0.10 keeps the **design-first** hierarchy of the 86-point v0.7 baseline and absorbs only reality anchors that change a spatial decision; the story still starts with everyday public tasks, not evidence indexing or scoring structure. It applies a narrower rule: a public source enters the main design narrative only when it changes a section, interface, node, or the precision of an unknown. This round registers three official-public reality anchors and five explicit design-response rules. [metric:official_constraint_anchor_count] [metric:design_response_rule_count]
 
-The prototype always has five parts: **(1) ordinary-city base** (shade, seating, continuous accessibility, fixed bilingual wayfinding and ordinary passage) → **(2) staffed service** (no-account counter, paper/telephone entry and human takeover) → **(3) optional AI** (multilingual Q&A, route assistance and service matching) → **(4) controlled test pocket** (physically separated from public passage, closable and removable) → **(5) AI-OFF recovery state** (basic passage, help, staying and service remain available after shutdown). Its three operating states are DAILY / CONTROLLED TEST / AI-OFF. A test may never displace ordinary passage, accessibility or basic public service. [metric:civic_station_operating_state_count]
+![How reality constraints change spatial design rather than becoming a bibliography](assets/figures/reality-constraint-design-response.en.svg)
 
-![C7 CIVIC STATION: one reversible and recoverable 1:1 urban prototype](assets/figures/c7-civic-station-prototype.en.svg)
+**Zhichun Road:** the official public response to the draft control plan records this railway-related segment as underpassing the railway and unsuitable for an at-grade junction. [source:HD00-1601-DRAFT-RESPONSE-V09] The proposal therefore stops drawing every east-west stitch as the same surface crossing. Zhichun Road becomes a **vertical-continuity problem to be resolved**, with pedestrian continuity, level changes, accessibility and engineering conditions left for professional verification. No bridge/tunnel alignment or feasibility is claimed.
 
-The same prototype is embedded differently in the three key areas. Zhongzhiyuan separates controlled testing from the ordinary paths of workers and visitors; AI Origin prioritizes no-phone and care journeys before optional AI; Dazhongsi prioritizes fixed bilingual arrival and staffed interchange before dynamic information. The fixed `key-areas.en.png` is rebuilt to show these three distinct embeddings rather than another governance matrix.
+**Jing-Zhang green edge:** the official planning-response material for Lanjinglijia calls for integration with the Jing-Zhang railway green corridor and improved spatial quality. [source:HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09] The design response is people-first: continuous walking, staying and public frontage precede AI equipment, logistics and replaceable service modules. The case is not transferred as a parcel control.
 
-### v0.8 | Fifteen preregistered observation slots, with no fabricated field values
+**Reality scale references:** three published planning-condition documents cover seven plots, with reference FAR values of 2.20–5.00 and reference height controls of 24–80 m; some also publish density and green-ratio conditions. [source:HD-PLOT-CONDITIONS-REFERENCE-V09] These values answer only “what has appeared in approved plot conditions nearby”; they do not answer “what this proposal should receive”. Proposal `approved_*` metrics remain unknown. [metric:reference_plot_condition_count]
 
-Each key area receives five stable observation categories—**arrival continuity, no-account/staffed equivalence, accessibility and staying, test boundary, shutdown/recovery and maintenance**—for 15 `observation_id` values in total. [metric:preregistered_observation_slot_count] All are currently `not_measured`; coordinates, sample sizes, thresholds, field readings, permission and named responsible entities remain pending real survey and professional confirmation. This is a future field-work package, not field evidence. See `visual/assets/field-observation-register.json`.
-<!-- V08-PROTOTYPE-END -->
+All five response rules are machine-readable in `visual/assets/reality-constraint-register.json`. The fixed `mobility-bluegreen.en.png` is rebuilt to distinguish ordinary stitching, the underpass/vertical-continuity condition, people-first green-corridor frontage, station-city arrival, and the future official-data recomputation trigger.
+<!-- V09-REALITY-END -->
+
+<!-- V010-PROMISES-START -->
+### v0.10 | Three public promises: show how people use the city before showing evidence machinery
+
+v0.10 keeps v0.7's design-first hierarchy and compresses the three key areas into three questions anyone can test: **ARRIVE WITHOUT APP, CARE WITHOUT ACCOUNT, TEST WITHOUT BLOCKING**. Each promise requires an ordinary-city baseline, a spatial move, optional AI, failure recovery and a reality constraint. If one is missing, the urban task is not complete. [metric:public_promise_count]
+
+![Three public promises](assets/figures/three-public-promises.en.svg)
+
+The machine-readable contract is `visual/assets/public-promises-contract.json`. It is not field evidence and does not upgrade public plot conditions, draft-plan material or a green-corridor case into proposal approvals; those sources appear only where they change a spatial decision.
+<!-- V010-PROMISES-END -->
 
 ## Land Use, Building Scale, and Retain-Renovate-Demolish Strategy
 

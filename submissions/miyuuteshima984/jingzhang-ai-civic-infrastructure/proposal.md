@@ -9,7 +9,7 @@ license: "COMMUNITY-DISPLAY-ONLY"
 summary: "以城市完整度作为百年京张AI创新带的空间审查方法：居、学、护、行、绿、工、交七项普通城市能力先形成长期可用的日常底盘，AI作为可选增强层进入科研、社区、交通和商业。总体形成一条公共绿脊、六段完整度片区、六条东西缝合联系与三处重点区；爽粉堡垒仅作为AI原点社区中的社区命名彩蛋。"
 tracks: ["ai-origin-community", "ai-public-services", "ai-traffic-walkability"]
 scenarios: ["ai-traffic-walkability", "robot-delivery-low-speed", "enterprise-service-copilot", "ai-cultural-guide", "ai-health-service-navigation"]
-iteration: "v0.8"
+iteration: "v0.10"
 ---
 
 # 京张城市完整度 / JING-ZHANG CITY COMPLETENESS
@@ -138,23 +138,31 @@ AI 对城市形态的影响被压缩为六类可逆空间原型：测试口袋�
 
 ![AI 如何改变城市形态：六类可逆物理接口](assets/figures/ai-urban-form-change.svg)
 
-<!-- V08-PROTOTYPE-START -->
-### v0.8｜把六类接口收束成一个 1:1 城市原型：C7 CIVIC STATION
+<!-- V09-REALITY-START -->
+### v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现
 
-v0.8 是从 v0.7 exact head 分出的 **prototype-first 并行候选**。它不再增加新的评分索引，而把已有六类可逆接口收束成一个评委可在一页内读懂、专业团队可在未来按真实条件深化的 1:1 公共空间原型：**C7 CIVIC STATION / 城市完整度站**。它不是一座“AI 亭子”，而是一段普通城市先完整、AI 再进入的空间序列。[metric:flagship_physical_prototype_count]
+v0.10 以获得 86 分的 v0.7 **design-first** 结构为底座，只吸收会改变空间判断的现实锚点；主叙事仍从人的日常任务开始，而不是从证据目录或评分结构开始。它把“来源更多”改成更窄的规则：**一条现实资料只有在改变断面、界面、节点或 unknown 的表达方式时，才进入设计主叙事。** 本轮登记 3 组官方公开现实锚点，并形成 5 条可检查的设计响应。[metric:official_constraint_anchor_count] [metric:design_response_rule_count]
 
-原型固定为五段：**①普通城市底座**（遮阴、坐凳、连续无障碍、实体双语导视、普通通行）→ **②人工服务层**（无账号窗口、纸质/电话入口、人工接手）→ **③可选 AI 层**（多语问答、路径辅助、服务匹配）→ **④受控测试口袋**（与公共通行物理分离，可封闭、可撤除）→ **⑤ AI-OFF 恢复状态**（设备停机后仍可通行、求助、停留并获得基本服务）。三种运行状态为 DAILY / CONTROLLED TEST / AI-OFF；任何测试不得以牺牲普通通行、无障碍或基本公共服务为代价。[metric:civic_station_operating_state_count]
+![现实约束如何改变空间设计，而不是变成参考文献堆](assets/figures/reality-constraint-design-response.svg)
 
-![C7 CIVIC STATION：一个可关闭、可恢复的 1:1 城市原型](assets/figures/c7-civic-station-prototype.svg)
+**第一条是知春路。** 海淀规自部门公开的控规草案采信通告明确，该铁路节点处知春路属于下穿段、不具备平交条件，并以分离式立交思路预留联通条件。[source:HD00-1601-DRAFT-RESPONSE-V09] 因此本案不再把六条东西缝合都画成同一种“地面横穿”：知春路改成**竖向连续性待解节点**，后续必须核实地面步行连续、上下层关系、无障碍和工程条件；当前不画桥隧线位、不声称工程可行。
 
-同一原型在三区采用不同嵌入方式：众智园侧重“研发日常 → 受控测试”，测试口袋必须与服务劳动者和访客的普通路径分离；AI 原点侧重“无手机/照护日常 → 人工服务 → 可选 AI”，拒绝账号不降低基本服务；大钟寺侧重“站城到达 → 实体双语导视 → 人工换乘 → 可选动态信息”，动态系统失效后回到固定路径与人工服务。固定 `key-areas.png` 因此改为直接展示同一原型在三种城市织体中的差异化落位。
+**第二条是京张绿廊界面。** 蓝景丽家相关官方规划综合实施方案采信信息要求其商业商务规划与东侧京张铁路绿廊衔接并提升空间品质。[source:HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09] 本案据此把绿廊侧的优先级写得更硬：连续步行、可停留公共界面和人优先首层在前，AI 设备、物流与可替换服务模块不得切断公共通行。该个案不被外推为本案地块条件。
 
-### v0.8｜15 个待测槽位：不填现场数值，先把未来验证工作定义清楚
+**第三条是现实强度标尺。** 三份公开《建设项目规划条件》覆盖 7 个地块，公开 FAR 参照为 2.20–5.00、建筑限高参照为 24–80m，部分地块另有密度与绿地率条件。[source:HD-PLOT-CONDITIONS-REFERENCE-V09] 这些数值只回答“现实里已经出现过什么量级”，绝不回答“本案应该批多少”。因此 `approved_floor_area_ratio`、`approved_building_height_m` 等继续保持 unknown，概念建筑也不套用任何相邻样本。[metric:reference_plot_condition_count]
 
-为避免“以后再测”成为空话，三区各预登记五类 observation slot：**到达连续性、无账号/人工等价、无障碍与停留、测试边界、停机恢复与维护**，共 15 个稳定 `observation_id`。[metric:preregistered_observation_slot_count] 当前全部为 `not_measured`，坐标、样本量、阈值、现场读数、许可和责任主体均保持待真实踏勘/专业确认；这是一份现场工作包，不是现场证据。详见 `visual/assets/field-observation-register.json`。
+五条设计响应完整记录于 `visual/assets/reality-constraint-register.json`。本轮固定 `mobility-bluegreen.png` 重建为不同类型的现实接口：普通缝合、下穿节点竖向连续性、绿廊人优先界面、站城到达与 official-data 重算触发器，不再用同一种蓝色虚线代表所有问题。
+<!-- V09-REALITY-END -->
 
-每个槽位只回答四件事：未来要观察什么、由谁确认、什么情况必须停止解释、AI 退出后普通城市功能如何验收。任何未测字段都不得被图纸或指标自动补成“达标”。
-<!-- V08-PROTOTYPE-END -->
+<!-- V010-PROMISES-START -->
+### v0.10｜三条公共城市承诺：评委先看到城市怎么被人使用
+
+v0.10 不把 v0.7 的设计优先路线改回“证据仪表盘”。它把三处重点区压缩成三个任何人都能追问的空间承诺：**ARRIVE WITHOUT APP、CARE WITHOUT ACCOUNT、TEST WITHOUT BLOCKING**。每条承诺都必须有普通城市底座、明确空间动作、可选 AI、失败恢复和现实约束；任一项缺失，就不算完整。[metric:public_promise_count]
+
+![三条公共城市承诺](assets/figures/three-public-promises.svg)
+
+机器可读合同见 `visual/assets/public-promises-contract.json`。它不是现场达标证明，也不把公开地块强度、控规草案或绿廊个案升级成本案审批条件；它只把这些现实资料放在真正会改变空间判断的位置。
+<!-- V010-PROMISES-END -->
 
 ## 用地、建筑规模与拆改留方案
 

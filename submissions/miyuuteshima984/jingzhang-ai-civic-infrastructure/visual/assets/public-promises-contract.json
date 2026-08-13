@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "variant": "v0.10",
+  "title_zh": "三条公共城市承诺 / THREE PUBLIC PROMISES",
+  "status": "concept_design_contract",
+  "promises": [
+    {
+      "id": "PP-01",
+      "name": "ARRIVE WITHOUT APP",
+      "place": "大钟寺 / station-city arrival",
+      "ordinary_baseline": "固定双语导视 + 连续步行/无障碍 + 人工换乘帮助",
+      "spatial_move": "到达界面清晰、可停留、有人可问；动态设备不占基本路径",
+      "optional_ai": "动态多语信息与路径辅助",
+      "failure_recovery": "AI/网络失效后回到实体导视与人工服务",
+      "reality_rule": "铁路/道路节点按真实竖向条件分别处理，不用一条通用缝合线代替专业判断"
+    },
+    {
+      "id": "PP-02",
+      "name": "CARE WITHOUT ACCOUNT",
+      "place": "AI 原点 / long-term community",
+      "ordinary_baseline": "家门—遮阴坐凳—人工照护/服务—公共客厅",
+      "spatial_move": "无手机、无账号、拒绝数据处理仍能完成基本照护与公共生活任务",
+      "optional_ai": "导航、服务匹配与多语辅助",
+      "failure_recovery": "人工窗口、电话/纸质入口和实体路径保持",
+      "reality_rule": "京张绿廊侧先保证连续步行、停留与公共首层，设备/物流退后"
+    },
+    {
+      "id": "PP-03",
+      "name": "TEST WITHOUT BLOCKING",
+      "place": "众智园 / innovation campus",
+      "ordinary_baseline": "研究、服务劳动、吃饭休息与普通步行路线先连续",
+      "spatial_move": "受控测试口袋与普通公共通行物理分离，可关闭、可撤除",
+      "optional_ai": "机器人/设备受控测试与服务辅助",
+      "failure_recovery": "测试停止不影响普通通行与基本服务",
+      "reality_rule": "公开 FAR/高度只作现实量级参照，不成为提高本案强度或测试扩张的依据"
+    }
+  ],
+  "principle": "The three promises are memorable public-space tests. AI may enhance them but may not become a precondition for the ordinary task."
+}
