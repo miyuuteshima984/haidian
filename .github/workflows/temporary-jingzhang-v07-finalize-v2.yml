@@ -1,0 +1,123 @@
+name: Temporary Jingzhang v0.7 finalize v2
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v07-finalize-v2.yml
+
+permissions:
+  contents: write
+
+env:
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v07
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Sparse checkout v0.7 and trusted tooling
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          persist-credentials: true
+
+      - name: Replay finalizer with robust PDF first-page QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin automation/jingzhang-finalize --no-tags --depth=1
+          git show origin/automation/jingzhang-finalize:.github/workflows/temporary-jingzhang-v07-finalize.yml > /tmp/v07-finalize.yml
+          python3 -m pip install -q pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          workflow = yaml.safe_load(Path('/tmp/v07-finalize.yml').read_text(encoding='utf-8'))
+          steps = workflow['jobs']['finalize']['steps']
+          wanted = [
+              'Prepare branch and upstream',
+              'Install review and rendering dependencies',
+              'Integrate v0.7 metrics matrices and manifest entries',
+              'Rebuild bilingual A3 and A0 design-first PDFs',
+          ]
+          tail = [
+              'Refresh manifest and persist strict self-check',
+              'Validate binary and document integrity',
+              'Commit validated v0.7 package',
+              'Participant preflight with push dry-run',
+              'Push validated v0.7 branch',
+          ]
+          by_name = {step.get('name'): step.get('run') for step in steps if step.get('run')}
+          missing = [name for name in wanted + tail if name not in by_name]
+          if missing:
+              raise SystemExit(f'missing finalizer blocks: {missing}')
+
+          qa = r'''
+          set -euo pipefail
+          mkdir -p /tmp/pdf-first
+          for pdf in a3-booklet.pdf a3-booklet.en.pdf a0-boards.pdf a0-boards.en.pdf; do
+            base="${pdf%.pdf}"
+            pdftoppm -f 1 -l 1 -singlefile -png -r 110 "$PKG/drawings/$pdf" "/tmp/pdf-first/$base"
+            pdftotext -f 1 -l 1 "$PKG/drawings/$pdf" "/tmp/pdf-first/$base.txt" || true
+          done
+          python3 - <<'QAPY'
+          from pathlib import Path
+          from PIL import Image, ImageChops
+          bad=[]
+          for p in sorted(Path('/tmp/pdf-first').glob('*.png')):
+              try:
+                  with Image.open(p) as test:
+                      test.verify()
+                  with Image.open(p).convert('RGB') as im:
+                      w,h=im.size
+                      sample=im.copy()
+                      sample.thumbnail((640,640))
+                      white=Image.new('RGB',sample.size,'white')
+                      bbox=ImageChops.difference(sample,white).getbbox()
+                      px=list(sample.getdata())
+                      nonwhite=sum(1 for r,g,b in px if min(r,g,b)<245)
+                      ratio=nonwhite/max(1,len(px))
+                      print(f'PDF_QA {p.name}: size={w}x{h} nonwhite_ratio={ratio:.4f} bbox={bbox}')
+                      if w < 900 or h < 600:
+                          bad.append(f'{p.name}: rendered first page too small {w}x{h}')
+                      if bbox is None or ratio < 0.003:
+                          bad.append(f'{p.name}: first page appears blank or nearly blank (ratio={ratio:.4f})')
+              except Exception as exc:
+                  bad.append(f'{p.name}: unreadable render: {exc}')
+          for p in sorted(Path('/tmp/pdf-first').glob('*.txt')):
+              text=p.read_text(encoding='utf-8',errors='replace').strip()
+              print(f'PDF_TEXT_INFO {p.name}: chars={len(text)} (informational only; vector/image-first pages may have little extractable text)')
+          if bad:
+              raise SystemExit('PDF first-page QA failed:\n'+'\n'.join(bad))
+          print('PDF_FIRST_PAGE_QA_OK')
+          QAPY
+          pdfinfo "$PKG/drawings/a3-booklet.pdf" | grep -E 'Pages|Page size|File size'
+          pdfinfo "$PKG/drawings/a0-boards.pdf" | grep -E 'Pages|Page size|File size'
+          '''
+
+          parts=['#!/usr/bin/env bash','set -euo pipefail']
+          for name in wanted:
+              parts += [f'echo "===== {name} ====="', by_name[name]]
+          parts += ['echo "===== Robust PDF first-page QA ====="', qa]
+          for name in tail:
+              parts += [f'echo "===== {name} ====="', by_name[name]]
+          Path('/tmp/run-v07-finalizer.sh').write_text('\n\n'.join(parts)+'\n',encoding='utf-8')
+          PY
+          bash /tmp/run-v07-finalizer.sh
