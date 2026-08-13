@@ -1,0 +1,347 @@
+name: Temporary Jingzhang v0.7 finalize
+
+on:
+  push:
+    branches:
+      - automation/jingzhang-finalize
+    paths:
+      - .github/workflows/temporary-jingzhang-v07-finalize.yml
+
+permissions:
+  contents: write
+
+env:
+  TARGET_BRANCH: submission/miyuuteshima984/jingzhang-city-completeness-v07
+  PKG: submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Sparse checkout v0.7 and trusted tooling
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            requirements-review.txt
+            scripts
+            brief
+            data
+            docs
+            skills
+            templates
+            scenarios
+            tracks
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          persist-credentials: true
+
+      - name: Prepare branch and upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -B "$TARGET_BRANCH" "origin/$TARGET_BRANCH"
+          git remote remove upstream 2>/dev/null || true
+          git remote add upstream https://github.com/open-city-ai/haidian.git
+          git fetch upstream main --no-tags --filter=blob:none
+          echo "target=$(git rev-parse HEAD)"
+          echo "upstream=$(git rev-parse upstream/main)"
+          git status --short
+
+      - name: Install review and rendering dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install -r requirements-review.txt
+          python3 -m pip install pillow
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils fonts-noto-cjk
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$CHROME"
+          echo "CHROME=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+
+      - name: Integrate v0.7 metrics matrices and manifest entries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from datetime import datetime, timezone
+          import json
+
+          pkg = Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+
+          # v0.7 explicit, reproducible design counts.
+          mp = pkg/'metrics.json'
+          m = json.loads(mp.read_text(encoding='utf-8'))
+          metrics = m['metrics']
+          metrics['everyday_journey_count'] = {
+              'status':'known','value':3,'unit':'count',
+              'source_files':['proposal.md','assets/figures/everyday-journey-sections.svg'],
+              'formula':'count of the three explicitly defined v0.7 everyday journey chains: Zhongzhiyuan, AI Origin and Dazhongsi',
+              'confidence':'high','assumptions':[]
+          }
+          metrics['reversible_urban_form_prototype_count'] = {
+              'status':'known','value':6,'unit':'count',
+              'source_files':['proposal.md','assets/figures/ai-urban-form-change.svg'],
+              'formula':'count of the six explicitly defined reversible spatial interface prototypes in v0.7',
+              'confidence':'high','assumptions':[]
+          }
+          metrics['implementation_path_count'] = {
+              'status':'known','value':2,'unit':'count',
+              'source_files':['proposal.md','sources.json'],
+              'formula':'two explicit implementation paths in v0.7: reversible low-disturbance actions and formal implementation-plan/permitting path',
+              'confidence':'high','assumptions':[]
+          }
+          mp.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # Compliance: make design-first evidence visible without presenting it as self-scoring.
+          cp = pkg/'compliance_matrix.json'
+          c = json.loads(cp.read_text(encoding='utf-8'))
+          for item in c.get('requirements',[]):
+              rid=item.get('requirement_id','')
+              visuals=list(item.get('visual_sections') or [])
+              sources=list(item.get('source_ids') or [])
+              metrics_list=list(item.get('metrics') or [])
+              if rid in {'1.3.2','1.3.3','1.4.3','1.5.1.2','1.5.2.1','1.5.2.2','agent.1','agent.3','agent.5'}:
+                  for v in ['v0.7三条日常城市链','v0.7三处重点区空间剖面','v0.7 AI城市形态原型']:
+                      if v not in visuals: visuals.append(v)
+              if rid in {'1.3.2','1.3.3','1.5.1.2','1.5.2.1','agent.1','agent.3','agent.5','agent.6'}:
+                  for sid in ['HD-URBAN-RENEWAL-GUIDE-2025','HD-URBAN-RENEWAL-IMPLEMENTATION-2025']:
+                      if sid not in sources: sources.append(sid)
+              if rid in {'1.3.2','1.3.3','1.5.1.2','1.5.2.1','agent.3'} and 'HD-AI-DISTRICT-PROGRESS-2025Q4' not in sources:
+                  sources.append('HD-AI-DISTRICT-PROGRESS-2025Q4')
+              if rid in {'1.3.2','1.5.1.2','agent.1'}:
+                  for mid in ['everyday_journey_count','reversible_urban_form_prototype_count']:
+                      if mid not in metrics_list: metrics_list.append(mid)
+              if rid in {'1.5.2.1','agent.6'} and 'implementation_path_count' not in metrics_list:
+                  metrics_list.append('implementation_path_count')
+              item['visual_sections']=visuals
+              item['source_ids']=sources
+              item['metrics']=metrics_list
+          cp.write_text(json.dumps(c,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # Remove stale v0.6 reviewer-first wording from the taskbook evidence summary.
+          sp = pkg/'standard_matrix.json'
+          s = json.loads(sp.read_text(encoding='utf-8'))
+          for item in s.get('standards',[]):
+              if item.get('standard_id')=='PROJECT-AGENT-OPEN-CALL-TASKBOOK':
+                  item['evidence_summary_zh']=(
+                    'agent.1-agent.6 持续映射到 compliance_matrix；v0.5 的生态、场景、品牌、公共空间、运营和隐私证据继续保留，'
+                    'v0.6 的旗舰试点/RACI/9类人群作为治理底层证据保留；v0.7 将第一视觉恢复为三条日常城市链、三处重点区空间剖面和六类可逆 AI 城市形态接口，'
+                    '并用海淀现行城市更新导则/实施指引校准真实政策语境与实施边界。reviewer dashboard/index 仅留作后部追溯，不作为设计主叙事。'
+                  )
+          sp.write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # Register new bilingual v0.7 SVGs before canonical manifest hash refresh.
+          manifest_path=pkg/'manifest.json'
+          manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+          zero='0'*64
+          names=['everyday-journey-sections.svg','ai-urban-form-change.svg','key-area-spatial-sections.svg']
+          existing={x.get('path') for x in manifest.get('files',[])}
+          for name in names:
+              stem=Path(name).stem; suffix=Path(name).suffix
+              zh=f'assets/figures/{name}'
+              en=f'assets/figures/{stem}.en{suffix}'
+              if not (pkg/zh).is_file() or not (pkg/en).is_file():
+                  raise SystemExit(f'missing bilingual v0.7 asset pair: {name}')
+              if zh not in existing:
+                  manifest['files'].append({'path':zh,'role':'proposal_figure','required':False,'language':'zh','sha256':zero}); existing.add(zh)
+              if en not in existing:
+                  manifest['files'].append({'path':en,'role':'proposal_figure','required':False,'language':'en','translation_of':zh,'sha256':zero}); existing.add(en)
+          manifest['generated_at']=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z')
+          claim=manifest.setdefault('validation_claim',{})
+          claim['self_checked']=False
+          claim['known_blockers']=[]
+          manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+
+          python3 scripts/render_proposal_html.py "$PKG"
+
+      - name: Rebuild bilingual A3 and A0 design-first PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          pkg=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure').resolve()
+          fig=pkg/'assets/figures'
+          tmp=Path('/tmp/jzv07'); tmp.mkdir(exist_ok=True)
+
+          a3_items=[
+            ('三条日常城市链','Three everyday journeys','everyday-journey-sections.svg'),
+            ('三处重点区空间剖面','Three key-area spatial sections','key-areas.png'),
+            ('AI 如何改变城市形态','How AI changes urban form','ai-urban-form-change.svg'),
+            ('总体范围与 C7 方法','Site overview and C7 method','site-overview.png'),
+            ('概念用地结构','Land-use structure','land-use-structure.png'),
+            ('慢行与蓝绿系统','Mobility and blue-green system','mobility-bluegreen.png'),
+            ('公共空间组件与导视','Public-space components and wayfinding','public-space-components-wayfinding.svg'),
+            ('三个旗舰试点协议','Three flagship pilot protocols','flagship-pilot-protocols.svg'),
+            ('九类人群包容性与负担','Nine-persona inclusion and burden','inclusion-burden-matrix.svg'),
+            ('实施资源与 RACI','Implementation resource and RACI','implementation-resource-raci.svg'),
+            ('AI 全要素生态','Full-factor AI ecosystem','ai-ecosystem-map.svg'),
+            ('10 张 AI+ 场景卡','Ten AI scenario cards','ai-scenario-cards.svg'),
+            ('区域协同验证','Regional collaboration validation','regional-collaboration-matrix.svg'),
+            ('品牌 / VI 方向','Brand / VI direction','brand-vi-direction.svg'),
+            ('公共荣誉地标与活动转化','Landmarks, events and conversion','landmarks-events-conversion.svg'),
+            ('实施与长期运营','Implementation and long-term operations','implementation-operations-matrix.svg'),
+            ('数据流与隐私治理','Privacy and data governance','privacy-data-governance.svg'),
+            ('任务书协同闭环','Taskbook coordination loop','taskbook-coordination-loop.svg'),
+            ('指标与资料边界','Metrics and evidence limits','metrics-evidence.png'),
+            ('追溯附件：评审证据索引','Traceability appendix: evidence index','reviewer-evidence-index.svg'),
+          ]
+          a0_first=[
+            ('三处重点区空间剖面','Three key-area spatial sections','key-areas.png'),
+            ('AI 如何改变城市形态','How AI changes urban form','ai-urban-form-change.svg'),
+            ('公共空间组件与导视','Public-space components and wayfinding','public-space-components-wayfinding.svg'),
+            ('总体范围与 C7 方法','Site overview and C7 method','site-overview.png'),
+            ('品牌 / VI 方向','Brand / VI direction','brand-vi-direction.svg'),
+            ('公共荣誉地标与活动转化','Landmarks, events and conversion','landmarks-events-conversion.svg'),
+          ]
+          a0_rest=[a3_items[0:6],a3_items[6:12],a3_items[12:18],a3_items[18:20]]
+
+          def localized(name,en):
+              p=Path(name)
+              cand=p.with_name(f'{p.stem}.en{p.suffix}')
+              return cand if en and (fig/cand).is_file() else p
+          def uri(name,en): return (fig/localized(name,en)).resolve().as_uri()
+
+          def page_html(items,en,kind,page_no,total):
+              figs=[]
+              for zh,english,name in items:
+                  label=english if en else zh
+                  figs.append(f'<figure><img src="{uri(name,en)}"><figcaption>{label}</figcaption></figure>')
+              title=('JING-ZHANG CITY COMPLETENESS · v0.7' if en else '京张城市完整度 · v0.7')
+              footer=('Concept proposal · design-first spatial evidence · provisional geometry is not an official redline' if en else '概念建议 · 设计优先的空间证据 · provisional geometry 不是官方红线')
+              cls='one' if len(items)==1 else ('six' if len(items)>=5 else 'two')
+              return f'<section><header><b>{title}</b><span>{page_no}/{total}</span></header><div class="grid {cls}">{"".join(figs)}</div><footer>{footer}</footer></section>'
+
+          def doc(pages,en,size):
+              sections=''.join(page_html(p,en,size,i+1,len(pages)) for i,p in enumerate(pages))
+              return f'''<!doctype html><html><head><meta charset="utf-8"><style>
+              @page{{size:{size} landscape;margin:7mm}}*{{box-sizing:border-box}}body{{margin:0;font-family:"Noto Sans CJK SC","Noto Sans CJK TC",Arial,sans-serif;color:#172033;background:#fff}}
+              section{{height:277mm;break-after:page;display:flex;flex-direction:column;gap:3mm;overflow:hidden}}header{{display:flex;justify-content:space-between;align-items:end;border-bottom:1mm solid #0f766e;padding-bottom:2mm;font-size:18pt}}
+              .grid{{flex:1;display:grid;gap:3mm;min-height:0}}.one{{grid-template-columns:1fr}}.two{{grid-template-columns:repeat(2,1fr)}}.six{{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}}
+              figure{{margin:0;border:.3mm solid #d4dce6;border-radius:2mm;padding:1.5mm;display:flex;flex-direction:column;min-height:0;overflow:hidden;background:#fff}}img{{width:100%;height:100%;min-height:0;object-fit:contain}}figcaption{{font-size:8pt;font-weight:700;padding:1mm}}footer{{font-size:7.5pt;color:#667085}}
+              </style></head><body>{sections}</body></html>'''
+
+          a3_pages=[[x] for x in a3_items]
+          a0_pages=[a0_first,*a0_rest]
+          for en,lang in [(False,'zh'),(True,'en')]:
+              (tmp/f'a3-{lang}.html').write_text(doc(a3_pages,en,'A3'),encoding='utf-8')
+              (tmp/f'a0-{lang}.html').write_text(doc(a0_pages,en,'A0'),encoding='utf-8')
+          PY
+
+          for lang in zh en; do
+            if [ "$lang" = zh ]; then
+              A3="$PKG/drawings/a3-booklet.pdf"; A0="$PKG/drawings/a0-boards.pdf"
+            else
+              A3="$PKG/drawings/a3-booklet.en.pdf"; A0="$PKG/drawings/a0-boards.en.pdf"
+            fi
+            "$CHROME" --headless --no-sandbox --disable-gpu --allow-file-access-from-files --virtual-time-budget=3000 --print-to-pdf="$A3" "file:///tmp/jzv07/a3-$lang.html"
+            "$CHROME" --headless --no-sandbox --disable-gpu --allow-file-access-from-files --virtual-time-budget=3000 --print-to-pdf="$A0" "file:///tmp/jzv07/a0-$lang.html"
+          done
+
+      - name: Render and inspect PDF first pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pdf-first
+          for pdf in a3-booklet.pdf a3-booklet.en.pdf a0-boards.pdf a0-boards.en.pdf; do
+            base="${pdf%.pdf}"
+            pdftoppm -f 1 -l 1 -singlefile -png -r 110 "$PKG/drawings/$pdf" "/tmp/pdf-first/$base"
+            pdftotext -f 1 -l 1 "$PKG/drawings/$pdf" "/tmp/pdf-first/$base.txt"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageStat
+          bad=[]
+          for p in Path('/tmp/pdf-first').glob('*.png'):
+              with Image.open(p) as im:
+                  im.verify()
+              with Image.open(p).convert('RGB') as im:
+                  stat=ImageStat.Stat(im)
+                  spread=sum(stat.stddev)/3
+                  extrema=im.getextrema()
+                  if im.width < 1200 or im.height < 800 or spread < 8:
+                      bad.append(f'{p.name}: size={im.size} spread={spread:.2f} extrema={extrema}')
+                  print(p.name, im.size, 'spread', round(spread,2))
+          for p in Path('/tmp/pdf-first').glob('*.txt'):
+              text=p.read_text(encoding='utf-8',errors='replace').strip()
+              if len(text)<20:
+                  bad.append(f'{p.name}: first-page text unexpectedly short ({len(text)})')
+              print(p.name, 'text_chars', len(text))
+          if bad:
+              raise SystemExit('PDF first-page QA failed:\n'+'\n'.join(bad))
+          PY
+          pdfinfo "$PKG/drawings/a3-booklet.pdf" | grep -E 'Pages|Page size|File size'
+          pdfinfo "$PKG/drawings/a0-boards.pdf" | grep -E 'Pages|Page size|File size'
+
+      - name: Refresh manifest and persist strict self-check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/refresh_submission_manifest.py "$PKG"
+          python3 scripts/self_check_submission.py "$PKG" --pr-author miyuuteshima984 --mark-self-checked --json | tee /tmp/selfcheck.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/selfcheck.json'))
+          if not x.get('ok') or not x.get('can_enter_formal_review') or x.get('review_status')!='formal-review-ready':
+              raise SystemExit('strict self-check did not reach formal-review-ready')
+          for key in ['deterministic_validation','spatial_review','visual_review','professional_review']:
+              if not (x.get(key) or {}).get('ok'):
+                  raise SystemExit(f'{key} not ok')
+          print('SELF_CHECK_OK',x.get('review_status'))
+          PY
+
+      - name: Validate binary and document integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          pkg=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          bad=[]
+          for p in (pkg/'assets/figures').glob('*.png'):
+              try:
+                  with Image.open(p) as im: im.verify()
+              except Exception as e: bad.append(f'{p}: {e}')
+          for p in (pkg/'assets/figures').glob('*.svg'):
+              text=p.read_text(encoding='utf-8',errors='replace')
+              if '<svg' not in text or '</svg>' not in text: bad.append(f'{p}: invalid svg envelope')
+          for p in (pkg/'drawings').glob('*.pdf'):
+              if p.stat().st_size < 10000: bad.append(f'{p}: suspiciously small')
+          if bad: raise SystemExit('\n'.join(bad))
+          print('BINARY_INTEGRITY_OK')
+          PY
+
+      - name: Commit validated v0.7 package
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Miyuu Teshima"
+          git config user.email "230504675+miyuuteshima984@users.noreply.github.com"
+          git add "$PKG"
+          git status --short
+          if git diff --cached --quiet; then
+            echo "No finalization changes to commit"
+          else
+            git commit -m "v0.7: finalize design-first bilingual review package"
+          fi
+
+      - name: Participant preflight with push dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/participant_preflight.py "$PKG" --pr-author miyuuteshima984 --check-push --json | tee /tmp/preflight.json
+
+      - name: Push validated v0.7 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git push origin HEAD:"$TARGET_BRANCH"
