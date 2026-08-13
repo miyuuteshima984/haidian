@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "variant": "v0.91",
+  "title_zh": "现实约束 → 公共任务 → 空间响应",
+  "status": "design_contract_not_field_result",
+  "chains": [
+    {
+      "id": "RJ-01",
+      "public_task": "跨铁路/到达连续性",
+      "reality_anchor": "知春路相关铁路节点存在下穿、不可按通用平交理解的公开约束",
+      "spatial_response": "相关缝合表达为竖向连续性待解节点；不虚构桥隧线位",
+      "ai_role": "仅可选路径辅助；失效后实体导视与人工帮助仍成竉",
+      "boundary": "不声称工程可行性、道路红线或站口位置"
+    },
+    {
+      "id": "RJ-02",
+      "public_task": "沿京张绿廊连续步行与停留",
+      "reality_anchor": "官方公开材料要求相关更新界面与京张绿廊衔接并提升空间品质",
+      "spatial_response": "连续步行、可停留界面与公共首层优先；设备/物流退后",
+      "ai_role": "环境与服务信息可选叠加；不得切断公共通行",
+      "boundary": "不外推个案地块控制或产权关系"
+    },
+    {
+      "id": "RJ-03",
+      "public_task": "在真实城市强度下维持日常完整度",
+      "reality_anchor": "7 个公开规划条件地块仅提供现实 FAR/高度量级参照",
+      "spatial_response": "朼案 approved_* 保持 unknown；概念容量不套用相邻样本",
+      "ai_role": "AI 不成为提高开发强度的理由",
+      "boundary": "参照值不是本案控制值"
+    }
+  ],
+  "principle": "A reality anchor is useful only when it changes a public task or spatial decision without fabricating site facts."
+}

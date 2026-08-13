@@ -504,45 +504,58 @@
       "confidence": "high",
       "assumptions": []
     },
-    "flagship_physical_prototype_count": {
-      "status": "known",
-      "value": 1,
-      "unit": "count",
-      "source_files": [
-        "proposal.md",
-        "visual/assets/c7-civic-station-contract.json",
-        "assets/figures/c7-civic-station-prototype.svg"
-      ],
-      "formula": "count(C7-CIVIC-STATION-01)",
-      "confidence": "high",
-      "assumptions": [
-        "Internal concept prototype; not a built asset."
-      ]
-    },
-    "preregistered_observation_slot_count": {
-      "status": "known",
-      "value": 15,
-      "unit": "count",
-      "source_files": [
-        "visual/assets/field-observation-register.json"
-      ],
-      "formula": "3 key areas * 5 preregistered observation categories",
-      "confidence": "high",
-      "assumptions": [
-        "Counts future observation slots, not completed field observations."
-      ]
-    },
-    "civic_station_operating_state_count": {
+    "official_constraint_anchor_count": {
       "status": "known",
       "value": 3,
       "unit": "count",
       "source_files": [
-        "visual/assets/c7-civic-station-contract.json"
+        "sources.json",
+        "visual/assets/reality-constraint-register.json"
       ],
-      "formula": "count(DAILY, CONTROLLED_TEST, AI_OFF)",
+      "formula": "count of three v0.9 official-public reality anchor groups",
       "confidence": "high",
       "assumptions": [
-        "Concept operating states."
+        "Counts source groups used for design response; not approvals."
+      ]
+    },
+    "reference_plot_condition_count": {
+      "status": "known",
+      "value": 7,
+      "unit": "count",
+      "source_files": [
+        "visual/assets/reference-plot-conditions.json"
+      ],
+      "formula": "count of public plot-condition reference records",
+      "confidence": "high",
+      "assumptions": [
+        "Reference records only; values are not transferred to proposal parcels."
+      ]
+    },
+    "design_response_rule_count": {
+      "status": "known",
+      "value": 5,
+      "unit": "count",
+      "source_files": [
+        "visual/assets/reality-constraint-register.json"
+      ],
+      "formula": "count(RR-01..RR-05)",
+      "confidence": "high",
+      "assumptions": [
+        "Internal design-response rules."
+      ]
+    },
+    "reality_public_task_bridge_count": {
+      "status": "known",
+      "value": 3,
+      "unit": "count",
+      "source_files": [
+        "visual/assets/reality-to-public-task-register.json",
+        "assets/figures/reality-to-public-task.svg"
+      ],
+      "formula": "count(RJ-01..RJ-03)",
+      "confidence": "high",
+      "assumptions": [
+        "Counts design-response chains, not completed field observations."
       ]
     }
   }
