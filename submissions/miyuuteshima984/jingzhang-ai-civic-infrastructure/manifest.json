@@ -38,7 +38,7 @@
       "path": "metrics.json",
       "role": "metrics",
       "required": true,
-      "sha256": "a7eb89a0ca26e808b324a6102b559cb93cb932d27f93cad89f5391aafcc6e0b3"
+      "sha256": "4c791f41f449950beaf8bf012bb52078653f1cb6f01114d6e187fce1e8e45e75"
     },
     {
       "path": "assumptions.json",
@@ -56,7 +56,7 @@
       "path": "self_check.json",
       "role": "self_check",
       "required": true,
-      "sha256": "7de0bf7050ceb92713528903555701fbd9d073eab13f070fb9ace1e98a27de5a"
+      "sha256": "0672d7a99cbe186408532fb64aadf8acffc17283f7281f78bc30568d19e147a7"
     },
     {
       "path": "compliance_matrix.json",

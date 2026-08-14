@@ -223,7 +223,7 @@
     },
     "public_space_area_sqm": {
       "status": "known",
-      "value": 386029.357,
+      "value": 386029.358,
       "unit": "sqm",
       "source_files": [
         "geometry/public_space.geojson"
@@ -274,7 +274,7 @@
     },
     "building_footprint_area_sqm": {
       "status": "known",
-      "value": 1024945.373,
+      "value": 1024945.371,
       "unit": "sqm",
       "source_files": [
         "geometry/buildings.geojson"
