@@ -1,101 +1,104 @@
 {
-  "schema_version": "1.1",
-  "variant": "v0.11",
-  "title_zh": "公共承诺作为空间合同 / PUBLIC PROMISES AS SPATIAL CONTRACTS",
+  "schema_version": "1.2",
+  "variant": "v0.12.s",
+  "title_zh": "城市失效可用性剖面 / CIVIC FAILSAFE SECTIONS",
   "status": "concept_design_contract",
-  "method": "ordinary_task -> spatial_contract -> optional_ai -> human_takeover -> exit -> verification",
+  "method": "ordinary_task -> S0_baseline -> S1_optional_enhancement -> S2_human_takeover -> S3_public_physical_recheck -> recovery_or_rollback",
+  "operating_states": [
+    {
+      "id": "S0",
+      "name": "ORDINARY",
+      "rule_zh": "普通城市物理路径与基本服务先成立。"
+    },
+    {
+      "id": "S1",
+      "name": "ENHANCED",
+      "rule_zh": "AI/测试只能作为有边界、可撤回的可选增强。"
+    },
+    {
+      "id": "S2",
+      "name": "DEGRADED",
+      "rule_zh": "数据、账号、模型或测试不可用时转人工接管，普通任务不中断。"
+    },
+    {
+      "id": "S3",
+      "name": "RECOVERY",
+      "rule_zh": "不自动恢复增强；先进行公众/物理复核，再决定恢复、修正或回退。"
+    }
+  ],
+  "release_gates": [
+    {
+      "id": "G0",
+      "name": "BASELINE",
+      "evidence_zh": "证明普通城市任务在 AI-OFF 状态成立。"
+    },
+    {
+      "id": "G1",
+      "name": "STEWARDSHIP",
+      "evidence_zh": "明确拟议责任角色、人工接管和退出路径；正式法律主体待确认。"
+    },
+    {
+      "id": "G2",
+      "name": "REVERSIBLE_PILOT",
+      "evidence_zh": "增强边界受控、可停止、可撤除，不挤占 S0。"
+    },
+    {
+      "id": "G3",
+      "name": "SCALE_OR_ROLLBACK",
+      "evidence_zh": "通过概念验收才扩围，否则 REVISE / STOP / 回退。"
+    }
+  ],
   "promises": [
     {
       "id": "PP-01",
       "name": "ARRIVE WITHOUT APP",
       "key_area": "大钟寺",
-      "key_area_role": "station-city arrival",
-      "everyday_chain": "学生/访客到达—换乘—步行—公共首层",
-      "ordinary_baseline": "连续步行/无障碍 + 固定双语导视 + 人工换乘与求助",
-      "spatial_contract": [
-        "实体主路径不得被动态设备、广告、机器人或试验设施占用",
-        "站城首层必须保持入口可读、可停留、有人可问",
-        "竖向连续性按真实道路/铁路节点条件分别判断，不用概念缝合线冒充工程线位"
-      ],
-      "optional_ai": "动态多语信息、拥挤提示和路径辅助只能叠加在普通到达路径之上",
-      "human_takeover": "人工换乘、求助和现场解释持续存在",
-      "exit_rule": "断网、无手机、AI 停止或账号系统不可用时，立即回到实体导视、人工服务和普通路径；到达任务不得中断",
-      "verification": {
-        "question_zh": "不用 App，是否仍能从站点到达公共首层并完成换乘或求助？",
-        "evidence": [
-          "assets/figures/three-public-promises.svg",
-          "assets/figures/site-overview.png",
-          "assets/figures/mobility-bluegreen.png",
-          "drawings/a3-booklet.pdf",
-          "drawings/a0-boards.pdf"
-        ]
-      },
-      "reality_rule": "知春路及铁路/道路节点按真实竖向条件分别处理；概念联系不升级为桥隧工程线位"
+      "ordinary_task": "到达—辨向—换乘/求助—普通等候与商业—京张遗产公共界面",
+      "ordinary_baseline": "固定双语导视、实体入口、人工求助与无障碍连续意图先成立。",
+      "optional_ai": "动态多语信息、拥挤提示和路线辅助只能增强。",
+      "proposed_steward_role": "站城公共界面责任角色（正式法律主体待确认）",
+      "human_takeover": "AI/账号不可用时回到固定导视、人工帮助与普通路径。",
+      "go_condition": "S0 完整且人工接管可读后，才允许可逆增强。",
+      "revise_condition": "实体或人工后备不可理解时修正，不进入扩围。",
+      "stop_rollback": "任何增强若阻断普通到达任务即停止并回退。",
+      "reality_rule": "不由 provisional polygon 推导真实站口、桥隧、道路或工程线位。"
     },
     {
       "id": "PP-02",
       "name": "CARE WITHOUT ACCOUNT",
       "key_area": "AI 原点",
-      "key_area_role": "long-term community",
-      "everyday_chain": "家门—遮阴坐凳—人工照护/服务—公共客厅—绿廊",
-      "ordinary_baseline": "无手机、无账号、拒绝数据处理时仍可通过实体路径、人工窗口、电话/纸质流程获得基本服务",
-      "spatial_contract": [
-        "公共首层和基本服务入口不得以注册、登录或授权个人数据为前提",
-        "家门至照护/求助/休息/公共客厅的实体路径必须连续",
-        "京张绿廊侧连续步行、停留和公共首层优先，设备与物流退到普通城市任务之后"
-      ],
-      "optional_ai": "导航、服务匹配、多语辅助和照护提示可以增强，但不得成为唯一服务入口",
-      "human_takeover": "人工窗口、人工接管、电话与纸质流程持续可用",
-      "exit_rule": "拒绝数据、账号失效、AI 失败或服务退出时，基本照护、求助、休息和公共生活路径保持不变",
-      "verification": {
-        "question_zh": "无账号居民是否仍能完成基本照护、求助、休息与公共生活任务？",
-        "evidence": [
-          "assets/figures/three-public-promises.svg",
-          "assets/figures/key-areas.png",
-          "assets/figures/mobility-bluegreen.png",
-          "drawings/a3-booklet.pdf",
-          "drawings/a0-boards.pdf"
-        ]
-      },
-      "reality_rule": "京张绿廊连续步行、停留和公共首层优先；AI/物流设备不得切断公众基本通行"
+      "ordinary_task": "家门—遮阴/休息—照护/求助—公共客厅—绿廊",
+      "ordinary_baseline": "无账号、无智能手机或拒绝数据时仍可通过实体路径和人工/电话/纸质后备获得基本服务。",
+      "optional_ai": "导航、服务匹配和多语辅助为可选层。",
+      "proposed_steward_role": "基本公共服务与人工接管责任角色（正式法律主体待确认）",
+      "human_takeover": "账号、数据或模型不可用时，实体与人工服务入口继续工作。",
+      "go_condition": "基本服务入口不依赖账号且人工接管存在后才进入增强。",
+      "revise_condition": "公众无法辨认实体/人工后备时修正。",
+      "stop_rollback": "任何增强若成为唯一服务入口即停止并回退。",
+      "reality_rule": "绿廊连续步行、停留和公共首层优先于设备与物流。"
     },
     {
       "id": "PP-03",
       "name": "TEST WITHOUT BLOCKING",
       "key_area": "众智园",
-      "key_area_role": "innovation campus",
-      "everyday_chain": "到达—研发/服务劳动—吃饭休息—共享空间—离开",
-      "ordinary_baseline": "普通步行、休息、工作与服务流线先完整，测试不是进入校园日常生活的前提",
-      "spatial_contract": [
-        "机器人、物流和 AI 测试必须进入与公共通行物理分离的受控口袋/路径",
-        "测试边界必须可关闭、可撤除，并保持普通路径连续",
-        "测试区扩张不得以公开 FAR/高度参照值作为突破正式控制或提高本案强度的依据"
-      ],
-      "optional_ai": "机器人、设备与算法测试仅进入受控区域，可增强研发和服务但不得占用普通生活底座",
-      "human_takeover": "测试区域由明确人工管理/停止机制接管，公众不承担维持试验运行的义务",
-      "exit_rule": "测试暂停、失败、撤场或 AI-OFF 时，公众通行、休息、工作与基本服务不得改变，也不得被迫绕行测试区",
-      "verification": {
-        "question_zh": "测试完全停止后，普通城市链是否仍连续且不绕行受控测试区？",
-        "evidence": [
-          "assets/figures/three-public-promises.svg",
-          "assets/figures/key-areas.png",
-          "assets/figures/ai-urban-form-change.svg",
-          "drawings/a3-booklet.pdf",
-          "drawings/a0-boards.pdf"
-        ]
-      },
-      "reality_rule": "公开 FAR/高度仅作现实尺度参照，不成为测试扩张、强度提高或法定控制判断"
+      "ordinary_task": "到达—研发/服务劳动—吃饭休息—共享空间—离开",
+      "ordinary_baseline": "普通工作、休息、步行和公共绿地流线先完整。",
+      "optional_ai": "机器人、设备与算法测试仅进入可区分、可关闭、可撤除的受控范围。",
+      "proposed_steward_role": "公共空间管理与测试责任角色（正式法律主体待确认）",
+      "human_takeover": "测试停止或 AI-OFF 时普通路径和服务不改变。",
+      "go_condition": "S0 连续、测试边界可关闭且人工责任明确后才进入试点。",
+      "revise_condition": "测试边界与普通公共空间关系不清晰时修正。",
+      "stop_rollback": "任何测试若移动、缩减或阻断普通公共路径即停止并回退。",
+      "reality_rule": "公开 FAR/高度仅作现实尺度参照，不成为测试扩张或法定控制依据。"
     }
   ],
   "coverage_contract": {
-    "promise_count": 3,
-    "key_area_binding_count": 3,
-    "all_have_ordinary_baseline": true,
-    "all_have_spatial_contract": true,
-    "all_have_optional_ai": true,
+    "spatial_contract_count": 3,
+    "critical_task_count": 3,
+    "all_have_ai_off_path": true,
     "all_have_human_takeover": true,
-    "all_have_exit_rule": true,
-    "all_have_verification_question": true
+    "all_have_go_revise_stop": true,
+    "release_gate_count": 4
   },
-  "principle": "A public promise is accepted only when the ordinary urban task, spatial contract, human takeover and exit path remain valid with AI turned off. These are concept-design verification rules, not claims of field-tested performance or government approval."
+  "principle": "The city must remain legible and usable when AI, accounts or tests fail. These are concept-design verification rules, not field-tested performance, statutory controls or government commitments."
 }

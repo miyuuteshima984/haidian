@@ -8,44 +8,28 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "设计依据与资料清单",
-        "风险、版权与合规说明",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "设计依据与资料清单"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/site_boundary.geojson",
-        "geometry/key_areas.geojson",
-        "geometry/constraints.geojson"
+        "geometry/site_boundary.geojson"
       ],
       "metric_refs": [
-        "site_area_sqm",
-        "constraints_feature_count",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "site_area_sqm"
       ],
       "source_ids": [
-        "PROCESSED-FACT-PACK",
-        "BOUNDARY-SOURCE",
-        "KEY-AREA-SOURCE",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BOUNDARY-001",
-        "A-EXISTING-004",
-        "A-CONSTRAINTS-007"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "BOUNDARY_TRUST",
-        "CONSTRAINTS_GAP_DISCLOSED"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "已完成概念阶段现状诊断：明确任务范围、临时空间依据和缺资料清单；逐栋现状、人口、权属、公共服务容量等作为待补资料，不伪造现状结论。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。"
+      "evidence_summary_zh": "现状、法定控制与工程资料缺口继续显式披露；v0.12.s 不用假精度填补缺口。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "three_level_scope_framework",
@@ -61,27 +45,21 @@
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/site_boundary.geojson",
         "geometry/key_areas.geojson"
       ],
       "metric_refs": [
-        "coordinated_research_area_sqm",
-        "official_declared_overall_design_area_sqm",
-        "key_area_announced_total_sqm"
+        "key_area_count"
       ],
       "source_ids": [
-        "OFFICIAL-ANNOUNCEMENT",
-        "DESIGN-BRIEF"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BOUNDARY-001",
-        "A-KEYAREA-LOCATION-002"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "BOUNDARY_TRUST",
-        "KEY_AREAS_TRUST"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "43.6 km²、11.4 km² 与三处重点区分别对应机制研究、总体空间和重点区设计，并明确公告约值与 provisional geometry 的证据等级差异。"
+      "evidence_summary_zh": "三层范围由机制研究、总体连续空间收敛到三处可失效空间合同。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "overall_spatial_structure",
@@ -90,44 +68,29 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "总体设计范围城市更新与控规深度城市设计",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "总体设计范围城市更新与控规深度城市设计"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/land_use.geojson",
-        "geometry/roads.geojson",
-        "geometry/green_space.geojson",
-        "geometry/public_space.geojson"
+        "geometry/roads.geojson"
       ],
       "metric_refs": [
-        "city_completeness_segment_count",
         "east_west_stitch_count",
-        "green_ratio",
-        "public_space_count",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "civic_failsafe_state_count"
       ],
       "source_ids": [
-        "DESIGN-BRIEF",
-        "AGENT-TASKBOOK",
-        "HD-URBAN-RENEWAL-GUIDE-2025",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
         "A-C7-006"
       ],
       "self_check_ids": [
-        "LAND_USE_TOPOLOGY",
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "形成一脊、六段、六缝、三核的概念空间结构，并由用地、道路、绿地和公共空间图层共同表达。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。"
+      "evidence_summary_zh": "一脊六段六缝三核保持，新增 S0-S3 状态转换作为空间组织规则。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "land_use_layout",
@@ -136,7 +99,6 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "总体设计范围城市更新与控规深度城市设计",
         "用地、建筑规模与拆改留方案"
       ],
       "drawing_refs": [
@@ -147,22 +109,18 @@
         "geometry/land_use.geojson"
       ],
       "metric_refs": [
-        "land_use_feature_count",
-        "land_use_residential_sqm",
-        "land_use_research_sqm",
-        "land_use_education_sqm",
-        "land_use_commercial_service_sqm"
+        "land_use_feature_count"
       ],
       "source_ids": [
-        "LAND-USE-CODES"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-CONTROLS-003"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "LAND_USE_TOPOLOGY"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "13 个概念用地 feature 采用允许代码，用于功能邻接和城市完整度测试；不把概念用地写成已批控规。"
+      "evidence_summary_zh": "不新增 AI 用地；可逆增强叠加在普通城市功能之上。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "development_intensity_controls",
@@ -171,53 +129,7 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "用地、建筑规模与拆改留方案",
-        "指标体系、面积复算与合规矩阵",
-        "风险、版权与合规说明",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
-      ],
-      "drawing_refs": [
-        "drawings/a3-booklet.pdf",
-        "drawings/a0-boards.pdf"
-      ],
-      "geometry_refs": [
-        "geometry/buildings.geojson",
-        "geometry/constraints.geojson"
-      ],
-      "metric_refs": [
-        "approved_floor_area_ratio",
-        "approved_building_height_m",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
-      ],
-      "source_ids": [
-        "PLANNING-LIMITS",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
-      ],
-      "assumption_ids": [
-        "A-CONTROLS-003",
-        "A-BUILDING-MODEL-005"
-      ],
-      "self_check_ids": [
-        "CONSTRAINTS_GAP_DISCLOSED",
-        "BUILDING_MODEL_DISCLAIMER"
-      ],
-      "evidence_summary_zh": "该项以‘待正式数据补齐’方式完成响应：正式 FAR、高度、密度和退界保持 unknown，概念容量指标不作为法定控制。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。"
-    },
-    {
-      "item_id": "height_massing_character",
-      "title_zh": "建筑高度、体量与风貌控制",
-      "professional_dimension": "建筑",
-      "required": true,
-      "status": "complete",
-      "proposal_sections": [
-        "重点区域详细设计",
-        "用地、建筑规模与拆改留方案",
-        "蓝绿空间、公共空间与城市风貌",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "用地、建筑规模与拆改留方案"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -227,37 +139,30 @@
         "geometry/buildings.geojson"
       ],
       "metric_refs": [
-        "conceptual_building_count",
-        "approved_building_height_m",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "approved_floor_area_ratio"
       ],
       "source_ids": [
-        "BUILDING-TYPES",
-        "PLANNING-LIMITS",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BUILDING-MODEL-005",
-        "A-CONTROLS-003"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "BUILDING_MODEL_DISCLAIMER"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "完成概念阶段体量与风貌原则，强调公共首层、清晰入口和可维护设备；正式高度与体量控制明确待控规、文保和现状资料。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。"
+      "evidence_summary_zh": "正式 FAR/高度保持 unknown，公开参照不升级为控制。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。",
+      "completeness_limited_by": [
+        "正式控规、权属、现状或工程资料尚未完整公开，相关结论保持概念/待确认状态"
+      ]
     },
     {
-      "item_id": "retain_renovate_demolish",
-      "title_zh": "建筑拆改留分类",
+      "item_id": "height_massing_character",
+      "title_zh": "建筑高度、体量与风貌控制",
       "professional_dimension": "建筑",
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "用地、建筑规模与拆改留方案",
-        "风险、版权与合规说明"
+        "用地、建筑规模与拆改留方案"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -270,16 +175,48 @@
         "conceptual_building_count"
       ],
       "source_ids": [
-        "ALLOWED-DESIGN-SPACE"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-EXISTING-004",
-        "A-BUILDING-MODEL-005"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "BUILDING_MODEL_DISCLAIMER"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "该项以边界纪律完成：因缺逐栋现状、权属、结构、消防和文保资料，不下具体拆改留结论，仅给出可逆的 infill/reuse 研究动作。"
+      "evidence_summary_zh": "体量仍为概念邻接/容量原型；风貌强调三种城市类型而非统一科技表皮。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
+    },
+    {
+      "item_id": "retain_renovate_demolish",
+      "title_zh": "建筑拆改留分类",
+      "professional_dimension": "建筑",
+      "required": true,
+      "status": "complete",
+      "proposal_sections": [
+        "用地、建筑规模与拆改留方案"
+      ],
+      "drawing_refs": [
+        "drawings/a3-booklet.pdf",
+        "drawings/a0-boards.pdf"
+      ],
+      "geometry_refs": [
+        "geometry/buildings.geojson"
+      ],
+      "metric_refs": [
+        "conceptual_building_count"
+      ],
+      "source_ids": [
+        "AGENT-TASKBOOK"
+      ],
+      "assumption_ids": [
+        "A-C7-006"
+      ],
+      "self_check_ids": [
+        "PROFESSIONAL_EVIDENCE"
+      ],
+      "evidence_summary_zh": "缺逐栋资料时不做真实拆改留结论，只保留可逆 infill/reuse 研究。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。",
+      "completeness_limited_by": [
+        "正式控规、权属、现状或工程资料尚未完整公开，相关结论保持概念/待确认状态"
+      ]
     },
     {
       "item_id": "traffic_rail_slow_parking",
@@ -288,42 +225,31 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "交通、轨道、市政与公共服务设施",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "交通、轨道、市政与公共服务设施"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/roads.geojson",
-        "geometry/public_space.geojson"
+        "geometry/roads.geojson"
       ],
       "metric_refs": [
-        "road_centerline_length_m",
         "east_west_stitch_count",
-        "road_area_sqm",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "ai_off_critical_task_coverage_ratio"
       ],
       "source_ids": [
-        "ALLOWED-DESIGN-SPACE",
-        "PLANNING-LIMITS",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-EXISTING-004",
-        "A-CONTROLS-003"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "慢行和轨道接驳意图已落图；道路红线、站口、停车与桥隧工程条件作为明确待补数据，不将概念联系升级为工程线位。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。",
+      "evidence_summary_zh": "大钟寺 ARRIVE WITHOUT APP 以固定导视/人工求助/真实竖向问题为核心，不虚构站口桥隧。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。",
       "completeness_limited_by": [
-        "真实轨道出入口、道路红线和交通调查尚未核验"
+        "正式控规、权属、现状或工程资料尚未完整公开，相关结论保持概念/待确认状态"
       ]
     },
     {
@@ -333,79 +259,63 @@
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "交通、轨道、市政与公共服务设施",
-        "风险、版权与合规说明"
+        "交通、轨道、市政与公共服务设施"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/constraints.geojson"
+        "geometry/roads.geojson"
       ],
       "metric_refs": [
-        "constraints_feature_count"
+        "road_centerline_length_m",
+        "human_takeover_contract_coverage_ratio"
       ],
       "source_ids": [
-        "PLANNING-LIMITS",
-        "ALLOWED-DESIGN-SPACE"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-CONSTRAINTS-007",
-        "A-CONTROLS-003"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "CONSTRAINTS_GAP_DISCLOSED"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "完成策略级响应：端侧算力、充电、机器人维护与传感需服从正式管线、容量、消防与能源条件，当前不做工程可行性判断。"
+      "evidence_summary_zh": "基本市政不依赖单一 AI 平台；端侧算力和感知是可替换增强。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "blue_green_public_space",
-      "title_zh": "蓝绿系统与公共空间",
+      "title_zh": "蓝绿空间、公共空间与城市风貌",
       "professional_dimension": "景观",
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "总体设计范围城市更新与控规深度城市设计",
-        "蓝绿空间、公共空间与城市风貌",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "蓝绿空间、公共空间与城市风貌"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/green_space.geojson",
-        "geometry/public_space.geojson",
-        "geometry/roads.geojson"
+        "geometry/green_space.geojson"
       ],
       "metric_refs": [
-        "green_space_area_sqm",
-        "green_ratio",
-        "public_space_area_sqm",
-        "public_space_ratio",
-        "public_space_count",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "green_ratio"
       ],
       "source_ids": [
-        "DESIGN-BRIEF",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BOUNDARY-001"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "公共绿脊、六个公共客厅和慢行联系形成概念网络；所有比例为设计量而非法定绿地率或审批指标。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。"
+      "evidence_summary_zh": "公共绿脊首先承担非数字公共能力；测试和设备不得切断连续使用。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "three_key_area_detailed_design",
-      "title_zh": "三大重点片区详细设计",
+      "title_zh": "三处重点区域详细设计",
       "professional_dimension": "城市设计",
       "required": true,
       "status": "complete",
@@ -417,35 +327,22 @@
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/key_areas.geojson",
-        "geometry/land_use.geojson",
-        "geometry/buildings.geojson",
-        "geometry/public_space.geojson"
+        "geometry/key_areas.geojson"
       ],
       "metric_refs": [
         "key_area_count",
-        "conceptual_building_count",
-        "public_space_count"
+        "spatial_contract_count"
       ],
       "source_ids": [
-        "AGENT-TASKBOOK",
-        "DESIGN-BRIEF",
-        "HD-URBAN-RENEWAL-GUIDE-2025",
-        "HD-AI-DISTRICT-PROGRESS-2025Q4"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-KEYAREA-LOCATION-002",
-        "A-BUILDING-MODEL-005"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "KEY_AREAS_TRUST",
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "v0.7 用固定 key-areas 核心图把众智园创新校园、AI原点长期社区和大钟寺站城生活区画成三套不同首层/公共空间关系；精确落位仍服从 provisional geometry 和现场核验。",
-      "completeness_limited_by": [
-        "official key-area polygons 尚未提供",
-        "真实入口、权属、现状建筑与公共服务容量待现场/官方资料核验"
-      ]
+      "evidence_summary_zh": "众智园/AI原点/大钟寺分别形成 TEST/CARE/ARRIVE 四态失效可用剖面。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "renewal_project_list",
@@ -461,37 +358,30 @@
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/phasing.geojson",
-        "geometry/public_space.geojson",
-        "geometry/roads.geojson"
+        "geometry/phasing.geojson"
       ],
       "metric_refs": [
-        "east_west_stitch_count",
-        "public_space_count",
-        "ai_scenario_count"
+        "public_space_count"
       ],
       "source_ids": [
-        "AGENT-TASKBOOK",
-        "HD-URBAN-RENEWAL-GUIDE-2025",
-        "HD-URBAN-RENEWAL-IMPLEMENTATION-2025"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
         "A-C7-006"
       ],
       "self_check_ids": [
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "项目清单按 C7 调查、绿脊与慢行、社区服务、受控测试和站城深化等类型组织，均以概念研究项目表达。"
+      "evidence_summary_zh": "更新项目按普通底座、责任确认、可逆试点、扩围/回退四门组织。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "phasing_implementation",
-      "title_zh": "分期实施计划",
+      "title_zh": "分期与实施机制",
       "professional_dimension": "实施",
       "required": true,
       "status": "complete",
       "proposal_sections": [
-        "更新项目清单、实施政策与分期计划",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "更新项目清单、实施政策与分期计划"
       ],
       "drawing_refs": [
         "drawings/a3-booklet.pdf",
@@ -501,36 +391,25 @@
         "geometry/phasing.geojson"
       ],
       "metric_refs": [
-        "ai_scenario_count",
-        "industry_test_scenario_count",
-        "official_constraint_anchor_count",
-        "reference_plot_condition_count",
-        "design_response_rule_count"
+        "public_space_count",
+        "civic_release_gate_count",
+        "go_revise_stop_contract_coverage_ratio"
       ],
       "source_ids": [
-        "AGENT-TASKBOOK",
-        "HD-URBAN-RENEWAL-GUIDE-2025",
-        "HD-URBAN-RENEWAL-IMPLEMENTATION-2025",
-        "HD00-1601-DRAFT-RESPONSE-V09",
-        "HD-LANJINGLIJIA-INTEGRATED-RESPONSE-V09",
-        "HD-PLOT-CONDITIONS-REFERENCE-V09"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-CONTROLS-003"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "v0.7 将实施分为低扰动可逆动作与需正式实施方案/行政许可的重改造两条路径；近期仍以现场核验和最小可用空间为前提，中长期站城、建筑和市政改变不在概念包内预授权。 v0.9 用公开规划原件把道路节点、绿廊界面和强度参照转成明确设计响应，同时不把参照值外推为本案控制值。",
-      "completeness_limited_by": [
-        "真实项目统筹/实施主体尚未确定",
-        "项目级现场条件、资金匡算和许可条件尚未核验"
-      ]
+      "evidence_summary_zh": "G0-G3 取代虚构工期；角色责任、人工接管、STOP 与 rollback 可被审核。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "metrics_recalculation",
-      "title_zh": "指标复算",
-      "professional_dimension": "校核",
+      "title_zh": "指标与复算",
+      "professional_dimension": "规划",
       "required": true,
       "status": "complete",
       "proposal_sections": [
@@ -541,37 +420,27 @@
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/site_boundary.geojson",
-        "geometry/land_use.geojson",
-        "geometry/buildings.geojson",
-        "geometry/roads.geojson",
-        "geometry/green_space.geojson",
-        "geometry/public_space.geojson"
+        "geometry/site_boundary.geojson"
       ],
       "metric_refs": [
         "site_area_sqm",
-        "green_ratio",
-        "public_space_ratio",
-        "building_footprint_area_sqm",
-        "road_centerline_length_m"
+        "spatial_contract_count",
+        "ai_off_critical_task_coverage_ratio"
       ],
       "source_ids": [
-        "DESIGN-BRIEF",
-        "PLANNING-LIMITS"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BOUNDARY-001",
-        "A-BUILDING-MODEL-005"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "LAND_USE_TOPOLOGY",
-        "GEOMETRY_REQUIRED_LAYERS"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "当前 geometry 可复算指标均记录公式、来源和置信度；法定指标因正式资料缺失保持 unknown，并设置重算触发条件。"
+      "evidence_summary_zh": "固定包内指标保持；新增合同覆盖率作为概念完整性目标，不声称现场达标。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。"
     },
     {
       "item_id": "risk_missing_data",
-      "title_zh": "风险与缺资料清单",
+      "title_zh": "风险与缺失资料",
       "professional_dimension": "合规",
       "required": true,
       "status": "complete",
@@ -583,35 +452,24 @@
         "drawings/a0-boards.pdf"
       ],
       "geometry_refs": [
-        "geometry/constraints.geojson",
-        "geometry/site_boundary.geojson",
-        "geometry/key_areas.geojson"
+        "geometry/constraints.geojson"
       ],
       "metric_refs": [
-        "constraints_feature_count",
-        "approved_floor_area_ratio",
-        "approved_building_height_m",
-        "road_area_sqm"
+        "constraints_feature_count"
       ],
       "source_ids": [
-        "PROCESSED-FACT-PACK",
-        "FORMAL-GUIDE",
-        "PLANNING-LIMITS"
+        "AGENT-TASKBOOK"
       ],
       "assumption_ids": [
-        "A-BOUNDARY-001",
-        "A-KEYAREA-LOCATION-002",
-        "A-CONTROLS-003",
-        "A-EXISTING-004",
-        "A-CONSTRAINTS-007"
+        "A-C7-006"
       ],
       "self_check_ids": [
-        "BOUNDARY_TRUST",
-        "KEY_AREAS_TRUST",
-        "CONSTRAINTS_GAP_DISCLOSED",
-        "BILINGUAL_INTEGRITY"
+        "PROFESSIONAL_EVIDENCE"
       ],
-      "evidence_summary_zh": "边界、重点区位置、控规、现状、约束、建筑模型和双语成果风险均已明确登记，并写明正式数据到位后的替换与复核动作。"
+      "evidence_summary_zh": "provisional geometry、法定控制、站口与工程条件继续保持明确数据边界。 v0.12.s 证据同时进入 proposal、canonical 图、report 与 PDF。",
+      "completeness_limited_by": [
+        "正式控规、权属、现状或工程资料尚未完整公开，相关结论保持概念/待确认状态"
+      ]
     }
   ]
 }

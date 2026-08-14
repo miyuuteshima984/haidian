@@ -550,13 +550,98 @@
       "unit": "count",
       "source_files": [
         "visual/assets/public-promises-contract.json",
-        "assets/figures/three-public-promises.svg",
-        "assets/figures/site-overview.png"
+        "assets/figures/key-areas.png",
+        "proposal.md"
       ],
       "formula": "count(PP-01..PP-03)",
       "confidence": "high",
       "assumptions": [
         "Counts concept design promises, not completed field tests."
+      ]
+    },
+    "civic_failsafe_state_count": {
+      "status": "known",
+      "value": 4,
+      "unit": "count",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/site-overview.png"
+      ],
+      "formula": "count(S0 ordinary, S1 enhanced, S2 degraded, S3 recovery)",
+      "confidence": "high",
+      "assumptions": [
+        "Internal state model for design review; not an official emergency standard."
+      ]
+    },
+    "spatial_contract_count": {
+      "status": "known",
+      "value": 3,
+      "unit": "count",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/key-areas.png",
+        "visual/assets/public-promises-contract.json"
+      ],
+      "formula": "count(TEST WITHOUT BLOCKING, CARE WITHOUT ACCOUNT, ARRIVE WITHOUT APP)",
+      "confidence": "high",
+      "assumptions": [
+        "Concept spatial contracts, not statutory covenants."
+      ]
+    },
+    "ai_off_critical_task_coverage_ratio": {
+      "status": "known",
+      "value": 1.0,
+      "unit": "ratio",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/metrics-evidence.png"
+      ],
+      "formula": "critical_tasks_with_no_ai_account_or_test_completion_path / critical_task_count",
+      "confidence": "high",
+      "assumptions": [
+        "Proposal completeness target: 3 of 3 critical tasks have an ordinary-city completion path; not a field-test result."
+      ]
+    },
+    "human_takeover_contract_coverage_ratio": {
+      "status": "known",
+      "value": 1.0,
+      "unit": "ratio",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/metrics-evidence.png"
+      ],
+      "formula": "contracts_with_manual_takeover / spatial_contract_count",
+      "confidence": "high",
+      "assumptions": [
+        "Proposal completeness target: all three contracts specify a human takeover path."
+      ]
+    },
+    "go_revise_stop_contract_coverage_ratio": {
+      "status": "known",
+      "value": 1.0,
+      "unit": "ratio",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/metrics-evidence.png"
+      ],
+      "formula": "contracts_with_go_revise_stop_and_rollback / spatial_contract_count",
+      "confidence": "high",
+      "assumptions": [
+        "Proposal completeness target: all three contracts define advance, revise, stop and rollback logic."
+      ]
+    },
+    "civic_release_gate_count": {
+      "status": "known",
+      "value": 4,
+      "unit": "count",
+      "source_files": [
+        "proposal.md",
+        "assets/figures/metrics-evidence.png"
+      ],
+      "formula": "count(G0 baseline, G1 stewardship, G2 reversible pilot, G3 scale-or-rollback)",
+      "confidence": "high",
+      "assumptions": [
+        "Internal implementation sequencing method; legal approval and engineering permitting remain external."
       ]
     }
   }
