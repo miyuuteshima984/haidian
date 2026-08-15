@@ -56,7 +56,7 @@
         "总体设计范围城市更新与控规深度城市设计",
         "交通、轨道、市政与公共服务设施",
         "蓝绿空间、公共空间与城市风貌",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
         "v0.14.s 核心判断｜INVARIANT CIVIC ROUTES / 不绕行的 AI 城市"
       ],
       "geojson_layers": [
@@ -122,7 +122,7 @@
         "重点区域详细设计",
         "AI 创新生态、人才画像与 AI+ 场景",
         "蓝绿空间、公共空间与城市风貌",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
         "v0.14.s 核心判断｜INVARIANT CIVIC ROUTES / 不绕行的 AI 城市"
       ],
       "geojson_layers": [
@@ -260,7 +260,7 @@
       "report_sections": [
         "三层范围工作框架",
         "重点区域详细设计",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
         "v0.14.s 核心判断｜INVARIANT CIVIC ROUTES / 不绕行的 AI 城市"
       ],
       "geojson_layers": [
@@ -352,7 +352,7 @@
       "report_sections": [
         "统筹研究范围产业与未来城市研究",
         "总体设计范围城市更新与控规深度城市设计",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
         "v0.14.s 核心判断｜INVARIANT CIVIC ROUTES / 不绕行的 AI 城市"
       ],
       "geojson_layers": [
@@ -409,7 +409,7 @@
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
         "用地、建筑规模与拆改留方案",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -463,7 +463,7 @@
       "report_sections": [
         "总体设计范围城市更新与控规深度城市设计",
         "更新项目清单、实施政策与分期计划",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现"
       ],
       "geojson_layers": [
         "geometry/land_use.geojson",
@@ -629,7 +629,7 @@
       "mandatory": true,
       "report_sections": [
         "重点区域详细设计",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约",
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径",
         "v0.14.s 核心判断｜INVARIANT CIVIC ROUTES / 不绕行的 AI 城市"
       ],
       "geojson_layers": [
@@ -676,7 +676,7 @@
       "report_sections": [
         "重点区域详细设计",
         "AI 创新生态、人才画像与 AI+ 场景",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约"
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径"
       ],
       "geojson_layers": [
         "geometry/key_areas.geojson",
@@ -712,7 +712,7 @@
       "report_sections": [
         "重点区域详细设计",
         "用地、建筑规模与拆改留方案",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约"
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径"
       ],
       "geojson_layers": [
         "geometry/key_areas.geojson",
@@ -755,7 +755,7 @@
       "report_sections": [
         "重点区域详细设计",
         "交通、轨道、市政与公共服务设施",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约"
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径"
       ],
       "geojson_layers": [
         "geometry/key_areas.geojson",
@@ -890,8 +890,8 @@
       "mandatory": true,
       "report_sections": [
         "AI 创新生态、人才画像与 AI+ 场景",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约"
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径"
       ],
       "geojson_layers": [
         "geometry/public_space.geojson",
@@ -948,8 +948,8 @@
       "report_sections": [
         "AI 创新生态、人才画像与 AI+ 场景",
         "蓝绿空间、公共空间与城市风貌",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事",
-        "v0.13.g｜三条公共承诺作为双轨空间合同：空间形态化与 S0–S3 四态运行规约"
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现",
+        "v0.14.s｜INVARIANT CIVIC ROUTES：三条公共承诺变成三条普通城市主路径"
       ],
       "geojson_layers": [
         "geometry/public_space.geojson",
@@ -1038,7 +1038,7 @@
       "mandatory": true,
       "report_sections": [
         "更新项目清单、实施政策与分期计划",
-        "v0.9｜REALITY-ANCHORED：只有能改变空间判断的资料才进入主叙事"
+        "v0.10｜DESIGN-FIRST + REALITY：现实资料只在改变空间时出现"
       ],
       "geojson_layers": [
         "geometry/phasing.geojson",

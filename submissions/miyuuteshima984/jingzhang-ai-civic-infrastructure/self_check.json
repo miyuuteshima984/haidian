@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "submission_dir": "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure",
+  "submission_dir": "submissions\\miyuuteshima984\\jingzhang-ai-civic-infrastructure",
   "pr_author": "miyuuteshima984",
   "stage": "formal",
   "deterministic_validation": {
@@ -111,7 +111,7 @@
       "ai_package_stages": {
         "submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure": "formal"
       },
-      "total_bytes": 3708346,
+      "total_bytes": 3710701,
       "maintainer_bypass": false
     },
     "stderr": ""
