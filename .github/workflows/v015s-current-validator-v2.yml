@@ -1,0 +1,139 @@
+name: v015s-current-validator-v2
+
+on:
+  push:
+    branches:
+      - validation/v015s-current-validator-v2
+
+permissions:
+  contents: write
+
+jobs:
+  validate-current-upstream:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout validation workflow
+        uses: actions/checkout@v4
+        with:
+          ref: validation/v015s-current-validator-v2
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout current upstream trusted tree
+        uses: actions/checkout@v4
+        with:
+          repository: open-city-ai/haidian
+          ref: 7b20aeaf50a25582cdd81b01b45be43dcb235302
+          path: work
+          fetch-depth: 1
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            scripts
+            brief
+            data
+            docs
+            schemas
+            tracks.json
+            scenarios
+            requirements-review.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout v0.15.s candidate
+        uses: actions/checkout@v4
+        with:
+          repository: miyuuteshima984/haidian
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v015-s
+          path: candidate
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          sparse-checkout-cone-mode: false
+
+      - name: Overlay candidate submission
+        run: |
+          set -eu
+          root='submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure'
+          rm -rf "work/$root"
+          mkdir -p "work/submissions/miyuuteshima984"
+          cp -a "candidate/$root" "work/submissions/miyuuteshima984/"
+          cd work
+          bad="$(git status --porcelain=v1 | sed -E 's/^.. //' | grep -v '^submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/' || true)"
+          if [ -n "$bad" ]; then echo "::error title=OVERLAY_SCOPE::$bad"; exit 1; fi
+
+      - name: Install current review dependencies
+        run: |
+          python3 -m pip install --disable-pip-version-check --quiet -r work/requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Run current upstream four-gate self-check
+        working-directory: work
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/self_check_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --mark-self-checked --json > /tmp/current-selfcheck.json
+          rc=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('/tmp/current-selfcheck.json').read_text(encoding='utf-8'))
+          def esc(s):
+              return str(s).replace('%','%25').replace('\r','%0D').replace('\n','%0A')[:4000]
+          print('CURRENT_UPSTREAM_SELF_CHECK_OK=',d.get('ok'))
+          print('CURRENT_UPSTREAM_REVIEW_STATUS=',d.get('review_status'))
+          for action in d.get('next_actions') or []:
+              print(f'::error title=SELF_CHECK_ACTION::{esc(action)}')
+          for name,key in [('DETERMINISTIC','deterministic_validation'),('SPATIAL','spatial_review'),('VISUAL','visual_review'),('PROFESSIONAL','professional_review')]:
+              g=d.get(key) or {}
+              if g.get('ok') is True:
+                  print(f'{name}: PASS')
+                  continue
+              out=g.get('stdout') or {}
+              if g.get('stderr'):
+                  print(f'::error title={name}_STDERR::{esc(g.get("stderr"))}')
+              for err in out.get('errors') or []:
+                  print(f'::error title={name}_ERROR::{esc(err)}')
+              for issue in out.get('issues') or []:
+                  if isinstance(issue,dict):
+                      cid=issue.get('check_id',name)
+                      sev=issue.get('severity','')
+                      msg=issue.get('message','')
+                      print(f'::error title={esc(cid)}::{esc(sev+": "+msg)}')
+          PY
+          exit "$rc"
+
+      - name: Copy current-validator evidence back to candidate
+        run: |
+          set -eu
+          root='submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure'
+          cp "work/$root/self_check.json" "candidate/$root/self_check.json"
+          cp "work/$root/manifest.json" "candidate/$root/manifest.json"
+
+      - name: Verify evidence-only candidate drift
+        working-directory: candidate
+        run: |
+          set -eu
+          git diff --check
+          changed="$(git status --porcelain=v1 | sed -E 's/^.. //')"
+          echo "$changed"
+          bad="$(printf '%s\n' "$changed" | grep -v -E '^submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/(manifest.json|self_check.json)$' || true)"
+          if [ -n "$bad" ]; then echo "::error title=CANDIDATE_DRIFT::$bad"; exit 1; fi
+
+      - name: Commit refreshed validator evidence if changed
+        working-directory: candidate
+        run: |
+          set -eu
+          if git diff --quiet -- submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/manifest.json submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/self_check.json; then
+            echo 'Current-validator evidence already identical.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/manifest.json submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/self_check.json
+          git diff --cached --check
+          git commit -m 'v0.15.s: refresh self-check against current upstream validator'
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v015-s
