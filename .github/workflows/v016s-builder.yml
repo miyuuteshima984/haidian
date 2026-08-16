@@ -1,0 +1,165 @@
+name: v016s-builder
+
+on:
+  push:
+    branches:
+      - validation/v016s-builder
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout builder only
+        uses: actions/checkout@v4
+        with:
+          ref: validation/v016s-builder
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout formal v0.16.s target
+        uses: actions/checkout@v4
+        with:
+          repository: miyuuteshima984/haidian
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v016-s
+          path: work
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            scripts
+            brief
+            data
+            tracks.json
+            scenarios
+            requirements-validation.txt
+            requirements-review.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Install rendering and review dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk poppler-utils
+          python3 -m pip install --disable-pip-version-check --quiet pillow reportlab
+          python3 -m pip install --disable-pip-version-check --quiet -r work/requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Build v0.16.s CLEAN EXIT CITY
+        run: python3 .github/v016s_builder.py work
+
+      - name: Render bilingual proposal reports
+        run: python3 work/scripts/render_proposal_html.py work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+      - name: Normalize rendered HTML comments
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re
+          root=Path('work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          for rel in ['report/proposal.html','report/proposal.en.html']:
+              p=root/rel
+              text=p.read_text(encoding='utf-8')
+              text=re.sub(r'<p[^>]*>\s*&lt;!--\s*(.*?)\s*--&gt;\s*</p>',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S|re.I)
+              text=re.sub(r'&lt;!--\s*(.*?)\s*--&gt;',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S)
+              p.write_text(text,encoding='utf-8')
+              if '&lt;!--' in text:
+                  raise SystemExit(f'{rel}: escaped HTML comment remains')
+          print('HTML normalization: PASS')
+          PY
+
+      - name: Refresh manifest hashes
+        working-directory: work
+        run: |
+          python3 scripts/refresh_submission_manifest.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --json
+
+      - name: Persist current four-gate self-check
+        working-directory: work
+        run: |
+          python3 scripts/self_check_submission.py \
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure \
+            --pr-author miyuuteshima984 --mark-self-checked --json
+
+      - name: Participant preflight
+        working-directory: work
+        run: |
+          python3 scripts/participant_preflight.py \
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure \
+            --pr-author miyuuteshima984 --json
+
+      - name: Final clean-exit semantic checks
+        working-directory: work
+        run: |
+          set -eu
+          git diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          root=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          zh=(root/'proposal.md').read_text(encoding='utf-8')
+          en=(root/'proposal.en.md').read_text(encoding='utf-8')
+          for token in ['CLEAN EXIT CITY','BASE CITY','ATTACH','OPERATE','CLEAN EXIT']:
+              if token not in zh or token not in en:
+                  raise SystemExit(f'missing lifecycle token: {token}')
+          if 'v0.16.s 核心判断' not in zh or 'v0.16.s Core Judgment' not in en:
+              raise SystemExit('v0.16.s core title missing')
+
+          lifecycle=['base_city','attach_optional','operate_reviewable','clean_exit_restore']
+          hosts={'BLDG-012','BLDG-013','BLDG-007','BLDG-009','BLDG-001','BLDG-002','PUBLIC-006','PUBLIC-004','PUBLIC-001'}
+          seen=set()
+          for rel in ['geometry/buildings.geojson','geometry/public_space.geojson']:
+              data=json.loads((root/rel).read_text(encoding='utf-8'))
+              for f in data['features']:
+                  fid=str(f.get('id') or f.get('properties',{}).get('id') or '')
+                  if fid not in hosts: continue
+                  seen.add(fid); p=f['properties']
+                  if p.get('sidecar_lifecycle') != lifecycle or p.get('clean_exit_required') is not True or not p.get('ordinary_restore_use') or p.get('host_geometry_changes_for_sidecar') is not False:
+                      raise SystemExit(f'{fid}: incomplete clean-exit lifecycle')
+          if seen != hosts:
+              raise SystemExit(f'host mismatch: {sorted(hosts-seen)}')
+
+          roads=json.loads((root/'geometry/roads.geojson').read_text(encoding='utf-8'))
+          for rid in ['ROAD-009','ROAD-010','ROAD-011']:
+              f=next(f for f in roads['features'] if str(f.get('id') or f.get('properties',{}).get('id'))==rid)
+              p=f['properties']
+              if p.get('clean_exit_route_preserved') is not True or p.get('route_geometry_changes_when_ai_on') is not False or p.get('sidecar_lifecycle') != lifecycle:
+                  raise SystemExit(f'{rid}: route lifecycle not invariant')
+
+          metrics=json.loads((root/'metrics.json').read_text(encoding='utf-8'))['metrics']
+          expected={'sidecar_lifecycle_stage_count':4,'clean_exit_host_count':9,'clean_exit_restore_use_coverage_ratio':1.0,'clean_exit_route_preservation_ratio':1.0,'new_ai_land_use_code_count':0,'ai_off_route_preservation_ratio':1.0}
+          for k,v in expected.items():
+              if metrics.get(k,{}).get('value') != v:
+                  raise SystemExit(f'{k}: expected {v}, got {metrics.get(k,{}).get("value")}')
+          locked={'site_area_sqm':11412825.386,'green_ratio':0.195008,'public_space_ratio':0.033824,'green_space_area_sqm':2225592.728,'public_space_area_sqm':386029.358,'building_footprint_area_sqm':1024945.371}
+          for k,v in locked.items():
+              if metrics[k]['value'] != v:
+                  raise SystemExit(f'{k}: locked metric drift {metrics[k]["value"]} != {v}')
+
+          for rel in ['visual/index.html','visual/index.en.html']:
+              text=(root/rel).read_text(encoding='utf-8')
+              missing=[m.group(0) for m in re.finditer(r'<img\b[^>]*>',text,re.I) if not re.search(r'\balt\s*=',m.group(0),re.I)]
+              if missing: raise SystemExit(f'{rel}: image missing alt')
+              if '<script' in text.lower() or 'http://' in text.lower() or 'https://' in text.lower():
+                  raise SystemExit(f'{rel}: visual must remain inert/offline')
+          contract=json.loads((root/'visual/assets/public-promises-contract.json').read_text(encoding='utf-8'))
+          if contract.get('variant')!='v0.16.s' or contract.get('lifecycle')!=lifecycle:
+              raise SystemExit('public-promises lifecycle contract not updated')
+          print('CLEAN EXIT semantics: PASS')
+          PY
+          bad="$(git status --porcelain=v1 | sed -E 's/^.. //' | grep -v '^submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/' || true)"
+          if [ -n "$bad" ]; then echo "Out-of-scope changes:"; printf '%s\n' "$bad"; exit 1; fi
+
+      - name: Commit and push formal v0.16.s package
+        working-directory: work
+        run: |
+          set -eu
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git diff --cached --check
+          git commit -m 'v0.16.s: give every AI sidecar a clean spatial exit'
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v016-s
