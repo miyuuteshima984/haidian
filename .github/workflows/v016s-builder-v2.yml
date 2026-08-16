@@ -1,0 +1,165 @@
+name: v016s-builder-v2
+
+on:
+  push:
+    branches:
+      - validation/v016s-builder-v2
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout builder only
+        uses: actions/checkout@v4
+        with:
+          ref: validation/v016s-builder-v2
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout formal v0.16.s target
+        uses: actions/checkout@v4
+        with:
+          repository: miyuuteshima984/haidian
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v016-s
+          path: work
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            scripts
+            brief
+            data
+            tracks.json
+            scenarios
+            requirements-validation.txt
+            requirements-review.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Install rendering and review dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk poppler-utils
+          python3 -m pip install --disable-pip-version-check --quiet pillow reportlab
+          python3 -m pip install --disable-pip-version-check --quiet -r work/requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Build v0.16.s CLEAN EXIT CITY
+        run: python3 .github/v016s_builder.py work
+
+      - name: Restore required visual packaging markers and core metrics
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          zh=root/'visual/index.html'
+          text=zh.read_text(encoding='utf-8')
+          band='''<section class="card" style="margin:18px 0 28px"><h2 style="margin-top:0">城市设计完整度索引</h2><p>总览地图 · 三层范围 · 重点区域 · 用地分区 · 交通慢行 · 蓝绿公共空间 · 建筑 · 更新项目 · AI 场景 · 核心指标 · 任务覆盖 · 自检状态 · 来源 · 假设</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px"><div data-metric="site_area_sqm" data-value="11412825.386"><strong>site_area_sqm</strong><br>11,412,825.386 sqm</div><div data-metric="green_ratio" data-value="0.195008"><strong>green_ratio</strong><br>0.195008</div><div data-metric="public_space_ratio" data-value="0.033824"><strong>public_space_ratio</strong><br>0.033824</div></div></section>'''
+          if '城市设计完整度索引' not in text:
+              text=text.replace('<section class="hero">',band+'<section class="hero">',1)
+          zh.write_text(text,encoding='utf-8')
+
+          en=root/'visual/index.en.html'
+          text=en.read_text(encoding='utf-8')
+          band='''<section class="card" style="margin:18px 0 28px"><h2 style="margin-top:0">Design Package Index</h2><p>Overview map · three-level scope · key areas · land-use zoning · mobility · blue-green public space · buildings · renewal projects · AI scenarios · core metrics · task coverage · self-check status · sources · assumptions</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px"><div data-metric="site_area_sqm" data-value="11412825.386"><strong>site_area_sqm</strong><br>11,412,825.386 sqm</div><div data-metric="green_ratio" data-value="0.195008"><strong>green_ratio</strong><br>0.195008</div><div data-metric="public_space_ratio" data-value="0.033824"><strong>public_space_ratio</strong><br>0.033824</div></div></section>'''
+          if 'Design Package Index' not in text:
+              text=text.replace('<section class="hero">',band+'<section class="hero">',1)
+          en.write_text(text,encoding='utf-8')
+          print('required visual markers + metrics restored')
+          PY
+
+      - name: Render bilingual proposal reports
+        run: python3 work/scripts/render_proposal_html.py work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+      - name: Normalize rendered HTML comments
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html,re
+          root=Path('work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          for rel in ['report/proposal.html','report/proposal.en.html']:
+              p=root/rel; text=p.read_text(encoding='utf-8')
+              text=re.sub(r'<p[^>]*>\s*&lt;!--\s*(.*?)\s*--&gt;\s*</p>',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S|re.I)
+              text=re.sub(r'&lt;!--\s*(.*?)\s*--&gt;',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S)
+              p.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Refresh manifest hashes
+        working-directory: work
+        run: python3 scripts/refresh_submission_manifest.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --json
+
+      - name: Persist current four-gate self-check
+        working-directory: work
+        run: |
+          python3 scripts/self_check_submission.py \
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure \
+            --pr-author miyuuteshima984 --mark-self-checked --json
+
+      - name: Participant preflight
+        working-directory: work
+        run: |
+          python3 scripts/participant_preflight.py \
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure \
+            --pr-author miyuuteshima984 --check-push --json
+
+      - name: Final clean-exit semantic and scope checks
+        working-directory: work
+        run: |
+          set -eu
+          git diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          root=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          lifecycle=['base_city','attach_optional','operate_reviewable','clean_exit_restore']
+          hosts={'BLDG-012','BLDG-013','BLDG-007','BLDG-009','BLDG-001','BLDG-002','PUBLIC-006','PUBLIC-004','PUBLIC-001'}
+          seen=set()
+          for rel in ['geometry/buildings.geojson','geometry/public_space.geojson']:
+              data=json.loads((root/rel).read_text(encoding='utf-8'))
+              for f in data['features']:
+                  fid=str(f.get('id') or f.get('properties',{}).get('id') or '')
+                  if fid not in hosts: continue
+                  seen.add(fid); p=f['properties']
+                  assert p.get('sidecar_lifecycle')==lifecycle
+                  assert p.get('clean_exit_required') is True
+                  assert p.get('ordinary_restore_use')
+                  assert p.get('host_geometry_changes_for_sidecar') is False
+          assert seen==hosts
+          roads=json.loads((root/'geometry/roads.geojson').read_text(encoding='utf-8'))
+          for rid in ['ROAD-009','ROAD-010','ROAD-011']:
+              f=next(f for f in roads['features'] if str(f.get('id') or f.get('properties',{}).get('id'))==rid)
+              p=f['properties']; assert p.get('clean_exit_route_preserved') is True; assert p.get('route_geometry_changes_when_ai_on') is False; assert p.get('sidecar_lifecycle')==lifecycle
+          metrics=json.loads((root/'metrics.json').read_text(encoding='utf-8'))['metrics']
+          expected={'sidecar_lifecycle_stage_count':4,'clean_exit_host_count':9,'clean_exit_restore_use_coverage_ratio':1.0,'clean_exit_route_preservation_ratio':1.0,'new_ai_land_use_code_count':0,'ai_off_route_preservation_ratio':1.0}
+          for k,v in expected.items(): assert metrics[k]['value']==v,(k,metrics[k]['value'],v)
+          locked={'site_area_sqm':11412825.386,'green_ratio':0.195008,'public_space_ratio':0.033824,'green_space_area_sqm':2225592.728,'public_space_area_sqm':386029.358,'building_footprint_area_sqm':1024945.371}
+          for k,v in locked.items(): assert metrics[k]['value']==v,(k,metrics[k]['value'],v)
+          markers=['总览地图','三层范围','重点区域','用地分区','交通慢行','蓝绿公共空间','建筑','更新项目','AI 场景','核心指标','任务覆盖','自检状态','来源','假设']
+          html=(root/'visual/index.html').read_text(encoding='utf-8')
+          for marker in markers: assert marker in html,marker
+          for metric in ['site_area_sqm','green_ratio','public_space_ratio']:
+              assert f'data-metric="{metric}"' in html,metric
+          for rel in ['visual/index.html','visual/index.en.html']:
+              text=(root/rel).read_text(encoding='utf-8')
+              missing=[m.group(0) for m in re.finditer(r'<img\b[^>]*>',text,re.I) if not re.search(r'\balt\s*=',m.group(0),re.I)]
+              assert not missing,(rel,len(missing))
+          print('v0.16.s semantic checks: PASS')
+          PY
+          bad="$(git status --porcelain=v1 | sed -E 's/^.. //' | grep -v '^submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/' || true)"
+          if [ -n "$bad" ]; then echo "Out-of-scope changes:"; printf '%s\n' "$bad"; exit 1; fi
+
+      - name: Commit and push formal v0.16.s package
+        working-directory: work
+        run: |
+          set -eu
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git diff --cached --check
+          git commit -m 'v0.16.s: give every AI sidecar a clean spatial exit'
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v016-s
