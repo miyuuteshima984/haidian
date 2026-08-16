@@ -1,0 +1,98 @@
+name: v016s-diagnose
+
+on:
+  push:
+    branches:
+      - validation/v016s-diagnose
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v4
+        with:
+          ref: validation/v016s-diagnose
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout formal target
+        uses: actions/checkout@v4
+        with:
+          repository: miyuuteshima984/haidian
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v016-s
+          path: work
+          fetch-depth: 1
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            scripts
+            brief
+            data
+            tracks.json
+            scenarios
+            requirements-validation.txt
+            requirements-review.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk poppler-utils
+          python3 -m pip install --disable-pip-version-check --quiet pillow reportlab
+          python3 -m pip install --disable-pip-version-check --quiet -r work/requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Rebuild candidate in runner workspace
+        run: python3 .github/v016s_builder.py work
+
+      - name: Render reports and normalize comments
+        run: |
+          python3 work/scripts/render_proposal_html.py work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          python3 - <<'PY'
+          from pathlib import Path
+          import html,re
+          root=Path('work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          for rel in ['report/proposal.html','report/proposal.en.html']:
+              p=root/rel; text=p.read_text(encoding='utf-8')
+              text=re.sub(r'<p[^>]*>\s*&lt;!--\s*(.*?)\s*--&gt;\s*</p>',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S|re.I)
+              text=re.sub(r'&lt;!--\s*(.*?)\s*--&gt;',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S)
+              p.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Refresh manifest
+        working-directory: work
+        run: python3 scripts/refresh_submission_manifest.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --json
+
+      - name: Run self-check with diagnostic annotations
+        working-directory: work
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, sys
+          cmd=[sys.executable,'scripts/self_check_submission.py','submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure','--pr-author','miyuuteshima984','--mark-self-checked','--json']
+          p=subprocess.run(cmd,text=True,capture_output=True)
+          print(p.stdout)
+          if p.stderr: print(p.stderr,file=sys.stderr)
+          try:
+              r=json.loads(p.stdout)
+          except Exception as e:
+              print(f'::error title=SELF_CHECK_PARSE::{e}')
+              raise SystemExit(p.returncode or 1)
+          for a in r.get('next_actions',[]) or []:
+              print(f'::error title=SELF_CHECK_ACTION::{str(a).replace("%","%25").replace(chr(10),"%0A")[:1500]}')
+          det=r.get('deterministic_validation',{}) or {}
+          out=det.get('stdout',{}) if isinstance(det.get('stdout'),dict) else {}
+          for e in out.get('errors',[]) or []:
+              print(f'::error title=DETERMINISTIC_ERROR::{str(e).replace("%","%25").replace(chr(10),"%0A")[:1500]}')
+          for gate_name,key in [('SPATIAL','spatial_review'),('VISUAL','visual_review'),('PROFESSIONAL','professional_review')]:
+              gate=r.get(key,{}) or {}
+              if gate.get('ok') is not True:
+                  print(f'::error title={gate_name}_FAIL::{json.dumps(gate,ensure_ascii=False)[:1800]}')
+          print(f'::notice title=SELF_CHECK_STATUS::ok={r.get("ok")} review_status={r.get("review_status")} can_enter={r.get("can_enter_formal_review")}')
+          raise SystemExit(p.returncode)
+          PY
