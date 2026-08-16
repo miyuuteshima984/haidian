@@ -1,0 +1,163 @@
+name: v015s-diagnose
+
+on:
+  push:
+    branches:
+      - validation/v015s-diagnose
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v4
+        with:
+          ref: validation/v015s-diagnose
+          fetch-depth: 1
+          sparse-checkout: |
+            .github
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout formal target
+        uses: actions/checkout@v4
+        with:
+          repository: miyuuteshima984/haidian
+          ref: submission/miyuuteshima984/jingzhang-city-completeness-v015-s
+          path: work
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sparse-checkout: |
+            submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+            scripts
+            brief
+            data
+            docs
+            schemas
+            requirements-review.txt
+          sparse-checkout-cone-mode: false
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-cjk poppler-utils
+          python3 -m pip install --disable-pip-version-check --quiet pillow reportlab
+          python3 -m pip install --disable-pip-version-check --quiet -r work/requirements-review.txt
+          python3 -m pip install --disable-pip-version-check --quiet 'jsonschema==4.25.1'
+
+      - name: Build v0.15.s package
+        run: python3 .github/v015s_builder.py work
+
+      - name: Render bilingual reports
+        run: python3 work/scripts/render_proposal_html.py work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+
+      - name: Normalize rendered HTML
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re
+          root=Path('work/submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          for rel in ['report/proposal.html','report/proposal.en.html']:
+              p=root/rel
+              text=p.read_text(encoding='utf-8')
+              text=re.sub(r'<p[^>]*>\s*&lt;!--\s*(.*?)\s*--&gt;\s*</p>',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S|re.I)
+              text=re.sub(r'&lt;!--\s*(.*?)\s*--&gt;',lambda m:'<!-- '+html.unescape(m.group(1)).strip()+' -->',text,flags=re.S)
+              p.write_text(text,encoding='utf-8')
+          PY
+
+      - name: Refresh manifest hashes
+        working-directory: work
+        run: python3 scripts/refresh_submission_manifest.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --json
+
+      - name: Run self-check with diagnostic annotations
+        working-directory: work
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/self_check_submission.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --mark-self-checked --json > /tmp/selfcheck.json
+          rc=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/selfcheck.json')
+          try:
+              d=json.loads(p.read_text(encoding='utf-8'))
+          except Exception as e:
+              print(f'::error title=SELF_CHECK_JSON::Could not parse self-check JSON: {e}')
+              raise SystemExit(0)
+          def esc(s):
+              return str(s).replace('%','%25').replace('\r','%0D').replace('\n','%0A')[:4000]
+          print('SELF_CHECK_OK=', d.get('ok'))
+          print('REVIEW_STATUS=', d.get('review_status'))
+          for action in d.get('next_actions') or []:
+              print(f'::error title=SELF_CHECK_ACTION::{esc(action)}')
+          gates=[('DETERMINISTIC',d.get('deterministic_validation') or {}),('SPATIAL',d.get('spatial_review') or {}),('VISUAL',d.get('visual_review') or {}),('PROFESSIONAL',d.get('professional_review') or {})]
+          for name,g in gates:
+              if g.get('ok') is True:
+                  print(f'{name}: PASS')
+                  continue
+              out=g.get('stdout') or {}
+              stderr=g.get('stderr') or ''
+              if stderr:
+                  print(f'::error title={name}_STDERR::{esc(stderr)}')
+              for err in out.get('errors') or []:
+                  print(f'::error title={name}_ERROR::{esc(err)}')
+              for issue in out.get('issues') or []:
+                  if isinstance(issue,dict):
+                      sev=issue.get('severity','')
+                      cid=issue.get('check_id',name)
+                      msg=issue.get('message','')
+                      print(f'::error title={esc(cid)}::{esc(sev+": "+msg)}')
+          PY
+          exit "$rc"
+
+      - name: Participant preflight
+        working-directory: work
+        run: python3 scripts/participant_preflight.py submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure --pr-author miyuuteshima984 --json
+
+      - name: Final semantic checks
+        working-directory: work
+        run: |
+          set -eu
+          git diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          root=Path('submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure')
+          forbidden=['3.5m','2.0m','1.8m','400m','+15cm','retractable bollards','气动升降桩','multi-level transit deck','多层立体站城甲板','$\\ge 4.5','$\\ge 2.5']
+          for rel in ['proposal.md','proposal.en.md','report/proposal.html','report/proposal.en.html']:
+              text=(root/rel).read_text(encoding='utf-8')
+              hits=[x for x in forbidden if x in text]
+              if hits: raise SystemExit(f'{rel}: pseudo-precision remains {hits}')
+          for rel in ['visual/index.html','visual/index.en.html']:
+              text=(root/rel).read_text(encoding='utf-8')
+              missing=[m.group(0) for m in re.finditer(r'<img\b[^>]*>',text,re.I) if not re.search(r'\balt\s*=',m.group(0),re.I)]
+              if missing: raise SystemExit(f'{rel}: {len(missing)} image(s) missing alt')
+          roads=json.loads((root/'geometry/roads.geojson').read_text(encoding='utf-8'))
+          expected={'ROAD-009':'test_pocket','ROAD-010':'care_porch','ROAD-011':'arrival_sidecar'}
+          for rid,sidecar in expected.items():
+              feat=next(x for x in roads['features'] if (x.get('id') or x['properties'].get('id'))==rid)
+              p=feat['properties']
+              assert p.get('ai_sidecar_type')==sidecar and p.get('route_geometry_changes_when_ai_on') is False
+          metrics=json.loads((root/'metrics.json').read_text(encoding='utf-8'))['metrics']
+          checks={'ai_sidecar_type_count':3,'ai_sidecar_host_feature_count':9,'ai_off_route_preservation_ratio':1.0,'new_ai_land_use_code_count':0}
+          for k,v in checks.items(): assert metrics[k]['value']==v,(k,metrics[k]['value'])
+          print('Final semantic checks: PASS')
+          PY
+          bad="$(git status --porcelain=v1 | sed -E 's/^.. //' | grep -v '^submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure/' || true)"
+          if [ -n "$bad" ]; then echo "Out-of-scope changes:"; printf '%s\n' "$bad"; exit 1; fi
+
+      - name: Commit and push formal package
+        working-directory: work
+        run: |
+          set -eu
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add submissions/miyuuteshima984/jingzhang-ai-civic-infrastructure
+          git diff --cached --check
+          git commit -m 'v0.15.s: make AI a reversible spatial sidecar'
+          git push origin HEAD:submission/miyuuteshima984/jingzhang-city-completeness-v015-s
